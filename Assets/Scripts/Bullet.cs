@@ -11,13 +11,12 @@ public class BulletType
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    float speed = 6f;
-    void Start()
+    public void Configure(BulletType bulletType)
     {
-        GetComponent<Rigidbody2D>().velocity = Vector3.right * 5f;
+        GetComponent<SpriteRenderer>().sprite = bulletType.Sprite;
+        GetComponent<Rigidbody2D>().velocity = Vector3.right * bulletType.Speed;
     }
-
 }

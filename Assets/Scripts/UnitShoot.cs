@@ -8,7 +8,7 @@ public class UnitShoot : MonoBehaviour
     GameObject BulletPrefab;
 
     [SerializeField]
-    float ShootPeriod = 0.5f;
+    BulletType BulletType; 
 
     void Start()
     {
@@ -24,11 +24,13 @@ public class UnitShoot : MonoBehaviour
 
     private void ShootBullet()
     {
-        if (Time.timeSinceLevelLoad - lastShootTime < ShootPeriod)
+        if (Time.timeSinceLevelLoad - lastShootTime < BulletType.ShootingDuration)
             return;
 
         var bullet = Instantiate(BulletPrefab);
         bullet.transform.position = transform.position + Vector3.right * 1.5f;
+
+        bullet.GetComponent<Bullet>().Configure(BulletType);
 
         lastShootTime = Time.timeSinceLevelLoad;
     }

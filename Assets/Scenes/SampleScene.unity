@@ -316,61 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 3477051648640112730, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-  ShootPeriod: 0.5
---- !u!1001 &7244627693956736242
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.846043
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.674161
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236347454498457818, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 3477051648640112730, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-      propertyPath: m_Name
-      value: Bullet
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
+  BulletType:
+    Sprite: {fileID: 21300000, guid: ae6d58d6154f77842a4f6b278364b6ac, type: 3}
+    ShootingDuration: 0.3
+    Speed: 10
