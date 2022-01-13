@@ -8,7 +8,10 @@ public class UnitShoot : MonoBehaviour
     GameObject BulletPrefab;
 
     [SerializeField]
-    BulletType BulletType; 
+    BulletType BulletType;
+
+    [SerializeField]
+    float AtackSpeed;
 
     void Start()
     {
@@ -24,7 +27,7 @@ public class UnitShoot : MonoBehaviour
 
     private void ShootBullet()
     {
-        if (Time.timeSinceLevelLoad - lastShootTime < BulletType.ShootingDuration)
+        if (Time.timeSinceLevelLoad - lastShootTime < AtackSpeed)
             return;
 
         var bullet = Instantiate(BulletPrefab);

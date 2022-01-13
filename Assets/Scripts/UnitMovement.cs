@@ -19,9 +19,7 @@ public class UnitMovement : MonoBehaviour
 
     }
     void Update()
-    {
-        //if (Input.GetMouseButton(GetComponent<>)); jak klikn¹æ, ¿eby wtedy siê porusza³a Unit?
-
+    { 
         Vector2 targetPosition;
         if (!Input.GetMouseButton(0))
             return;
