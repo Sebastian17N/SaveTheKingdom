@@ -7,7 +7,7 @@ public class Field : MonoBehaviour
 	public GameManager GameManager;
 	public Image BackgroundImage;
 
-	private void Awake()
+	public void Start()
 	{
 		GameManager = GameManager.Instance;
 	}

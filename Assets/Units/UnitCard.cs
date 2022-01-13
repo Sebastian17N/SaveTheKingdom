@@ -11,7 +11,7 @@ public class UnitCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 	private GameObject _unitInstance;
 	private GameManager _gameManager;
 
-	private void Awake()
+	public void Start()
 	{
 		_gameManager = GameManager.Instance;
 	}
