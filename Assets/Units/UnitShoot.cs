@@ -26,7 +26,7 @@ public class UnitShoot : MonoBehaviour
             return;
 
         var bullet = Instantiate(BulletPrefab);
-        bullet.transform.position = transform.position + Vector3.right * 1.5f;
+        bullet.transform.position = transform.position + Vector3.right * 1.5f + Vector3.down * 0.5f;
 
         bullet.GetComponent<Bullet>().Configure(BulletType);
 

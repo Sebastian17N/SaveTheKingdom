@@ -18,4 +18,18 @@ public class Enemi : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var enemie = collision.gameObject;
+        var bullet = enemie.GetComponent<Bullet>();
+
+        if(bullet != null)
+        {
+            Durability--;
+            Destroy(enemie);
+
+            if(Durability <= 0)
+                Destroy(gameObject);
+        }
+    }
 }
