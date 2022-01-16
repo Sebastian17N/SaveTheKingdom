@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3689152626018265942}
   - component: {fileID: 7518231472697943767}
   - component: {fileID: 5886341678873556572}
-  - component: {fileID: 7800581450217596642}
   - component: {fileID: 2047814638006067608}
   - component: {fileID: 2047814638006067615}
   m_Layer: 7
@@ -127,23 +126,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7800581450217596642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6397724459501262432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 125682d44ee162a48ad45b97e77ce282, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 3477051648640112730, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
-  BulletType:
-    Sprite: {fileID: 21300000, guid: 10ddc1344ed727b4c9c4f05001ae58a9, type: 3}
-    Speed: 60
-  AtackSpeed: 1
 --- !u!212 &2047814638006067608
 SpriteRenderer:
   m_ObjectHideFlags: 0
