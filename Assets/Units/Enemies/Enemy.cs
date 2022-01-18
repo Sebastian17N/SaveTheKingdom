@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Enemi : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField]
     float Speed = 2f;
@@ -20,13 +20,13 @@ public class Enemi : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var enemie = collision.gameObject;
-        var bullet = enemie.GetComponent<Bullet>();
+        var enemy = collision.gameObject;
+        var bullet = enemy.GetComponent<Bullet>();
 
         if(bullet != null)
         {
             Durability--;
-            Destroy(enemie);
+            Destroy(enemy);
 
             if(Durability <= 0)
                 Destroy(gameObject);

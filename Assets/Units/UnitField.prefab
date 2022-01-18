@@ -212,5 +212,5 @@ MonoBehaviour:
   BulletPrefab: {fileID: 3477051648640112730, guid: 12b25ce51aefdd24ab7c16f48ade3272, type: 3}
   BulletType:
     Sprite: {fileID: 21300000, guid: 2c961366528f28c458c619797d0bbb2f, type: 3}
-    Speed: 60
+    Speed: 1
   AtackSpeed: 1
