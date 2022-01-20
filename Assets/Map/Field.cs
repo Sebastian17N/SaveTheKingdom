@@ -9,21 +9,21 @@ public class Field : MonoBehaviour
 
 	public void Start()
 	{
-		GameManager = GameManager.Instance;
+		GameManager = GameObject.FindObjectOfType<GameManager>();
 	}
 
-	public void OnTriggerEnter2D(Collider2D collision)
+	public void OnMouseOver()
 	{
 		if (GameManager.DraggingObject != null && !IsAssigned)
 		{
 			GameManager.CurrentContainer = gameObject;
-			BackgroundImage.enabled = true;
+			//BackgroundImage.enabled = true;
 		}
 	}
 	
-	public void OnTriggerExit2D(Collider2D collision)
+	public void OnMouseExit()
 	{
 		GameManager.CurrentContainer = null;
-		BackgroundImage.enabled = false;
+		//BackgroundImage.enabled = false;
 	}
 }

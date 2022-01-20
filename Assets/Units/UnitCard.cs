@@ -13,7 +13,7 @@ public class UnitCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 
 	public void Start()
 	{
-		_gameManager = GameManager.Instance;
+		_gameManager = GameObject.FindObjectOfType<GameManager>();
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -26,14 +26,14 @@ public class UnitCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 		_unitInstance = Instantiate(Dragged, Canvas.transform);
 		_unitInstance.transform.position = Input.mousePosition;
 
-		GameManager.Instance.DraggingObject = _unitInstance;
+		_gameManager.DraggingObject = _unitInstance;
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
 		_gameManager.PlaceUnitOnBattlefield(this);
 
-		GameManager.Instance.DraggingObject = null;
+		_gameManager.DraggingObject = null;
 		Destroy(_unitInstance);
 	}
 }
