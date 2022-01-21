@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]   
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    float Speed = 2f;
-    [SerializeField]
-    float Durability = 10;
+    //public GameObject enemyDefault;
+    
+    public float Speed = 2f;    
+    public float Durability = 10;
+    public int spawnTime;
+    public EnamiesType enemiesType;
+
     void Start()
     {
         GetComponent<Rigidbody2D>().velocity = Vector2.left * Speed;
@@ -23,13 +27,20 @@ public class Enemy : MonoBehaviour
         var enemy = collision.gameObject;
         var bullet = enemy.GetComponent<Bullet>();
 
-        if(bullet != null)
+        if (bullet != null)
         {
             Durability--;
             Destroy(enemy);
 
-            if(Durability <= 0)
+            if (Durability <= 0)
                 Destroy(gameObject);
         }
     }
+    public enum EnamiesType
+    {
+        Enemy_Basic,
+        Enemy_Basic1,
+        Enemy_Basic2
+    }
 }
+

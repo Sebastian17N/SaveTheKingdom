@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6312148531307705491}
   - component: {fileID: 6312148531307705490}
   - component: {fileID: 6312148531307705489}
-  - component: {fileID: 6312148531307705488}
   - component: {fileID: 5280448937020634613}
-  m_Layer: 0
-  m_Name: Enemy
+  - component: {fileID: -7184491356147076674}
+  m_Layer: 7
+  m_Name: Enemy_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.69, y: 1.74, z: 0}
   m_LocalScale: {x: 0.62221, y: 0.62221, z: 0.62221}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,6 +46,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -106,20 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6312148531307705488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6312148531307705495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ecf69db80b52841b7e3d2e7cb0a313, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 1
-  Durability: 1
 --- !u!61 &5280448937020634613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +134,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 3.06}
   m_EdgeRadius: 0
+--- !u!114 &-7184491356147076674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312148531307705495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ecf69db80b52841b7e3d2e7cb0a313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  Durability: 10
+  spawnTime: 1
+  enemiesType: 0

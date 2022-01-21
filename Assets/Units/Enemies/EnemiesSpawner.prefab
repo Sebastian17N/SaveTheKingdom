@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2502466004493687437}
   - component: {fileID: 2502466004493687442}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemiesSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab07ab81f3f8a43aca811f58e6395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemiePrefab: {fileID: 6312148531307705495, guid: 6a1ab4ca36d65fc47a78680e5b62ac37, type: 3}
-  AsteroidSpawnTime: 2
-  Spawning: 1
+  enemiesPrefabs:
+  - {fileID: 6312148531307705495, guid: 6a1ab4ca36d65fc47a78680e5b62ac37, type: 3}
+  - {fileID: 6312148531307705495, guid: 21819ef760f96ef498175e306d4cb267, type: 3}
+  enemies:
+  - {fileID: -7184491356147076674, guid: 6a1ab4ca36d65fc47a78680e5b62ac37, type: 3}
+  - {fileID: 5938241405613048184, guid: 21819ef760f96ef498175e306d4cb267, type: 3}
