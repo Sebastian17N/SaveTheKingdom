@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading;
 using Random = UnityEngine.Random;
 
 public class EnemisSpawner : MonoBehaviour
@@ -18,12 +16,6 @@ public class EnemisSpawner : MonoBehaviour
         StartCoroutine(SpawningCoroutine());
     }
 
-    private void Update()
-    {
-        
-
-    }
-
     public IEnumerator SpawningCoroutine()
     {
         while (true)
@@ -31,51 +23,10 @@ public class EnemisSpawner : MonoBehaviour
             enemies = enemiesPrefabs[Random.Range(0, enemiesPrefabs.Count)];
 
             var spawnSpotID = Random.Range(0, spawnSpot.Length);
-            Instantiate(enemiesPrefabs[(int)enemies.enemiesType], spawnSpot[spawnSpotID]);
+            var enemy = Instantiate(enemiesPrefabs[(int)enemies.enemiesType], spawnSpot[spawnSpotID]);
+            enemy.transform.localPosition = new Vector3(0, 0, -1);
 
             yield return new WaitForSeconds(spawnInterval);
         }        
     }
-
-    //foreach (Enemy enemy in enemies)
-    //    {
-    //        if (enemy.spawnTime <= Time.time)
-    //        {
-    //            Instantiate(enemiesPrefabs[(int)enemy.enemiesType], transform.GetChild(enemy.Spawner).transform);
-    //        }
-    //    }
-    //{
-    //    while (true)
-    //    {
-    //        while(Spawning)
-    //        {
-    //            SpawnEnemies();
-    //            yield return new WaitForSeconds(SpawnTime);
-    //        }
-    //        yield return new WaitForEndOfFrame();
-    //    }
-    //}
-
-    //[SerializeField]
-    //GameObject EnemiePrefab;
-
-    //[SerializeField]
-    //float SpawnTime = 2f;
-
-    //public bool Spawning = true;
-    //public Enemy enemy;   
-
-    //IEnumerator SpawningCoroutine()
-    //{
-    //    while (true)
-    //    {
-    //        while(Spawning)
-    //        {
-    //            SpawnEnemies();
-    //            yield return new WaitForSeconds(SpawnTime);
-    //        }
-    //        yield return new WaitForEndOfFrame();
-    //    }
-    //}
-
 }
