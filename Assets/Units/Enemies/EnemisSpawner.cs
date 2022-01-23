@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using UnityEditor;
+using System.Text.RegularExpressions;
 using Random = UnityEngine.Random;
 
 public class EnemisSpawner : MonoBehaviour
@@ -14,8 +16,8 @@ public class EnemisSpawner : MonoBehaviour
     public Transform[] spawnSpot;
 
     public void Start()
-    {
-        StartCoroutine(SpawningCoroutine());
+    {        
+        LoadLevel("level_1");
     }
 
     private void Update()
@@ -23,59 +25,36 @@ public class EnemisSpawner : MonoBehaviour
         
 
     }
-
-    public IEnumerator SpawningCoroutine()
+    void LoadLevel(string name)
     {
-        while (true)
+        var path = "Assets/Map/Levels/" + name + ".txt";
+        var text = AssetDatabase.LoadAssetAtPath<TextAsset>(path).text;
+        var lines = Regex.Split(text, Environment.NewLine);
+        StartCoroutine(SpawningCoroutine(lines));
+    }
+    public IEnumerator SpawningCoroutine(string[] text)
+    {
+        var spawnSpotID = text.Length;
+        var numberOfEnemies = text[0].Length;
+
+        for (int x = 0; x < numberOfEnemies; x++)
         {
-            enemies = enemiesPrefabs[Random.Range(0, enemiesPrefabs.Count)];
+            for (int y = 0; y < spawnSpotID; y++)
+            {
+                var character = text[y][x];
 
-            var spawnSpotID = Random.Range(0, spawnSpot.Length);
-            Instantiate(enemiesPrefabs[(int)enemies.enemiesType], spawnSpot[spawnSpotID]);
+                if (character == '_')
+                    continue;
 
+                if (character == 'x')
+                {
+                    enemies = enemiesPrefabs[Random.Range(0, enemiesPrefabs.Count)];
+                    Instantiate(enemiesPrefabs[(int)enemies.enemiesType], spawnSpot[y]);
+                }             
+            }
             yield return new WaitForSeconds(spawnInterval);
         }        
     }
-
-    //foreach (Enemy enemy in enemies)
-    //    {
-    //        if (enemy.spawnTime <= Time.time)
-    //        {
-    //            Instantiate(enemiesPrefabs[(int)enemy.enemiesType], transform.GetChild(enemy.Spawner).transform);
-    //        }
-    //    }
-    //{
-    //    while (true)
-    //    {
-    //        while(Spawning)
-    //        {
-    //            SpawnEnemies();
-    //            yield return new WaitForSeconds(SpawnTime);
-    //        }
-    //        yield return new WaitForEndOfFrame();
-    //    }
-    //}
-
-    //[SerializeField]
-    //GameObject EnemiePrefab;
-
-    //[SerializeField]
-    //float SpawnTime = 2f;
-
-    //public bool Spawning = true;
-    //public Enemy enemy;   
-
-    //IEnumerator SpawningCoroutine()
-    //{
-    //    while (true)
-    //    {
-    //        while(Spawning)
-    //        {
-    //            SpawnEnemies();
-    //            yield return new WaitForSeconds(SpawnTime);
-    //        }
-    //        yield return new WaitForEndOfFrame();
-    //    }
-    //}
-
+    
+   
 }

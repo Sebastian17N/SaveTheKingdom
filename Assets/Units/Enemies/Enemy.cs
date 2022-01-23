@@ -5,9 +5,7 @@ using UnityEngine;
 [System.Serializable]   
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
-{
-    //public GameObject enemyDefault;
-    
+{    
     public float Speed = 2f;    
     public float Durability = 10;
     public int spawnTime;
