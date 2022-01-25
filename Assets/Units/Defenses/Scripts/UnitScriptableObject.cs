@@ -6,4 +6,8 @@ public class UnitScriptableObject : ScriptableObject
     public Texture Icon;
     public Sprite Sprite;
     public int Cost;
+
+    public Sprite Bullet;
+
+    public RuntimeAnimatorController Animator;
 }
