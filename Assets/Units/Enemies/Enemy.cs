@@ -27,11 +27,18 @@ public class Enemy : MonoBehaviour
 
         if (bullet != null)
         {
-            Durability--;
+            DecreaseDurability(bullet.Damage);
             Destroy(enemy);
+        }
+    }
 
-            if (Durability <= 0)
-                Destroy(gameObject);
+    private void DecreaseDurability(float amount)
+    {
+        Durability -= amount;
+
+        if (Durability <= 0)
+        {
+            Destroy(gameObject);
         }
     }
     public enum EnamiesType

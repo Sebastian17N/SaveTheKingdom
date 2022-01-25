@@ -44,10 +44,18 @@ public class EnemisSpawner : MonoBehaviour
 
                 if (character == 'x')
                 {
-                    enemies = enemiesPrefabs[Random.Range(0, enemiesPrefabs.Count)];
-                    var enemy = Instantiate(enemiesPrefabs[(int)enemies.enemiesType], spawnSpot[y]);
-                    enemy.transform.localPosition = new Vector3(0, 0, -1);
+                    enemies = enemiesPrefabs[0];                    
                 }
+                else if (character == 'y')
+                {
+                    enemies = enemiesPrefabs[1];
+                }
+                else if(character == 'z')
+                {
+                    enemies = enemiesPrefabs[2];
+                }
+                var enemy = Instantiate(enemiesPrefabs[(int)enemies.enemiesType], spawnSpot[y]);
+                enemy.transform.localPosition = new Vector3(0, 0, -1);
             }
             yield return new WaitForSeconds(spawnInterval);
         }
