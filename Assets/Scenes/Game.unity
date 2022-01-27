@@ -225,6 +225,7 @@ MonoBehaviour:
   ScriptableObjects:
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
   - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
+  - {fileID: 11400000, guid: 1d8fbd2e85d167c41b98b90e1e019c02, type: 2}
   Prefab: {fileID: 122793440222082154, guid: 57d72c3c3440b054497a82d19e5e4938, type: 3}
   ParentTransform: {fileID: 996851443}
 --- !u!4 &297398708
@@ -514,9 +515,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemiesSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6364866886847064762, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
+      propertyPath: enemiesPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: -7184491356147076674, guid: 6a1ab4ca36d65fc47a78680e5b62ac37, type: 3}
+    - target: {fileID: 6364866886847064762, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
+      propertyPath: enemiesPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5938241405613048184, guid: 21819ef760f96ef498175e306d4cb267, type: 3}
+    - target: {fileID: 6364866886847064762, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
+      propertyPath: enemiesPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: -2320531930143224301, guid: a920e5f76a0e112438e1ddf4b4c7be7d, type: 3}
     - target: {fileID: 6364866886847064763, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364866886847064763, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
