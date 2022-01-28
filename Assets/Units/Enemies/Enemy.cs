@@ -7,12 +7,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
 {
-    public ScriptableEnemies ScriptableEnemies;
+    public ScriptableEnemy ScriptableEnemies;
     public float Speed = 2f;    
     public float Durability = 10;
     public int spawnTime;
-    public EnamiesType enemiesType;
-    bool isWalking;
+    bool isWalking = true;
     bool isAttacking;
     bool isTarget;
     
@@ -23,17 +22,15 @@ public class Enemy : MonoBehaviour
         
     void Update()
     {
-        if (isTarget == false)
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.left * Speed;
-        }   
+        Walking();
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var enemy = collision.gameObject;
         var bullet = enemy.GetComponent<Bullet>();
-        var target = enemy.GetComponent<FieldManager>();
+
+        var target = enemy.GetComponent<UnitShoot>();
 
         if (bullet != null)
         {
@@ -43,13 +40,21 @@ public class Enemy : MonoBehaviour
 
         if (target != null)
         {
-            Atack();
-            isTarget = true;    
             isWalking = false;
+            Atack();
+            
         }
 
     }
-
+    private void Walking()
+    {
+        if (isWalking)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.left * Speed;
+        }
+        else
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+    }
     private void Atack()
     {
         throw new NotImplementedException();
@@ -63,12 +68,6 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    public enum EnamiesType
-    {
-        Enemy_Basic,
-        Enemy_Basic1,
-        Enemy_Basic2
-    }
+    }    
 }
 

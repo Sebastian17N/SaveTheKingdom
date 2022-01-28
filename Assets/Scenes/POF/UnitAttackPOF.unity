@@ -320,6 +320,22 @@ PrefabInstance:
       propertyPath: enemiesPrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6364866886847064762, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
+      propertyPath: enemyScriptableObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364866886847064762, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
+      propertyPath: enemyScriptableObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 207d19f5efdbb8040acc68415c3f2ee3, type: 2}
+    - target: {fileID: 6364866886847064762, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
+      propertyPath: enemyScriptableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d8b69476644b634b9f106c0af72cfec, type: 2}
+    - target: {fileID: 6364866886847064762, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
+      propertyPath: enemyScriptableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 442672242cc062247aa5a204c7347071, type: 2}
     - target: {fileID: 6364866886847064763, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
       propertyPath: m_RootOrder
       value: 5
