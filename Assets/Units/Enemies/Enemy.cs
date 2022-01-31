@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]   
@@ -10,15 +8,11 @@ public class Enemy : MonoBehaviour
     public ScriptableEnemy ScriptableEnemies;
     public float Speed = 2f;    
     public float Durability = 10;
-    public int spawnTime;
-    bool isWalking = true;
-    bool isAttacking;
-    bool isTarget;
-    
-    void Start()
-    {
-        
-    }
+    public int SpawnTime;
+
+    private bool _isWalking = true;
+    private bool _isAttacking;
+    private bool _isTarget;
         
     void Update()
     {
@@ -29,8 +23,7 @@ public class Enemy : MonoBehaviour
     {
         var enemy = collision.gameObject;
         var bullet = enemy.GetComponent<Bullet>();
-
-        var target = enemy.GetComponent<UnitShoot>();
+        var target = enemy.GetComponent<UnitManager>();
 
         if (bullet != null)
         {
@@ -40,22 +33,19 @@ public class Enemy : MonoBehaviour
 
         if (target != null)
         {
-            isWalking = false;
-            Atack();
-            
+            _isWalking = false;
+            Attack();            
         }
 
     }
     private void Walking()
     {
-        if (isWalking)
-        {
+        if (_isWalking)
             GetComponent<Rigidbody2D>().velocity = Vector2.left * Speed;
-        }
         else
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
-    private void Atack()
+    private void Attack()
     {
         throw new NotImplementedException();
     }
