@@ -13,6 +13,8 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 	public FieldManager Collider;
 	private FieldManager LastCollider;
 
+	public Transform BackgroundTransform;
+
 	public void OnDrag(PointerEventData eventData)
 	{
 		UnitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
@@ -29,32 +31,48 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
 		// If you do not hover above field, Unit should be stick to your mouse pointer.
 		if (!IsOverCollider)
-			UnitDragged.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		{
+			// If you do not hover above field, Unit should be stick to your mouse pointer.
+			var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			UnitDragged.transform.position = new Vector3(position.x, position.y, -9);
+		}
 		else
-			UnitDragged.transform.position = Collider.transform.position;
+		{
+			// Unit should be snapped to the field.
+			UnitDragged.transform.position = Collider.transform.position + new Vector3(0, 0.25f, 0);
+		}
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		UnitDragged = Instantiate(Prefab, new Vector3(0, 0, -1), Quaternion.identity);
 		UnitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
-		UnitDragged.GetComponent<BulletType>().Sprite = Sprite;
+		UnitDragged.transform.SetParent(BackgroundTransform);
 
-		UnitDragged.transform.localPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		UnitDragged.transform.position = new Vector3(position.x, position.y, -9);
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
 		if (Collider != null && !Collider.IsAssigned)
 		{
+			Collider.IsAssigned = true;
+
 			UnitDragged.tag = "Untagged";
 			UnitDragged.transform.SetParent(Collider.transform);
-			UnitDragged.transform.position = new Vector3(0, 0, -1);
-			UnitDragged.transform.localPosition = new Vector3(0, 0, -1);
+			UnitDragged.transform.localPosition = new Vector3(0, 0.25f, -1);
+
+			var unitManager = UnitDragged.GetComponent<UnitBasic>();
+			unitManager.IsDragged = false;
+			unitManager.BulletType.Sprite = UnitScriptableObject.Bullet;
+			unitManager.AttackSpeed = UnitScriptableObject.AttackSpeed;
+
+			var animator = UnitDragged.GetComponent<Animator>();
+			animator.runtimeAnimatorController = UnitScriptableObject.Animator;
+			animator.SetFloat("AttackSpeed", UnitScriptableObject.AttackSpeed);
 
 			Collider.IsAssigned = true;
 		}
-		else
-			Destroy(UnitDragged);
 	}
 }

@@ -16,8 +16,11 @@ public class UnitBasic : MonoBehaviour
     public float AttackSpeed;
     public float Health;
     public bool IsDragged = true;
-    private float _lastShootTime = 0f;
+    
     public GameObject Unit;
+
+    private float _lastShootTime = 0f;
+
     public void Update()
     {
         ShootBullet();
