@@ -38,6 +38,7 @@ public class UnitBasic : MonoBehaviour
         bullet.transform.position = transform.position + Vector3.right * 1.5f + Vector3.down * 0.5f;
 
         bullet.GetComponent<Bullet>().Configure(BulletType);
+        bullet.transform.SetParent(this.transform);
 
         _lastShootTime = Time.timeSinceLevelLoad;
     }
