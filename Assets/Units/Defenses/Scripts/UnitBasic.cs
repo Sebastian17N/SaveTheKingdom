@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class UnitBasic : MonoBehaviour
 {
-    
-    public GameObject BulletPrefab;    
-    public BulletType BulletType;    
-    public float AtackSpeed;
-    public float Health;
+    [SerializeField]
+    public GameObject BulletPrefab;
 
+    [SerializeField]
+    public BulletType BulletType;
+
+    /// <summary>
+    /// Should be taken from UnitScriptableObject.
+    /// </summary>
+    public float AttackSpeed;
+    public float Health;
+    public bool IsDragged = true;
     private float _lastShootTime = 0f;
     public GameObject Unit;
     public void Update()
@@ -19,7 +25,10 @@ public class UnitBasic : MonoBehaviour
 
     private void ShootBullet()
     {
-        if (Time.timeSinceLevelLoad - _lastShootTime < AtackSpeed)
+        if (IsDragged)
+            return;
+
+        if (Time.timeSinceLevelLoad - _lastShootTime < AttackSpeed)
             return;
 
         var bullet = Instantiate(BulletPrefab);

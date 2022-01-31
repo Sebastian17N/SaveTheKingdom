@@ -7,23 +7,24 @@ public class GameManager : MonoBehaviour
 {
     [Header("Attributes")]
     // Object template to get attributes from.
-    public List<GameObject> Units;
+    public List<GameObject> UnitCards;
     public int Cost;
     public Texture Icon;
 
     [Header("Units")]
     public UnitScriptableObject[] ScriptableObjects;
     public GameObject Prefab;
-    public Transform ParentTransform;
+	public Transform CardHolderTransform;
+    public Transform BackgroundTransform;
 
-    private void Start()
+	private void Start()
     {
-        Units = new List<GameObject>();
+        UnitCards = new List<GameObject>();
 
         // Load all units.
         foreach (UnitScriptableObject scriptableObject in ScriptableObjects)
         {
-            Units.Add(CreateUnit(scriptableObject));
+            UnitCards.Add(CreateUnit(scriptableObject));
         }
     }
 
@@ -34,17 +35,18 @@ public class GameManager : MonoBehaviour
     /// <returns>Created game object.</returns>
     private GameObject CreateUnit(UnitScriptableObject unitScriptableObject)
     {
-        GameObject unit = Instantiate(Prefab, ParentTransform);
+        GameObject unit = Instantiate(Prefab, CardHolderTransform);
         
         Icon = unitScriptableObject.Icon;
         Cost = unitScriptableObject.Cost;
-
+        
         unit.GetComponentInChildren<RawImage>().texture = Icon;
         unit.GetComponentInChildren<TMP_Text>().text = $"{Cost}";
 
         UnitCardManager manager = unit.GetComponent<UnitCardManager>();
         manager.UnitScriptableObject = unitScriptableObject;
         manager.Sprite = unitScriptableObject.Sprite;
+        //manager.BackgroundTransform = BackgroundTransform;
 
         return unit;
     }

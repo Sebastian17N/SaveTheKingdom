@@ -136,6 +136,8 @@ MonoBehaviour:
   Sprite: {fileID: 0}
   Prefab: {fileID: 2171409751259875470, guid: 5a21fc1a17e4fa346a1e13785f0157a8, type: 3}
   IsOverCollider: 0
+  Collider: {fileID: 0}
+  BackgroundTransform: {fileID: 0}
 --- !u!114 &1830334788445248859
 MonoBehaviour:
   m_ObjectHideFlags: 0

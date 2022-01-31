@@ -5,9 +5,11 @@ public class UnitScriptableObject : ScriptableObject
 {
     public Texture Icon;
     public Sprite Sprite;
-    public int Cost;
-
+    
     public Sprite Bullet;
     public BulletType BulletType;
     public RuntimeAnimatorController Animator;
+
+    public int Cost;
+    public float AttackSpeed;
 }

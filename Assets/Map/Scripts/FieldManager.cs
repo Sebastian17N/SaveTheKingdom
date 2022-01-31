@@ -20,11 +20,6 @@ public class FieldManager : MonoBehaviour
 		if (Unit == null) return;
 
 		Unit.transform.SetParent(this.transform);
-		Unit.transform.localPosition = new Vector3(0, 0, -1);
-	}
-
-	public void OnMouseExit()
-	{
-		//Destroy(Unit);
+		Unit.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
 	}
 }
