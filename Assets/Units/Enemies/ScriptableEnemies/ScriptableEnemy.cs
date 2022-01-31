@@ -9,5 +9,5 @@ public class ScriptableEnemy : ScriptableObject
     public float EnemyHealth = 10;
     public int SpawnTime;
     public float AtackDamage;
-    public float AtackInterval;
+    public float AttackInterval;
 }

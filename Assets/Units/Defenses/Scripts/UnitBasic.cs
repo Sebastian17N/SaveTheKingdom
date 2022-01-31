@@ -53,7 +53,7 @@ public class UnitBasic : MonoBehaviour
             //DecreaseDurability(enemy.AtackDamage);
         }
     }
-    private void DecreaseDurability(float amount)
+    public void DecreaseHealth(float amount)
     {
         Health -= amount;
 

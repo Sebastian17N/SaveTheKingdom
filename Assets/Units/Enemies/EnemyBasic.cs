@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]   
@@ -6,16 +8,23 @@ using UnityEngine;
 public class EnemyBasic : MonoBehaviour
 {
     public ScriptableEnemy ScriptableEnemies;
+    public GameObject Target;
     public float Speed = 2f;    
     public float Durability = 10;
     public int SpawnTime;
-
+    public float AttackDamage;
+    public float attackInterval;    
     private bool _isWalking = true;
     private bool _isAttacking;
     private bool _isTarget;
-        
+
+    private void Start()
+    {
+        attackInterval = ScriptableEnemies.AttackInterval;
+    }
     void Update()
     {
+        
         Walking();
 
     }
@@ -23,7 +32,7 @@ public class EnemyBasic : MonoBehaviour
     {
         var enemy = collision.gameObject;
         var bullet = enemy.GetComponent<Bullet>();
-        var target = enemy.GetComponent<UnitBasic>();
+        var unit = enemy.GetComponent<UnitBasic>();
 
         if (bullet != null)
         {
@@ -31,10 +40,11 @@ public class EnemyBasic : MonoBehaviour
             Destroy(enemy);
         }
 
-        if (target != null)
+        if (unit != null)
         {
             _isWalking = false;
-            Attack();            
+            Target = collision.gameObject;
+            StartCoroutine(Attack());
         }
 
     }
@@ -45,9 +55,16 @@ public class EnemyBasic : MonoBehaviour
         else
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
-    private void Attack()
+    public IEnumerator Attack()
     {
-        throw new NotImplementedException();
+       
+        if (Target != null)
+        {
+            Target.GetComponent<UnitBasic>().DecreaseHealth(AttackDamage);
+        }
+        
+        yield return new WaitForSeconds(attackInterval);
+        StartCoroutine(Attack());
     }
 
     private void DecreaseDurability(float amount)
