@@ -8,6 +8,6 @@ public class UnitScriptableObject : ScriptableObject
     public int Cost;
 
     public Sprite Bullet;
-
+    public BulletType BulletType;
     public RuntimeAnimatorController Animator;
 }

@@ -5,32 +5,30 @@ using UnityEngine;
 
 [System.Serializable]   
 [RequireComponent(typeof(Rigidbody2D))]
-public class Enemy : MonoBehaviour
+public class EnemyBasic : MonoBehaviour
 {
     public ScriptableEnemy ScriptableEnemies;
+    UnitBasic UnitBasic;
+    GameObject Target;
     public float Speed = 2f;    
-    public float Durability = 10;
+    public float EnemyHealth = 10;
+    public float AtackDamage;
+    public float AtackInterval;
     public int spawnTime;
     bool isWalking = true;
-    bool isAttacking;
+    bool isAttacking = true;
     bool isTarget;
-    
-    void Start()
-    {
-        
-    }
-        
+            
     void Update()
     {
         Walking();
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    private void OnTriggerStay2D(Collider2D collision)
+    {      
         var enemy = collision.gameObject;
         var bullet = enemy.GetComponent<Bullet>();
-
-        var target = enemy.GetComponent<UnitShoot>();
+        var target = enemy.GetComponent<UnitBasic>();
 
         if (bullet != null)
         {
@@ -40,11 +38,10 @@ public class Enemy : MonoBehaviour
 
         if (target != null)
         {
-            isWalking = false;
-            Atack();
-            
+            StartCoroutine(Atack());
+            //target.GetComponent<UnitBasic>().Health -= AtackDamage * Time.deltaTime;
         }
-
+        
     }
     private void Walking()
     {
@@ -55,18 +52,27 @@ public class Enemy : MonoBehaviour
         else
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
-    private void Atack()
+    public IEnumerator Atack()
     {
-        throw new NotImplementedException();
+        isWalking = false;
+        Target.GetComponent<UnitBasic>().Health -= AtackDamage;
+        //if (Target != null)
+        //{
+            
+        //}
+        //GetComponent<UnitBasic>().Health -= AtackDamage;
+        
+        yield return new WaitForSeconds(AtackInterval);
+        StartCoroutine(Atack());
     }
 
     private void DecreaseDurability(float amount)
     {
-        Durability -= amount;
+        EnemyHealth -= amount;
 
-        if (Durability <= 0)
+        if (EnemyHealth <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }    
 }

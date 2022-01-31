@@ -104,6 +104,8 @@ MonoBehaviour:
     Speed: 2
     Damage: 1
   AtackSpeed: 1
+  Health: 10
+  Unit: {fileID: 0}
 --- !u!61 &1577313800631929517
 BoxCollider2D:
   m_ObjectHideFlags: 0

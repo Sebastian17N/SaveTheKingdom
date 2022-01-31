@@ -38,7 +38,7 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 	{
 		UnitDragged = Instantiate(Prefab, new Vector3(0, 0, -1), Quaternion.identity);
 		UnitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
-		UnitDragged.GetComponent<BulletType>().Sprite = UnitScriptableObject.Bullet;
+		UnitDragged.GetComponent<BulletType>().Sprite = Sprite;
 
 		UnitDragged.transform.localPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	}

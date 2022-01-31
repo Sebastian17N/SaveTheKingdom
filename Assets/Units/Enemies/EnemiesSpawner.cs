@@ -61,6 +61,8 @@ public class EnemiesSpawner : MonoBehaviour
     private void CreateEnemyPrefab(ScriptableEnemy ScriptableEnemie)
     {
         EnemyPrefab.GetComponent<SpriteRenderer>().sprite = ScriptableEnemie.Sprite;
+        EnemyPrefab.GetComponent<EnemyBasic>().Speed = ScriptableEnemie.Speed;
+        EnemyPrefab.GetComponent<EnemyBasic>().EnemyHealth = ScriptableEnemie.EnemyHealth;
     }
 
 }

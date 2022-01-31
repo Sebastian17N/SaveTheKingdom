@@ -15,6 +15,7 @@ MonoBehaviour:
   EnemiesDefault: {fileID: 6312148531307705495, guid: c61b2053d56782542ad52954cd2ad8ff, type: 3}
   Sprite: {fileID: 21300000, guid: b927122e77e38a84585e47fa5983f5b6, type: 3}
   Speed: 2
-  Durability: 10
-  spawnTime: 1
-  enemiesType: 0
+  EnemyHealth: 10
+  SpawnTime: 1
+  AtackDamage: 5
+  AtackInterval: 2
