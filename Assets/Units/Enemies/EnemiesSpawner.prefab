@@ -50,10 +50,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesPrefabs:
-  - {fileID: -7184491356147076674, guid: 6a1ab4ca36d65fc47a78680e5b62ac37, type: 3}
-  - {fileID: 5938241405613048184, guid: 21819ef760f96ef498175e306d4cb267, type: 3}
-  - {fileID: -2320531930143224301, guid: a920e5f76a0e112438e1ddf4b4c7be7d, type: 3}
-  enemies: {fileID: 0}
+  - {fileID: 11400000, guid: 207d19f5efdbb8040acc68415c3f2ee3, type: 2}
+  - {fileID: 11400000, guid: 0d8b69476644b634b9f106c0af72cfec, type: 2}
+  - {fileID: 11400000, guid: 442672242cc062247aa5a204c7347071, type: 2}
+  enemies: {fileID: 6312148531307705495, guid: c61b2053d56782542ad52954cd2ad8ff, type: 3}
   spawnInterval: 1
   spawnSpot:
   - {fileID: 6364866887557713105}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a760c18857df804f8728d63c4dcc2f4, type: 3}
   m_Name: Golem
   m_EditorClassIdentifier: 
-  Icon: {fileID: 2800000, guid: 699fb288454c9814ea9f0a886ad93f5c, type: 3}
-  Sprite: {fileID: 21300000, guid: 699fb288454c9814ea9f0a886ad93f5c, type: 3}
+  Icon: {fileID: 2800000, guid: 62ee3ccb82dad494e87e6f58795f2132, type: 3}
+  Sprite: {fileID: 21300000, guid: 62ee3ccb82dad494e87e6f58795f2132, type: 3}
   Cost: 100

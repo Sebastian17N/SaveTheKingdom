@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading;
 using UnityEditor;
 using System.Text.RegularExpressions;
-using Random = UnityEngine.Random;
 using System;
 
-public class EnemisSpawner : MonoBehaviour
+public class EnemiesSpawner : MonoBehaviour
 {
-    public List<Enemy> enemiesPrefabs;
-    public Enemy enemies;
+    public ScriptableEnemy[] enemyScriptableObjects;
+    public GameObject EnemyPrefab;
 
     public float spawnInterval;
     public Transform[] spawnSpot;
@@ -44,21 +42,25 @@ public class EnemisSpawner : MonoBehaviour
 
                 if (character == 'x')
                 {
-                    enemies = enemiesPrefabs[0];                    
+                    CreateEnemyPrefab(enemyScriptableObjects[0]);
                 }
                 else if (character == 'y')
                 {
-                    enemies = enemiesPrefabs[1];
+                    CreateEnemyPrefab(enemyScriptableObjects[1]);
                 }
-                else if(character == 'z')
+                else if (character == 'z')
                 {
-                    enemies = enemiesPrefabs[2];
+                    CreateEnemyPrefab(enemyScriptableObjects[2]);
                 }
-                var enemy = Instantiate(enemiesPrefabs[(int)enemies.enemiesType], spawnSpot[y]);
-                enemy.transform.localPosition = new Vector3(0, 0, -1);
+                GameObject enemy = Instantiate(EnemyPrefab, spawnSpot[y]);
             }
             yield return new WaitForSeconds(spawnInterval);
-        }
-        
+        }        
     }
+
+    private void CreateEnemyPrefab(ScriptableEnemy ScriptableEnemie)
+    {
+        EnemyPrefab.GetComponent<SpriteRenderer>().sprite = ScriptableEnemie.Sprite;
+    }
+
 }
