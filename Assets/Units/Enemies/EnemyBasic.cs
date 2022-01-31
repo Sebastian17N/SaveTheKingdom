@@ -20,7 +20,7 @@ public class EnemyBasic : MonoBehaviour
 
     private void Start()
     {
-        attackInterval = ScriptableEnemies.AttackInterval;
+        //attackInterval = ScriptableEnemies.AttackInterval;
     }
     void Update()
     {
@@ -46,8 +46,20 @@ public class EnemyBasic : MonoBehaviour
             Target = collision.gameObject;
             StartCoroutine(Attack());
         }
+        else
+        {
+            _isWalking = true;
+        }
 
     }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    var unit = collision.gameObject.GetComponent<UnitBasic>();
+    //    if (unit == null)
+    //    {
+    //        _isWalking = true;
+    //    }        
+    //}
     private void Walking()
     {
         if (_isWalking)
@@ -63,7 +75,7 @@ public class EnemyBasic : MonoBehaviour
             Target.GetComponent<UnitBasic>().DecreaseHealth(AttackDamage);
         }
         
-        yield return new WaitForSeconds(attackInterval);
+        yield return new WaitForSeconds(3f);
         StartCoroutine(Attack());
     }
 
@@ -73,7 +85,7 @@ public class EnemyBasic : MonoBehaviour
 
         if (Durability <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }    
 }

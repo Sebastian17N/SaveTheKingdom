@@ -152,4 +152,4 @@ MonoBehaviour:
   Durability: 10
   SpawnTime: 1
   AttackDamage: 5
-  attackInterval: 0
+  attackInterval: 5

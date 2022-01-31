@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitBasic : MonoBehaviour
-{
-    [SerializeField]
+{    
     public GameObject BulletPrefab;
-
-    [SerializeField]
     public BulletType BulletType;
 
     /// <summary>
