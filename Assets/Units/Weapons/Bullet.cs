@@ -13,6 +13,5 @@ public class Bullet : MonoBehaviour
 
         GetComponent<SpriteRenderer>().sprite = bulletType.Sprite;
         GetComponent<Rigidbody2D>().velocity = Vector3.right * bulletType.Speed;
-
     }
 }
