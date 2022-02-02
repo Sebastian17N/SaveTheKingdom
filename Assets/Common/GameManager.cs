@@ -1,6 +1,11 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -26,6 +31,10 @@ public class GameManager : MonoBehaviour
         {
             UnitCards.Add(CreateUnit(scriptableObject));
         }
+
+        // Load level
+        FindObjectOfType<EnemiesSpawner>().LoadLevel("level_1");
+        StartCoroutine(CheckIfLevelEndCoroutine());
     }
 
     /// <summary>
@@ -49,5 +58,31 @@ public class GameManager : MonoBehaviour
         //manager.BackgroundTransform = BackgroundTransform;
 
         return unit;
+    }
+
+    IEnumerator CheckIfLevelEndCoroutine()
+    {
+        while (true)
+        {
+            CheckIfLevelEnd();
+            yield return new WaitForSeconds(1f);
+
+        }
+    }
+
+    private void CheckIfLevelEnd()
+    {
+        var path = "Assets/Map/Levels/" + name + ".txt";
+        var text = AssetDatabase.LoadAssetAtPath<TextAsset>(path).text;
+        var lines = Regex.Split(text, Environment.NewLine);
+        var levelLength = lines[0].Length;
+
+        var numberOfEnemies = FindObjectsOfType<EnemyBasic>().Length;
+
+        //jak to napisaæ? musi nast¹piæ ostatni element z listy level_???
+        if (numberOfEnemies == 0) //&& lines[0].Length;
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 }

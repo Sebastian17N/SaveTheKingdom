@@ -14,10 +14,10 @@ public class EnemiesSpawner : MonoBehaviour
 
 	public void Start()
 	{
-		LoadLevel("level_1");
+		//LoadLevel("level_1");
 	}
 
-	void LoadLevel(string name)
+	public void LoadLevel(string name)
 	{
 		var path = "Assets/Map/Levels/" + name + ".txt";
 		var text = AssetDatabase.LoadAssetAtPath<TextAsset>(path).text;

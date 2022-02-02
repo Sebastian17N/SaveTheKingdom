@@ -52,14 +52,7 @@ public class EnemyBasic : MonoBehaviour
         }
 
     }
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    var unit = collision.gameObject.GetComponent<UnitBasic>();
-    //    if (unit == null)
-    //    {
-    //        _isWalking = true;
-    //    }        
-    //}
+    
     private void Walking()
     {
         if (_isWalking)
