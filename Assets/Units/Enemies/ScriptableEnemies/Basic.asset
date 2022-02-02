@@ -18,4 +18,4 @@ MonoBehaviour:
   EnemyHealth: 10
   SpawnTime: 1
   AtackDamage: 5
-  AtackInterval: 2
+  AttackInterval: 1

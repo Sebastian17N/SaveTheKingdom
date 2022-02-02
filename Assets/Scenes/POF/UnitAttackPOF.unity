@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c76f8b0cd8125439bf604ebdf533f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Units: []
+  UnitCards: []
   Cost: 0
   Icon: {fileID: 0}
   ScriptableObjects:
@@ -232,7 +232,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
   - {fileID: 11400000, guid: 1d8fbd2e85d167c41b98b90e1e019c02, type: 2}
   Prefab: {fileID: 122793440222082154, guid: 57d72c3c3440b054497a82d19e5e4938, type: 3}
-  ParentTransform: {fileID: 659757010}
+  CardHolderTransform: {fileID: 659757010}
+  BackgroundTransform: {fileID: 2117927935}
 --- !u!4 &1124325251
 Transform:
   m_ObjectHideFlags: 0
@@ -637,3 +638,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 339da3942bee98745bcafa775603c76b, type: 3}
+--- !u!4 &2117927935 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9162212756256000065, guid: 1f13bbbba96011442861ac2d917ad066, type: 3}
+  m_PrefabInstance: {fileID: 1357289532}
+  m_PrefabAsset: {fileID: 0}
