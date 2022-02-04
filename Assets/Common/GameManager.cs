@@ -33,8 +33,14 @@ public class GameManager : MonoBehaviour
         }
 
         // Load level
-        FindObjectOfType<EnemiesSpawner>().LoadLevel("level_1");
+        GenerateLevel();
         StartCoroutine(CheckIfLevelEndCoroutine());
+    }
+
+    void GenerateLevel()
+    {
+        var levelName = PlayerPrefs.GetString("current_level");
+        FindObjectOfType<EnemiesSpawner>().LoadLevel(levelName);
     }
 
     /// <summary>

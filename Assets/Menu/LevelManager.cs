@@ -16,5 +16,6 @@ public class LevelManager : MonoBehaviour
     void ChangeScene()
     {
         SceneManager.LoadScene("Game");
+        PlayerPrefs.SetString("current_level", LevelName);
     }
 }
