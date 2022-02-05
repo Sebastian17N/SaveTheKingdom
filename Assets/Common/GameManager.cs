@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEditor;
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
 	public Transform CardHolderTransform;
     public Transform BackgroundTransform;
 
+    [Header("GameRuntime")]
+    public int NumberOfEnemiesLeft;
+
 	private void Start()
     {
         UnitCards = new List<GameObject>();
@@ -41,6 +45,27 @@ public class GameManager : MonoBehaviour
     {
         var levelName = PlayerPrefs.GetString("current_level");
         FindObjectOfType<EnemiesSpawner>().LoadLevel(levelName);
+
+        NumberOfEnemiesLeft = CountAllEnemiesOnLevel(levelName);
+    }
+
+    /// <summary>
+    /// Count number of enemies on the level, based on text file map.
+    /// </summary>
+    /// <param name="levelName">Filename level map.</param>
+    /// <returns>Number of enemies on a template map.</returns>
+    private int CountAllEnemiesOnLevel(string levelName)
+	{
+        var path = $"Assets/Map/Levels/{levelName}.txt";
+        var text = AssetDatabase.LoadAssetAtPath<TextAsset>(path).text;
+        var lines = Regex.Split(text, Environment.NewLine);
+
+        var enemiesAmount = 0;
+
+        foreach (var line in lines)
+            enemiesAmount += line.Where(field => field != '_').Count();
+
+        return enemiesAmount;
     }
 
     /// <summary>
@@ -61,7 +86,6 @@ public class GameManager : MonoBehaviour
         UnitCardManager manager = unit.GetComponent<UnitCardManager>();
         manager.UnitScriptableObject = unitScriptableObject;
         manager.Sprite = unitScriptableObject.Sprite;
-        //manager.BackgroundTransform = BackgroundTransform;
 
         return unit;
     }
@@ -70,25 +94,13 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            CheckIfLevelEnd();
+            if (NumberOfEnemiesLeft <= 0)
+			{
+                SceneManager.LoadScene("Menu");
+                break;
+			}
+
             yield return new WaitForSeconds(1f);
-
-        }
-    }
-
-    private void CheckIfLevelEnd()
-    {
-        var path = "Assets/Map/Levels/" + name + ".txt";
-        var text = AssetDatabase.LoadAssetAtPath<TextAsset>(path).text;
-        var lines = Regex.Split(text, Environment.NewLine);
-        var levelLength = lines[0].Length;
-
-        var numberOfEnemies = FindObjectsOfType<EnemyBasic>().Length;
-
-        //jak to napisaæ? musi nast¹piæ ostatni element z listy level_???
-        if (numberOfEnemies == 0) //&& lines[0].Length;
-        {
-            SceneManager.LoadScene("Menu");
         }
     }
 }

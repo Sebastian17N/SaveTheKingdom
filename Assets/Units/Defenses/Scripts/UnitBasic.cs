@@ -50,13 +50,22 @@ public class UnitBasic : MonoBehaviour
             //DecreaseDurability(enemy.AtackDamage);
         }
     }
-    public void DecreaseHealth(float amount)
+
+    /// <summary>
+    /// Decrease health of unit till her death.
+    /// </summary>
+    /// <param name="amount">Amount of damage.</param>
+    /// <returns>True - if unit still exisits. False - if unit died.</returns>
+    public bool DecreaseHealth(float amount)
     {
         Health -= amount;
 
         if (Health <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            return false;
         }
+
+        return true;
     }
 }

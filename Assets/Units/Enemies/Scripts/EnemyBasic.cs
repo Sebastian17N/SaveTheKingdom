@@ -30,27 +30,26 @@ public class EnemyBasic : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var enemy = collision.gameObject;
-        var bullet = enemy.GetComponent<Bullet>();
-        var unit = enemy.GetComponent<UnitBasic>();
+        var collider = collision.gameObject;
+        var bullet = collider.GetComponent<Bullet>();
+        var unit = collider.GetComponent<UnitBasic>();
 
         if (bullet != null)
         {
             DecreaseDurability(bullet.Damage);
-            Destroy(enemy);
+            Destroy(collider);
+
+            return;
         }
 
-        if (unit != null)
+        if (unit != null && !unit.IsDragged)
         {
             _isWalking = false;
             Target = collision.gameObject;
             StartCoroutine(Attack());
-        }
-        else
-        {
-            _isWalking = true;
-        }
 
+            return;
+        }
     }
     
     private void Walking()
@@ -61,11 +60,16 @@ public class EnemyBasic : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
     public IEnumerator Attack()
-    {
-       
+    {       
         if (Target != null)
         {
-            Target.GetComponent<UnitBasic>().DecreaseHealth(AttackDamage);
+            var unitLives = Target.GetComponent<UnitBasic>().DecreaseHealth(AttackDamage);
+
+            if (!unitLives)
+			{
+                _isWalking = true;
+                yield return new WaitForSeconds(0.5f);
+			}
         }
         
         yield return new WaitForSeconds(3f);
@@ -78,7 +82,8 @@ public class EnemyBasic : MonoBehaviour
 
         if (Durability <= 0)
         {
-            Destroy(this.gameObject);
+            FindObjectOfType<GameManager>().NumberOfEnemiesLeft--;
+            Destroy(gameObject);
         }
     }    
 }

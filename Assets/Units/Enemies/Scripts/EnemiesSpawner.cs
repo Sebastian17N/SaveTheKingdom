@@ -12,14 +12,13 @@ public class EnemiesSpawner : MonoBehaviour
 	public float spawnInterval;
 	public Transform[] spawnSpot;
 
-	public void Start()
+	/// <summary>
+	/// Load next level enemies map.
+	/// </summary>
+	/// <param name="fileLevelName">File name of level (without extension).</param>
+	public void LoadLevel(string fileLevelName)
 	{
-		//LoadLevel("level_1");
-	}
-
-	public void LoadLevel(string name)
-	{
-		var path = "Assets/Map/Levels/" + name + ".txt";
+		var path = $"Assets/Map/Levels/{fileLevelName}.txt";
 		var text = AssetDatabase.LoadAssetAtPath<TextAsset>(path).text;
 		var lines = Regex.Split(text, Environment.NewLine);
 
@@ -35,32 +34,29 @@ public class EnemiesSpawner : MonoBehaviour
 		{
 			for (int y = 0; y < spawnSpotID; y++)
 			{
-				var character = text[y][x];
-
 				switch (text[y][x])
 				{
 					case 'x':
-						CreateEnemyPrefab(enemyScriptableObjects[0]);
+						CreateEnemyPrefab(enemyScriptableObjects[0], spawnSpot[y]);
 						break;
 					case 'y':
-						CreateEnemyPrefab(enemyScriptableObjects[1]);
+						CreateEnemyPrefab(enemyScriptableObjects[1], spawnSpot[y]);
 						break;
 					case 'z':
-						CreateEnemyPrefab(enemyScriptableObjects[2]);
+						CreateEnemyPrefab(enemyScriptableObjects[2], spawnSpot[y]);
 						break;
 					default:
 						continue;
 				}
-
-				GameObject enemy = Instantiate(EnemyPrefab, spawnSpot[y]);
 			}
 
 			yield return new WaitForSeconds(spawnInterval);
 		}
 	}
 
-	private void CreateEnemyPrefab(ScriptableEnemy ScriptableEnemie)
+	private void CreateEnemyPrefab(ScriptableEnemy ScriptableEnemie, Transform spawnSpot)
 	{
-		EnemyPrefab.GetComponent<SpriteRenderer>().sprite = ScriptableEnemie.Sprite;
+		var enemy = Instantiate(EnemyPrefab, spawnSpot);
+		enemy.GetComponent<SpriteRenderer>().sprite = ScriptableEnemie.Sprite;
 	}
 }
