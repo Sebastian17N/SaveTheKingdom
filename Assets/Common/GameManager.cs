@@ -25,8 +25,10 @@ public class GameManager : MonoBehaviour
 
     [Header("GameRuntime")]
     public int NumberOfEnemiesLeft;
+    string LevelName;
 
-	private void Start()
+
+    private void Start()
     {
         UnitCards = new List<GameObject>();
 
@@ -43,10 +45,10 @@ public class GameManager : MonoBehaviour
 
     void GenerateLevel()
     {
-        var levelName = PlayerPrefs.GetString("current_level");
-        FindObjectOfType<EnemiesSpawner>().LoadLevel(levelName);
+        LevelName = PlayerPrefs.GetString("current_level");
+        FindObjectOfType<EnemiesSpawner>().LoadLevel(LevelName);
 
-        NumberOfEnemiesLeft = CountAllEnemiesOnLevel(levelName);
+        NumberOfEnemiesLeft = CountAllEnemiesOnLevel(LevelName);
     }
 
     /// <summary>
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
         {
             if (NumberOfEnemiesLeft <= 0)
 			{
+                PlayerPrefs.SetInt(LevelName + "_finished", 1);
                 SceneManager.LoadScene("Menu");
                 break;
 			}
