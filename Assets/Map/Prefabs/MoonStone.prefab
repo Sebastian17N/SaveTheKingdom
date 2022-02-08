@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6882767312494226815}
   - component: {fileID: 6882767312494226813}
   - component: {fileID: 6882767312494226802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MoonStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
