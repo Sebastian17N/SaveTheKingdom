@@ -74,5 +74,9 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
 			Collider.IsAssigned = true;
 		}
+		else
+		{
+			Destroy(UnitDragged);
+		}
 	}
 }
