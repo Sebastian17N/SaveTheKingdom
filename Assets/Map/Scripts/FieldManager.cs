@@ -7,9 +7,12 @@ public class FieldManager : MonoBehaviour
 
 	public void OnMouseOver()
 	{
-		foreach (var manager in GameObject.FindObjectsOfType<UnitCardManager>())
+		if (IsAssigned)
+			return;
+
+		foreach (var manager in FindObjectsOfType<UnitCardManager>())
 		{
-			manager.Collider = this.GetComponent<FieldManager>();
+			manager.Collider = GetComponent<FieldManager>();
 			manager.IsOverCollider = true;
 		}
 
@@ -21,5 +24,14 @@ public class FieldManager : MonoBehaviour
 
 		Unit.transform.SetParent(this.transform);
 		Unit.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
+	}
+
+	public void OnMouseExit()
+	{
+		foreach (var manager in FindObjectsOfType<UnitCardManager>())
+		{
+			manager.Collider = null;
+			manager.IsOverCollider = false;
+		}
 	}
 }
