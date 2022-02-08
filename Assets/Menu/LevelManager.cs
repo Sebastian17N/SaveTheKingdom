@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public string LevelName;
+
     void Start()
     {
         var levelFinished = PlayerPrefs.GetInt(LevelName + "_finished", 0) != 0;
@@ -16,7 +17,7 @@ public class LevelManager : MonoBehaviour
     }
 
     void ChangeScene()
-    {
+    {        
         SceneManager.LoadScene("Game");
         PlayerPrefs.SetString("current_level", LevelName);
     }

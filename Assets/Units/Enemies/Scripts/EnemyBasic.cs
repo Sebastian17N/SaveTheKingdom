@@ -9,6 +9,7 @@ public class EnemyBasic : MonoBehaviour
 {
     public ScriptableEnemy ScriptableEnemies;
     public GameObject Target;
+    public GameObject MoonStonePrefab;
     public float Speed = 2f;    
     public float Durability = 10;
     public int SpawnTime;
@@ -20,7 +21,7 @@ public class EnemyBasic : MonoBehaviour
 
     private void Start()
     {
-        //attackInterval = ScriptableEnemies.AttackInterval;
+       
     }
     void Update()
     {
@@ -84,6 +85,8 @@ public class EnemyBasic : MonoBehaviour
         {
             FindObjectOfType<GameManager>().NumberOfEnemiesLeft--;
             Destroy(gameObject);
+            var point = Instantiate(MoonStonePrefab);
+            point.transform.position = transform.position;
         }
     }    
 }
