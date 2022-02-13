@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CityMenu.unity
+    guid: 6c1960c20d49bbf47866bcdb8477a669
+  - enabled: 1
     path: Assets/Scenes/CampaignMap.unity
     guid: 413df71fd2c716a428eefcae231ce669
   - enabled: 1

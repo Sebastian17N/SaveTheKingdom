@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChangingBuildingsViews : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string BuildingGoIn;
+    public bool IsActive = true;
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        if(!IsActive)
+            return;
+        SceneManager.LoadScene(BuildingGoIn);
     }
 }
