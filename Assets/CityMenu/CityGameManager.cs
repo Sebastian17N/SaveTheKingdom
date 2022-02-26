@@ -12,12 +12,7 @@ public class CityGameManager : MonoBehaviour
 
     void Start()
     {
-        //UnitDataFolder = new List<GameObject>();
-
-        //foreach(UnitScriptableObject unitScriptableObject in UnitScriptableObject)
-        //{
-        //    UnitDataFolder.Add(CreateUnitFolder(UnitScriptableObject));
-        //}
+        
     }
 
     

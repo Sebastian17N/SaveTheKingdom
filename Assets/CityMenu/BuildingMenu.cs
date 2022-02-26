@@ -5,16 +5,18 @@ using UnityEngine;
 public class BuildingMenu : MonoBehaviour
 {
     public GameObject PrefabMenu;
-    public GameObject UnitFolderPrefab;
+    public GameObject UnitDataFolder;    
     public bool CanClickOnBuilding = true;
     public Vector2 UnitDataFolderSpawnPoint;
     public GameObject Menu;
+    public GameObject EscapeButton;
 
     private void OnMouseDown()
     {
-
         OpenMenu();
         CreateUnitFolder();
+        CreateEscapeButton();
+
     }
 
     private void OpenMenu()
@@ -25,10 +27,13 @@ public class BuildingMenu : MonoBehaviour
     }
     private void CreateUnitFolder()
     {
-        var folder = Instantiate(UnitFolderPrefab, Menu.transform); //menu jest tutaj automatycznie parentem
+        var folder = Instantiate(UnitDataFolder, Menu.transform); //menu jest tutaj automatycznie parentem
         folder.transform.position = transform.position + transform.rotation * (Vector2)UnitDataFolderSpawnPoint;
         folder.transform.position = new Vector3(folder.transform.position.x, folder.transform.position.y, -2);
     }
-
+    private void CreateEscapeButton()
+    {
+        var ecsapeButton = Instantiate(EscapeButton, Menu.transform);
+    }
     //X ma byæ Instantiate i dopiero przypisaæ mu logike
 }
