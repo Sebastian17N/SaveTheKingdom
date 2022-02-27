@@ -3,20 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EscapeButton : MonoBehaviour
-{
-    public GameObject MenuToClose;
+{    
     private void OnMouseDown()
-    {        
-        DestroyImmediate(MenuToClose);
-    }
-    void Start()
     {
-        
-    }
+        GetComponentInParent<CityGameManager>().SetActiveButton(true);
+        Destroy(transform.parent.gameObject);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }    
 }

@@ -22,18 +22,17 @@ public class BuildingMenu : MonoBehaviour
     private void OpenMenu()
     {
         Menu = Instantiate(PrefabMenu);
-        
-        GetComponentInChildren<ChangingBuildingsViews>().IsActive = false;
+        Menu.transform.parent = transform.parent;
+        transform.parent.GetComponent<CityGameManager>().SetActiveButton(false);
     }
     private void CreateUnitFolder()
     {
         var folder = Instantiate(UnitDataFolder, Menu.transform); //menu jest tutaj automatycznie parentem
         folder.transform.position = transform.position + transform.rotation * (Vector2)UnitDataFolderSpawnPoint;
-        folder.transform.position = new Vector3(folder.transform.position.x, folder.transform.position.y, -2);
+        folder.transform.position = new Vector3(folder.transform.position.x, folder.transform.position.y, -9);
     }
     private void CreateEscapeButton()
     {
         var ecsapeButton = Instantiate(EscapeButton, Menu.transform);
-    }
-    //X ma byæ Instantiate i dopiero przypisaæ mu logike
+    }    
 }

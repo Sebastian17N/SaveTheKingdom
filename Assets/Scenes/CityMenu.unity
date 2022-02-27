@@ -307,10 +307,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrefabMenu: {fileID: 9103771151166430241, guid: fda43e8f8888ad04abcdc7f4de548378, type: 3}
-  UnitFolderPrefab: {fileID: 6952238658379617657, guid: 2a21f6d00a65eeb47b56c0b3bbfee8e0, type: 3}
+  UnitDataFolder: {fileID: 6952238658379617657, guid: 2a21f6d00a65eeb47b56c0b3bbfee8e0, type: 3}
   CanClickOnBuilding: 1
   UnitDataFolderSpawnPoint: {x: -5, y: 0}
   Menu: {fileID: 0}
+  EscapeButton: {fileID: 2663709774133234585, guid: a7037d957741cb243bfc03d79ddbfcc7, type: 3}
 --- !u!65 &449017063
 BoxCollider:
   m_ObjectHideFlags: 0
