@@ -11,5 +11,6 @@ public class UnitScriptableObject : ScriptableObject
     public RuntimeAnimatorController Animator;
 
     public int Cost;
+    public bool IsRange;
     public float AttackSpeed;
 }

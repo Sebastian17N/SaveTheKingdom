@@ -68,6 +68,14 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 			unitManager.BulletType.Sprite = UnitScriptableObject.Bullet;
 			unitManager.AttackSpeed = UnitScriptableObject.AttackSpeed;
 
+			//TODO: Move it to scriptable object.
+			unitManager.Health = 10;
+			
+			if (!UnitScriptableObject.IsRange)
+			{
+				unitManager.BulletPrefab = null;
+			}
+
 			var animator = UnitDragged.GetComponent<Animator>();
 			animator.runtimeAnimatorController = UnitScriptableObject.Animator;
 			animator.SetFloat("AttackSpeed", UnitScriptableObject.AttackSpeed);

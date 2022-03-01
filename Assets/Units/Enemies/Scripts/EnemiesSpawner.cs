@@ -58,5 +58,13 @@ public class EnemiesSpawner : MonoBehaviour
 	{
 		var enemy = Instantiate(EnemyPrefab, spawnSpot);
 		enemy.GetComponent<SpriteRenderer>().sprite = ScriptableEnemie.Sprite;
+
+		// TODO: Move it to scriptable object.
+		{
+			var enemyBasic = enemy.GetComponent<EnemyBasic>();
+			enemyBasic.Health = 10;
+			enemyBasic.AttackSpeed = 1;
+		}
+		
 	}
 }

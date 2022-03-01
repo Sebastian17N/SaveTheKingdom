@@ -5,8 +5,8 @@ using UnityEngine;
 public class LifeTimeObject : MonoBehaviour
 {
     [SerializeField]
-    float LifeTime = 5f;
-    void Start()
+    public float LifeTime = 5f;
+    public void Start()
     {
         Destroy(gameObject, LifeTime);
     }

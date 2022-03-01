@@ -21,4 +21,5 @@ MonoBehaviour:
     Damage: 1
   Animator: {fileID: 9100000, guid: 333e95afeab4c6c4cba19faaf4d3cdf7, type: 2}
   Cost: 150
+  IsRange: 1
   AttackSpeed: 1
