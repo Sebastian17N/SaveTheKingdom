@@ -21,13 +21,11 @@ public class BuildingMenu : MonoBehaviour
     {
         OpenMenu();        
         CreateEscapeButton();
-
     }
 
     private void OpenMenu()
     {
-        Menu = Instantiate(PrefabMenu);
-        Menu.transform.parent = transform;
+        Menu = Instantiate(PrefabMenu, transform);
         transform.parent.GetComponent<CityGameManager>().SetActive(false);
 
         UnitCards = new List<GameObject>();
@@ -51,9 +49,9 @@ public class BuildingMenu : MonoBehaviour
     }
     private GameObject CreateUnitFolder(UnitScriptableObject unitScriptableObject)
     {
-        var folder = Instantiate(UnitDataFolder, Menu.transform); //menu jest tutaj automatycznie parentem       
-        folder.transform.position = transform.position + transform.rotation * (Vector2)UnitDataFolderSpawnPoint;
-        folder.transform.position = new Vector3(folder.transform.position.x, folder.transform.position.y, -9);
+        var folder = Instantiate(UnitDataFolder, Menu.transform.Find("Menu").transform); //menu jest tutaj automatycznie parentem       
+        //folder.transform.position = transform.position + transform.rotation * (Vector2)UnitDataFolderSpawnPoint;
+        //folder.transform.position = new Vector3(folder.transform.position.x, folder.transform.position.y, -9);
 
         Sprite = unitScriptableObject.Sprite; //jak podpi¹æ sprite do listy folderów?
 
