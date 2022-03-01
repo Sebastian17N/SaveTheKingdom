@@ -6,7 +6,7 @@ public class EscapeButton : MonoBehaviour
 {    
     private void OnMouseDown()
     {
-        GetComponentInParent<CityGameManager>().SetActiveButton(true);
+        GetComponentInParent<CityGameManager>().SetActive(true);
         Destroy(transform.parent.gameObject);
 
     }    

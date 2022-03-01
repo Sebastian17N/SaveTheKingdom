@@ -14,7 +14,7 @@ public class CityGameManager : MonoBehaviour
     {
         
     }
-    public void SetActiveButton(bool active)
+    public void SetActive(bool active)
     {        
         foreach (var item in GetComponentsInChildren<ChangingBuildingsViews>())
         {
