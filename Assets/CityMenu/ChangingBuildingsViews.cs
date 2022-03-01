@@ -9,8 +9,8 @@ public class ChangingBuildingsViews : MonoBehaviour
     public bool IsActive = true;
 
     private void OnMouseDown()
-    {
-        if(!IsActive)
+    {        
+        if (!IsActive)
             return;
         SceneManager.LoadScene(BuildingGoIn);
     }
