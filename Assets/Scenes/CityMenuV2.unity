@@ -411,11 +411,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabMenu: {fileID: 4333368644977489284, guid: bf22f1ec6739ffb4094e529fd91a43b3, type: 3}
   CastleButton: {fileID: 944311803}
-  PrefabEscapeButton: {fileID: 2663709774133234585, guid: a7037d957741cb243bfc03d79ddbfcc7, type: 3}
+  PrefabEscapeButton: {fileID: 951317104412196723, guid: a69395560f1626a4c9786738ffe95ed7, type: 3}
   PrefabUnitCard: {fileID: 122793440222082154, guid: ae5588023b782fc419ddfea9d16a41b9, type: 3}
   ScriptableObjects:
   - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
-  - {fileID: 11400000, guid: 1d8fbd2e85d167c41b98b90e1e019c02, type: 2}
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
 --- !u!1 &1286303148
 GameObject:

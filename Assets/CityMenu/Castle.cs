@@ -27,17 +27,17 @@ public class Castle : MonoBehaviour
     private void OpenMenu()
     {
         _menu = Instantiate(PrefabMenu, transform.parent.transform);
-       // _menu = Instantiate(PrefabEscapeButton, _menu.transform);
         
         transform.parent.GetComponent<CityGameManager>().SetActive(false);
-
-        //UnitCards = new List<GameObject>();
-
-        //// Load all unitFolders.
+        
+        // Load all unitFolders.
         foreach (UnitScriptableObject scriptableObject in ScriptableObjects)
         {
             CreateUnitFolder(scriptableObject);
         }
+
+        
+        CreateEscapeButton();
     }
 
     private void CreateUnitFolder(UnitScriptableObject scriptableObject)
@@ -47,26 +47,15 @@ public class Castle : MonoBehaviour
         GameObject unit = Instantiate(PrefabUnitCard, grid.transform);
 
         var Icon = scriptableObject.Icon;
-        var Cost = scriptableObject.Cost;
+        var Cost = scriptableObject.BulletType.Damage;
 
         unit.GetComponentInChildren<RawImage>().texture = Icon;
-        unit.GetComponentInChildren<TMP_Text>().text = $"{Cost}";
+        unit.GetComponentInChildren<TMP_Text>().text = $"Damage: {Cost}";
     }
-    //private GameObject CreateUnit(UnitScriptableObject unitScriptableObject)
-    //{
-    //    GameObject unit = Instantiate(Prefab, CardHolderTransform);
+    private void CreateEscapeButton()
+    {
+        var grid = _menu.transform.Find("UnitStatisticsGrid").gameObject;
 
-    //    Icon = unitScriptableObject.Icon;
-    //    Cost = unitScriptableObject.Cost;
-
-    //    unit.GetComponentInChildren<RawImage>().texture = Icon;
-    //    unit.GetComponentInChildren<TMP_Text>().text = $"{Cost}";
-
-    //    UnitCardManager manager = unit.GetComponent<UnitCardManager>();
-    //    manager.UnitScriptableObject = unitScriptableObject;
-    //    manager.Sprite = unitScriptableObject.Sprite;
-
-    //    return unit;
-    //}
-
+        _menu = Instantiate(PrefabEscapeButton, grid.transform);      
+    }
 }
