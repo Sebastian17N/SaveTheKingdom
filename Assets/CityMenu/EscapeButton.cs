@@ -15,6 +15,6 @@ public class EscapeButton : MonoBehaviour
     private void CloseMenu()
     {
         GetComponentInParent<CityGameManager>().SetActive(true);
-        Destroy(transform.parent.parent.transform.gameObject);
+        Destroy(transform.parent.transform.parent.gameObject);
     }      
 }
