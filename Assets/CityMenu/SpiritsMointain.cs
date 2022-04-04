@@ -5,20 +5,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ChangingBuildingsViews : MonoBehaviour
+public class SpiritsMointain : MonoBehaviour
 {
     public string SceneGoIn;
-    public bool IsActive = true;
-    public Button ChangingButton;
+    public Button SpiritsMointainButton;
 
-    private void Start()
+    void Start()
     {
-        ChangingButton.onClick.AddListener(ChangeScene);
+        SpiritsMointainButton.onClick.AddListener(ChangeScene);
     }
 
     private void ChangeScene()
     {
         SceneManager.LoadScene(SceneGoIn);
-        //transform.parent.GetComponent<CityGameManager>().SetActive(false);
     }
 }
