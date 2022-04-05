@@ -13,10 +13,22 @@ public class StoreButton : MonoBehaviour
         StoreController.newPose = new Vector3
             (storeContainer.position.x + dis, storeContainer.position.y, storeContainer.position.z);
         StoreController.SelectMove = true;
+        centerStore.GetComponent<StoreController>().SelectSpirit(transform.gameObject);
     }
 
-    public void SelectSpirit(int whichSpirit)
+    public void ShowDetails()
     {
-
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).transform.gameObject.SetActive(true);
+        }
     }
+
+    public void CloseDetails()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).transform.gameObject.SetActive(false);
+        }
+    }    
 }
