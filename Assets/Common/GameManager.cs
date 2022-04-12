@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     [Header("Attributes")]
     // Object template to get attributes from.
     public List<GameObject> UnitCards;
-    public int Cost;
-    public Texture Icon;
 
     [Header("Units")]
     public UnitScriptableObject[] ScriptableObjects;
@@ -79,11 +77,9 @@ public class GameManager : MonoBehaviour
     {
         GameObject unit = Instantiate(Prefab, CardHolderTransform);
         
-        Icon = unitScriptableObject.Icon;
-        Cost = unitScriptableObject.Cost;
-        
-        unit.GetComponentInChildren<RawImage>().texture = Icon;
-        unit.GetComponentInChildren<TMP_Text>().text = $"{Cost}";
+        unit.GetComponentInChildren<Image>().sprite = unitScriptableObject.Sprite;
+        unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
+        unit.GetComponentInChildren<TMP_Text>().text = $"{unitScriptableObject.Cost}";
 
         UnitCardManager manager = unit.GetComponent<UnitCardManager>();
         manager.UnitScriptableObject = unitScriptableObject;

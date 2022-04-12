@@ -3,14 +3,18 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Units/Unit Card", fileName = "New Unit Card")]
 public class UnitScriptableObject : ScriptableObject
 {
-    public Texture Icon;
+    [Header("Visuals")]
     public Sprite Sprite;
-    
-    public Sprite Bullet;
-    public BulletType BulletType;
     public RuntimeAnimatorController Animator;
 
+    [Header("Statistics")]
     public int Cost;
-    public bool IsRange;
+    public int Health;
+    public bool IsRange => BulletType?.Sprite != null;
+    public BulletType BulletType;
+    
     public float AttackSpeed;
+    public float AttackDamage;
+
+    public float Cooldown;
 }
