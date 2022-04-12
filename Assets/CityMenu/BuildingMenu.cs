@@ -35,42 +35,17 @@ public class BuildingMenu : MonoBehaviour
         {
             UnitCards.Add(CreateUnitFolder(scriptableObject));
         }
-    }
-    private void GenerateUnitFoldersBoard()
-    {
-        float height = 3f;
-        float width = 3f;
-        for (int x = 0; x < width; x++)
-            for (int y = 0; y < height; y++)
-            {
-
-            }
-                
-    }
+    }    
     private GameObject CreateUnitFolder(UnitScriptableObject unitScriptableObject)
     {
         var folder = Instantiate(UnitDataFolder, Menu.transform.Find("Menu").transform); //menu jest tutaj automatycznie parentem       
         //folder.transform.position = transform.position + transform.rotation * (Vector2)UnitDataFolderSpawnPoint;
-        //folder.transform.position = new Vector3(folder.transform.position.x, folder.transform.position.y, -9);
+        folder.transform.position = new Vector3(folder.transform.position.x, folder.transform.position.y, -2);
 
         Sprite = unitScriptableObject.Sprite; //jak podpi¹æ sprite do listy folderów?
 
         return folder;
-    }
-    //private GameObject CreateUnit(UnitScriptableObject unitScriptableObject)
-    //{
-    //    GameObject unit = Instantiate(Prefab, UnitFolderTransform);
-
-    //    Icon = unitScriptableObject.Icon;
-
-    //    unit.GetComponentInChildren<RawImage>().texture = Icon;
-
-    //    UnitCardManager manager = unit.GetComponent<UnitCardManager>();
-    //    manager.UnitScriptableObject = unitScriptableObject;
-    //    manager.Sprite = unitScriptableObject.Sprite;
-
-    //    return unit;
-    //}
+    }    
     
     private void CreateEscapeButton()
     {
