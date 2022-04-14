@@ -15,8 +15,16 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
 	public Transform BackgroundTransform;
 
+	// Cooldown buy logic.
+	public float CooldownTime;
+	private float _nextCooldownTime;
+	private bool _canTakeNewUnit;
+
 	public void OnDrag(PointerEventData eventData)
 	{
+		if (!_canTakeNewUnit)
+			return;
+
 		UnitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
 
 		if (LastCollider != Collider || LastCollider == null)
@@ -45,6 +53,11 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
+		if (_nextCooldownTime > Time.time)
+			return;
+
+		_canTakeNewUnit = true;
+
 		UnitDragged = Instantiate(Prefab, new Vector3(0, 0, -1), Quaternion.identity);
 		UnitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
 		UnitDragged.transform.SetParent(BackgroundTransform);
@@ -55,36 +68,48 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-		if (Collider != null && !Collider.IsAssigned)
+		if (!_canTakeNewUnit)
+			return;
+
+		if (Collider == null || (!UnitScriptableObject.IsRange && Collider.IsAssigned))
+		{
+			Destroy(UnitDragged);
+			return;
+		}
+
+		UnitDragged.tag = "Untagged";
+
+		if (UnitScriptableObject.IsRange)
 		{
 			Collider.IsAssigned = true;
-
-			UnitDragged.tag = "Untagged";
 			UnitDragged.transform.SetParent(Collider.transform);
-			UnitDragged.transform.localPosition = new Vector3(0, 0.25f, -1);
+		}
 
-			var unitManager = UnitDragged.GetComponent<UnitBasic>();
-			unitManager.IsDragged = false;
-			unitManager.BulletType.Sprite = UnitScriptableObject.Bullet;
-			unitManager.AttackSpeed = UnitScriptableObject.AttackSpeed;
+		UnitDragged.transform.localPosition = new Vector3(0, 0.25f, -1);
 
-			//TODO: Move it to scriptable object.
-			unitManager.Health = 10;
+		var unitManager = UnitDragged.GetComponent<UnitBasic>();
+		unitManager.IsDragged = false;
+		unitManager.BulletType = UnitScriptableObject.BulletType;
+		unitManager.IsRange = UnitScriptableObject.IsRange;
+
+		unitManager.Health = UnitScriptableObject.Health;
+		unitManager.AttackSpeed = UnitScriptableObject.AttackSpeed;
+		unitManager.AttackDamage = UnitScriptableObject.AttackDamage;
 			
-			if (!UnitScriptableObject.IsRange)
-			{
-				unitManager.BulletPrefab = null;
-			}
-
-			var animator = UnitDragged.GetComponent<Animator>();
-			animator.runtimeAnimatorController = UnitScriptableObject.Animator;
-			animator.SetFloat("AttackSpeed", UnitScriptableObject.AttackSpeed);
-
+		if (UnitScriptableObject.IsRange)
+		{
 			Collider.IsAssigned = true;
 		}
 		else
 		{
-			Destroy(UnitDragged);
+			unitManager.BulletPrefab = null;			
 		}
+
+		var animator = UnitDragged.GetComponent<Animator>();
+		animator.runtimeAnimatorController = UnitScriptableObject.Animator;
+		animator.SetFloat("AttackSpeed", UnitScriptableObject.AttackSpeed);
+		
+		_nextCooldownTime = Time.time + CooldownTime;
+		_canTakeNewUnit = false;
 	}
 }

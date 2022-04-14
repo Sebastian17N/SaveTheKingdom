@@ -12,9 +12,4 @@ public class BulletType
 	/// Should be taken from UnitScriptableObject.
 	/// </summary>
 	public float Speed;
-
-	/// <summary>
-	/// Should be taken from UnitScriptableObject.
-	/// </summary>
-	public float Damage;
 }

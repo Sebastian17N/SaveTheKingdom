@@ -12,12 +12,15 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
 
     // Fighting attributes
     public float Speed;
-    public float AttackSpeed;
     public float Health;
+    
+    public float AttackSpeed;
+    public float AttackDamage;
 
     #region Enviroment attributes
     protected TeamEnum Team;
     public bool IsDragged { get; set; } = false;
+    public bool IsRange { get; set; } = false;
 
     /// <summary>
     /// Define in which direction units are walking and attacking.
@@ -65,14 +68,14 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
 		}
 
 		// Check if there is enemy next to it. If not, go for a walk.
-		if (_enemy == null)
+		if (((MonoBehaviour)_enemy) == null)
         {
             isWalking = true;
             return;
         }
 
         // Attack enemy. Remove reference if he was defeated.
-        if (!_enemy.DecreaseDurability(1))
+        if (!_enemy.DecreaseDurability(AttackDamage))
             _enemy = null;
         else
         {
@@ -84,8 +87,14 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
     public void OnTriggerEnter2D(Collider2D collision)
     {
         var collidedObject = collision.gameObject;
+        var unitBase = collidedObject.GetComponent<UnitBase>();
 
-        if (_enemy == null && collidedObject.GetComponent<UnitBase>())
+        // Do not collide with object which are not on a field.
+        if (unitBase != null && unitBase.IsDragged 
+            || IsDragged)
+            return;
+
+        if (_enemy == null && unitBase != null)
         {
             IDecreaseDurabilityOwner enemy = 
                 Team == TeamEnum.Team_1 ?
@@ -96,13 +105,10 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
                 _enemy = enemy;
         }
 
-        if (_bullet == null)
+        if (_bullet == null 
+            && collidedObject.GetComponent<Bullet>()?.Team != Team)
         {
-            var bullet = collidedObject;
-
-            // TODO: Check which side is bullet, to prevent friendly fire.
-            if (bullet.GetComponent<Bullet>() != null)
-                _bullet = bullet;
+            _bullet = collidedObject;
         }
     }
 
@@ -111,8 +117,8 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
         var bullet = Instantiate(BulletPrefab);
         bullet.transform.position = transform.position + new Vector3(Direction.x, Direction.y) * 1.5f + Vector3.down * 0.5f;
 
-        bullet.GetComponent<Bullet>().Configure(BulletType);
-        bullet.transform.SetParent(this.transform);
+        bullet.GetComponent<Bullet>().Configure(BulletType, AttackDamage, Team);
+        bullet.transform.SetParent(transform);
 
         _lastShootTime = Time.timeSinceLevelLoad;
     }
