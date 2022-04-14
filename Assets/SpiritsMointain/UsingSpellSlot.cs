@@ -7,9 +7,9 @@ public class UsingSpellSlot : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-       if(eventData.pointerDrag != null)
+       if(eventData.pointerEnter != null)
         {
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = 
+            eventData.pointerEnter.GetComponent<RectTransform>().anchoredPosition = 
                 GetComponent<RectTransform>().anchoredPosition;
         }
     }
