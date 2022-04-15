@@ -10,7 +10,6 @@ public class SpiritsMointainGameManager : MonoBehaviour
     public SpellScriptableObject[] ScriptableObjects;
     public GameObject Prefab;
     public Transform SpellMenuTransform;
-    public Texture Icon;
 
     void Start()
     {
@@ -23,9 +22,14 @@ public class SpiritsMointainGameManager : MonoBehaviour
 
     private GameObject CreateSpell(SpellScriptableObject spellScriptableObject)
     {
-        GameObject spell = Instantiate(Prefab);
-        Icon = spellScriptableObject.Sprite;
-        spell.GetComponentInChildren<RawImage>().texture = Icon;
+        GameObject spell = Instantiate(Prefab, SpellMenuTransform);       
+        spell.GetComponentInChildren<Image>().sprite = spellScriptableObject.Sprite;
+        spell.GetComponentInChildren<Image>().type = Image.Type.Filled; //sprite ma wype³nic przestrzeæ image
+
+
+        SpellCardManager manager = spell.GetComponent<SpellCardManager>();
+        //manager.SpellScriptableObject = spellScriptableObject;
+        manager.Sprite = spellScriptableObject.Sprite;
 
         return spell;
     }

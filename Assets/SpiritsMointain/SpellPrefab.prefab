@@ -270,3 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d049c8b30d2f6bd46b1a44b9c1b358d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpellScriptableObject: {fileID: 0}
+  Sprite: {fileID: 0}
+  SpellPrefab: {fileID: 4210071563644237188, guid: b7ce9008454d4704e8f5db79685594a7, type: 3}

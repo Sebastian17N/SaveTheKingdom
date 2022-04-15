@@ -1562,7 +1562,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b463e581afb585041a097a8de1497159, type: 2}
   Prefab: {fileID: 2522479766226791099, guid: e06c4835b1c46f740b6809021abc68e5, type: 3}
   SpellMenuTransform: {fileID: 513595318}
-  Icon: {fileID: 0}
 --- !u!4 &1008081048
 Transform:
   m_ObjectHideFlags: 0
@@ -2941,6 +2940,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2974,7 +2977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -280
+      value: -266
       objectReference: {fileID: 0}
     - target: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2991,6 +2994,14 @@ PrefabInstance:
     - target: {fileID: 2295867524554720194, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
       propertyPath: m_Name
       value: SpellMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295867524554720204, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
+      propertyPath: m_ChildAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295867524554720205, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

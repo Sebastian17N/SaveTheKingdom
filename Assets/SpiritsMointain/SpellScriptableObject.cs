@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Spell Card", fileName ="New Spell Card")]
 public class SpellScriptableObject : ScriptableObject
 {
-    public Texture Sprite;
+    public Sprite Sprite;
     public int Cooldown;
     public int Damage;
 }

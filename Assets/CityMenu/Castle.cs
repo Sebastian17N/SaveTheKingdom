@@ -46,11 +46,11 @@ public class Castle : MonoBehaviour
         
         GameObject unit = Instantiate(PrefabUnitCard, grid.transform);
 
-        var Icon = scriptableObject.Icon;
-        var Damege = scriptableObject.BulletType.Damage;
+        //var Icon = scriptableObject.Icon;
+        //var Damege = scriptableObject.BulletType.Damage;
 
-        unit.GetComponentInChildren<RawImage>().texture = Icon;
-        unit.GetComponentInChildren<TMP_Text>().text = $"Damage: {Damege}";
+        //unit.GetComponentInChildren<RawImage>().texture = Icon;
+        //unit.GetComponentInChildren<TMP_Text>().text = $"Damage: {Damege}";
     }
     private void CreateEscapeButton()
     {
