@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UsingSpellSlot : MonoBehaviour, IDropHandler
 {
-    public void OnDrop(PointerEventData eventData)
+	public GameObject Spell;
+
+	public void OnDrop(PointerEventData eventData)
     {
        if(eventData.pointerEnter != null)
         {
@@ -13,5 +13,20 @@ public class UsingSpellSlot : MonoBehaviour, IDropHandler
                 GetComponent<RectTransform>().anchoredPosition;
         }
     }
-        
+
+	public void OnMouseOver()
+	{
+		foreach (var manager in FindObjectsOfType<SpellCardManager>())
+		{
+			manager.SpellSlot = GetComponent<UsingSpellSlot>();
+		}
+	}
+
+	public void OnMouseExit()
+	{
+		foreach (var manager in FindObjectsOfType<SpellCardManager>())
+		{
+			manager.SpellSlot = null;
+		}
+	}
 }
