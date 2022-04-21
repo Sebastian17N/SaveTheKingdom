@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     //public Canvas canvas;
     //private RectTransform _rectTransform;
@@ -16,31 +16,14 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     public GameObject SpellPrefab;
 
     GameObject SpellDragged;
+
+    public UsingSpellSlot SpellSlot;
     
-
-    private void Awake()
-    {
-        //_rectTransform = GetComponent<RectTransform>();
-        //_canvasGroup = GetComponent<CanvasGroup>();
-    }
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        //_canvasGroup.alpha = 0.6f;
-        //_canvasGroup.blocksRaycasts = false;
-    }
-
     public void OnDrag(PointerEventData eventData)
     {
         SpellDragged.GetComponent<Image>().sprite = Sprite;
         var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        SpellDragged.transform.position = new Vector3(position.x, position.y, -9);
-        
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        //_canvasGroup.alpha = 1;
-        //_canvasGroup.blocksRaycasts = true;
+        SpellDragged.transform.position = new Vector3(position.x, position.y, -9);        
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -50,6 +33,21 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 
         var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);//konwertuje pozycje myszy na pozycjê obiektu w œwiecie
         SpellDragged.transform.position = new Vector3(position.x, position.y, -9);
+    }
+
+	public void OnPointerUp(PointerEventData eventData)
+	{
+        if (SpellSlot == null)
+		{
+            Destroy(SpellDragged);
+            return;
+		}
+
+        SpellDragged.transform.SetParent(SpellSlot.transform);
+        SpellDragged.transform.localPosition = new Vector3(0, 0, 0);
+        
+        var rectTransform = SpellDragged.GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(30, 30);
     }
 }
 
