@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1770506956}
   - component: {fileID: 1770506957}
   m_Layer: 0
-  m_Name: GoToScene
+  m_Name: ChangeScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7581e447e7a904c46bc6163aa144c2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeToChangeScene: 3
   SceneGoIn: CityMenu
 --- !u!1 &1889422942
 GameObject:
