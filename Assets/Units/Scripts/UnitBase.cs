@@ -34,18 +34,7 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
 
     #endregion Enviroment attributes
 
-    protected void Walking()
-    {
-        if (isWalking)
-        {
-            isWalking = false;
-            GetComponent<Rigidbody2D>().velocity = Direction * Speed;
-        }
-        else
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-    }
-
-    protected void Attack()
+    protected void Routine()
     {
         if (IsDragged)
             return;
@@ -60,28 +49,18 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
         if (Time.timeSinceLevelLoad - _lastShootTime < AttackSpeed)
             return;
 
-		// Range attack.
-		if (BulletPrefab != null)
-		{
-			ShootBullet();
-			return;
-		}
-
-		// Check if there is enemy next to it. If not, go for a walk.
-		if (((MonoBehaviour)_enemy) == null)
+        // Check if there is enemy next to it. If not, go for a walk.
+        if (((MonoBehaviour)_enemy) == null && Speed > 0)
         {
-            isWalking = true;
+            Walk();
             return;
         }
-
-        // Attack enemy. Remove reference if he was defeated.
-        if (!_enemy.DecreaseDurability(AttackDamage))
-            _enemy = null;
         else
-        {
-            isWalking = false;
-            _lastShootTime = Time.timeSinceLevelLoad;
-        }
+		{
+            StopWalking();
+		}
+
+        Attack();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -106,10 +85,40 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
         }
 
         if (_bullet == null 
+            && collidedObject.GetComponent<Bullet>() != null
             && collidedObject.GetComponent<Bullet>()?.Team != Team)
         {
             _bullet = collidedObject;
         }
+    }
+
+    private void Walk()
+    {
+        isWalking = false;
+        GetComponent<Rigidbody2D>().velocity = Direction * Speed;
+    }
+
+    private void StopWalking()
+	{
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+    }
+
+    private void Attack()
+    {
+        _lastShootTime = Time.timeSinceLevelLoad;
+
+        // Range attack.
+        if (BulletPrefab != null)
+        {
+            ShootBullet();
+            return;
+        }
+
+        // Mele attack. Remove reference if he was defeated.
+        if (!_enemy.DecreaseDurability(AttackDamage))
+            _enemy = null;
+        else
+            isWalking = false;
     }
 
     private void ShootBullet()
@@ -118,9 +127,7 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
         bullet.transform.position = transform.position + new Vector3(Direction.x, Direction.y) * 1.5f + Vector3.down * 0.5f;
 
         bullet.GetComponent<Bullet>().Configure(BulletType, AttackDamage, Team);
-        bullet.transform.SetParent(transform);
-
-        _lastShootTime = Time.timeSinceLevelLoad;
+        bullet.transform.SetParent(transform.parent);
     }
 
     public virtual bool DecreaseDurability(float amount)

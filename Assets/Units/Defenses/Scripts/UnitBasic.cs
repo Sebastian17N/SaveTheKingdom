@@ -15,7 +15,6 @@ public class UnitBasic : UnitBase, IIsDraggedOwner
 
     public void Update()
     {
-        Attack();
-        Walking();
+        Routine();
     }
 }

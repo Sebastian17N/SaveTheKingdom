@@ -8,8 +8,9 @@ public class UnitScriptableObject : ScriptableObject
     public RuntimeAnimatorController Animator;
 
     [Header("Statistics")]
-    public int Cost;
-    public int Health;
+    public float Cost;
+    public float Health;
+    public float Speed;
     public bool IsRange => BulletType?.Sprite != null;
     public BulletType BulletType;
     

@@ -17,8 +17,7 @@ public class EnemyBasic : UnitBase
 
 	void Update()
     {
-        Attack();
-        Walking();
+        Routine();
     }
          
     /// <inheritdoc/>
