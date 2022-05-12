@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0869be7470692439059c150155dbb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  SpellSlot: {fileID: 0}
 --- !u!1 &8144665294772754817
 GameObject:
   m_ObjectHideFlags: 0

@@ -273,3 +273,5 @@ MonoBehaviour:
   SpellScriptableObject: {fileID: 0}
   Sprite: {fileID: 0}
   SpellPrefab: {fileID: 4210071563644237188, guid: b7ce9008454d4704e8f5db79685594a7, type: 3}
+  SpellSlot: {fileID: 0}
+  CanvasTransform: {fileID: 0}

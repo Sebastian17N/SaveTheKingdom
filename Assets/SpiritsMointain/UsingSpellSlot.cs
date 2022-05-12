@@ -6,15 +6,12 @@ public class UsingSpellSlot : MonoBehaviour, IDropHandler
 	public GameObject UsingSpell;
 
 	public void OnDrop(PointerEventData eventData)
-    {
-		
+    {		
 		if (eventData.pointerEnter != null)
         {
             eventData.pointerEnter.GetComponent<RectTransform>().anchoredPosition = 
-                GetComponent<RectTransform>().anchoredPosition;
-			
-		}
-		
+                GetComponent<RectTransform>().anchoredPosition;			
+		}		
 	}
 
 	public void OnMouseOver()

@@ -14,6 +14,8 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public UsingSpellSlot SpellSlot;
     public Transform CanvasTransform;
+
+    public bool IsFromMenu;
     
     public void OnDrag(PointerEventData eventData)
     {        
@@ -30,11 +32,12 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);//konwertuje pozycje myszy na pozycjê obiektu w œwiecie
         SpellDragged.transform.position = new Vector3(position.x, position.y, -9);
         SpellDragged.transform.SetParent(CanvasTransform);
+
+        SpellDragged.GetComponent<SpellDraggedManager>().SpellPrefab = transform.gameObject;
     }
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-
         if (SpellSlot == null || IsSpellAlreadyUse(SpellSlot))
 		{
             Destroy(SpellDragged);
@@ -46,13 +49,18 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             Destroy(SpellSlot.transform.GetChild(0).gameObject);
         }
 
-        SpellDragged.transform.SetParent(SpellSlot.transform);
-        SpellDragged.transform.localPosition = new Vector3(0, 0, 0);
+        var chosenSpell = Instantiate(transform.gameObject, SpellSlot.transform);
+        chosenSpell.transform.name = transform.name;
+        chosenSpell.transform.localPosition = new Vector3(0, 0, 0);
+        chosenSpell.GetComponent<SpellCardManager>().IsFromMenu = false;
 
-        
+        Destroy(SpellDragged);
 
-        var rectTransform = SpellDragged.GetComponent<RectTransform>();
+        var rectTransform = chosenSpell.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(30, 30);
+
+        if (!IsFromMenu)
+            Destroy(transform.gameObject);
     }
 
     public bool IsSpellAlreadyUse(UsingSpellSlot spellSlot)
@@ -64,7 +72,10 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         {
             var slot = spellContainer.transform.Find($"Slot{i + 1}");
 
-            var spellUsed = slot.transform.Find("SpellDragged(Clone)");
+            if (slot.transform.gameObject == transform.parent.gameObject)
+                continue;
+
+            var spellUsed = slot.transform.Find("SpellPrefab(Clone)");
 
             if (spellUsed == null)
                 continue;
