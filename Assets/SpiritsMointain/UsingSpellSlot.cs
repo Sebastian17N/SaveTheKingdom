@@ -23,21 +23,11 @@ public class UsingSpellSlot : MonoBehaviour, IDropHandler
 		{
 			manager.SpellSlot = GetComponent<UsingSpellSlot>();
 		}
-
-		foreach (var manager in FindObjectsOfType<SelectedSpell>())
-		{
-			manager.SpellSlot = GetComponent<UsingSpellSlot>();
-		}
 	}
 
 	public void OnMouseExit()
 	{
 		foreach (var manager in FindObjectsOfType<SpellCardManager>())
-		{
-			manager.SpellSlot = null;
-		}
-
-		foreach (var manager in FindObjectsOfType<SelectedSpell>())
 		{
 			manager.SpellSlot = null;
 		}
