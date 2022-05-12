@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
@@ -17,6 +18,13 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 	public float CooldownTime;
 	private float _nextCooldownTime;
 	private bool _canTakeNewUnit;
+
+	public Image CooldownImage;
+
+	public void Update()
+	{
+		CooldownImage.fillAmount = (CooldownTime - (_nextCooldownTime - Time.time)) / CooldownTime;
+	}
 
 	public void OnDrag(PointerEventData eventData)
 	{
@@ -104,6 +112,9 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 		animator.SetFloat("AttackSpeed", UnitScriptableObject.AttackSpeed);
 		
 		_nextCooldownTime = Time.time + CooldownTime;
+
+		CooldownImage.fillAmount = 0;
+
 		_canTakeNewUnit = false;
 	}
 }

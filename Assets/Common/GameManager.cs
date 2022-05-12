@@ -76,14 +76,15 @@ public class GameManager : MonoBehaviour
     private GameObject CreateUnit(UnitScriptableObject unitScriptableObject)
     {
         GameObject unit = Instantiate(Prefab, CardHolderTransform);
-        
-        unit.GetComponentInChildren<Image>().sprite = unitScriptableObject.Sprite;
-        unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
         unit.GetComponentInChildren<TMP_Text>().text = $"{unitScriptableObject.Cost}";
+
+        var iconImage = unit.transform.Find("Icon").GetComponent<Image>();
+        iconImage.sprite = unitScriptableObject.Sprite;
 
         UnitCardManager manager = unit.GetComponent<UnitCardManager>();
         manager.UnitScriptableObject = unitScriptableObject;
         manager.Sprite = unitScriptableObject.Sprite;
+        manager.CooldownImage = iconImage;
 
         return unit;
     }
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
             if (NumberOfEnemiesLeft <= 0)
 			{
                 PlayerPrefs.SetInt(LevelName + "_finished", 1);
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("CampaignMap");
                 break;
 			}
 

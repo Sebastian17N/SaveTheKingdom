@@ -336,8 +336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitCards: []
-  Cost: 0
-  Icon: {fileID: 0}
   ScriptableObjects:
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
   - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
@@ -645,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3993846582418833850, guid: 339da3942bee98745bcafa775603c76b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 130
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3993846582418833850, guid: 339da3942bee98745bcafa775603c76b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -654,6 +652,14 @@ PrefabInstance:
     - target: {fileID: 3993846582418833851, guid: 339da3942bee98745bcafa775603c76b, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993846582418833855, guid: 339da3942bee98745bcafa775603c76b, type: 3}
+      propertyPath: m_CellSize.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993846582418833855, guid: 339da3942bee98745bcafa775603c76b, type: 3}
+      propertyPath: m_CellSize.y
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
