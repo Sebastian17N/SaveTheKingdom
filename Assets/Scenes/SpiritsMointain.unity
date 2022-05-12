@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c1ff80068caee42a25cb17d445446a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spell: {fileID: 0}
+  UsingSpell: {fileID: 0}
 --- !u!61 &147001264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c1ff80068caee42a25cb17d445446a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spell: {fileID: 0}
+  UsingSpell: {fileID: 0}
 --- !u!61 &268088997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1618,6 +1618,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b463e581afb585041a097a8de1497159, type: 2}
   Prefab: {fileID: 2522479766226791099, guid: e06c4835b1c46f740b6809021abc68e5, type: 3}
   SpellMenuTransform: {fileID: 513595318}
+  CanvasTransform: {fileID: 535429658}
 --- !u!4 &1008081048
 Transform:
   m_ObjectHideFlags: 0
@@ -2552,7 +2553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c1ff80068caee42a25cb17d445446a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spell: {fileID: 0}
+  UsingSpell: {fileID: 0}
 --- !u!61 &1869830291
 BoxCollider2D:
   m_ObjectHideFlags: 0

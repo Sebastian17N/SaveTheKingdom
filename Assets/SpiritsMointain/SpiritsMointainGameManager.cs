@@ -10,6 +10,7 @@ public class SpiritsMointainGameManager : MonoBehaviour
     public SpellScriptableObject[] ScriptableObjects;
     public GameObject Prefab;
     public Transform SpellMenuTransform;
+    public Transform CanvasTransform;
 
     void Start()
     {
@@ -28,8 +29,8 @@ public class SpiritsMointainGameManager : MonoBehaviour
 
 
         SpellCardManager manager = spell.GetComponent<SpellCardManager>();
-        //manager.SpellScriptableObject = spellScriptableObject;
         manager.Sprite = spellScriptableObject.Sprite;
+        manager.CanvasTransform = CanvasTransform;
 
         return spell;
     }

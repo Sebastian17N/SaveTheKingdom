@@ -13,6 +13,7 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     GameObject SpellDragged;
 
     public UsingSpellSlot SpellSlot;
+    public Transform CanvasTransform;
     
     public void OnDrag(PointerEventData eventData)
     {        
@@ -28,6 +29,7 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);//konwertuje pozycje myszy na pozycjê obiektu w œwiecie
         SpellDragged.transform.position = new Vector3(position.x, position.y, -9);
+        SpellDragged.transform.SetParent(CanvasTransform);
     }
 
 	public void OnPointerUp(PointerEventData eventData)
