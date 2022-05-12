@@ -104,12 +104,12 @@ MonoBehaviour:
   BulletType:
     Sprite: {fileID: 0}
     Speed: 2
-    Damage: 1
-  AttackSpeed: 1
-  Health: 20
-  IsDragged: 1
   Speed: 1
-  Unit: {fileID: 0}
+  Health: 20
+  AttackSpeed: 1
+  AttackDamage: 0
+  Direction: {x: 0, y: 0}
+  _bullet: {fileID: 0}
 --- !u!61 &1577313800631929517
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 3}
+  m_Size: {x: 0.3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &4858868040331846441
 Rigidbody2D:

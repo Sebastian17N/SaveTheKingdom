@@ -113,8 +113,6 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 		
 		_nextCooldownTime = Time.time + CooldownTime;
 
-		CooldownImage.fillAmount = 0;
-
 		_canTakeNewUnit = false;
 	}
 }
