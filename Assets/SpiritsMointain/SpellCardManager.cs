@@ -5,12 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
-{
-    //public Canvas canvas;
-    //private RectTransform _rectTransform;
-    //public Transform BackgroundTransform;
-    // private CanvasGroup _canvasGroup;
-    
+{        
     public SpellScriptableObject SpellScriptableObject;
     public Sprite Sprite;
     public GameObject SpellPrefab;
@@ -20,7 +15,7 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public UsingSpellSlot SpellSlot;
     
     public void OnDrag(PointerEventData eventData)
-    {
+    {        
         SpellDragged.GetComponent<Image>().sprite = Sprite;
         var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         SpellDragged.transform.position = new Vector3(position.x, position.y, -9);        
@@ -28,7 +23,7 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        SpellDragged = Instantiate(SpellPrefab, new Vector3(0,0,-1), Quaternion.identity);        
+        SpellDragged = Instantiate(SpellPrefab, new Vector3(0,0,-4), Quaternion.identity);        
         SpellDragged.GetComponent<Image>().sprite = Sprite;
 
         var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);//konwertuje pozycje myszy na pozycjê obiektu w œwiecie
@@ -37,17 +32,46 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-        if (SpellSlot == null)
+
+        if (SpellSlot == null || IsSpellAlreadyUse(SpellSlot))
 		{
             Destroy(SpellDragged);
             return;
 		}
 
+        if (SpellSlot.transform.childCount > 0 && SpellSlot.transform.GetChild(0)?.gameObject != null)
+        {
+            Destroy(SpellSlot.transform.GetChild(0).gameObject);
+        }
+
         SpellDragged.transform.SetParent(SpellSlot.transform);
         SpellDragged.transform.localPosition = new Vector3(0, 0, 0);
+
         
+
         var rectTransform = SpellDragged.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(30, 30);
+    }
+
+    public bool IsSpellAlreadyUse(UsingSpellSlot spellSlot)
+    {
+        var spellContainer = spellSlot.transform.parent;
+        var alreadyUsedSprites = new List<Sprite>();
+
+        for (var i = 0; i < 3; i++)
+        {
+            var slot = spellContainer.transform.Find($"Slot{i + 1}");
+
+            var spellUsed = slot.transform.Find("SpellDragged(Clone)");
+
+            if (spellUsed == null)
+                continue;
+
+            var spriteUsed = spellUsed.GetComponentInChildren<Image>().sprite;
+            alreadyUsedSprites.Add(spriteUsed);
+        }
+
+        return alreadyUsedSprites.Contains(SpellDragged.GetComponent<Image>().sprite);
     }
 }
 

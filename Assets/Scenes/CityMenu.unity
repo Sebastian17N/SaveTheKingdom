@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 944311804}
   - component: {fileID: 944311803}
   - component: {fileID: 944311806}
+  - component: {fileID: 944311807}
   m_Layer: 5
   m_Name: CastleButton
   m_TagString: Untagged
@@ -404,7 +405,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944311801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e20761f0c5bec9044ac7b0d42cef1cec, type: 3}
   m_Name: 
@@ -416,6 +417,21 @@ MonoBehaviour:
   ScriptableObjects:
   - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
+--- !u!114 &944311807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944311801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf44d54d716dd094bbdbe12ed1498ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneGoIn: Castle
+  IsActive: 1
+  ChangingButton: {fileID: 944311803}
 --- !u!1 &1041480439
 GameObject:
   m_ObjectHideFlags: 0
