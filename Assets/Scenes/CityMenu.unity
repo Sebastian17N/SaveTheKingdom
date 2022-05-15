@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf44d54d716dd094bbdbe12ed1498ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneGoIn: Castle
+  SceneGoIn: Barracks
   IsActive: 1
   ChangingButton: {fileID: 944311803}
 --- !u!1 &1041480439
