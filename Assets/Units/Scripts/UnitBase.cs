@@ -115,7 +115,7 @@ public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
         }
 
         // Mele attack. Remove reference if he was defeated.
-        if (!_enemy.DecreaseDurability(AttackDamage))
+        if (!_enemy?.DecreaseDurability(AttackDamage) ?? false)
             _enemy = null;
         else
             isWalking = false;

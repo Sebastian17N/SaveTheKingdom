@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour
         var iconImage = unit.transform.Find("Icon").GetComponent<Image>();
         iconImage.sprite = unitScriptableObject.Sprite;
 
+        var iconShadowImage = unit.transform.Find("IconShadow").GetComponent<Image>();
+        iconShadowImage.sprite = unitScriptableObject.Sprite;
+
         UnitCardManager manager = unit.GetComponent<UnitCardManager>();
         manager.UnitScriptableObject = unitScriptableObject;
         manager.Sprite = unitScriptableObject.Sprite;
