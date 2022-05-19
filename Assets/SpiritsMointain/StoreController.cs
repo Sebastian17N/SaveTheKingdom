@@ -5,14 +5,16 @@ using UnityEngine;
 public class StoreController : MonoBehaviour
 {
     public static Vector3 newPose;
+    public float newWidth;
     public static bool SelectMove;
     public Transform storeContainer;
     public float lerpTime;
     private GameObject _lastSpirit;
+    public string FirstObjectToExpand;
 
     private void Start()
     {
-        SelectSpirit(storeContainer.Find("FrozenSpiritButton").gameObject);        
+        SelectSpirit(storeContainer.Find(FirstObjectToExpand).gameObject);        
     }
     private void Update()
     {
@@ -31,11 +33,11 @@ public class StoreController : MonoBehaviour
     {
         if(_lastSpirit != null)
         {
-            _lastSpirit.transform.localScale = new Vector3(1, 1, 1);
+            _lastSpirit.transform.localScale = new Vector3(1, 1, -2);
             _lastSpirit.GetComponent<StoreButton>().CloseDetails();
         }
         _lastSpirit = spirit;
-        spirit.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        spirit.transform.localScale = new Vector3(newWidth, 1.5f, 1.5f);
         spirit.GetComponent<StoreButton>().ShowDetails();
     }
 }

@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 
 public class SpellDraggedManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    //public Canvas Canvas;
     public GameObject SpellPrefab;
     public GameObject SpellSlot;
 
@@ -11,7 +10,6 @@ public class SpellDraggedManager : MonoBehaviour, IPointerDownHandler, IPointerU
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("OnPointerDown");
-        //var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     public void OnPointerUp(PointerEventData eventData)

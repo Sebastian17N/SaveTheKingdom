@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class UsingSpellSlot : MonoBehaviour, IDropHandler
 {
-	public GameObject UsingSpell;
+	//public GameObject UsingSpell;
 
 	public void OnDrop(PointerEventData eventData)
     {		

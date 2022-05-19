@@ -351,7 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c1ff80068caee42a25cb17d445446a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingSpell: {fileID: 0}
 --- !u!61 &147001264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -690,7 +689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c1ff80068caee42a25cb17d445446a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingSpell: {fileID: 0}
 --- !u!61 &268088997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1149,8 +1147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ff054686bf1af4f817d62f0061c613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newWidth: 1.5
   storeContainer: {fileID: 1992194565}
   lerpTime: 5
+  FirstObjectToExpand: FrozenSpiritButton
 --- !u!1 &783787011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,7 +2553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c1ff80068caee42a25cb17d445446a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingSpell: {fileID: 0}
 --- !u!61 &1869830291
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2780,7 +2779,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2200, y: 1200}
+  m_SizeDelta: {x: 2200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992194566
 MonoBehaviour:

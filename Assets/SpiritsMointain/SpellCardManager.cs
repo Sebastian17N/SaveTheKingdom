@@ -34,6 +34,7 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         SpellDragged.transform.SetParent(CanvasTransform);
 
         SpellDragged.GetComponent<SpellDraggedManager>().SpellPrefab = transform.gameObject;
+        //transform.localScale = new Vector3(2f, 2f, 2f);      
     }
 
 	public void OnPointerUp(PointerEventData eventData)
