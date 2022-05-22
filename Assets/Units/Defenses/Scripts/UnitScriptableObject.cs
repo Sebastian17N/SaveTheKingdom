@@ -6,6 +6,7 @@ public class UnitScriptableObject : ScriptableObject
     [Header("Visuals")]
     public Sprite Sprite;
     public RuntimeAnimatorController Animator;
+    public Sprite Icon;
 
     [Header("Statistics")]
     public float Cost;

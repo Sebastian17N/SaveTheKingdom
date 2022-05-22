@@ -33,8 +33,4 @@ public class SpiritsMointainGameManager : MonoBehaviour
         return spell;
     }
 
-    void Update()
-    {
-        
-    }
 }
