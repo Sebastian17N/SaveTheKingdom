@@ -20,10 +20,12 @@ public class UnitCardManager : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 	private bool _canTakeNewUnit;
 
 	public Image CooldownImage;
+	public Image CooldownReadyImage;
 
 	public void Update()
 	{
 		CooldownImage.fillAmount = (CooldownTime - (_nextCooldownTime - Time.time)) / CooldownTime;
+		CooldownReadyImage.enabled = CooldownImage.fillAmount >= 1;
 	}
 
 	public void OnDrag(PointerEventData eventData)
