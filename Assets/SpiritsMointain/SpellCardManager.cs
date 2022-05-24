@@ -16,7 +16,10 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public Transform CanvasTransform;
 
     public bool IsFromMenu;
-    
+
+    //SpellDescription
+    public GameObject SpellDescriptionPrefab;
+
     public void OnDrag(PointerEventData eventData)
     {        
         SpellDragged.GetComponent<Image>().sprite = Sprite;
@@ -26,6 +29,10 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        var spellDescription = Instantiate(SpellDescriptionPrefab);
+        spellDescription.transform.SetParent(CanvasTransform);
+        spellDescription.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
         SpellDragged = Instantiate(SpellPrefab, new Vector3(0,0,-4), Quaternion.identity);        
         SpellDragged.GetComponent<Image>().sprite = Sprite;
 

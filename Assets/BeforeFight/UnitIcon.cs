@@ -12,17 +12,24 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerExitHandler,
     public Sprite Sprite;
     public bool IsUnitChecked = false;
     public Transform CanvasTransform;
+    public bool IsInfoVisible = false;
+    void Start()
+    {
+        HideInfoButton(false);
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!IsUnitChecked)
         {
             transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             IsUnitChecked = true;
+            HideInfoButton(true);
         }
         else
         {
             transform.localScale = new Vector3(1, 1, 1);
             IsUnitChecked = false;
+            HideInfoButton(false);
         }
     }
 
@@ -38,11 +45,15 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerExitHandler,
         //UnitIconDragged.transform.SetParent(CanvasTransform);
         //UnitIconDragged.GetComponent<SpellDraggedManager>().SpellPrefab = transform.gameObject;
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
         transform.localScale = new Vector3(1, 1, 1);
         IsUnitChecked = false;
+    }
+    public void HideInfoButton(bool isInfoButtonVisible)
+    {
+        var infoButton = GameObject.Find("InfoButton");   
+        infoButton.SetActive(isInfoButtonVisible); 
     }
 
 }
