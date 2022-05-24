@@ -23,9 +23,11 @@ public class UnitSlot : MonoBehaviour
         unit.transform.SetParent(transform);
         unit.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
         unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
-        unit.GetComponentInChildren<TMP_Text>().text = $"Damage: {scriptableObject.AttackDamage}";
-        //unit.GetComponentInChildren<TMP_Text>().text = $"Health: {scriptableObject.Health}";
-
+        var damageObject = unit.transform.Find("Damage");
+        damageObject.transform.Find("DamageNumber").GetComponent<TMP_Text>().text = $"Damage: {scriptableObject.AttackDamage}";
+        var healthObject = unit.transform.Find("Health");
+        healthObject.transform.Find("HealthNumber").GetComponent<TMP_Text>().text = $"Health: {scriptableObject.Health}";
+     
         //var Icon = scriptableObject.Icon;
         //var Damege = scriptableObject.BulletType.Damage;
         //unit.GetComponentInChildren<RawImage>().texture = Icon;

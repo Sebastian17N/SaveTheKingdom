@@ -9,7 +9,6 @@ public class SpellMenu : MonoBehaviour
     [Header("MenuElements")]
     public GameObject PrefabMenu;
     public Button SpellMenuButton;
-    public GameObject PrefabEscapeButton;
     private GameObject _spellMenu;
     void Start()
     {

@@ -18,7 +18,7 @@ public class SpiritsMointainGameManager : MonoBehaviour
             SpellCards.Add(CreateSpell(spellScriptableObject));
         }
     }
-
+    
     private GameObject CreateSpell(SpellScriptableObject spellScriptableObject)
     {
         GameObject spell = Instantiate(Prefab, SpellMenuTransform);       
@@ -33,8 +33,4 @@ public class SpiritsMointainGameManager : MonoBehaviour
         return spell;
     }
 
-    void Update()
-    {
-        
-    }
 }

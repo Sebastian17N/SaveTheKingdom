@@ -1,16 +1,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SpellDraggedManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class SpellDraggedManager : MonoBehaviour, IPointerUpHandler, IDragHandler
 {
     public GameObject SpellPrefab;
     public GameObject SpellSlot;
-
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerDown");
-    }
 
     public void OnPointerUp(PointerEventData eventData)
     {

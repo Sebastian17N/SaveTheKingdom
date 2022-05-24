@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 2941530043256214894}
   - component: {fileID: 7692809910598394241}
   - component: {fileID: 5076790740837128578}
-  - component: {fileID: -1517421432847900603}
+  - component: {fileID: 2569877983091439486}
   m_Layer: 5
   m_Name: SpellPrefab
   m_TagString: Untagged
@@ -257,8 +257,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7692809910598394241}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &-1517421432847900603
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 1e0c280051247cf4a96f52d1335a2d6a, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CreateSpell
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!114 &2569877983091439486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,3 +287,5 @@ MonoBehaviour:
   SpellPrefab: {fileID: 4210071563644237188, guid: b7ce9008454d4704e8f5db79685594a7, type: 3}
   SpellSlot: {fileID: 0}
   CanvasTransform: {fileID: 0}
+  IsFromMenu: 0
+  SpellDescriptionPrefab: {fileID: 6256017236015569806, guid: b120bb8cfe83bfb409e15ca370b1e1a0, type: 3}
