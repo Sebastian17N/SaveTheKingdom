@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 686818474}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1173,6 +1173,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b463e581afb585041a097a8de1497159, type: 2}
   SpellCardPrefab: {fileID: 8555467480826931578, guid: 727e847e98c75264eaea8b4622d55619, type: 3}
   SpellCardUnitTransform: {fileID: 680380594}
+  CanvasTransform: {fileID: 927440847}
 --- !u!1001 &914820527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1737,10 +1738,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765d6e3e8bfd12b40a9f9cfdc2bf32af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabUnitCard: {fileID: 6836477498226288691, guid: e8721cac4f9f82243a38184347afce61, type: 3}
   Sprite: {fileID: 0}
   IsUnitChecked: 0
   CanvasTransform: {fileID: 927440847}
+  IsInfoVisible: 0
 --- !u!114 &1252807443
 MonoBehaviour:
   m_ObjectHideFlags: 0

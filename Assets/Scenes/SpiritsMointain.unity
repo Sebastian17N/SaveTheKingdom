@@ -1582,6 +1582,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940697349}
   m_CullTransparentMesh: 1
+--- !u!1 &959170352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 959170354}
+  - component: {fileID: 959170353}
+  m_Layer: 0
+  m_Name: SpellDescriptionGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &959170353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959170352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bdac9fae448d84586af4602d7a1e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellDescriptionCards: []
+  ScriptableObjects:
+  - {fileID: 11400000, guid: 715ca285fcca8a849953fa9b7cea47b7, type: 2}
+  - {fileID: 11400000, guid: 67afeb467efc42d47874ecc86a4fa236, type: 2}
+  - {fileID: 11400000, guid: b463e581afb585041a097a8de1497159, type: 2}
+  Prefab: {fileID: 8392830072797240401, guid: b8e0f815fc07631409c70353c1196c2e, type: 3}
+  SpellDescriptionMenuTransform: {fileID: 0}
+  CanvasTransform: {fileID: 535429658}
+--- !u!4 &959170354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959170352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.841307, y: 439.15063, z: -4.8460217}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1008081046
 GameObject:
   m_ObjectHideFlags: 0

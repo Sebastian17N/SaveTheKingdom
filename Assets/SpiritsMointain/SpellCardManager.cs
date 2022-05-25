@@ -32,6 +32,7 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         var spellDescription = Instantiate(SpellDescriptionPrefab);
         spellDescription.transform.SetParent(CanvasTransform);
         spellDescription.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        //spellDescription.GetComponent<SpellDescriptionGameManager>().CreateSpell(SpellScriptableObject);
 
         SpellDragged = Instantiate(SpellPrefab, new Vector3(0,0,-4), Quaternion.identity);        
         SpellDragged.GetComponent<Image>().sprite = Sprite;
