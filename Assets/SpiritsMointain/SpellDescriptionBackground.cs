@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SpellDescription : MonoBehaviour, IPointerClickHandler
+public class SpellDescriptionBackground : MonoBehaviour, IPointerClickHandler
 {
-    public SpellScriptableObject SpellScriptableObject;
-    public Sprite Sprite;
-    public GameObject SpellPrefab;
-    public Transform CanvasTransform;
+    //public SpellScriptableObject SpellScriptableObject;
+    //public Sprite Sprite;
+    //public GameObject SpellPrefab;
+    //public Transform CanvasTransform;
     public void OnPointerClick(PointerEventData eventData)
     {
         Destroy(gameObject);

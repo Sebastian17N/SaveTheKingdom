@@ -13,21 +13,17 @@ public class SpellDescriptionGameManager : MonoBehaviour
 
     void Start()
     {
-      
-    }
-    private void Update()
-    {
-        var spellDescription = GetComponent<SpellDescription>();
-        if (spellDescription != null)
-        {
+        //var spellDescription = GetComponent<SpellDescriptionBackground>();
+        //if (spellDescription != null)
+        //{
             SpellDescriptionCards = new List<GameObject>();
             foreach (SpellScriptableObject spellDescriptionScriptableObject in ScriptableObjects)
             {
                 SpellDescriptionCards.Add(CreateSpell(spellDescriptionScriptableObject));
             }
-        }
+        
     }
-
+    
     public GameObject CreateSpell(SpellScriptableObject spellScriptableObject)
     {
        

@@ -95,5 +95,6 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         return alreadyUsedSprites.Contains(SpellDragged.GetComponent<Image>().sprite);
     }
+    
 }
 
