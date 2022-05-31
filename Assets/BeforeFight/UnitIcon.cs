@@ -9,7 +9,9 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     public Transform CanvasTransform;
     public bool IsInfoVisible = false;
 
+    private GameObject Slot;
     private bool _isAssignedToSlotAlready = false;
+    private bool _isAlreadyChosen = false;
 
     private float _pointerDownTime;
     private const float _pointerClickDetailsTop = 0.2f;
@@ -21,64 +23,69 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         ChangeVisibilityInfoButton(false);
     }    
 
+    void Update()
+	{
+        if (_isAssignedToSlotAlready)
+            return;
+
+        // Unit icon is higher or equal than slot.
+        if (Slot != null && Vector3.Distance(transform.position, Slot.transform.position) < 10f)
+		{
+            transform.SetParent(Slot.transform);
+            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
+            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
+            GetComponent<RectTransform>().anchoredPosition = new Vector3(40, 70, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
+            _isAssignedToSlotAlready = true;
+        }
+	}
+
     public void OnPointerDown(PointerEventData eventData)
     {
         _pointerDownTime = Time.time;
     }
 
     public void OnPointerUp(PointerEventData eventData)
-	{
-        // Do not perform any action if unit is already assigned.
-        // TODO: add removing unit from a slot if is assigned.
-        
-        if (_isAssignedToSlotAlready)
+	{        
+        if (_isAssignedToSlotAlready || _isAlreadyChosen)
             return;
 
         if (Time.time - _pointerDownTime > _pointerClickDetailsTop)
-		{            
-            var animObject = Instantiate(this.gameObject);
-            animObject.transform.SetParent(CanvasTransform);
+		{
+            _isAlreadyChosen = true;
+
+            var unitEmptySlots = GameObject.Find("UnitEmptySlots");
+            GameObject foundSlot = null;
+            
+            for (var childIndex = 0; childIndex < unitEmptySlots.transform.childCount; ++childIndex)
+            {
+                var slot = unitEmptySlots.transform.GetChild(childIndex);
+
+                if (slot.Find("UnitIcon(Clone)") != null)
+                    continue;
+
+                foundSlot = slot.gameObject;
+                break;
+            }
+
+            if (foundSlot == null)
+            {
+                _isAlreadyChosen = false;
+                return;
+            }
+
+            var animObject = Instantiate(gameObject, CanvasTransform);
+            animObject.name = name;
             animObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
             animObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
             animObject.transform.position = transform.position;
-            var unitEmptySlots = GameObject.Find("UnitEmptySlot").transform.position;            
-            var destination = unitEmptySlots - animObject.transform.position;
-            animObject.GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;           
-            //jak zniszczyć clona gdy osiągnie określony vector/punkt/miejsce
-            //dodać colider do slota i odpalić destroy?
-            Destroy(animObject, 0.75f);
-
-            PutNewUnitIntoSlot();
-            return;
+            animObject.GetComponent<UnitIcon>().Slot = foundSlot;
+           
+            var destination = foundSlot.transform.position - animObject.transform.position;
+            animObject.GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;
 		}
-
-        ChangeUnitDetailsVisibility();
-        
-        // 1. Znajd� pusty slot - czy w og�le, taki istnieje.
-        // 1.a je�li nie to zako�cz, i zniknij ikonk� - zniszcz obiekt.
-        // 2. Przypisz ikon� do pustego slotu, odpal animacj� poruszania, lub przesuwaj ikon� na Update do czasu, a� pozycja ikony nie zr�wna si� z pozycj� slotu.
 	}
-
-    private void PutNewUnitIntoSlot()
-	{
-        var unitEmptySlots = GameObject.Find("UnitEmptySlots");
-
-        for (var childIndex = 0; childIndex < unitEmptySlots.transform.childCount; ++childIndex)
-		{
-            var slot = unitEmptySlots.transform.GetChild(childIndex);
-
-            if (slot.Find("UnitIcon(Clone)") != null)
-                continue;
-
-            var newUnit = Instantiate(this, slot.transform);
-            newUnit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
-            newUnit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
-            newUnit.GetComponent<RectTransform>().anchoredPosition = new Vector3(40, 70, 0);
-            newUnit.name = this.name;
-            break;
-        }
-    }
-
     private void ChangeUnitDetailsVisibility()
 	{
         if (!IsUnitChecked)
