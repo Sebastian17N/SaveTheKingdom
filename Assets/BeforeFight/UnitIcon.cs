@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
@@ -35,18 +36,8 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
             return;
 
         if (Time.time - _pointerDownTime > _pointerClickDetailsTop)
-		{            
-            var animObject = Instantiate(this.gameObject);
-            animObject.transform.SetParent(CanvasTransform);
-            animObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
-            animObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
-            animObject.transform.position = transform.position;
-            var unitEmptySlots = GameObject.Find("UnitEmptySlot").transform.position;            
-            var destination = unitEmptySlots - animObject.transform.position;
-            animObject.GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;           
-            //jak zniszczyć clona gdy osiągnie określony vector/punkt/miejsce
-            //dodać colider do slota i odpalić destroy?
-            Destroy(animObject, 0.75f);
+		{          
+           
 
             PutNewUnitIntoSlot();
             return;
@@ -69,6 +60,19 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
             if (slot.Find("UnitIcon(Clone)") != null)
                 continue;
+
+            var animObject = Instantiate(this.gameObject);
+            animObject.transform.SetParent(CanvasTransform);
+            animObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
+            animObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
+            animObject.transform.position = transform.position;
+            //unitEmptySlots = GameObject.Find("UnitEmptySlot").transform.position;
+            var destination = slot.transform.position - animObject.transform.position;
+            animObject.GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;
+            //jak zniszczyć clona gdy osiągnie określony vector/punkt/miejsce
+            //dodać colider do slota i odpalić destroy?
+            Destroy(animObject, 0.75f);
+           
 
             var newUnit = Instantiate(this, slot.transform);
             newUnit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);

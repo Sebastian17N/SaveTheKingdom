@@ -135,9 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f43a897b8049844c84875666c52c72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabMenu: {fileID: 151353126168932830, guid: c1fb13a1345066549b4a4f6367b5c561, type: 3}
+  PrefabMenu: {fileID: 2295867524554720194}
   SpellMenuButton: {fileID: 2295867524554720192}
-  PrefabEscapeButton: {fileID: 0}
+  SpellDescriptionCards: []
+  ScriptableObjects: []
+  Prefab: {fileID: 0}
+  SpellDescriptionMenuTransform: {fileID: 0}
+  CanvasTransform: {fileID: 0}
 --- !u!114 &2295867524554720204
 MonoBehaviour:
   m_ObjectHideFlags: 0

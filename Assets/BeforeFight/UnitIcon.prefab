@@ -216,7 +216,7 @@ MonoBehaviour:
   IsUnitChecked: 0
   CanvasTransform: {fileID: 0}
   IsInfoVisible: 0
-  Speed: 400
+  Speed: 700
 --- !u!50 &6166951932282122776
 Rigidbody2D:
   serializedVersion: 4

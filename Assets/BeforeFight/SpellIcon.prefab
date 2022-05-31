@@ -94,7 +94,7 @@ MonoBehaviour:
   Sprite: {fileID: 0}
   IsSpellChecked: 0
   CanvasTransform: {fileID: 0}
-  Speed: 400
+  Speed: 1000
 --- !u!50 &536301942900414264
 Rigidbody2D:
   serializedVersion: 4
