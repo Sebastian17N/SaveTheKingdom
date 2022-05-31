@@ -2,9 +2,8 @@
 using UnityEngine.EventSystems;
 
 public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
-{
-    //public GameObject PrefabUnitCard;    
-    GameObject UnitIconDragged;
+{        
+    //GameObject UnitIconDragged;
     public Sprite Sprite;
     public bool IsUnitChecked = false;
     public Transform CanvasTransform;
@@ -13,12 +12,14 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     private bool _isAssignedToSlotAlready = false;
 
     private float _pointerDownTime;
-    private const float _pointerClickDetailsTop = 0.3f;
+    private const float _pointerClickDetailsTop = 0.2f;
+        
+    public float Speed;
 
     void Start()
-    {
+    {       
         ChangeVisibilityInfoButton(false);
-    }
+    }    
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -29,11 +30,24 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 	{
         // Do not perform any action if unit is already assigned.
         // TODO: add removing unit from a slot if is assigned.
+        
         if (_isAssignedToSlotAlready)
             return;
 
         if (Time.time - _pointerDownTime > _pointerClickDetailsTop)
-		{
+		{            
+            var animObject = Instantiate(this.gameObject);
+            animObject.transform.SetParent(CanvasTransform);
+            animObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
+            animObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
+            animObject.transform.position = transform.position;
+            var unitEmptySlots = GameObject.Find("UnitEmptySlot").transform.position;            
+            var destination = unitEmptySlots - animObject.transform.position;
+            animObject.GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;           
+            //jak zniszczyć clona gdy osiągnie określony vector/punkt/miejsce
+            //dodać colider do slota i odpalić destroy?
+            Destroy(animObject, 1);
+
             PutNewUnitIntoSlot();
             return;
 		}

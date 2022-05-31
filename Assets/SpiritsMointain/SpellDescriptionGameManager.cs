@@ -13,9 +13,6 @@ public class SpellDescriptionGameManager : MonoBehaviour
 
     void Start()
     {
-        //var spellDescription = GetComponent<SpellDescriptionBackground>();
-        //if (spellDescription != null)
-        //{
             SpellDescriptionCards = new List<GameObject>();
             foreach (SpellScriptableObject spellDescriptionScriptableObject in ScriptableObjects)
             {
