@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4632891281277604526}
   - component: {fileID: 8503306646717192503}
   - component: {fileID: 2858364484248718883}
+  - component: {fileID: 5255065500317464634}
   m_Layer: 5
   m_Name: SpellEmptySlot
   m_TagString: Untagged
@@ -76,3 +77,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5255065500317464634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9051816422089434678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7fbebb2773ce34b80a6b6421b5bbfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -55,6 +55,10 @@ public class BeforeBattleUnitGameManager : MonoBehaviour
         spell.GetComponentInChildren<Image>().sprite = spellScriptableObject.Sprite;
         spell.GetComponentInChildren<Image>().type = Image.Type.Filled;
 
+        SpellIcon manager = spell.GetComponent<SpellIcon>();
+        manager.Sprite = spellScriptableObject.Sprite;
+        manager.CanvasTransform = CanvasTransform;
+
         return spell;
     }
 }

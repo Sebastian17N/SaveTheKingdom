@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051816422089434678, guid: 4e08efbc7e342c642b3dfa5efda83edc, type: 3}
       propertyPath: m_Name
-      value: SpellEmptySlot (3)
+      value: SpellEmptySlot (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -831,6 +831,8 @@ MonoBehaviour:
   PrefabSpellCard: {fileID: 0}
   Sprite: {fileID: 0}
   IsSpellChecked: 0
+  CanvasTransform: {fileID: 0}
+  Speed: 0
 --- !u!114 &680380596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1742,6 +1744,7 @@ MonoBehaviour:
   IsUnitChecked: 0
   CanvasTransform: {fileID: 927440847}
   IsInfoVisible: 0
+  Speed: 0
 --- !u!114 &1252807443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,7 +2174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051816422089434678, guid: 4e08efbc7e342c642b3dfa5efda83edc, type: 3}
       propertyPath: m_Name
-      value: SpellEmptySlot (1)
+      value: SpellEmptySlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -2500,7 +2503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051816422089434678, guid: 4e08efbc7e342c642b3dfa5efda83edc, type: 3}
       propertyPath: m_Name
-      value: SpellEmptySlot (2)
+      value: SpellEmptySlot (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

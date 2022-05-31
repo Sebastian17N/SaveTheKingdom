@@ -46,7 +46,7 @@ public class UnitIcon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
             animObject.GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;           
             //jak zniszczyć clona gdy osiągnie określony vector/punkt/miejsce
             //dodać colider do slota i odpalić destroy?
-            Destroy(animObject, 1);
+            Destroy(animObject, 0.75f);
 
             PutNewUnitIntoSlot();
             return;
