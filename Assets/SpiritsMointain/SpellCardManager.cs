@@ -29,22 +29,15 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        var SpellDescriptionBackground = transform.Find("SpellDescriptionBackground(Clone)");
+        if (SpellDescriptionBackground != null)
+              Destroy(SpellDescriptionBackground);
+
         var spellDescription = Instantiate(SpellDescriptionPrefab);
         spellDescription.transform.SetParent(CanvasTransform);
         spellDescription.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        spellDescription.transform.Find("Button/SpellDataDescriptionFolder").GetComponent<Image>().sprite = Sprite;
-
-        //spellDescription.GetComponent<SpellDescriptionGameManager>().CreateSpell(SpellScriptableObject);
-
-        //SpellDragged = Instantiate(SpellPrefab, new Vector3(0,0,-4), Quaternion.identity);        
-        //SpellDragged.GetComponent<Image>().sprite = Sprite;
-
-        //var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);//konwertuje pozycje myszy na pozycjê obiektu w œwiecie
-        //SpellDragged.transform.position = new Vector3(position.x, position.y, -9);
-        //SpellDragged.transform.SetParent(CanvasTransform);
-
-        //SpellDragged.GetComponent<SpellDraggedManager>().SpellPrefab = transform.gameObject;
-        //transform.localScale = new Vector3(2f, 2f, 2f);      
+        spellDescription.transform.Find("Button/SpellDataDescriptionFolder").
+            GetComponent<Image>().sprite = Sprite;     
     }
 
 	public void OnPointerUp(PointerEventData eventData)

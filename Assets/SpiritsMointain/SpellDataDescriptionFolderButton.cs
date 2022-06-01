@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class SpellDataDescriptionFolderButton : MonoBehaviour
 {
-    public SpellScriptableObject SpellScriptableObject;
-    public SpellScriptableObject[] ScriptableObjects;
-    public SpellCardManager SpellCardManager;
+    //public SpellScriptableObject SpellScriptableObject;
+    //public SpellCardManager SpellCardManager;
+    public SpellScriptableObject[] ScriptableObjects;    
     public Sprite Sprite;
 
     void Start()

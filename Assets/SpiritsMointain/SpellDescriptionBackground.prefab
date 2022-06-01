@@ -135,9 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce4aaf94ba16a548b7003602118ebdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpellScriptableObject: {fileID: 0}
   ScriptableObjects: []
-  SpellCardManager: {fileID: 0}
   Sprite: {fileID: 0}
 --- !u!1 &6256017236015569806
 GameObject:
@@ -406,6 +404,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -439,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -280
+      value: -221
       objectReference: {fileID: 0}
     - target: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -489,3 +491,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2295867524554720193, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
   m_PrefabInstance: {fileID: 5344521376293978648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6194422807876370906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2295867524554720194, guid: 41cc1d7036b974f4cb47756e12a5d0d0, type: 3}
+  m_PrefabInstance: {fileID: 5344521376293978648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8420158854874842814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194422807876370906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f43a897b8049844c84875666c52c72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellDescriptionCards: []
+  ScriptableObjects:
+  - {fileID: 11400000, guid: 715ca285fcca8a849953fa9b7cea47b7, type: 2}
+  - {fileID: 11400000, guid: 67afeb467efc42d47874ecc86a4fa236, type: 2}
+  - {fileID: 11400000, guid: b463e581afb585041a097a8de1497159, type: 2}
+  Prefab: {fileID: 2522479766226791099, guid: e06c4835b1c46f740b6809021abc68e5, type: 3}
+  CanvasTransform: {fileID: 0}
