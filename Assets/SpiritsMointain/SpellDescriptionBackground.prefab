@@ -169,8 +169,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6194422807876370905}
   - {fileID: 9053695564398839912}
+  - {fileID: 6194422807876370905}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -513,5 +513,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 715ca285fcca8a849953fa9b7cea47b7, type: 2}
   - {fileID: 11400000, guid: 67afeb467efc42d47874ecc86a4fa236, type: 2}
   - {fileID: 11400000, guid: b463e581afb585041a097a8de1497159, type: 2}
-  Prefab: {fileID: 2522479766226791099, guid: e06c4835b1c46f740b6809021abc68e5, type: 3}
+  Prefab: {fileID: 2522479766226791099, guid: f802dd27977b65c4abc6ad7ae6542291, type: 3}
   CanvasTransform: {fileID: 0}

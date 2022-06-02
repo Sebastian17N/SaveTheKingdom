@@ -26,7 +26,7 @@ public class SpellDescriptionMenu : MonoBehaviour
         spell.GetComponentInChildren<Image>().sprite = spellScriptableObject.Sprite;
         spell.GetComponentInChildren<Image>().type = Image.Type.Filled;
 
-        SpellCardManager manager = spell.GetComponent<SpellCardManager>();
+        SpellDescriptionCardManager manager = spell.GetComponent<SpellDescriptionCardManager>();
         manager.Sprite = spellScriptableObject.Sprite;
         manager.CanvasTransform = CanvasTransform;
         
