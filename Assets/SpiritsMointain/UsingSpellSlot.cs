@@ -16,19 +16,19 @@ public class UsingSpellSlot : MonoBehaviour, IDropHandler
 		transform.Find("SpellPrefab(Clone)").transform.localScale = new Vector3(2f, 2f, 2f);
 	}
 
-	public void OnMouseOver()
-	{
-		foreach (var manager in FindObjectsOfType<SpellCardManager>())
-		{
-			manager.SpellSlot = GetComponent<UsingSpellSlot>();
-		}
-	}
+	//public void OnMouseOver()
+	//{
+	//	foreach (var manager in FindObjectsOfType<SpellCardManager>())
+	//	{
+	//		manager.SpellSlot = GetComponent<UsingSpellSlot>();
+	//	}
+	//}
 
-	public void OnMouseExit()
-	{
-		foreach (var manager in FindObjectsOfType<SpellCardManager>())
-		{
-			manager.SpellSlot = null;
-		}
-	}
+	//public void OnMouseExit()
+	//{
+	//	foreach (var manager in FindObjectsOfType<SpellCardManager>())
+	//	{
+	//		manager.SpellSlot = null;
+	//	}
+	//}
 }

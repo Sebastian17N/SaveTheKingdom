@@ -4,89 +4,90 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class SpellCardManager : MonoBehaviour, IPointerClickHandler//, IPointerUpHandler, IDragHandler
 {        
     public SpellScriptableObject SpellScriptableObject;
     public Sprite Sprite;
     public GameObject SpellPrefab;
     public GameObject SpellDescriptionPrefab;
     public Transform CanvasTransform;
+    public GameObject SpiritSpellMenu;
 
-    public bool IsFromMenu;
-    GameObject SpellDragged;
-    public UsingSpellSlot SpellSlot;
+    //public bool IsFromMenu;
+    //GameObject SpellDragged;
+    //public UsingSpellSlot SpellSlot;
 
-
-    public void OnDrag(PointerEventData eventData)
-    {        
-        SpellDragged.GetComponent<Image>().sprite = Sprite;
-        var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        SpellDragged.transform.position = new Vector3(position.x, position.y, -9);        
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        var SpellDescriptionBackground = transform.Find("SpellDescriptionBackground(Clone)");
-        if (SpellDescriptionBackground != null)
-              Destroy(SpellDescriptionBackground);
-
         var spellDescription = Instantiate(SpellDescriptionPrefab);
         spellDescription.transform.SetParent(CanvasTransform);
         spellDescription.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         spellDescription.transform.Find("Button/SpellDataDescriptionFolder").
-            GetComponent<Image>().sprite = Sprite;     
+            GetComponent<Image>().sprite = Sprite;
+
+        SpiritSpellMenu = transform.parent.gameObject;
+        SpiritSpellMenu.SetActive(false);
     }
 
-	public void OnPointerUp(PointerEventData eventData)
-	{
-        if (SpellSlot == null || IsSpellAlreadyUse(SpellSlot))
-		{
-            Destroy(SpellDragged);
-            return;
-		}
+    //public void OnDrag(PointerEventData eventData)
+    //{        
+    //    SpellDragged.GetComponent<Image>().sprite = Sprite;
+    //    var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    SpellDragged.transform.position = new Vector3(position.x, position.y, -9);        
+    //}
 
-        if (SpellSlot.transform.childCount > 0 && SpellSlot.transform.GetChild(0)?.gameObject != null)
-        {
-            Destroy(SpellSlot.transform.GetChild(0).gameObject);
-        }
 
-        var chosenSpell = Instantiate(transform.gameObject, SpellSlot.transform);
-        chosenSpell.transform.name = transform.name;
-        chosenSpell.transform.localPosition = new Vector3(0, 0, 0);
-        chosenSpell.GetComponent<SpellCardManager>().IsFromMenu = false;
 
-        Destroy(SpellDragged);
+ //   public void OnPointerUp(PointerEventData eventData)
+	//{
+ //       if (SpellSlot == null || IsSpellAlreadyUse(SpellSlot))
+	//	{
+ //           Destroy(SpellDragged);
+ //           return;
+	//	}
 
-        var rectTransform = chosenSpell.GetComponent<RectTransform>();
-        rectTransform.sizeDelta = new Vector2(30, 30);
+ //       if (SpellSlot.transform.childCount > 0 && SpellSlot.transform.GetChild(0)?.gameObject != null)
+ //       {
+ //           Destroy(SpellSlot.transform.GetChild(0).gameObject);
+ //       }
 
-        if (!IsFromMenu)
-            Destroy(transform.gameObject);
-    }
+ //       var chosenSpell = Instantiate(transform.gameObject, SpellSlot.transform);
+ //       chosenSpell.transform.name = transform.name;
+ //       chosenSpell.transform.localPosition = new Vector3(0, 0, 0);
+ //       chosenSpell.GetComponent<SpellCardManager>().IsFromMenu = false;
 
-    public bool IsSpellAlreadyUse(UsingSpellSlot spellSlot)
-    {
-        var spellContainer = spellSlot.transform.parent;
-        var alreadyUsedSprites = new List<Sprite>();
+ //       Destroy(SpellDragged);
 
-        for (var i = 0; i < 3; i++)
-        {
-            var slot = spellContainer.transform.Find($"Slot{i + 1}");
+ //       var rectTransform = chosenSpell.GetComponent<RectTransform>();
+ //       rectTransform.sizeDelta = new Vector2(30, 30);
 
-            if (slot.transform.gameObject == transform.parent.gameObject)
-                continue;
+ //       if (!IsFromMenu)
+ //           Destroy(transform.gameObject);
+ //   }
 
-            var spellUsed = slot.transform.Find("SpellPrefab(Clone)");
+ //   public bool IsSpellAlreadyUse(UsingSpellSlot spellSlot)
+ //   {
+ //       var spellContainer = spellSlot.transform.parent;
+ //       var alreadyUsedSprites = new List<Sprite>();
 
-            if (spellUsed == null)
-                continue;
+ //       for (var i = 0; i < 3; i++)
+ //       {
+ //           var slot = spellContainer.transform.Find($"Slot{i + 1}");
 
-            var spriteUsed = spellUsed.GetComponentInChildren<Image>().sprite;
-            alreadyUsedSprites.Add(spriteUsed);
-        }
+ //           if (slot.transform.gameObject == transform.parent.gameObject)
+ //               continue;
 
-        return alreadyUsedSprites.Contains(SpellDragged.GetComponent<Image>().sprite);
-    }
+ //           var spellUsed = slot.transform.Find("SpellPrefab(Clone)");
+
+ //           if (spellUsed == null)
+ //               continue;
+
+ //           var spriteUsed = spellUsed.GetComponentInChildren<Image>().sprite;
+ //           alreadyUsedSprites.Add(spriteUsed);
+ //       }
+
+ //       return alreadyUsedSprites.Contains(SpellDragged.GetComponent<Image>().sprite);
+ //   }
     
 }
 

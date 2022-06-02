@@ -28,7 +28,7 @@ public class SpiritsMointainGameManager : MonoBehaviour
         SpellCardManager manager = spell.GetComponent<SpellCardManager>();
         manager.Sprite = spellScriptableObject.Sprite;
         manager.CanvasTransform = CanvasTransform;
-        manager.IsFromMenu = true;
+        //manager.IsFromMenu = true;
 
         return spell;
     }

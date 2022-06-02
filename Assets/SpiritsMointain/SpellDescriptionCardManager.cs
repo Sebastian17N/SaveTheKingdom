@@ -13,11 +13,8 @@ public class SpellDescriptionCardManager : MonoBehaviour, IPointerClickHandler
     public GameObject SpellDescriptionPrefab;
         
     public void OnPointerClick(PointerEventData eventData)
-    {
-        //var SpellDescriptionBackground = 
-        //    transform.Find("SpellDescriptionBackground(Clone)");
-        //if (SpellDescriptionBackground != null)
-            Destroy(transform.parent.transform.parent.gameObject);
+    {        
+       Destroy(transform.parent.transform.parent.gameObject);
 
         var spellDescription = Instantiate(SpellDescriptionPrefab);
         spellDescription.transform.SetParent(
