@@ -9,16 +9,13 @@ public class SpellCardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public SpellScriptableObject SpellScriptableObject;
     public Sprite Sprite;
     public GameObject SpellPrefab;
-
-    GameObject SpellDragged;
-
-    public UsingSpellSlot SpellSlot;
+    public GameObject SpellDescriptionPrefab;
     public Transform CanvasTransform;
 
     public bool IsFromMenu;
+    GameObject SpellDragged;
+    public UsingSpellSlot SpellSlot;
 
-    //SpellDescription
-    public GameObject SpellDescriptionPrefab;
 
     public void OnDrag(PointerEventData eventData)
     {        
