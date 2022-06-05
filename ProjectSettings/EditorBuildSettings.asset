@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Barracks.unity
     guid: 58bc6a0d5e3fac941ae771ad1d7cfa0e
+  - enabled: 1
+    path: Assets/Scenes/FightSummary.unity
+    guid: d3f49c6973d075b46809c516e3a383cb
   m_configObjects: {}

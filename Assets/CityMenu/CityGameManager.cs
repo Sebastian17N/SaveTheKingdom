@@ -14,7 +14,7 @@ public class CityGameManager : MonoBehaviour
     }
     public void SetActive(bool active)
     {        
-        foreach (var item in GetComponentsInChildren<ChangingBuildingsViews>())
+        foreach (var item in GetComponentsInChildren<EscapeButton>())
         {
             item.IsActive = active;
         }

@@ -6,12 +6,32 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Collider2D))]
 public class DeadZone : MonoBehaviour
 {
-    public string LevelName = "Menu";
+    public string SceneName;
+    GameObject Enemy;
+    public float Health;
+    //public bool DidGamerWin = false;
+    FightSummaryGameManager FightSummaryGameManager;
+    private void Start()
+    {
+        FightSummaryGameManager = GetComponent<FightSummaryGameManager>();
+    }
+    void Update()
+    {
+        if (Health <= 0)
+        {
+            //FightSummaryGameManager.DidGamerWin = false;
+            SceneManager.LoadScene(SceneName);            
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyBasic>() == null)
-            return;
+        var enemy = collision.gameObject.GetComponent<EnemyBasic>();
 
-        SceneManager.LoadScene(LevelName);
+        if (enemy != null)
+        {
+            Health -= enemy.AttackDamage;            
+        }   
+
     }
 }
