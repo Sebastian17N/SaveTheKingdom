@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,8 @@ public class FightSummaryGameManager : MonoBehaviour
         
     }
     private void ShowWinLoseImage()
-    {        
+    {
+        DidGamerWin = Convert.ToBoolean(PlayerPrefs.GetInt("DidGamerWin"));
         if(DidGamerWin)
         {
             WinLoseImage.gameObject.GetComponent<SpriteRenderer>().sprite = WinLoseImages[0];
@@ -29,5 +31,6 @@ public class FightSummaryGameManager : MonoBehaviour
             WinLoseImage.gameObject.GetComponent<SpriteRenderer>().sprite = WinLoseImages[1];
             WinLoseImage.transform.position = new Vector3( 0, 0.6f, 0);
         }
+
     }
 }

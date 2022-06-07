@@ -11,6 +11,7 @@ public class DeadZone : MonoBehaviour
     public float Health;
     //public bool DidGamerWin = false;
     FightSummaryGameManager FightSummaryGameManager;
+
     private void Start()
     {
         FightSummaryGameManager = GetComponent<FightSummaryGameManager>();
@@ -19,6 +20,7 @@ public class DeadZone : MonoBehaviour
     {
         if (Health <= 0)
         {
+            PlayerPrefs.SetInt("DidGamerWin", 0);
             //FightSummaryGameManager.DidGamerWin = false;
             SceneManager.LoadScene(SceneName);            
         }
