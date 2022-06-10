@@ -458,7 +458,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1609317023864023314, guid: e2cf9afea40e24242a883eed66a91bc4, type: 3}
       propertyPath: Health
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1609317023864023314, guid: e2cf9afea40e24242a883eed66a91bc4, type: 3}
       propertyPath: LevelName
@@ -467,6 +467,10 @@ PrefabInstance:
     - target: {fileID: 1609317023864023314, guid: e2cf9afea40e24242a883eed66a91bc4, type: 3}
       propertyPath: SceneName
       value: FightSummary
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609317023864023314, guid: e2cf9afea40e24242a883eed66a91bc4, type: 3}
+      propertyPath: BasicHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3146378034907708602, guid: e2cf9afea40e24242a883eed66a91bc4, type: 3}
       propertyPath: m_RootOrder

@@ -7,21 +7,23 @@ using UnityEngine.SceneManagement;
 public class DeadZone : MonoBehaviour
 {
     public string SceneName;
-    GameObject Enemy;
+    //GameObject Enemy;
     public float Health;
+    public float BasicHealth;
     //public bool DidGamerWin = false;
     FightSummaryGameManager FightSummaryGameManager;
 
     private void Start()
     {
         FightSummaryGameManager = GetComponent<FightSummaryGameManager>();
+        PlayerPrefs.SetFloat("BasicHealth", BasicHealth);
     }
     void Update()
     {
         if (Health <= 0)
         {
             PlayerPrefs.SetInt("DidGamerWin", 0);
-            //FightSummaryGameManager.DidGamerWin = false;
+            PlayerPrefs.SetFloat("Health", Health);
             SceneManager.LoadScene(SceneName);            
         }
     }
