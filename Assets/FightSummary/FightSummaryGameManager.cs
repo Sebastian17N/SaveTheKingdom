@@ -9,24 +9,34 @@ public class FightSummaryGameManager : MonoBehaviour
     public bool DidGamerWin = false;
     public GameObject WinLoseImage;
     public Sprite[] WinLoseImages;
+    public GameObject SummaryImages;
+    public float TimeToInactivateSummaryImages;
 
-    //Star Rating System
+   [Header("Star Rating System")]    
     public GameObject[] AchievedStars;
     public Sprite StarGold;
     public Sprite StarGrey;
     public float BasicHealth;
     public float Health;
+   
+    [Header("Chest")]
+    public GameObject Chest;
+    public float TimeToActivateChest;
 
-    //Activate Buttons
+    [Header("Activate Buttons")]   
     public Button[] Buttons;
     public float TimeActivate;
 
     void Start()
     {
+        Chest.SetActive(false);
+        IterateButtons(false);
         ShowWinLoseImage();
         StarRatingSystem();
-        IterateButtons(false);
+        StartCoroutine(InActivateSummaryImages());
         StartCoroutine(ActivateButton());
+        StartCoroutine(ActivateChest());   
+        
     }
 
     void Update()
@@ -43,7 +53,7 @@ public class FightSummaryGameManager : MonoBehaviour
         else
         {
             WinLoseImage.gameObject.GetComponent<SpriteRenderer>().sprite = WinLoseImages[1];
-            WinLoseImage.transform.position = new Vector3( 0, 0.6f, 0);
+            //WinLoseImage.transform.position = new Vector3( 0, 0.6f, 0);
         }
 
     }
@@ -85,11 +95,21 @@ public class FightSummaryGameManager : MonoBehaviour
         yield return new WaitForSeconds(TimeActivate);
         IterateButtons(true);
     }
-    private void IterateButtons(bool ativate)
+    IEnumerator ActivateChest()
+    {
+        yield return new WaitForSeconds(TimeToActivateChest);
+        Chest.SetActive(true);
+    }
+    IEnumerator InActivateSummaryImages()
+    {
+        yield return new WaitForSeconds(TimeToInactivateSummaryImages);
+        SummaryImages.SetActive(false);
+    }
+    private void IterateButtons(bool activate)
     {
         foreach (var item in Buttons)
         {
-            item.gameObject.SetActive(ativate);
+            item.gameObject.SetActive(activate);
         }
     }
 }

@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [Header("GameRuntime")]
     public int NumberOfEnemiesLeft;
     string LevelName;
+    public float Health;
+    public float BasicHealth;
 
 
     private void Start()
@@ -103,7 +105,9 @@ public class GameManager : MonoBehaviour
             if (NumberOfEnemiesLeft <= 0)
 			{
                 PlayerPrefs.SetInt(LevelName + "_finished", 1);
-                SceneManager.LoadScene("CampaignMap");
+                PlayerPrefs.SetInt("DidGamerWin", 1);
+                PlayerPrefs.SetFloat("Health", Health);
+                SceneManager.LoadScene("FightSummary");
                 break;
 			}
 
