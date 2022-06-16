@@ -111,5 +111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7d8ef97a40f264cae916b46c4878c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AwarsSlotTransform: {fileID: 0}
-  Speed: 50
+  Speed: 100

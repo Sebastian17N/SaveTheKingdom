@@ -60,8 +60,8 @@ public class FightSummaryGameManager : MonoBehaviour
 
     private void StarRatingSystem()
     {
-        //BasicHealth = PlayerPrefs.GetFloat("BasicHealth");
-        //Health = PlayerPrefs.GetFloat("Health");
+        BasicHealth = PlayerPrefs.GetFloat("BasicHealth");
+        Health = PlayerPrefs.GetFloat("Health");
 
         var DeadZoneHealthpercentage =
             float.Parse(Health.ToString()) / float.Parse(BasicHealth.ToString());

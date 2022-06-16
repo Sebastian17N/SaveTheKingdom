@@ -8,7 +8,7 @@ public class DeadZone : MonoBehaviour
 {
     public string SceneName;
     //GameObject Enemy;
-    public float Health;
+    public float Health { get; set; }
     public float BasicHealth;
     //public bool DidGamerWin = false;
 
@@ -18,10 +18,10 @@ public class DeadZone : MonoBehaviour
     }
     void Update()
     {
+        PlayerPrefs.SetFloat("Health", Health);
         if (Health <= 0)
         {
             PlayerPrefs.SetInt("DidGamerWin", 0);
-            PlayerPrefs.SetFloat("Health", Health);
             SceneManager.LoadScene(SceneName);            
         }
     }
@@ -32,7 +32,9 @@ public class DeadZone : MonoBehaviour
 
         if (enemy != null)
         {
-            Health -= enemy.AttackDamage;            
+            Health -= enemy.AttackDamage;
+            FindObjectOfType<GameManager>().NumberOfEnemiesLeft--;
+            Destroy(enemy.gameObject);
         }   
 
     }
