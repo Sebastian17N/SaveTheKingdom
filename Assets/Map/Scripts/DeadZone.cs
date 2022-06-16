@@ -8,7 +8,18 @@ public class DeadZone : MonoBehaviour
 {
     public string SceneName;
     //GameObject Enemy;
-    public float Health { get; set; }
+
+    private float _health;
+    public float Health 
+    {
+        get => _health; 
+        set
+		{
+            _health = value;
+            PlayerPrefs.SetFloat("Health", Health);
+        }
+    }
+    
     public float BasicHealth;
     //public bool DidGamerWin = false;
 
@@ -18,7 +29,6 @@ public class DeadZone : MonoBehaviour
     }
     void Update()
     {
-        PlayerPrefs.SetFloat("Health", Health);
         if (Health <= 0)
         {
             PlayerPrefs.SetInt("DidGamerWin", 0);
