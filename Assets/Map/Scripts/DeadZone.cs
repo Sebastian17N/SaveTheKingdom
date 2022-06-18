@@ -25,6 +25,7 @@ public class DeadZone : MonoBehaviour
 
     private void Start()
     {
+        Health = BasicHealth;
         PlayerPrefs.SetFloat("BasicHealth", BasicHealth);
     }
     void Update()

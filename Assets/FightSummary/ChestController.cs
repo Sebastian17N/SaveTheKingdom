@@ -4,36 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ChestController : MonoBehaviour
-{
+{   
     Animator animator;
     public GameObject Award;
     public Button ChestButton;
+    public Sprite[] ChestBrown;
     void Start()
     {
         animator = GetComponent<Animator>();
+        //foreach (var item in ChestBrown)
+        //{
+        //    animator.GetComponent<Image>().sprite = item;
+        //}
         ChestButton.onClick.AddListener(PlayerClickOnChest);
     }
 
     void Update()
     {
         
-    }
-    //private void OnMouseDown()
-    //{
-    //    animator.SetTrigger("PlayerClick");
-    //    var award = StartCoroutine(ActivateAwards());
-
-        
-    //}
-    private void PlayerClickOnChest()
+    }    
+    public void PlayerClickOnChest()
     {
-        animator.SetTrigger("PlayerClick");
-        var award = StartCoroutine(ActivateAwards());
+        animator.SetTrigger("PlayerClick");        
+        StartCoroutine(ActivateAwards());
+        GetComponent<FightSummaryGameManager>().ActivateButton();
     }
     IEnumerator ActivateAwards()
     {
         yield return new WaitForSeconds(2);
         var award = Instantiate(Award, transform.position, Quaternion.identity);
-        award.transform.SetParent(transform);
+        award.transform.SetParent(transform);        
     }
 }

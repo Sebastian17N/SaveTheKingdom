@@ -1,36 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Award : MonoBehaviour
 {
     protected float Animation;
-    //public Transform AwarsSlotTransform;
     public float Speed;
+    public int Coins = 0;
+
     void Start()
     {
         
     }
 
-    void Update()
+    void Update()    
     {
         ShowAwards();
+        if (transform.parent == GameObject.Find("AwardsSlot").transform)
+        {
+            ShowCoinsAmount();
+        }
 
     }
     void ShowAwards()
-    {      
-        
-        var awarsSlot = GameObject.Find("AwarsSlot");
+    {    
+        var awarsSlot = GameObject.Find("AwardsSlot");
+
+        if (transform.parent == awarsSlot.transform)
+            return;
+
+        if (Vector2.Distance(awarsSlot.transform.position, transform.position) < 10f)
+        {
+            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            this.transform.SetParent(awarsSlot.transform);
+
+            return;
+        }
 
         var destination = awarsSlot.transform.position - this.transform.position;
         GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;
-            
-               
-
-        this.transform.SetParent(awarsSlot.transform);
-        if (this.transform.position == awarsSlot.transform.position)
-        {
-            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
+              
+    }
+    public void ShowCoinsAmount()
+    {
+        GetComponentInChildren<TMP_Text>().text = Coins.ToString();
     }
 }

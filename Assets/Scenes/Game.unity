@@ -344,6 +344,7 @@ MonoBehaviour:
   CardHolderTransform: {fileID: 1419255672}
   BackgroundTransform: {fileID: 1728050710}
   NumberOfEnemiesLeft: 0
+  Health: 10
 --- !u!4 &297398708
 Transform:
   m_ObjectHideFlags: 0

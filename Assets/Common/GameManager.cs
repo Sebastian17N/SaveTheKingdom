@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public int NumberOfEnemiesLeft;
     string LevelName;
     public float Health;
-    public float BasicHealth;
+    //public float BasicHealth;
 
 
     private void Start()
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 			{
                 PlayerPrefs.SetInt(LevelName + "_finished", 1);
                 PlayerPrefs.SetInt("DidGamerWin", 1);
-                PlayerPrefs.SetFloat("Health", Health);
+                //PlayerPrefs.SetFloat("Health", Health);
                 SceneManager.LoadScene("FightSummary");
                 break;
 			}

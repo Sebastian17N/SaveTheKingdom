@@ -33,10 +33,9 @@ public class FightSummaryGameManager : MonoBehaviour
         IterateButtons(false);
         ShowWinLoseImage();
         StarRatingSystem();
-        StartCoroutine(InActivateSummaryImages());
-        StartCoroutine(ActivateButton());
-        StartCoroutine(ActivateChest());   
-        
+        StartCoroutine(InActivateSummaryImages());        
+        StartCoroutine(ActivateChest());
+        //ActivateButton();
     }
 
     void Update()
@@ -89,23 +88,23 @@ public class FightSummaryGameManager : MonoBehaviour
             AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
             AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
         }
-    }
-    IEnumerator ActivateButton()
-    {
-        yield return new WaitForSeconds(TimeActivate);
-        IterateButtons(true);
-    }
+    }    
     IEnumerator ActivateChest()
     {
         yield return new WaitForSeconds(TimeToActivateChest);
         Chest.SetActive(true);
+    }
+    public void ActivateButton()
+    {
+        //yield return new WaitForSeconds(TimeActivate);
+        IterateButtons(true);
     }
     IEnumerator InActivateSummaryImages()
     {
         yield return new WaitForSeconds(TimeToInactivateSummaryImages);
         SummaryImages.SetActive(false);
     }
-    private void IterateButtons(bool activate)
+    public void IterateButtons(bool activate)
     {
         foreach (var item in Buttons)
         {

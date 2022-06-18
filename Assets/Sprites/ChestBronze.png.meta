@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,7 +116,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ChestBronze_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 238
+        width: 121
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50ac34b3c788c246a561d0dc3590045
+      internalID: -2104435912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChestBronze_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 238
+        width: 121
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b008e68b7e7c64da889c9c2994e3eb
+      internalID: 415545239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChestBronze_2
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 238
+        width: 121
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541ed5f8d43ec0344828ca786e0bf7cb
+      internalID: 1049212574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChestBronze_3
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 40
+        width: 121
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4bb4e062c23de0438e9bbe4ee6eb51f
+      internalID: 1862215471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChestBronze_4
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 40
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc26044082ccb04eabf9a7794f2e0b2
+      internalID: -1554131606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChestBronze_5
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 40
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63185ad7532bc8e479eb3e876d84620d
+      internalID: -1292660498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -127,7 +253,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ChestBronze_4: -1554131606
+      ChestBronze_1: 415545239
+      ChestBronze_2: 1049212574
+      ChestBronze_3: 1862215471
+      ChestBronze_5: -1292660498
+      ChestBronze_0: -2104435912
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
