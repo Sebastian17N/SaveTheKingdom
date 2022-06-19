@@ -27,12 +27,16 @@ public class ChestController : MonoBehaviour
     {
         animator.SetTrigger("PlayerClick");        
         StartCoroutine(ActivateAwards());
-        GetComponent<FightSummaryGameManager>().ActivateButton();
+        
     }
     IEnumerator ActivateAwards()
     {
         yield return new WaitForSeconds(2);
         var award = Instantiate(Award, transform.position, Quaternion.identity);
         award.transform.SetParent(transform);        
+    }
+    public void ActivateButtons()
+    {
+        GetComponent<FightSummaryGameManager>().ActivateButton();
     }
 }

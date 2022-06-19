@@ -45,5 +45,10 @@ public class Award : MonoBehaviour
     public void ShowCoinsAmount()
     {
         GetComponentInChildren<TMP_Text>().text = Coins.ToString();
+        FindObjectOfType<CoinCounterText>().IncrementCoins();
+    }
+    void SaveCoins()
+    {
+        PlayerPrefs.SetInt("coins", Coins);
     }
 }
