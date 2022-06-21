@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField]
-    private Camera cameraMain;
-    [SerializeField]
-    private float minCamSize;
-    [SerializeField]
-    private float maxCamSize;
+    [SerializeField] private Camera cameraMain;
+    [SerializeField] private float minCamSize;
+    [SerializeField] private float maxCamSize;
     private Vector3 frameOrigin;
 
     public SpriteRenderer mapRenderer;
