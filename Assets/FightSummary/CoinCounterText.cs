@@ -8,27 +8,15 @@ public class CoinCounterText : MonoBehaviour
     public int CoinsNumber;
     void Start()
     {
-        RefreshText();        
-    }
-
-    void Update()
-    {
-        IncrementCoins();
+        CoinsNumber = PlayerPrefs.GetInt("coins");
+        GetComponent<TMP_Text>().text = CoinsNumber.ToString();
     }
     
-    public  void IncrementCoins()
+    public  void IncrementCoins(int coinsToAdd)
     {
-        
-        RefreshText();
-        ReadCoinsNumber();
+        CoinsNumber = PlayerPrefs.GetInt("coins") + coinsToAdd;
+        PlayerPrefs.SetInt("coins", CoinsNumber);
+        GetComponent<TMP_Text>().text = CoinsNumber.ToString();        
     }
-    void RefreshText()
-    {
-        GetComponent<TMP_Text>().text = CoinsNumber.ToString();
-        ReadCoinsNumber();
-    }
-    void ReadCoinsNumber()
-    {
-        PlayerPrefs.GetInt("coins");
-    }
+    
 }

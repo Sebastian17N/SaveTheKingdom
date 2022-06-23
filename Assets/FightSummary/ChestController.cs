@@ -9,14 +9,17 @@ public class ChestController : MonoBehaviour
     public GameObject Award;
     public Button ChestButton;
     public Sprite[] ChestBrown;
+    private bool IsChestCliked = false;
+    Animation ChestAnimation;
     void Start()
     {
         animator = GetComponent<Animator>();
+        //ChestAnimation = GetComponent<Animation>();        
         //foreach (var item in ChestBrown)
         //{
-        //    animator.GetComponent<Image>().sprite = item;
+        //    ChestAnimation.GetComponent<Image>().sprite = item;
         //}
-        ChestButton.onClick.AddListener(PlayerClickOnChest);
+
     }
 
     void Update()
@@ -25,9 +28,12 @@ public class ChestController : MonoBehaviour
     }    
     public void PlayerClickOnChest()
     {
-        animator.SetTrigger("PlayerClick");        
-        StartCoroutine(ActivateAwards());
-        
+        if (!IsChestCliked)
+        {
+            animator.SetTrigger("PlayerClick");
+            StartCoroutine(ActivateAwards());
+            IsChestCliked = true;
+        }
     }
     IEnumerator ActivateAwards()
     {
@@ -35,8 +41,6 @@ public class ChestController : MonoBehaviour
         var award = Instantiate(Award, transform.position, Quaternion.identity);
         award.transform.SetParent(transform);        
     }
-    public void ActivateButtons()
-    {
-        GetComponent<FightSummaryGameManager>().ActivateButton();
-    }
+    
+    
 }

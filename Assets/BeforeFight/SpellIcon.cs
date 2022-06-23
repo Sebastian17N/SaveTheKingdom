@@ -63,8 +63,6 @@ public class SpellIcon : MonoBehaviour,
             var spellEmptySlots = GameObject.Find("SpellEmptySlot").transform.position;
             var destination = spellEmptySlots - animObject.transform.position;
             animObject.GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;
-            //jak zniszczyæ clona gdy osi¹gnie okreœlony vector/punkt/miejsce
-            //dodaæ colider do slota i odpaliæ destroy?
             Destroy(animObject, 0.25f);
 
             PutNewSpellIntoSlot();

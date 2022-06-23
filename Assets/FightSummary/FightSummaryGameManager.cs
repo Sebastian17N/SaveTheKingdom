@@ -95,8 +95,7 @@ public class FightSummaryGameManager : MonoBehaviour
         Chest.SetActive(true);
     }
     public void ActivateButton()
-    {
-        //yield return new WaitForSeconds(TimeActivate);
+    {        
         IterateButtons(true);
     }
     IEnumerator InActivateSummaryImages()

@@ -13,7 +13,7 @@ public class CameraMovement : MonoBehaviour
     public SpriteRenderer mapRenderer;
     private float mapMinX, mapMaxX, mapMinY, mapMaxY;
 
-    private void Awake()
+    private void Awake()    
     {
         mapMinX = mapRenderer.transform.position.x - mapRenderer.bounds.size.x /2;
         mapMaxX = mapRenderer.transform.position.x + mapRenderer.bounds.size.x /2;

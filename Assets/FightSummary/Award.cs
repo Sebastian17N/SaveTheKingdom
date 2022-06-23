@@ -5,23 +5,18 @@ using UnityEngine;
 
 public class Award : MonoBehaviour
 {
-    protected float Animation;
+    Animator animator;
     public float Speed;
+    public float GettingAwarsSpeed;
     public int Coins = 0;
-
-    void Start()
+    private void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        animator.enabled = false;
     }
-
     void Update()    
     {
-        ShowAwards();
-        if (transform.parent == GameObject.Find("AwardsSlot").transform)
-        {
-            ShowCoinsAmount();
-        }
-
+        ShowAwards();   
     }
     void ShowAwards()
     {    
@@ -34,21 +29,45 @@ public class Award : MonoBehaviour
         {
             this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.transform.SetParent(awarsSlot.transform);
-
+            ShowCoinsAmount();
             return;
         }
 
         var destination = awarsSlot.transform.position - this.transform.position;
-        GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;
-              
+        GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;              
     }
     public void ShowCoinsAmount()
     {
         GetComponentInChildren<TMP_Text>().text = Coins.ToString();
-        FindObjectOfType<CoinCounterText>().IncrementCoins();
+        FindObjectOfType<CoinCounterText>().IncrementCoins(Coins);
+
     }
-    void SaveCoins()
+    public void GettingAwars()
     {
-        PlayerPrefs.SetInt("coins", Coins);
+        var coinCounter = GameObject.Find("CoinCounter");
+
+        if (transform.parent == coinCounter.transform)
+            return;
+
+        if (Vector2.Distance(coinCounter.transform.position, transform.position) < 10f)
+        {
+            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            this.transform.SetParent(coinCounter.transform);            
+            return;
+        }
+
+        var destination = coinCounter.transform.position - this.transform.position;
+        GetComponent<Rigidbody2D>().velocity = destination.normalized * GettingAwarsSpeed;
+
+        animator.enabled = true;
+        Destroy(gameObject, 2);
+    }    
+    public void DestroyAward()
+    {
+        Destroy(gameObject);
+    }
+    public void ActivateButtons()
+    {
+        FindObjectOfType<FightSummaryGameManager>().ActivateButton();
     }
 }
