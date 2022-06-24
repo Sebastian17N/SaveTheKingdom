@@ -26,7 +26,7 @@ public class BuildingMenu : MonoBehaviour
     private void OpenMenu()
     {
         Menu = Instantiate(PrefabMenu, transform);
-        transform.parent.GetComponent<CityGameManager>().SetActive(false);
+        //transform.parent.GetComponent<CityGameManager>().SetActive(false);
 
         UnitCards = new List<GameObject>();
 

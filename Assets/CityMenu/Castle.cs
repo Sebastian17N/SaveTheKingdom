@@ -29,7 +29,7 @@ public class Castle : MonoBehaviour
     {
         _menu = Instantiate(PrefabMenu, transform.parent.transform);
         
-        transform.parent.GetComponent<CityGameManager>().SetActive(false);
+        //transform.parent.GetComponent<CityGameManager>().SetActive(false);
         
         // Load all unitFolders.
         foreach (UnitScriptableObject scriptableObject in ScriptableObjects)

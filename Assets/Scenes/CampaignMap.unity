@@ -190,6 +190,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1427312199}
     m_Modifications:
+    - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
+      propertyPath: Health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
+      propertyPath: StageUnlock
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 999026951483677426, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: m_Name
       value: BattleButton (3)
@@ -319,8 +327,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1427312199}
     m_Modifications:
     - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
+      propertyPath: Health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: LevelName
       value: level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
+      propertyPath: StageUnlock
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 999026951483677426, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: m_Name
@@ -2110,6 +2126,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1427312199}
     m_Modifications:
+    - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
+      propertyPath: StageUnlock
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 999026951483677426, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: m_Name
       value: BattleButton (2)
@@ -2312,6 +2332,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1427312199}
     m_Modifications:
+    - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
+      propertyPath: Health
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: LevelName
       value: level_1

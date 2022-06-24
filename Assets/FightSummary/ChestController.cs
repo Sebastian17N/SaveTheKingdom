@@ -8,18 +8,22 @@ public class ChestController : MonoBehaviour
     Animator animator;
     public GameObject Award;
     public Button ChestButton;
-    public Sprite[] ChestBrown;
+    
     private bool IsChestCliked = false;
-    Animation ChestAnimation;
+    //Animation ChestAnimation;
+    //private List<Sprite> _chestBrown;
+    //void awake() => _chestBrown = GetComponent<Sprite>().ToList();
+    //AnimatorOverrideController
+
     void Start()
     {
         animator = GetComponent<Animator>();
-        //ChestAnimation = GetComponent<Animation>();        
+
+        //ChestAnimation = GetComponent<Animation>();
         //foreach (var item in ChestBrown)
         //{
         //    ChestAnimation.GetComponent<Image>().sprite = item;
         //}
-
     }
 
     void Update()

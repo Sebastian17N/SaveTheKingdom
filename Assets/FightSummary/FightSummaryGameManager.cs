@@ -54,7 +54,6 @@ public class FightSummaryGameManager : MonoBehaviour
             WinLoseImage.gameObject.GetComponent<SpriteRenderer>().sprite = WinLoseImages[1];
             //WinLoseImage.transform.position = new Vector3( 0, 0.6f, 0);
         }
-
     }
 
     private void StarRatingSystem()

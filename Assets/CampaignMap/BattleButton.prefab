@@ -134,9 +134,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38ced52ae7b4dc4cbf3901d48201843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneGoIn: Game
-  StageUnlock: 0
+  SceneGoIn: BeforeTheBattle
   LevelName: 
+  AchievedStars:
+  - {fileID: 999026951691688828}
+  - {fileID: 999026952657169413}
+  - {fileID: 999026951772408048}
+  StarGold: {fileID: -241351242, guid: b0c45600b0daaa746a389e198fd0ea75, type: 3}
+  StarGrey: {fileID: -1162955794, guid: b0c45600b0daaa746a389e198fd0ea75, type: 3}
+  BasicHealth: 10
+  Health: 10
 --- !u!61 &999026951483677327
 BoxCollider2D:
   m_ObjectHideFlags: 0
