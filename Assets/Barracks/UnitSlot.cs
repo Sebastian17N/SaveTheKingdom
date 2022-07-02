@@ -16,7 +16,6 @@ public class UnitSlot : MonoBehaviour
             CreateUnitFolder(scriptableObject);
         }
     }
-
     private void CreateUnitFolder(UnitScriptableObject scriptableObject)
     {
         GameObject unit = Instantiate(PrefabUnitCard);
@@ -28,9 +27,7 @@ public class UnitSlot : MonoBehaviour
         var healthObject = unit.transform.Find("Health");
         healthObject.transform.Find("HealthNumber").GetComponent<TMP_Text>().text = $"Health: {scriptableObject.Health}";
      
-        //var Icon = scriptableObject.Icon;
-        //var Damege = scriptableObject.BulletType.Damage;
+        //var Icon = scriptableObject.Icon;        
         //unit.GetComponentInChildren<RawImage>().texture = Icon;
-
     }
 }

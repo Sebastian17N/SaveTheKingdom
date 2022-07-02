@@ -17,6 +17,7 @@ public class UnitScriptableObject : ScriptableObject
     
     public float AttackSpeed;
     public float AttackDamage;
-
     public float Cooldown;
+
+    public string[] Origin = new string[] {"L", "H", "G" };
 }

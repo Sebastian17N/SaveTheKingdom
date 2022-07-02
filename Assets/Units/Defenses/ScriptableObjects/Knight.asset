@@ -22,5 +22,5 @@ MonoBehaviour:
     Sprite: {fileID: 0}
     Speed: 0
   AttackSpeed: 1
-  AttackDamage: 0
+  AttackDamage: 5
   Cooldown: 4

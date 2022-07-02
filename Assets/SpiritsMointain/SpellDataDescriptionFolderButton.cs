@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SpellDataDescriptionFolderButton : MonoBehaviour
-{
-    //public SpellScriptableObject SpellScriptableObject;
-    //public SpellCardManager SpellCardManager;
+{    
     public SpellScriptableObject[] ScriptableObjects;    
     public Sprite Sprite;
 
@@ -19,7 +17,6 @@ public class SpellDataDescriptionFolderButton : MonoBehaviour
     }
     private void CreateSpellDataDescriptionFolder(SpellScriptableObject spellScriptableObject)
     {
-
         var SpellFolder = transform.Find("SpellPrefab(Clone)");
         SpellFolder.GetComponentInChildren<Image>().sprite = spellScriptableObject.Sprite;
     }
