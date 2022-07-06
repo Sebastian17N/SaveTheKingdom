@@ -34,8 +34,7 @@ public class FightSummaryGameManager : MonoBehaviour
         ShowWinLoseImage();
         StarRatingSystem();
         StartCoroutine(InActivateSummaryImages());        
-        StartCoroutine(ActivateChest());
-        //ActivateButton();
+        StartCoroutine(ActivateChest());        
     }
 
     void Update()

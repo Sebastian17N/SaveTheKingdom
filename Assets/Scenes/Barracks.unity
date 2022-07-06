@@ -246,6 +246,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &309239528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309239530}
+  - component: {fileID: 309239529}
+  m_Layer: 0
+  m_Name: BarracksGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &309239529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309239528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181977e38b51a9b48bb2e7b35c9a1bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabUnitCard: {fileID: 6836477498226288691, guid: 79e7e4baab905874a968ae7236aacf79, type: 3}
+  ScriptableObjects:
+  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
+  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
+  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
+  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
+  LaganatUnitSlot: {fileID: 1102643842}
+  UpdatePanelPrefab: {fileID: 4882444994131764132, guid: 4ecabc4dc694a8246a323a2dd1d61248, type: 3}
+  DamageNumber: {fileID: 0}
+  DamageUpgradeNumber: {fileID: 0}
+  HealthNumber: {fileID: 0}
+  HealthUpgradeNumber: {fileID: 0}
+  ShardsHaved: {fileID: 0}
+  ShardsNeeded: {fileID: 0}
+  CoinsHaved: {fileID: 0}
+  CoinsNeeded: {fileID: 0}
+--- !u!4 &309239530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309239528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 208.19995, y: 95.743385, z: 4.0130167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &686818473
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +549,6 @@ GameObject:
   - component: {fileID: 1102643847}
   - component: {fileID: 1102643846}
   - component: {fileID: 1102643845}
-  - component: {fileID: 1102643844}
   - component: {fileID: 1102643843}
   m_Layer: 5
   m_Name: LaganatUnitSlot
@@ -542,22 +601,6 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 40}
   m_Constraint: 1
   m_ConstraintCount: 1
---- !u!114 &1102643844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102643841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fae4ff8115799f468c1e876e4b5a7f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrefabUnitCard: {fileID: 6836477498226288691, guid: 79e7e4baab905874a968ae7236aacf79, type: 3}
-  ScriptableObjects:
-  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
-  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
 --- !u!114 &1102643845
 MonoBehaviour:
   m_ObjectHideFlags: 0

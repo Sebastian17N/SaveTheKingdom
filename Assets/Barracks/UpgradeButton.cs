@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
-{
-    public SpellScriptableObject SpellScriptableObject;
+{   
     public GameObject UpdatePanelPrefab;
     
     public void CreateUpdatePanel()
