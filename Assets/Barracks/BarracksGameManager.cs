@@ -12,6 +12,8 @@ public class BarracksGameManager : MonoBehaviour
     public Transform LaganatUnitSlot;
 
     //UpdatePanel
+    private int selectedUnit;
+
     public GameObject UpdatePanelPrefab;
     public TMP_Text DamageNumber;
     public TMP_Text DamageUpgradeNumber;
@@ -58,10 +60,18 @@ public class BarracksGameManager : MonoBehaviour
 
     public void NextUnit()
     {
-
+        selectedUnit++;
+        if(selectedUnit == ScriptableObjects.Length)
+        {
+            selectedUnit = 0;
+        }
     }
     public void PreviousUnit()
     {
-
+        selectedUnit--;
+        if (selectedUnit < 0)
+        {
+            selectedUnit = ScriptableObjects.Length -1;
+        }
     }
 }
