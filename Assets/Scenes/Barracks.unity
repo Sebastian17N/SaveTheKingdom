@@ -279,18 +279,9 @@ MonoBehaviour:
   ScriptableObjects:
   - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
-  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
-  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
+  - {fileID: 11400000, guid: 1d8fbd2e85d167c41b98b90e1e019c02, type: 2}
   LaganatUnitSlot: {fileID: 1102643842}
   UpdatePanelPrefab: {fileID: 4882444994131764132, guid: 4ecabc4dc694a8246a323a2dd1d61248, type: 3}
-  DamageNumber: {fileID: 0}
-  DamageUpgradeNumber: {fileID: 0}
-  HealthNumber: {fileID: 0}
-  HealthUpgradeNumber: {fileID: 0}
-  ShardsHaved: {fileID: 0}
-  ShardsNeeded: {fileID: 0}
-  CoinsHaved: {fileID: 0}
-  CoinsNeeded: {fileID: 0}
 --- !u!4 &309239530
 Transform:
   m_ObjectHideFlags: 0

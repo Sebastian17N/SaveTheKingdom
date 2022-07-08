@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1674206858770346963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   IsUnitChecked: 0
   CanvasTransform: {fileID: 0}
   IsInfoVisible: 0
-  Speed: 700
+  Speed: 500
 --- !u!50 &6166951932282122776
 Rigidbody2D:
   serializedVersion: 4
