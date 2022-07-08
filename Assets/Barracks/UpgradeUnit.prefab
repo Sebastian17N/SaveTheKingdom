@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 8702499234413305815}
   - component: {fileID: 6068020049409642880}
   m_Layer: 5
-  m_Name: CoinsNeededText
+  m_Name: CoinsHavedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 8978233193957312885}
   - component: {fileID: 2615211065826076458}
   - component: {fileID: 804713282239538054}
+  - component: {fileID: 5535815036873075111}
   m_Layer: 5
   m_Name: PreviousUnitButton
   m_TagString: Untagged
@@ -681,7 +682,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2615211065826076458}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5535815036873075111}
+        m_TargetAssemblyTypeName: NextPreviousButton, Assembly-CSharp
+        m_MethodName: PreviousUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5535815036873075111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054818854685504089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8664d23c23fb54f9c00d6cd50c24dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1266456478130318703
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +854,7 @@ GameObject:
   - component: {fileID: 2136681296142833465}
   - component: {fileID: 1239753129102035437}
   m_Layer: 5
-  m_Name: CoinsOwnedText
+  m_Name: CoinsNeededText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,8 +1007,8 @@ RectTransform:
   m_LocalScale: {x: 1.6732798, y: 1.4873599, z: 0.74367994}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 409413426697631556}
   - {fileID: 4662622967373619685}
+  - {fileID: 409413426697631556}
   m_Father: {fileID: 630534613895907801}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1967,6 +1992,7 @@ GameObject:
   - component: {fileID: 8128476482180589058}
   - component: {fileID: 4711506373553687636}
   - component: {fileID: 672619040491992554}
+  - component: {fileID: 2153598503129183351}
   m_Layer: 5
   m_Name: NextUnitButton
   m_TagString: Untagged
@@ -2075,7 +2101,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4711506373553687636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2153598503129183351}
+        m_TargetAssemblyTypeName: NextPreviousButton, Assembly-CSharp
+        m_MethodName: NextUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2153598503129183351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5773828732251064408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8664d23c23fb54f9c00d6cd50c24dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5936603869747127596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,7 +2836,7 @@ GameObject:
   - component: {fileID: 8939333603233602768}
   - component: {fileID: 2694442985308509354}
   m_Layer: 5
-  m_Name: 'CoinIcon '
+  m_Name: CoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
