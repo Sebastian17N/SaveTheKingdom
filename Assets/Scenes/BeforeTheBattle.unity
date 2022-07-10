@@ -968,7 +968,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
   - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
-  UnitAvailableToChosePrefab: {fileID: 0}
+  UnitAvailableToChosePrefab: {fileID: 6836477498226288691, guid: e8721cac4f9f82243a38184347afce61, type: 3}
   UnitCardUnitTransform: {fileID: 1252807436}
   SpellDataFolders: []
   SpellScriptableObjects:
