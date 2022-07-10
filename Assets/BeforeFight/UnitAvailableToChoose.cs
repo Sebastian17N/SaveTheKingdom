@@ -47,7 +47,8 @@ namespace Assets.BeforeFight
 			{
 				var slot = unitEmptySlots.transform.GetChild(childIndex);
 
-				if (slot.Find("UnitIcon(Clone)") != null)
+				// TODO: Add bool to EmptySlot if is taken.
+				if (slot.Find("UnitChosen(Clone)") != null)
 					continue;
 
 				foundSlot = slot.gameObject;
