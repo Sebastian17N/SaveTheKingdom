@@ -111,11 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6bf6700106dfc42931e759384def7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
-  IsUnitChecked: 0
-  CanvasTransform: {fileID: 0}
-  IsInfoVisible: 0
-  Slot: {fileID: 0}
-  UnitChosenPrefab: {fileID: 6836477498226288691, guid: 842386fe7f492be42ac6ee2583911483, type: 3}
   IsAssignedToSlotAlready: 0
-  Speed: 500
+  Sprite: {fileID: 0}
+  CanvasTransform: {fileID: 0}
+  UnitChosenPrefab: {fileID: 6836477498226288691, guid: 842386fe7f492be42ac6ee2583911483, type: 3}
+  Speed: 1000

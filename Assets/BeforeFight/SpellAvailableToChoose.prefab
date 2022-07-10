@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 7322567097284701393}
   - component: {fileID: 6523600237742426696}
   - component: {fileID: 6456448759389073078}
-  - component: {fileID: 7953033062590997829}
   - component: {fileID: 536301942900414264}
+  - component: {fileID: 6805119536426003987}
   m_Layer: 5
-  m_Name: SpellIcon
+  m_Name: SpellAvailableToChoose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,23 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7953033062590997829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8555467480826931578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 805898e468f771a429c8f13c437d4dd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrefabSpellCard: {fileID: 8555467480826931578}
-  Sprite: {fileID: 0}
-  IsSpellChecked: 0
-  CanvasTransform: {fileID: 0}
-  Speed: 1000
 --- !u!50 &536301942900414264
 Rigidbody2D:
   serializedVersion: 4
@@ -116,3 +99,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6805119536426003987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8555467480826931578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df34cdcfd2ee46a48a1d83dfaa0fd8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAssignedToSlotAlready: 0
+  Sprite: {fileID: 0}
+  CanvasTransform: {fileID: 0}
+  SpellChosenPrefab: {fileID: 8555467480826931578, guid: 28958dd1cb9e7ec4f8fe9cd55207ceaa, type: 3}
+  Speed: 1000

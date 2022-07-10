@@ -10,9 +10,10 @@ namespace Assets.BeforeFight
 
 		public Sprite Sprite;
 		public Transform CanvasTransform;
+		public GameObject UnitChosenPrefab;
+		public float Speed;
 
 		private bool _isAlreadyChosen;
-
 		public bool IsAlreadyChosen
 		{
 			get => _isAlreadyChosen;
@@ -22,10 +23,6 @@ namespace Assets.BeforeFight
 				transform.GetComponent<Image>().color = value ? Color.grey : Color.white;
 			}
 		}
-
-		public GameObject UnitChosenPrefab;
-
-		public float Speed;
 
 		public void OnPointerClick(PointerEventData eventData)
 		{
@@ -52,6 +49,7 @@ namespace Assets.BeforeFight
 
 				foundSlot = slot.gameObject;
 				slot.GetComponent<UsingUnitIconSlot>().IsSlotAvailable = false;
+
 				break;
 			}
 

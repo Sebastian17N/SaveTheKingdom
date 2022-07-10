@@ -14,7 +14,7 @@ public class BeforeBattleUnitGameManager : MonoBehaviour
 
     public List<GameObject> SpellDataFolders;
     public SpellScriptableObject[] SpellScriptableObjects;
-    public GameObject SpellCardPrefab;
+    public GameObject SpellAvailableToChosePrefab;
     public Transform SpellCardUnitTransform;
 
     public Transform CanvasTransform;
@@ -49,12 +49,12 @@ public class BeforeBattleUnitGameManager : MonoBehaviour
 
     private GameObject CreateSpellFolder(SpellScriptableObject spellScriptableObject)
     {
-        GameObject spell = Instantiate(SpellCardPrefab, SpellCardUnitTransform);
+        GameObject spell = Instantiate(SpellAvailableToChosePrefab, SpellCardUnitTransform);
         spell.transform.SetParent(SpellCardUnitTransform);        
         spell.GetComponentInChildren<Image>().sprite = spellScriptableObject.Sprite;
         spell.GetComponentInChildren<Image>().type = Image.Type.Filled;
 
-        SpellIcon manager = spell.GetComponent<SpellIcon>();
+        var manager = spell.GetComponent<SpellAvailableToChoose>();
         manager.Sprite = spellScriptableObject.Sprite;
         manager.CanvasTransform = CanvasTransform;
 

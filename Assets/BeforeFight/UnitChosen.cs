@@ -35,7 +35,7 @@ public class UnitChosen : MonoBehaviour, IPointerClickHandler
 	{
         UnitAvailableToChoose.IsAssignedToSlotAlready = false;
         UnitAvailableToChoose.IsAlreadyChosen = false;
-        Destroy(transform.gameObject, 0.1f);
+        Destroy(transform.gameObject);
 		transform.parent.GetComponent<UsingUnitIconSlot>().IsSlotAvailable = true;
 	}
 }
