@@ -46,12 +46,12 @@ namespace Assets.BeforeFight
 			for (var childIndex = 0; childIndex < unitEmptySlots.transform.childCount; ++childIndex)
 			{
 				var slot = unitEmptySlots.transform.GetChild(childIndex);
-
-				// TODO: Add bool to EmptySlot if is taken.
-				if (slot.Find("UnitChosen(Clone)") != null)
+				
+				if (slot.GetComponent<UsingUnitIconSlot>().IsSlotAvailable == false) 
 					continue;
 
 				foundSlot = slot.gameObject;
+				slot.GetComponent<UsingUnitIconSlot>().IsSlotAvailable = false;
 				break;
 			}
 
@@ -60,7 +60,7 @@ namespace Assets.BeforeFight
 				IsAlreadyChosen = false;
 				return;
 			}
-
+			
 			var animObject = Instantiate(UnitChosenPrefab, CanvasTransform);
 			animObject.name = name;
 			animObject.GetComponent<UnitChosen>().Slot = foundSlot;

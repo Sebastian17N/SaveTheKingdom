@@ -19,7 +19,7 @@ public class UnitChosen : MonoBehaviour, IPointerClickHandler
 		    transform.SetParent(Slot.transform);
 		    GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
 		    GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
-		    GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 30, 0);
+		    GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 20, 0);
 		    GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
 		    _isAssignedToSlotAlready = true;
@@ -36,5 +36,6 @@ public class UnitChosen : MonoBehaviour, IPointerClickHandler
         UnitAvailableToChoose.IsAssignedToSlotAlready = false;
         UnitAvailableToChoose.IsAlreadyChosen = false;
         Destroy(transform.gameObject, 0.1f);
+		transform.parent.GetComponent<UsingUnitIconSlot>().IsSlotAvailable = true;
 	}
 }

@@ -6,7 +6,7 @@ public class UnitIcon : MonoBehaviour, IPointerClickHandler
 {
     public Sprite Sprite;
     public bool IsUnitChecked = false;
-    public Transform CanvasTransform;  
+    public Transform CanvasTransform;
     private GameObject UnitSlot;
     public bool IsAssignedToSlotAlready = false;
     private bool _isAlreadyChosen = false;
