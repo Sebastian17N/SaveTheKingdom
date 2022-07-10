@@ -468,10 +468,10 @@ RectTransform:
   m_Father: {fileID: 927440847}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.18326502, y: 0.54}
-  m_AnchorMax: {x: 0.8296151, y: 0.708}
-  m_AnchoredPosition: {x: 2.5, y: -16}
-  m_SizeDelta: {x: 165, y: 220}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 8, y: 50.5}
+  m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &535168805
 Animator:
@@ -630,10 +630,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805898e468f771a429c8f13c437d4dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabSpellCard: {fileID: 0}
   Sprite: {fileID: 0}
   IsSpellChecked: 0
   CanvasTransform: {fileID: 0}
+  IsAssignedToSlotAlready: 0
   Speed: 0
 --- !u!114 &680380596
 MonoBehaviour:
@@ -968,7 +968,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
   - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
   - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
-  UnitCardPrefab: {fileID: 6836477498226288691, guid: e8721cac4f9f82243a38184347afce61, type: 3}
+  UnitAvailableToChosePrefab: {fileID: 0}
   UnitCardUnitTransform: {fileID: 1252807436}
   SpellDataFolders: []
   SpellScriptableObjects:
@@ -1523,7 +1523,7 @@ MonoBehaviour:
   Sprite: {fileID: 0}
   IsUnitChecked: 0
   CanvasTransform: {fileID: 927440847}
-  IsInfoVisible: 0
+  IsAssignedToSlotAlready: 0
   Speed: 0
 --- !u!114 &1252807443
 MonoBehaviour:
@@ -2010,10 +2010,10 @@ RectTransform:
   m_Father: {fileID: 927440847}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.18326502, y: 0.708}
-  m_AnchorMax: {x: 0.8296151, y: 0.9728507}
-  m_AnchoredPosition: {x: 2.5, y: -0.5}
-  m_SizeDelta: {x: 165, y: 181}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 8, y: 139}
+  m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1497982906
 MonoBehaviour:
@@ -2457,6 +2457,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1497982905}
     m_Modifications:
+    - target: {fileID: 749362448768429132, guid: b40fc9436283c1045b9c4b9451fc6bbc, type: 3}
+      propertyPath: m_Size.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 749362448768429132, guid: b40fc9436283c1045b9c4b9451fc6bbc, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3634817672449952170, guid: b40fc9436283c1045b9c4b9451fc6bbc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

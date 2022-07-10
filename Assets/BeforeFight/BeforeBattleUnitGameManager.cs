@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.BeforeFight;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class BeforeBattleUnitGameManager : MonoBehaviour
 {
     public List<GameObject> UnitDataFolders;
     public UnitScriptableObject[] UnitScriptableObjects;   
-    public GameObject UnitCardPrefab;
+    public GameObject UnitAvailableToChosePrefab;
     public Transform UnitCardUnitTransform;
 
     public List<GameObject> SpellDataFolders;
@@ -34,17 +35,15 @@ public class BeforeBattleUnitGameManager : MonoBehaviour
 
     private GameObject CreateUnitFolder(UnitScriptableObject unitScriptableObject)
     {
-        GameObject unit = Instantiate(UnitCardPrefab, UnitCardUnitTransform);
-        //unit.transform.SetParent(UnitCardUnitTransform);
+        GameObject unit = Instantiate(UnitAvailableToChosePrefab, UnitCardUnitTransform);
         unit.GetComponentInChildren<Image>().sprite = unitScriptableObject.Icon;
         unit.GetComponentInChildren<Image>().sprite = unitScriptableObject.Sprite;
         unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
 
-        UnitIcon manager = unit.GetComponent<UnitIcon>();
+        var manager = unit.GetComponent<UnitAvailableToChoose>();
         manager.Sprite = unitScriptableObject.Sprite;
         manager.CanvasTransform = CanvasTransform;
-        //manager.IsFromMenu = true;
-        
+
         return unit;
     }
 
