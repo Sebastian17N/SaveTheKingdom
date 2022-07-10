@@ -10,7 +10,18 @@ namespace Assets.BeforeFight
 
 		public Sprite Sprite;
 		public Transform CanvasTransform;
-		public bool IsAlreadyChosen;
+
+		private bool _isAlreadyChosen;
+
+		public bool IsAlreadyChosen
+		{
+			get => _isAlreadyChosen;
+			set
+			{
+				_isAlreadyChosen = value;
+				transform.GetComponent<Image>().color = value ? Color.grey : Color.white;
+			}
+		}
 
 		public GameObject UnitChosenPrefab;
 
@@ -28,7 +39,6 @@ namespace Assets.BeforeFight
 		protected void PlaceUnitInFirstEmptySlot()
 		{
 			IsAlreadyChosen = true;
-			transform.GetComponent<Image>().color = Color.grey;
 
 			var unitEmptySlots = GameObject.Find("UnitEmptySlots");
 			GameObject foundSlot = null;
