@@ -1,3 +1,4 @@
+using Assets.Common.JsonModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        var levelFinished = PlayerPrefs.GetInt(LevelName + "_finished", 0) != 0;
+	    var levelFinished = PlayerPrefs.GetInt(LevelName + "_finished", 0) != 0;
         GetComponent<Image>().color = levelFinished ? Color.green : Color.grey;
 
         GetComponentInChildren<TMP_Text>().text = LevelName;
@@ -19,6 +20,5 @@ public class LevelManager : MonoBehaviour
     void ChangeScene()
     {        
         SceneManager.LoadScene("Game");
-        PlayerPrefs.SetString("current_level", LevelName);
     }
 }

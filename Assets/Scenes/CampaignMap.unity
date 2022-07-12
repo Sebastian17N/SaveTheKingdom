@@ -332,11 +332,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: LevelName
-      value: level_2
+      value: Level_2
       objectReference: {fileID: 0}
     - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: StageUnlock
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
+      propertyPath: StarRatingNeededToStartLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 999026951483677426, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: m_Name
@@ -2338,7 +2342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: LevelName
-      value: level_1
+      value: Level_1
       objectReference: {fileID: 0}
     - target: {fileID: 999026951483677326, guid: 0f4f955c2ae6df142860bdc2f6468c07, type: 3}
       propertyPath: StageUnlock

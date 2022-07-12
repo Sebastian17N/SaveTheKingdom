@@ -1,0 +1,9 @@
+{
+  "Id": 1,
+  "LevelAccessibility": 0,
+  "SpriteBackgroundPath": "Level1MapBackground.jpg",
+  "EnemiesMapFileName": "Level_1.txt",
+  "AwardCoins": [ 100, 200, 300 ],
+  "AwardGems": [ 0, 1, 2 ],
+  "AwardShards": [ 0, 0, 1 ]
+}

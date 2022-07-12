@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Assets.Common.JsonModel;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -9,7 +11,7 @@ public class BattleButton : MonoBehaviour
 {
     public string SceneGoIn;
     public string LevelName;
-
+    
     [Header("Star Rating System")]
     public GameObject[] AchievedStars;
     public Sprite StarGold;
@@ -17,32 +19,58 @@ public class BattleButton : MonoBehaviour
     public float BasicHealth;
     public float Health;
 
+    private MapsConfigJsonModel _mapsConfigJsonModel;
+
     private void Start()
     {
-        StarRatingSystem();
+        LoadConfig();
+	    StarRatingSystem();
         ActivateBattleButton();
+    }
+
+    private void LoadConfig()
+    {
+	    if (!File.Exists($"Assets/Map/Configs/{LevelName}.json"))
+		    return;
+
+	    var fileData = File.ReadAllText($"Assets/Map/Configs/{LevelName}.json");
+
+	    _mapsConfigJsonModel = JsonUtility.FromJson<MapsConfigJsonModel>(fileData);
     }
 
     private void ActivateBattleButton()
     {
-        var levelFinished = PlayerPrefs.GetInt(LevelName + "_finished", 0) != 0;
+        var isLevelAvailable = false;
+        switch (LevelName)
+        {
+            case "Level_1":
+	            isLevelAvailable = true;
+	            break;
+            case "":
+	            break;
+            default:
+	            var levelNumber = int.Parse(LevelName.Substring("Level_".Length));
+	            isLevelAvailable = PlayerPrefs.GetInt($"Level_{levelNumber - 1}_finished", 0) == 1;
+	            break;
+        }
+
         var boxCollider = GetComponent<BoxCollider2D>();
         var spriteRenderer = GetComponent<SpriteRenderer>();
         var stars = gameObject.transform.Find("Stars").gameObject;
         var padlock = gameObject.transform.Find("Padlock").gameObject;
 
-        if (!levelFinished)
+        if (isLevelAvailable)
         {
-            boxCollider.enabled = false;
-            spriteRenderer.color = Color.black;
-            stars.SetActive(false);
+	        boxCollider.enabled = true;
+	        spriteRenderer.color = Color.white;
+	        padlock.SetActive(false);
+	        stars.SetActive(true);
         }
         else
         {
-            boxCollider.enabled = true;
-            spriteRenderer.color = Color.white;
-            padlock.SetActive(false);
-            stars.SetActive(true);
+	        boxCollider.enabled = false;
+	        spriteRenderer.color = Color.black;
+	        stars.SetActive(false);
         }
     }
 
@@ -51,35 +79,37 @@ public class BattleButton : MonoBehaviour
         BasicHealth = PlayerPrefs.GetFloat("BasicHealth");
         Health = PlayerPrefs.GetFloat("Health");
 
-        var DeadZoneHealthpercentage =
-            float.Parse(Health.ToString()) / float.Parse(BasicHealth.ToString());
-        if (DeadZoneHealthpercentage == 0)
+        var deadZoneHealthPercentage = Health / BasicHealth;
+        if (deadZoneHealthPercentage == 0)
         {
             AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
             AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
             AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
         }
-        else if (DeadZoneHealthpercentage > 0f && DeadZoneHealthpercentage < 0.7f)
+        else if (deadZoneHealthPercentage > 0f && deadZoneHealthPercentage < 0.7f)
         {
             AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
             AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
             AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
         }
-        else if (DeadZoneHealthpercentage >= 0.7f && DeadZoneHealthpercentage < 1)
+        else if (deadZoneHealthPercentage >= 0.7f && deadZoneHealthPercentage < 1)
         {
             AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
             AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
             AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
         }
-        else if (DeadZoneHealthpercentage == 1)
+        else if (deadZoneHealthPercentage == 1)
         {
             AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
             AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
             AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
         }
     }
+    
     private void OnMouseDown()
     {
+	    PlayerPrefs.SetString("CurrentLevel_EnemiesMap", _mapsConfigJsonModel.EnemiesMapFileName);
+	    PlayerPrefs.SetString("CurrentLevel_MapBackground", _mapsConfigJsonModel.SpriteBackgroundPath);
         SceneManager.LoadScene(SceneGoIn);
     }    
 }

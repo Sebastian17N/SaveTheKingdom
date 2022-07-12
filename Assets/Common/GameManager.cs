@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -45,10 +46,29 @@ public class GameManager : MonoBehaviour
 
     void GenerateLevel()
     {
-        LevelName = PlayerPrefs.GetString("current_level");
+        LevelName = PlayerPrefs.GetString("CurrentLevel_EnemiesMap");
         FindObjectOfType<EnemiesSpawner>().LoadLevel(LevelName);
-
         NumberOfEnemiesLeft = CountAllEnemiesOnLevel(LevelName);
+
+        var backgroundSpriteName = PlayerPrefs.GetString("CurrentLevel_MapBackground");
+        var backgroundSpriteTexture = LoadTexture($"Assets/Map/Images/{backgroundSpriteName}");
+        var backgroundSprite = Sprite.Create(backgroundSpriteTexture, new Rect(0, 0, backgroundSpriteTexture.width, backgroundSpriteTexture.height), new Vector2(0.5f, 0.5f), 100, 0, SpriteMeshType.Tight);
+
+        GameObject.Find("Background").GetComponent<SpriteRenderer>().sprite = backgroundSprite;
+	}
+
+    public static Texture2D LoadTexture(string filePath)
+    {
+	    if (!File.Exists(filePath))
+		    return null;
+		    
+	    var fileData = File.ReadAllBytes(filePath);
+		var texture = new Texture2D(2, 2);
+
+		return 
+			!texture.LoadImage(fileData) 
+				? null 
+				: texture;
     }
 
     /// <summary>
