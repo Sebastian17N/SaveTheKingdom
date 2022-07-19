@@ -12,33 +12,39 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Attributes")]
-    // Object template to get attributes from.
-    public List<GameObject> UnitCards;
-
+    //[Header("Attributes")]    
     [Header("Units")]
-    public UnitScriptableObject[] ScriptableObjects;
-    public GameObject Prefab;
-	public Transform CardHolderTransform;
+    public List<GameObject> UnitCards;
+    public UnitScriptableObject[] ScriptableUnitObjects;
+    public GameObject UnitPrefab;
+	public Transform UnitCardHolderTransform;
     public Transform BackgroundTransform;
+
+    [Header("Spell")]
+    public List<GameObject> SpellCard;
+    public SpellScriptableObject[] ScriptableSpellObject;
+    public GameObject SpellPrefab;
+    public Transform SpellCardHolderTransform;
 
     [Header("GameRuntime")]
     public int NumberOfEnemiesLeft;
     string LevelName;
     public float Health;
-    //public float BasicHealth;
-
-
+    
     private void Start()
     {
-        UnitCards = new List<GameObject>();
-
         // Load all units.
-        foreach (UnitScriptableObject scriptableObject in ScriptableObjects)
+        UnitCards = new List<GameObject>();        
+        foreach (UnitScriptableObject scriptableObject in ScriptableUnitObjects)
         {
             UnitCards.Add(CreateUnit(scriptableObject));
         }
 
+        SpellCard = new List<GameObject>();
+        foreach (SpellScriptableObject scriptableObject in ScriptableSpellObject)
+        {
+            SpellCard.Add(CreateSpell(scriptableObject));
+        }
         // Load level
         GenerateLevel();
         StartCoroutine(CheckIfLevelEndCoroutine());
@@ -97,7 +103,7 @@ public class GameManager : MonoBehaviour
     /// <returns>Created game object.</returns>
     private GameObject CreateUnit(UnitScriptableObject unitScriptableObject)
     {
-        GameObject unit = Instantiate(Prefab, CardHolderTransform);
+        GameObject unit = Instantiate(UnitPrefab, UnitCardHolderTransform);
         unit.GetComponentInChildren<TMP_Text>().text = $"{unitScriptableObject.Cost}";
 
         var iconImage = unit.transform.Find("Icon").GetComponent<Image>();
@@ -116,6 +122,19 @@ public class GameManager : MonoBehaviour
         manager.CooldownReadyImage = iconGoldImage;
 
         return unit;
+    }
+
+
+    private GameObject CreateSpell(SpellScriptableObject scriptableObject)
+    {
+        GameObject spell = Instantiate(SpellPrefab, SpellCardHolderTransform);
+        spell.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
+
+        UseSpell manager = spell.GetComponent<UseSpell>();
+        manager.SpellScriptableObject = scriptableObject;
+        manager.Sprite = scriptableObject.Sprite;
+
+        return spell;
     }
 
     IEnumerator CheckIfLevelEndCoroutine()

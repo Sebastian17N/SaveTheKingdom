@@ -3,6 +3,7 @@ using UnityEngine;
 public class FieldManager : MonoBehaviour
 {
 	public GameObject Unit;
+	public GameObject Spell;
 	public bool IsAssigned = false;
 
 	public void OnMouseOver()
@@ -10,6 +11,27 @@ public class FieldManager : MonoBehaviour
 		if (IsAssigned)
 			return;
 
+		UnitOverField();
+		SpellOverField();
+	}
+
+	public void OnMouseExit()
+	{		
+
+		foreach (var manager in FindObjectsOfType<UnitCardManager>())
+		{
+			manager.Collider = null;
+			manager.IsOverCollider = false;
+		}
+
+		foreach (var manager in FindObjectsOfType<UseSpell>())
+		{
+			manager.Collider = null;
+			manager.IsOverCollider = false;
+		}
+	}
+	public void UnitOverField()
+    {
 		foreach (var manager in FindObjectsOfType<UnitCardManager>())
 		{
 			manager.Collider = GetComponent<FieldManager>();
@@ -25,13 +47,24 @@ public class FieldManager : MonoBehaviour
 		Unit.transform.SetParent(transform);
 		Unit.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
 	}
-
-	public void OnMouseExit()
+	public void SpellOverField()
 	{
-		foreach (var manager in FindObjectsOfType<UnitCardManager>())
+		foreach (var manager in FindObjectsOfType<UseSpell>())
 		{
-			manager.Collider = null;
-			manager.IsOverCollider = false;
+			manager.Collider = GetComponent<FieldManager>();
+			manager.IsOverCollider = true;
 		}
+
+		if (Spell != null) return;
+
+		Spell = GameObject.FindGameObjectWithTag("Spell");
+
+		if (Spell == null) return;
+
+		Spell.transform.SetParent(transform);
+		Spell.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
+
+		var color = GetComponent<SpriteRenderer>().color;
+		color = new Color(1, 1, 1, 0.5f);
 	}
 }
