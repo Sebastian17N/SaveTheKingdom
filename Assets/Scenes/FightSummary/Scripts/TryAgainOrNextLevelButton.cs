@@ -18,24 +18,15 @@ namespace Assets.Scenes.FightSummary.Scripts
 			FightSummaryGameManager = FindObjectOfType<FightSummaryGameManager>();
 			ChangingButton.onClick.AddListener(ChangeScene);
 
-			ButtonText.text = 
-				FightSummaryGameManager.DidGamerWin 
-					? "NEXT LEVEL" 
+			ButtonText.text =
+				FightSummaryGameManager.DidGamerWin
+					? "NEXT LEVEL"
 					: "TRY AGAIN";
 		}
-    
+
 		public void ChangeScene()
 		{
-			if (FightSummaryGameManager.DidGamerWin)
-			{
-				SceneManager.LoadScene(SceneName);
-			}
-			else
-			{
-				// TODO: Jak chcemy przekazywać inną scenę przy porażce?
-				SceneManager.LoadScene(SceneName);
-			}
+			SceneManager.LoadScene(SceneName);
 		}
-              
 	}
 }
