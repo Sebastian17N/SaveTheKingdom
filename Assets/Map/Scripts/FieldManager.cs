@@ -1,70 +1,74 @@
+using Assets.Units.Defenses.Scripts;
 using UnityEngine;
 
-public class FieldManager : MonoBehaviour
+namespace Assets.Map.Scripts
 {
-	public GameObject Unit;
-	public GameObject Spell;
-	public bool IsAssigned = false;
-
-	public void OnMouseOver()
+	public class FieldManager : MonoBehaviour
 	{
-		if (IsAssigned)
-			return;
+		public GameObject Unit;
+		public GameObject Spell;
+		public bool IsAssigned = false;
 
-		UnitOverField();
-		SpellOverField();
-	}
-
-	public void OnMouseExit()
-	{		
-
-		foreach (var manager in FindObjectsOfType<UnitCardManager>())
+		public void OnMouseOver()
 		{
-			manager.Collider = null;
-			manager.IsOverCollider = false;
+			if (IsAssigned)
+				return;
+
+			UnitOverField();
+			SpellOverField();
 		}
 
-		foreach (var manager in FindObjectsOfType<UseSpell>())
-		{
-			manager.Collider = null;
-			manager.IsOverCollider = false;
+		public void OnMouseExit()
+		{		
+
+			foreach (var manager in FindObjectsOfType<UnitCardManager>())
+			{
+				manager.Collider = null;
+				manager.IsOverCollider = false;
+			}
+
+			foreach (var manager in FindObjectsOfType<UseSpell>())
+			{
+				manager.Collider = null;
+				manager.IsOverCollider = false;
+			}
 		}
-	}
-	public void UnitOverField()
-    {
-		foreach (var manager in FindObjectsOfType<UnitCardManager>())
+		public void UnitOverField()
 		{
-			manager.Collider = GetComponent<FieldManager>();
-			manager.IsOverCollider = true;
+			foreach (var manager in FindObjectsOfType<UnitCardManager>())
+			{
+				manager.Collider = GetComponent<FieldManager>();
+				manager.IsOverCollider = true;
+			}
+
+			if (Unit != null) return;
+
+			Unit = GameObject.FindGameObjectWithTag("Unit");
+
+			if (Unit == null) return;
+
+			Unit.transform.SetParent(transform);
+			Unit.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
 		}
-
-		if (Unit != null) return;
-
-		Unit = GameObject.FindGameObjectWithTag("Unit");
-
-		if (Unit == null) return;
-
-		Unit.transform.SetParent(transform);
-		Unit.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
-	}
-	public void SpellOverField()
-	{
-		foreach (var manager in FindObjectsOfType<UseSpell>())
+		public void SpellOverField()
 		{
-			manager.Collider = GetComponent<FieldManager>();
-			manager.IsOverCollider = true;
+			foreach (var manager in FindObjectsOfType<UseSpell>())
+			{
+				manager.Collider = GetComponent<FieldManager>();
+				manager.IsOverCollider = true;
+			}
+
+			if (Spell != null) return;
+
+			Spell = GameObject.FindGameObjectWithTag("Spell");
+
+			if (Spell == null) return;
+
+			Spell.transform.SetParent(transform);
+			Spell.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
+
+			var color = GetComponent<SpriteRenderer>().color;
+			color = new Color(1, 1, 1, 0.5f);
 		}
-
-		if (Spell != null) return;
-
-		Spell = GameObject.FindGameObjectWithTag("Spell");
-
-		if (Spell == null) return;
-
-		Spell.transform.SetParent(transform);
-		Spell.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
-
-		var color = GetComponent<SpriteRenderer>().color;
-		color = new Color(1, 1, 1, 0.5f);
 	}
 }

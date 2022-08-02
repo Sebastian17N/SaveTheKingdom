@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Krivodeling.UI.Effects.Examples
+namespace Assets.Krivodeling.UI.Effects.Blur.Demo.Scripts
 {
     public class MovingImage : MonoBehaviour
     {
@@ -60,7 +60,7 @@ namespace Krivodeling.UI.Effects.Examples
 
         private WaitForSeconds GetRandomWait()
         {
-            float time = Random.Range(_minTime, _maxTime);
+            var time = Random.Range(_minTime, _maxTime);
 
             return new WaitForSeconds(time);
         }

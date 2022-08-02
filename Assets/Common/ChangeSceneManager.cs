@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class ChangeSceneManager : MonoBehaviour
+namespace Assets.Common
 {
-    [SerializeField] private string sceneName;
+	public class ChangeSceneManager : MonoBehaviour
+	{
+		[SerializeField] public string SceneName;
     
-    public void ChangeScene()
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+		public void ChangeScene()
+		{
+			SceneManager.LoadScene(SceneName);
+		}
+	}
 }

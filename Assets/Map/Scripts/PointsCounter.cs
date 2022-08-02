@@ -1,30 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PointsCounter : MonoBehaviour
+namespace Assets.Map.Scripts
 {
-    int Points = 0;
-    void Start()
-    {
-        SavePoints();
-        RefreshText();        
-    }
+	public class PointsCounter : MonoBehaviour
+	{
+		int _points = 0;
+		void Start()
+		{
+			SavePoints();
+			RefreshText();        
+		}
 
-    public void IncrementPoints()
-    {
-        Points++;
-        SavePoints();
-        RefreshText();
-    }
-    void SavePoints()
-    {
-        PlayerPrefs.SetInt("current_points", Points);
-    }
-    void RefreshText()
-    {
-        GetComponent<TMP_Text>().text = Points.ToString() + " points";
-    }
+		public void IncrementPoints()
+		{
+			_points++;
+			SavePoints();
+			RefreshText();
+		}
+		void SavePoints()
+		{
+			PlayerPrefs.SetInt("current_points", _points);
+		}
+		void RefreshText()
+		{
+			GetComponent<TMP_Text>().text = _points.ToString() + " points";
+		}
+	}
 }

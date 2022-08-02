@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Krivodeling.UI.Effects.Examples
+namespace Assets.Krivodeling.UI.Effects.Blur.Scripts
 {
-    public class UIBlurWithCanvasGroup : MonoBehaviour
+    public class UiBlurWithCanvasGroup : MonoBehaviour
     {
-        private UIBlur _uiBlur;
+        private UiBlur _uiBlur;
         private CanvasGroup _canvasGroup;
 
         private void Start()
@@ -18,7 +18,7 @@ namespace Krivodeling.UI.Effects.Examples
 
         private void SetComponents()
         {
-            _uiBlur = GetComponent<UIBlur>();
+            _uiBlur = GetComponent<UiBlur>();
             _canvasGroup = GetComponent<CanvasGroup>();
         }
 
