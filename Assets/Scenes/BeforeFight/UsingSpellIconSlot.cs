@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class UsingSpellIconSlot : MonoBehaviour
+namespace Assets.Scenes.BeforeFight
 {
-    public bool IsSlotAvailable = true;
+	public class UsingSpellIconSlot : MonoBehaviour
+	{
+		public bool IsSlotAvailable = true;
+	}
 }

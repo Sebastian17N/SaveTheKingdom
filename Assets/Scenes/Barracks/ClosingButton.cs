@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ClosingButton : MonoBehaviour
+namespace Assets.Scenes.Barracks
 {
-    public void CloseTab()
-    {
-        Destroy(transform.parent.transform.parent.gameObject);
-    }
+	public class ClosingButton : MonoBehaviour
+	{
+		public void CloseTab()
+		{
+			Destroy(transform.parent.transform.parent.gameObject);
+		}
+	}
 }

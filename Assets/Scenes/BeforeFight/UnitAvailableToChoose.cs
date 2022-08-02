@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.BeforeFight
+namespace Assets.Scenes.BeforeFight
 {
 	public class UnitAvailableToChoose : MonoBehaviour, IPointerClickHandler
 	{

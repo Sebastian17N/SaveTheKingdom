@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Krivodeling.UI.Effects.Examples
+namespace Assets.Krivodeling.UI.Effects.Blur.Scripts
 {
     public class UIBlurWithCanvasGroup : MonoBehaviour
     {

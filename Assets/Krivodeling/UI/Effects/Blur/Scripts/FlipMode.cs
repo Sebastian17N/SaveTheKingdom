@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Krivodeling.UI.Effects
+namespace Assets.Krivodeling.UI.Effects.Blur.Scripts
 {
     [Flags]
     public enum FlipMode

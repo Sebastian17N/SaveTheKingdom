@@ -1,39 +1,42 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SpellChosen : MonoBehaviour, IPointerClickHandler
+namespace Assets.Scenes.BeforeFight
 {
-	public GameObject Slot;
-	public SpellAvailableToChoose SpellAvailableToChoose;
-	private bool _isAssignedToSlotAlready;
-
-	void Update()
+	public class SpellChosen : MonoBehaviour, IPointerClickHandler
 	{
-		if (_isAssignedToSlotAlready)
-			return;
+		public GameObject Slot;
+		public SpellAvailableToChoose SpellAvailableToChoose;
+		private bool _isAssignedToSlotAlready;
 
-		// Spell icon is higher or equal than slot.
-		if (Slot != null && Vector3.Distance(transform.position, Slot.transform.position) < 10f)
+		void Update()
 		{
-			transform.SetParent(Slot.transform);
-			GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 60);
-			GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 60);
-			GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+			if (_isAssignedToSlotAlready)
+				return;
 
-			_isAssignedToSlotAlready = true;
+			// Spell icon is higher or equal than slot.
+			if (Slot != null && Vector3.Distance(transform.position, Slot.transform.position) < 10f)
+			{
+				transform.SetParent(Slot.transform);
+				GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 60);
+				GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 60);
+				GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
+				_isAssignedToSlotAlready = true;
+			}
 		}
-	}
 
-	public void OnPointerClick(PointerEventData eventData)
-	{
-		RemoveSpellFromSlot();
-	}
+		public void OnPointerClick(PointerEventData eventData)
+		{
+			RemoveSpellFromSlot();
+		}
 
-	protected void RemoveSpellFromSlot()
-	{
-		SpellAvailableToChoose.IsAssignedToSlotAlready = false;
-		SpellAvailableToChoose.IsAlreadyChosen = false;
-		Destroy(transform.gameObject);
-		transform.parent.GetComponent<UsingSpellIconSlot>().IsSlotAvailable = true;
+		protected void RemoveSpellFromSlot()
+		{
+			SpellAvailableToChoose.IsAssignedToSlotAlready = false;
+			SpellAvailableToChoose.IsAlreadyChosen = false;
+			Destroy(transform.gameObject);
+			transform.parent.GetComponent<UsingSpellIconSlot>().IsSlotAvailable = true;
+		}
 	}
 }

@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class UsingUnitIconSlot : MonoBehaviour
+namespace Assets.Scenes.BeforeFight
 {
-    public bool IsSlotAvailable = true;
+	public class UsingUnitIconSlot : MonoBehaviour
+	{
+		public bool IsSlotAvailable = true;
 
+	}
 }

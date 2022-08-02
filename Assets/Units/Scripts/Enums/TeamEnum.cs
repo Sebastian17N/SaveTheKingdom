@@ -1,6 +1,9 @@
 ﻿
-public enum TeamEnum
+namespace Assets.Units.Scripts.Enums
 {
-	Team_1,
-	Team_2
+	public enum TeamEnum
+	{
+		Team_1,
+		Team_2
+	}
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Krivodeling.UI.Effects.Examples
+namespace Assets.Krivodeling.UI.Effects.Blur.Demo.Scripts
 {
     public class MovingImage : MonoBehaviour
     {

@@ -1,4 +1,7 @@
-﻿public interface IIsDraggedOwner
+﻿namespace Assets.Units.Scripts
 {
-	bool IsDragged { get; set; }
+	public interface IIsDraggedOwner
+	{
+		bool IsDragged { get; set; }
+	}
 }

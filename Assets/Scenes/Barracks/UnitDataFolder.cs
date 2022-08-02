@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Units.Defenses.Scripts;
 using UnityEngine;
 
-public class UnitDataFolder : MonoBehaviour
+namespace Assets.Scenes.Barracks
 {
-    public UnitScriptableObject UnitScriptableObject;
-    public int UnitIndex;
+	public class UnitDataFolder : MonoBehaviour
+	{
+		public UnitScriptableObject UnitScriptableObject;
+		public int UnitIndex;
+	}
 }

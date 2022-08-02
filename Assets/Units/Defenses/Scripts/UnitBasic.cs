@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Units.Scripts;
+using Assets.Units.Scripts.Enums;
 using UnityEngine;
 
-public class UnitBasic : UnitBase, IIsDraggedOwner
+namespace Assets.Units.Defenses.Scripts
 {
-    private void Start()
-    {
-        IsDragged = true;
-        isWalking = false;
-        Direction = Vector2.right;
+	public class UnitBasic : UnitBase, IIsDraggedOwner
+	{
+		private void Start()
+		{
+			IsDragged = true;
+			isWalking = false;
+			Direction = Vector2.right;
 
-        Team = TeamEnum.Team_1;
-    }
+			Team = TeamEnum.Team_1;
+		}
 
-    public void Update()
-    {
-        Routine();
-    }
+		public void Update()
+		{
+			Routine();
+		}
+	}
 }
