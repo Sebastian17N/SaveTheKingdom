@@ -4,7 +4,7 @@ using Assets.Units.Defenses.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scenes.BeforeFight
+namespace Assets.Scenes.BeforeTheBattle
 {
 	public class BeforeBattleUnitGameManager : MonoBehaviour
 	{

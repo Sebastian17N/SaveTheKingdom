@@ -9,30 +9,30 @@ EditorBuildSettings:
     path: Assets/Scenes/CompanyName.unity
     guid: 14bcf405c6a551e4a9b8d2e6022169e6
   - enabled: 1
-    path: Assets/Scenes/StartScreen.unity
+    path: Assets/Scenes/StartScreen/StartScreen.unity
     guid: d9fa7599a67a9bc4fa920ef45e92ab38
   - enabled: 1
-    path: Assets/Scenes/CityMenu.unity
+    path: Assets/Scenes/CityMenu/CityMenu.unity
     guid: aae8a8ba9d1bc0846a3849e6f62fbd7e
   - enabled: 1
-    path: Assets/Scenes/CampaignMap.unity
+    path: Assets/Scenes/CampaignMap/CampaignMap.unity
     guid: 413df71fd2c716a428eefcae231ce669
   - enabled: 1
-    path: Assets/Scenes/BeforeTheBattle.unity
+    path: Assets/Scenes/BeforeTheBattle/BeforeTheBattle.unity
     guid: ce21cc3849652e0429f168f4efd9891b
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/Battleground.unity
     guid: f8cc89d8260dc5645a372ea886d387f0
   - enabled: 1
     path: Assets/Scenes/POF/UnitAttackPOF.unity
     guid: 098e75bf00baef746ac7bbb61019986f
   - enabled: 1
-    path: Assets/Scenes/SpiritsMointain.unity
+    path: Assets/Scenes/SpiritMountain/SpiritMountain.unity
     guid: f4d224c7d56bcd44b8cecfbeb29456ad
   - enabled: 1
-    path: Assets/Scenes/Barracks.unity
+    path: Assets/Scenes/Barracks/Barracks.unity
     guid: 58bc6a0d5e3fac941ae771ad1d7cfa0e
   - enabled: 1
-    path: Assets/Scenes/FightSummary.unity
+    path: Assets/Scenes/FightSummary/FightSummary.unity
     guid: d3f49c6973d075b46809c516e3a383cb
   m_configObjects: {}

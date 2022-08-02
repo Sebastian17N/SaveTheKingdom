@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.Scenes.BeforeFight
+namespace Assets.Scenes.BeforeTheBattle
 {
 	public class SpellAvailableToChoose : MonoBehaviour, IPointerClickHandler
 	{

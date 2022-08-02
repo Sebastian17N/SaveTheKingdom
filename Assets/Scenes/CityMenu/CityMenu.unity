@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda4110ad5bc44746a049e8251a4f68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Barracks
+  SceneName: Barracks
 --- !u!1 &816971373
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 1041480442}
   - component: {fileID: 1041480445}
   m_Layer: 5
-  m_Name: SpiritsMointainButton
+  m_Name: SpiritsMountainButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda4110ad5bc44746a049e8251a4f68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SpiritsMointain
+  SceneName: SpiritMountain
 --- !u!1 &1286303148
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,4 +818,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda4110ad5bc44746a049e8251a4f68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: CampaignMap
+  SceneName: BeforeTheBattle

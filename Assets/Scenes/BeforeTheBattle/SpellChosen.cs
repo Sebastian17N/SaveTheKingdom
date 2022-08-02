@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.Scenes.BeforeFight
+namespace Assets.Scenes.BeforeTheBattle
 {
 	public class SpellChosen : MonoBehaviour, IPointerClickHandler
 	{

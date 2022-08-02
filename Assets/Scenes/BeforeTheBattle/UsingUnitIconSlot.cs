@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scenes.BeforeFight
+namespace Assets.Scenes.BeforeTheBattle
 {
 	public class UsingUnitIconSlot : MonoBehaviour
 	{
