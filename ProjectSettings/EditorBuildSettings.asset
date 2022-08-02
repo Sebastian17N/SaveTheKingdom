@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BeforeTheBattle/BeforeTheBattle.unity
     guid: ce21cc3849652e0429f168f4efd9891b
   - enabled: 1
-    path: Assets/Scenes/Battleground.unity
+    path: Assets/Scenes/Battleground/Battleground.unity
     guid: f8cc89d8260dc5645a372ea886d387f0
   - enabled: 1
     path: Assets/Scenes/POF/UnitAttackPOF.unity
