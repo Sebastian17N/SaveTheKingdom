@@ -25,12 +25,11 @@ namespace Assets.Scenes.SpiritMountain.Scripts
 		{
 			var spell = Instantiate(Prefab, SpellMenuTransform);       
 			spell.GetComponentInChildren<Image>().sprite = spellScriptableObject.Sprite;
-			spell.GetComponentInChildren<Image>().type = Image.Type.Filled; //sprite ma wype³nic przestrzeæ image
+			spell.GetComponentInChildren<Image>().type = Image.Type.Filled;
 
 			var manager = spell.GetComponent<SpellCardManager>();
 			manager.Sprite = spellScriptableObject.Sprite;
 			manager.CanvasTransform = CanvasTransform;
-			//manager.IsFromMenu = true;
 
 			return spell;
 		}
