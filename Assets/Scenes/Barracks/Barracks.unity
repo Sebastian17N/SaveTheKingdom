@@ -604,8 +604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9642cc9e27ddc949a5019995594ad7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerStore: {fileID: 1511294760}
-  storeContainer: {fileID: 864338920}
+  CenterStore: {fileID: 1511294760}
+  StoreContainer: {fileID: 864338920}
 --- !u!114 &1102643846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,8 +764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9642cc9e27ddc949a5019995594ad7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerStore: {fileID: 1511294760}
-  storeContainer: {fileID: 864338920}
+  CenterStore: {fileID: 1511294760}
+  StoreContainer: {fileID: 864338920}
 --- !u!114 &1105210050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,8 +1027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9642cc9e27ddc949a5019995594ad7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerStore: {fileID: 1511294760}
-  storeContainer: {fileID: 864338920}
+  CenterStore: {fileID: 1511294760}
+  StoreContainer: {fileID: 864338920}
 --- !u!114 &1409556783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,9 +1188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ff054686bf1af4f817d62f0061c613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newWidth: 2
-  storeContainer: {fileID: 864338920}
-  lerpTime: 5
+  NewWidth: 1.25
+  StoreContainer: {fileID: 864338920}
+  LerpTime: 3
   FirstObjectToExpand: LaganatUnitSlot
 --- !u!114 &1511294762
 MonoBehaviour:
