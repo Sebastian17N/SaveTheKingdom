@@ -8,6 +8,7 @@ namespace Assets.Map.Scripts
 		public int BoardWidth;
 		public int BoardHeight;
 		public Vector2 FieldLocation = Vector2.one;
+
 		void Start()
 		{
 			CreateFieldBoard();
@@ -15,18 +16,19 @@ namespace Assets.Map.Scripts
 
 		private void CreateFieldBoard()
 		{
-			for (int x = 0; x < BoardWidth; x++)
+			for (var x = 0; x < BoardWidth; x++)
 			{
-				for (int y = 0; y < BoardHeight; y++)
+				for (var y = 0; y < BoardHeight; y++)
 				{
 					CreateField(x, y);
 				}
 			}
 		}
+
 		private void CreateField(int x, int y)
 		{
 			var field = Instantiate(FieldPrefab, transform);
 			field.transform.localPosition += new Vector3(x * FieldLocation.x, y * FieldLocation.y, 0);
-		}        
+		}
 	}
 }

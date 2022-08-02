@@ -5,7 +5,7 @@ namespace Assets.Map.Scripts
 {
 	public class PointsCounter : MonoBehaviour
 	{
-		int Points = 0;
+		int _points = 0;
 		void Start()
 		{
 			SavePoints();
@@ -14,17 +14,17 @@ namespace Assets.Map.Scripts
 
 		public void IncrementPoints()
 		{
-			Points++;
+			_points++;
 			SavePoints();
 			RefreshText();
 		}
 		void SavePoints()
 		{
-			PlayerPrefs.SetInt("current_points", Points);
+			PlayerPrefs.SetInt("current_points", _points);
 		}
 		void RefreshText()
 		{
-			GetComponent<TMP_Text>().text = Points.ToString() + " points";
+			GetComponent<TMP_Text>().text = _points.ToString() + " points";
 		}
 	}
 }

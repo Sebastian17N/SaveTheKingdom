@@ -9,10 +9,10 @@ namespace Assets.Units.Defenses.Scripts
 		private void Start()
 		{
 			IsDragged = true;
-			isWalking = false;
+			IsWalking = false;
 			Direction = Vector2.right;
 
-			Team = TeamEnum.Team_1;
+			Team = TeamEnum.Team1;
 		}
 
 		public void Update()

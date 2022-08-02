@@ -9,8 +9,8 @@ namespace Assets.Units.Scripts
 	public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
 	{
 		// Default statuses
-		protected bool isWalking;
-		protected bool isAttacking;
+		protected bool IsWalking;
+		protected bool IsAttacking;
 
 		// Prefabs
 		public GameObject BulletPrefab;
@@ -36,7 +36,7 @@ namespace Assets.Units.Scripts
 		private float _lastShootTime = 0f;
 
 		private IDecreaseDurabilityOwner _enemy;
-		public GameObject _bullet;
+		public GameObject Bullet;
 
 		#endregion Enviroment attributes
 
@@ -46,10 +46,10 @@ namespace Assets.Units.Scripts
 				return;
 
 			// Got hit.
-			if (_bullet != null && _bullet.GetComponent<Bullet>() != null)
+			if (Bullet != null && Bullet.GetComponent<Bullet>() != null)
 			{
-				DecreaseDurability(_bullet.GetComponent<Bullet>().Damage);
-				Destroy(_bullet);
+				DecreaseDurability(Bullet.GetComponent<Bullet>().Damage);
+				Destroy(Bullet);
 			}
 
 			if (Time.timeSinceLevelLoad - _lastShootTime < AttackSpeed)
@@ -82,7 +82,7 @@ namespace Assets.Units.Scripts
 			if (_enemy == null && unitBase != null)
 			{
 				IDecreaseDurabilityOwner enemy = 
-					Team == TeamEnum.Team_1 ?
+					Team == TeamEnum.Team1 ?
 						collidedObject.GetComponent<EnemyBasic>() :
 						collidedObject.GetComponent<UnitBasic>();
 
@@ -90,17 +90,17 @@ namespace Assets.Units.Scripts
 					_enemy = enemy;
 			}
 
-			if (_bullet == null 
+			if (Bullet == null 
 			    && collidedObject.GetComponent<Bullet>() != null
 			    && collidedObject.GetComponent<Bullet>()?.Team != Team)
 			{
-				_bullet = collidedObject;
+				Bullet = collidedObject;
 			}
 		}
 
 		private void Walk()
 		{
-			isWalking = false;
+			IsWalking = false;
 			GetComponent<Rigidbody2D>().velocity = Direction * Speed;
 		}
 
@@ -124,7 +124,7 @@ namespace Assets.Units.Scripts
 			if (!_enemy?.DecreaseDurability(AttackDamage) ?? false)
 				_enemy = null;
 			else
-				isWalking = false;
+				IsWalking = false;
 		}
 
 		private void ShootBullet()

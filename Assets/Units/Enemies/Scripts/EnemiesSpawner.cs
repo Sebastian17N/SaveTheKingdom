@@ -8,11 +8,11 @@ namespace Assets.Units.Enemies.Scripts
 {
 	public class EnemiesSpawner : MonoBehaviour
 	{
-		public ScriptableEnemy[] enemyScriptableObjects;
+		public ScriptableEnemy[] EnemyScriptableObjects;
 		public GameObject EnemyPrefab;
 
-		public float spawnInterval;
-		public Transform[] spawnSpot;
+		public float SpawnInterval;
+		public Transform[] SpawnSpot;
 
 		/// <summary>
 		/// Load next level enemies map.
@@ -29,37 +29,37 @@ namespace Assets.Units.Enemies.Scripts
 
 		public IEnumerator SpawningCoroutine(string[] text)
 		{
-			var spawnSpotID = text.Length;
+			var spawnSpotId = text.Length;
 			var numberOfEnemies = text[0].Length;
 
-			for (int x = 0; x < numberOfEnemies; x++)
+			for (var x = 0; x < numberOfEnemies; x++)
 			{
-				for (int y = 0; y < spawnSpotID; y++)
+				for (var y = 0; y < spawnSpotId; y++)
 				{
 					switch (text[y][x])
 					{
 						case 'x':
-							CreateEnemyPrefab(enemyScriptableObjects[0], spawnSpot[y]);
+							CreateEnemyPrefab(EnemyScriptableObjects[0], SpawnSpot[y]);
 							break;
 						case 'y':
-							CreateEnemyPrefab(enemyScriptableObjects[1], spawnSpot[y]);
+							CreateEnemyPrefab(EnemyScriptableObjects[1], SpawnSpot[y]);
 							break;
 						case 'z':
-							CreateEnemyPrefab(enemyScriptableObjects[2], spawnSpot[y]);
+							CreateEnemyPrefab(EnemyScriptableObjects[2], SpawnSpot[y]);
 							break;
 						default:
 							continue;
 					}
 				}
 
-				yield return new WaitForSeconds(spawnInterval);
+				yield return new WaitForSeconds(SpawnInterval);
 			}
 		}
 
-		private void CreateEnemyPrefab(ScriptableEnemy ScriptableEnemie, Transform spawnSpot)
+		private void CreateEnemyPrefab(ScriptableEnemy scriptableEnemie, Transform spawnSpot)
 		{
 			var enemy = Instantiate(EnemyPrefab, spawnSpot);
-			enemy.GetComponent<SpriteRenderer>().sprite = ScriptableEnemie.Sprite;
+			enemy.GetComponent<SpriteRenderer>().sprite = scriptableEnemie.Sprite;
 
 			// TODO: Move it to scriptable object.
 			{

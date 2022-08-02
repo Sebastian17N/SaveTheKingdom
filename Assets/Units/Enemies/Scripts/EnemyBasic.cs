@@ -13,10 +13,10 @@ namespace Assets.Units.Enemies.Scripts
 
 		private void Start()
 		{
-			isWalking = true;
+			IsWalking = true;
 			Direction = Vector2.left;
 
-			Team = TeamEnum.Team_2;
+			Team = TeamEnum.Team2;
 		}
 
 		void Update()

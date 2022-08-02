@@ -11,11 +11,11 @@ namespace Assets.Units.Defenses.Scripts
 		public Sprite Sprite;
 		public GameObject Prefab;
 
-		GameObject UnitDragged;
+		GameObject _unitDragged;
 
 		public bool IsOverCollider = false;
 		public FieldManager Collider;
-		private FieldManager LastCollider;
+		private FieldManager _lastCollider;
 
 		// Cooldown buy logic.
 		public float CooldownTime;
@@ -36,16 +36,16 @@ namespace Assets.Units.Defenses.Scripts
 			if (!_canTakeNewUnit)
 				return;
 
-			UnitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
+			_unitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
 
-			if (LastCollider != Collider || LastCollider == null)
+			if (_lastCollider != Collider || _lastCollider == null)
 			{
 				IsOverCollider = false;
 
-				if (LastCollider != null)
-					LastCollider.Unit = null;
+				if (_lastCollider != null)
+					_lastCollider.Unit = null;
 
-				LastCollider = Collider;
+				_lastCollider = Collider;
 			}
 
 			// If you do not hover above field, Unit should be stick to your mouse pointer.
@@ -53,12 +53,12 @@ namespace Assets.Units.Defenses.Scripts
 			{
 				// If you do not hover above field, Unit should be stick to your mouse pointer.
 				var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				UnitDragged.transform.position = new Vector3(position.x, position.y, -9);
+				_unitDragged.transform.position = new Vector3(position.x, position.y, -9);
 			}
 			else
 			{
 				// Unit should be snapped to the field.
-				UnitDragged.transform.position = Collider.transform.position + new Vector3(0, 0.25f, 0);
+				_unitDragged.transform.position = Collider.transform.position + new Vector3(0, 0.25f, 0);
 			}
 		}
 
@@ -69,11 +69,11 @@ namespace Assets.Units.Defenses.Scripts
 
 			_canTakeNewUnit = true;
 
-			UnitDragged = Instantiate(Prefab, new Vector3(0, 0, -1), Quaternion.identity);
-			UnitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
+			_unitDragged = Instantiate(Prefab, new Vector3(0, 0, -1), Quaternion.identity);
+			_unitDragged.GetComponent<SpriteRenderer>().sprite = Sprite;
 
 			var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			UnitDragged.transform.position = new Vector3(position.x, position.y, -9);
+			_unitDragged.transform.position = new Vector3(position.x, position.y, -9);
 		}
 
 		public void OnPointerUp(PointerEventData eventData)
@@ -83,21 +83,21 @@ namespace Assets.Units.Defenses.Scripts
 
 			if (Collider == null || (!UnitScriptableObject.IsRange && Collider.IsAssigned))
 			{
-				Destroy(UnitDragged);
+				Destroy(_unitDragged);
 				return;
 			}
 
-			UnitDragged.tag = "Untagged";
+			_unitDragged.tag = "Untagged";
 
 			if (UnitScriptableObject.IsRange)
 			{
 				Collider.IsAssigned = true;
 			}
 
-			UnitDragged.transform.SetParent(Collider.transform);
-			UnitDragged.transform.localPosition = new Vector3(0, 0.25f, -1);
+			_unitDragged.transform.SetParent(Collider.transform);
+			_unitDragged.transform.localPosition = new Vector3(0, 0.25f, -1);
 
-			var unitManager = UnitDragged.GetComponent<UnitBasic>();
+			var unitManager = _unitDragged.GetComponent<UnitBasic>();
 			unitManager.IsDragged = false;
 			unitManager.BulletType = UnitScriptableObject.BulletType;
 			unitManager.IsRange = UnitScriptableObject.IsRange;
@@ -112,7 +112,7 @@ namespace Assets.Units.Defenses.Scripts
 				unitManager.BulletPrefab = null;			
 			}
 
-			var animator = UnitDragged.GetComponent<Animator>();
+			var animator = _unitDragged.GetComponent<Animator>();
 			animator.runtimeAnimatorController = UnitScriptableObject.Animator;
 			animator.SetFloat("AttackSpeed", UnitScriptableObject.AttackSpeed);
 		

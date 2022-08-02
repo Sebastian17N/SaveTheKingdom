@@ -12,16 +12,17 @@ namespace Assets.Map.Scripts
 		//GameObject Enemy;
 
 		private float _health;
-		public float Health 
+
+		public float Health
 		{
-			get => _health; 
+			get => _health;
 			set
 			{
 				_health = value;
 				PlayerPrefs.SetFloat("Health", Health);
 			}
 		}
-    
+
 		public float BasicHealth;
 		//public bool DidGamerWin = false;
 
@@ -30,12 +31,13 @@ namespace Assets.Map.Scripts
 			Health = BasicHealth;
 			PlayerPrefs.SetFloat("BasicHealth", BasicHealth);
 		}
+
 		void Update()
 		{
 			if (Health <= 0)
 			{
 				PlayerPrefs.SetInt("DidGamerWin", 0);
-				SceneManager.LoadScene(SceneName);            
+				SceneManager.LoadScene(SceneName);
 			}
 		}
 
@@ -48,8 +50,7 @@ namespace Assets.Map.Scripts
 				Health -= enemy.AttackDamage;
 				FindObjectOfType<GameManager>().NumberOfEnemiesLeft--;
 				Destroy(enemy.gameObject);
-			}   
-
+			}
 		}
 	}
 }

@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda4110ad5bc44746a049e8251a4f68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Game
+  SceneName: Battleground
 --- !u!1 &1139746229
 GameObject:
   m_ObjectHideFlags: 0

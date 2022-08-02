@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Map.Scripts;
 using Assets.Scenes.SpiritMountain;
+using Assets.Scenes.SpiritMountain.Scripts;
 using Assets.Units.Defenses.Scripts;
 using Assets.Units.Enemies.Scripts;
 using TMPro;
@@ -34,20 +35,20 @@ namespace Assets.Common
 
 		[Header("GameRuntime")]
 		public int NumberOfEnemiesLeft;
-		string LevelName;
+		string _levelName;
 		public float Health;
     
 		private void Start()
 		{
 			// Load all units.
 			UnitCards = new List<GameObject>();        
-			foreach (UnitScriptableObject scriptableObject in ScriptableUnitObjects)
+			foreach (var scriptableObject in ScriptableUnitObjects)
 			{
 				UnitCards.Add(CreateUnit(scriptableObject));
 			}
 
 			SpellCard = new List<GameObject>();
-			foreach (SpellScriptableObject scriptableObject in ScriptableSpellObject)
+			foreach (var scriptableObject in ScriptableSpellObject)
 			{
 				SpellCard.Add(CreateSpell(scriptableObject));
 			}
@@ -58,9 +59,9 @@ namespace Assets.Common
 
 		void GenerateLevel()
 		{
-			LevelName = PlayerPrefs.GetString("CurrentLevel_EnemiesMap");
-			FindObjectOfType<EnemiesSpawner>().LoadLevel(LevelName);
-			NumberOfEnemiesLeft = CountAllEnemiesOnLevel(LevelName);
+			_levelName = PlayerPrefs.GetString("CurrentLevel_EnemiesMap");
+			FindObjectOfType<EnemiesSpawner>().LoadLevel(_levelName);
+			NumberOfEnemiesLeft = CountAllEnemiesOnLevel(_levelName);
 
 			var backgroundSpriteName = PlayerPrefs.GetString("CurrentLevel_MapBackground");
 			var backgroundSpriteTexture = LoadTexture($"Assets/Map/Images/{backgroundSpriteName}");
@@ -109,7 +110,7 @@ namespace Assets.Common
 		/// <returns>Created game object.</returns>
 		private GameObject CreateUnit(UnitScriptableObject unitScriptableObject)
 		{
-			GameObject unit = Instantiate(UnitPrefab, UnitCardHolderTransform);
+			var unit = Instantiate(UnitPrefab, UnitCardHolderTransform);
 			unit.GetComponentInChildren<TMP_Text>().text = $"{unitScriptableObject.Cost}";
 
 			var iconImage = unit.transform.Find("Icon").GetComponent<Image>();
@@ -121,7 +122,7 @@ namespace Assets.Common
 			var iconGoldImage = unit.transform.Find("IconGold").GetComponent<Image>();
 			iconGoldImage.sprite = unitScriptableObject.Sprite;
 
-			UnitCardManager manager = unit.GetComponent<UnitCardManager>();
+			var manager = unit.GetComponent<UnitCardManager>();
 			manager.UnitScriptableObject = unitScriptableObject;
 			manager.Sprite = unitScriptableObject.Sprite;
 			manager.CooldownImage = iconImage;
@@ -133,10 +134,10 @@ namespace Assets.Common
 
 		private GameObject CreateSpell(SpellScriptableObject scriptableObject)
 		{
-			GameObject spell = Instantiate(SpellPrefab, SpellCardHolderTransform);
+			var spell = Instantiate(SpellPrefab, SpellCardHolderTransform);
 			spell.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
 
-			UseSpell manager = spell.GetComponent<UseSpell>();
+			var manager = spell.GetComponent<UseSpell>();
 			manager.SpellScriptableObject = scriptableObject;
 			manager.Sprite = scriptableObject.Sprite;
 
@@ -149,7 +150,7 @@ namespace Assets.Common
 			{
 				if (NumberOfEnemiesLeft <= 0)
 				{
-					PlayerPrefs.SetInt(LevelName + "_finished", 1);
+					PlayerPrefs.SetInt(_levelName + "_finished", 1);
 					PlayerPrefs.SetInt("DidGamerWin", 1);
 					//PlayerPrefs.SetFloat("Health", Health);
 					SceneManager.LoadScene("FightSummary");

@@ -60,7 +60,7 @@ namespace Assets.Krivodeling.UI.Effects.Blur.Demo.Scripts
 
         private WaitForSeconds GetRandomWait()
         {
-            float time = Random.Range(_minTime, _maxTime);
+            var time = Random.Range(_minTime, _maxTime);
 
             return new WaitForSeconds(time);
         }
