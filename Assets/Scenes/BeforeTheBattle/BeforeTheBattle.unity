@@ -1227,7 +1227,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1121876345}
-        m_TargetAssemblyTypeName: ChangeSceneManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Assets.Scenes.BeforeTheBattle.Scripts.ChangeSceneManager,
+          Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 1
         m_Arguments:
@@ -1285,7 +1286,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1121876339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda4110ad5bc44746a049e8251a4f68b, type: 3}
+  m_Script: {fileID: 11500000, guid: c4d620d25cbe4f84e83b054941ca76f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: Battleground

@@ -7,7 +7,7 @@ namespace Assets.Common
 	{
 		[SerializeField] public string SceneName;
     
-		public void ChangeScene()
+		public virtual void ChangeScene()
 		{
 			SceneManager.LoadScene(SceneName);
 		}

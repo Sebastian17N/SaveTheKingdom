@@ -35,6 +35,8 @@ namespace Assets.Scenes.BeforeTheBattle.Scripts
 			}
 		}
 
+		private int _unitId = 1;
+
 		private GameObject CreateUnitFolder(UnitScriptableObject unitScriptableObject)
 		{
 			var unit = Instantiate(UnitAvailableToChosePrefab, UnitCardUnitTransform);
@@ -45,6 +47,7 @@ namespace Assets.Scenes.BeforeTheBattle.Scripts
 			var manager = unit.GetComponent<UnitAvailableToChoose>();
 			manager.Sprite = unitScriptableObject.Sprite;
 			manager.CanvasTransform = CanvasTransform;
+			manager.UnitId = _unitId++;
 
 			return unit;
 		}
