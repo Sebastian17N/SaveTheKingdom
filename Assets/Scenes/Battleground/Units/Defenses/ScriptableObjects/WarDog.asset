@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a760c18857df804f8728d63c4dcc2f4, type: 3}
-  m_Name: Crystal Golem
+  m_Name: WarDog
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 430345eca4d8bfc4a80c0d1d4eaa3094, type: 3}
-  Animator: {fileID: 9100000, guid: aa9c389476339b54f8c044fdcd9959c6, type: 2}
-  Icon: {fileID: 21300000, guid: 430345eca4d8bfc4a80c0d1d4eaa3094, type: 3}
+  UnitId: 10
+  Sprite: {fileID: 21300000, guid: 9e19245421f854b4ca6362bf0b50145e, type: 3}
+  Animator: {fileID: 9100000, guid: 63ac2a4a4266e614b89b224f1ffd0ce4, type: 2}
+  Icon: {fileID: 21300000, guid: 9e19245421f854b4ca6362bf0b50145e, type: 3}
   Cost: 100
-  Health: 40
-  Speed: 0.5
+  Health: 20
+  Speed: 3
   BulletType:
     Sprite: {fileID: 0}
     Speed: 0
-  AttackSpeed: 1
-  AttackDamage: 2
+  AttackSpeed: 3
+  AttackDamage: 6
   Cooldown: 5
   Origin:
   - L

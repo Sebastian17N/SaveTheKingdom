@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a760c18857df804f8728d63c4dcc2f4, type: 3}
-  m_Name: Knight
+  m_Name: ArmedWarrior
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 699fb288454c9814ea9f0a886ad93f5c, type: 3}
-  Animator: {fileID: 9100000, guid: 2d12d5bd8382ce44286b3d669b7cf8dc, type: 2}
-  Icon: {fileID: 21300000, guid: 4a587e1c913636f4c812f857e5aa6c84, type: 3}
+  UnitId: 3
+  Sprite: {fileID: 21300000, guid: 198429ce8304aa64693ade81644a621f, type: 3}
+  Animator: {fileID: 9100000, guid: 6abcc3531e597e142a21f5a887e66f06, type: 2}
+  Icon: {fileID: 21300000, guid: 198429ce8304aa64693ade81644a621f, type: 3}
   Cost: 100
-  Health: 22
+  Health: 20
   Speed: 1
   BulletType:
     Sprite: {fileID: 0}
@@ -24,3 +25,7 @@ MonoBehaviour:
   AttackSpeed: 1
   AttackDamage: 5
   Cooldown: 4
+  Origin:
+  - L
+  - H
+  - G
