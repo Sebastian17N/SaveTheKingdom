@@ -940,16 +940,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitDataFolders: []
   UnitScriptableObjects:
-  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
-  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
-  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
-  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
-  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
-  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
-  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
-  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
-  - {fileID: 11400000, guid: ecccc2869230cf547a0192fb703cdf87, type: 2}
-  - {fileID: 11400000, guid: a27c71086999f3446b18cf897b212fb5, type: 2}
+  - {fileID: 11400000, guid: d54887da749a4b14d837dbeb36b09a2e, type: 2}
+  - {fileID: 11400000, guid: 30ee5ae8057bdb54484eed91ff9e7b58, type: 2}
+  - {fileID: 11400000, guid: 64678bf6356bedb438879ce05fd03d3f, type: 2}
+  - {fileID: 11400000, guid: 44cc0c7ae327d0f49b0a85fecd87741e, type: 2}
+  - {fileID: 11400000, guid: 5a2a81b9ad5c7b540b696c3d5e91aee7, type: 2}
+  - {fileID: 11400000, guid: f94635f426c2fc34e991ca66e721713d, type: 2}
+  - {fileID: 11400000, guid: f47a77ad0835c3f4f836357147076a4f, type: 2}
   UnitAvailableToChosePrefab: {fileID: 6836477498226288691, guid: e8721cac4f9f82243a38184347afce61, type: 3}
   UnitCardUnitTransform: {fileID: 1252807436}
   SpellDataFolders: []

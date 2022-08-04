@@ -40,13 +40,15 @@ namespace Assets.Common
     
 		private void Start()
 		{
-			// TODO: Read from player prefs and load only chosen units.
 			var listOfChosenUnits = PlayerPrefs.GetString("UnitChosenToBattle").Split(";");
 
 			// Load all units.
 			UnitCards = new List<GameObject>();        
 			foreach (var scriptableObject in ScriptableUnitObjects)
 			{
+				if (!listOfChosenUnits.Contains(scriptableObject.UnitId.ToString()))
+					continue;
+
 				UnitCards.Add(CreateUnit(scriptableObject));
 			}
 
