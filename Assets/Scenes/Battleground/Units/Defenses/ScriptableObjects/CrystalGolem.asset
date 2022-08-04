@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a760c18857df804f8728d63c4dcc2f4, type: 3}
-  m_Name: War Dog
+  m_Name: CrystalGolem
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
-  Animator: {fileID: 0}
-  Icon: {fileID: 0}
-  Cost: 0
-  Health: 0
-  Speed: 0
+  UnitId: 4
+  Sprite: {fileID: 21300000, guid: 430345eca4d8bfc4a80c0d1d4eaa3094, type: 3}
+  Animator: {fileID: 9100000, guid: aa9c389476339b54f8c044fdcd9959c6, type: 2}
+  Icon: {fileID: 21300000, guid: 430345eca4d8bfc4a80c0d1d4eaa3094, type: 3}
+  Cost: 100
+  Health: 40
+  Speed: 0.5
   BulletType:
     Sprite: {fileID: 0}
     Speed: 0
-  AttackSpeed: 0
-  AttackDamage: 0
-  Cooldown: 0
+  AttackSpeed: 1
+  AttackDamage: 2
+  Cooldown: 5
   Origin:
   - L
   - H

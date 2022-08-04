@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a760c18857df804f8728d63c4dcc2f4, type: 3}
-  m_Name: Armed Warrior
+  m_Name: PsionicBlade
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 198429ce8304aa64693ade81644a621f, type: 3}
-  Animator: {fileID: 9100000, guid: 6abcc3531e597e142a21f5a887e66f06, type: 2}
-  Icon: {fileID: 21300000, guid: 198429ce8304aa64693ade81644a621f, type: 3}
+  UnitId: 9
+  Sprite: {fileID: 21300000, guid: d4f04a88b600dae4d9657c7f2bc95951, type: 3}
+  Animator: {fileID: 9100000, guid: 02c562cf977a8bc459a3e7aa7f762a0e, type: 2}
+  Icon: {fileID: 21300000, guid: d4f04a88b600dae4d9657c7f2bc95951, type: 3}
   Cost: 100
   Health: 20
-  Speed: 1
+  Speed: 2
   BulletType:
     Sprite: {fileID: 0}
     Speed: 0
-  AttackSpeed: 1
+  AttackSpeed: 3
   AttackDamage: 5
   Cooldown: 4
   Origin:

@@ -6,6 +6,7 @@ namespace Assets.Units.Defenses.Scripts
 	[CreateAssetMenu(menuName = "Units/Unit Card", fileName = "New Unit Card")]
 	public class UnitScriptableObject : ScriptableObject
 	{
+		public int UnitId;
 		[Header("Visuals")]
 		public Sprite Sprite;
 		public RuntimeAnimatorController Animator;
