@@ -871,6 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ff054686bf1af4f817d62f0061c613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NewWidth: 1.5
   StoreContainer: {fileID: 1992194565}
   LerpTime: 3
   FirstObjectToExpand: FrozenSpiritButton
