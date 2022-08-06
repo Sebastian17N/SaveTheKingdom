@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PsionicBlade
   m_EditorClassIdentifier: 
   UnitId: 9
-  Sprite: {fileID: 21300000, guid: d4f04a88b600dae4d9657c7f2bc95951, type: 3}
+  Sprite: {fileID: 21300000, guid: d1e5fc0e3af9a49448f2d112bf3e10fc, type: 3}
   Animator: {fileID: 9100000, guid: 02c562cf977a8bc459a3e7aa7f762a0e, type: 2}
-  Icon: {fileID: 21300000, guid: d4f04a88b600dae4d9657c7f2bc95951, type: 3}
+  Icon: {fileID: 21300000, guid: d1e5fc0e3af9a49448f2d112bf3e10fc, type: 3}
   Cost: 100
   Health: 20
   Speed: 2

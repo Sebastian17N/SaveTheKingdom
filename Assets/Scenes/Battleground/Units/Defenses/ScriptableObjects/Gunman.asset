@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Gunman
   m_EditorClassIdentifier: 
   UnitId: 6
-  Sprite: {fileID: 21300000, guid: 28b983c755298db44a46763f92965100, type: 3}
+  Sprite: {fileID: 21300000, guid: 448d081573d951440a9ac0d5ef386902, type: 3}
   Animator: {fileID: 9100000, guid: 238993cc79e095f44897371c59e12973, type: 2}
-  Icon: {fileID: 21300000, guid: 28b983c755298db44a46763f92965100, type: 3}
+  Icon: {fileID: 21300000, guid: 448d081573d951440a9ac0d5ef386902, type: 3}
   Cost: 100
   Health: 10
   Speed: 0
