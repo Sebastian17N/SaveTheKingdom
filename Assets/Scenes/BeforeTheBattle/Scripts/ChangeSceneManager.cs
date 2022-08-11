@@ -21,7 +21,7 @@ namespace Assets.Scenes.BeforeTheBattle.Scripts
 			if (listOfChosenUnits.Length == 0)
 				return;
 
-			listOfChosenUnits.Remove(listOfChosenUnits.Length - 2);
+			listOfChosenUnits = listOfChosenUnits.Remove(listOfChosenUnits.Length - 1);
 			PlayerPrefs.SetString("UnitChosenToBattle", listOfChosenUnits);
 
 			base.ChangeScene();
