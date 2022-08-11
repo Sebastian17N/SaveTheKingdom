@@ -41,7 +41,7 @@ namespace Assets.Scenes.SpiritMountain.Scripts
 
 			_lastSpirit = spirit;
 			spirit.transform.localScale = new Vector3(NewWidth, 1.5f, 1.5f);
-			spirit.GetComponent<StoreButton>().ShowDetails();
+			spirit.GetComponentInChildren<StoreButton>().ShowDetails();
 		}
 	}
 }
