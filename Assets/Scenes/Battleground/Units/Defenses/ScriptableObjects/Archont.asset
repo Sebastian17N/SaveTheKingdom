@@ -18,7 +18,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 5ba62983efaf64148ba85186abd7aeb7, type: 3}
   Cost: 100
   Health: 30
-  Speed: 1
+  Speed: 0
   BulletType:
     Sprite: {fileID: 21300000, guid: 83caaf4210b6f014f93e33a61a9d601c, type: 3}
     Speed: 4
