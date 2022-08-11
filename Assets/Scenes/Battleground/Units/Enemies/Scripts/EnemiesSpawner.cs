@@ -12,7 +12,6 @@ namespace Assets.Units.Enemies.Scripts
 		public GameObject EnemyPrefab;
 
 		public float SpawnInterval;
-		public Transform[] SpawnSpot;
 
 		/// <summary>
 		/// Load next level enemies map.
@@ -31,7 +30,7 @@ namespace Assets.Units.Enemies.Scripts
 		{
 			var spawnSpotId = text.Length;
 			var numberOfEnemies = text[0].Length;
-
+			
 			for (var x = 0; x < numberOfEnemies; x++)
 			{
 				for (var y = 0; y < spawnSpotId; y++)
@@ -39,13 +38,13 @@ namespace Assets.Units.Enemies.Scripts
 					switch (text[y][x])
 					{
 						case 'x':
-							CreateEnemyPrefab(EnemyScriptableObjects[0], SpawnSpot[y]);
+							CreateEnemyPrefab(EnemyScriptableObjects[0], transform.GetChild(y));
 							break;
 						case 'y':
-							CreateEnemyPrefab(EnemyScriptableObjects[1], SpawnSpot[y]);
+							CreateEnemyPrefab(EnemyScriptableObjects[1], transform.GetChild(y));
 							break;
 						case 'z':
-							CreateEnemyPrefab(EnemyScriptableObjects[2], SpawnSpot[y]);
+							CreateEnemyPrefab(EnemyScriptableObjects[2], transform.GetChild(y));
 							break;
 						default:
 							continue;

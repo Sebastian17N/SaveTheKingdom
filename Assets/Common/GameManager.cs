@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Map.Scripts;
-using Assets.Scenes.SpiritMountain;
 using Assets.Scenes.SpiritMountain.Scripts;
 using Assets.Units.Defenses.Scripts;
 using Assets.Units.Enemies.Scripts;
