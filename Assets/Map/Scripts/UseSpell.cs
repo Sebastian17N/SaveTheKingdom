@@ -31,8 +31,8 @@ namespace Assets.Map.Scripts
 				IsOverCollider = false;
 
 				if (_lastCollider != null)
-					_lastCollider.Unit = null;
-
+					_lastCollider.Unit = null;	
+				
 				_lastCollider = Collider;
 			}
 
@@ -41,22 +41,34 @@ namespace Assets.Map.Scripts
 			{
 				// If you do not hover above field, Unit should be stick to your mouse pointer.
 				var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				_spellDragged.transform.position = new Vector3(position.x, position.y, 0);
+				_spellDragged.transform.position = new Vector3(position.x, position.y, 0);				
 			}
 			else
 			{
 				// Unit should be snapped to the field.
-				_spellDragged.transform.position = Collider.transform.position + new Vector3(0, 0.25f, 0);
+				_spellDragged.transform.position = Collider.transform.position; // + new Vector3(0, 0.25f, 0);
+				Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
 			}
-		}
-    
-		public void OnPointerUp(PointerEventData eventData)
+
+            // if (Collider != null && _spellDragged.transform.position != Collider.transform.position)
+            //  {
+			//	Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0f);
+			//}
+        }
+        public void OnPointerUp(PointerEventData eventData)
 		{
-			if (Collider == null || Collider.IsAssigned)
-			{
-				Destroy(_spellDragged);
-				return;
-			}
+			Destroy(_spellDragged);
+			return;
+
 		}
-	}
+
+		//public void DamageEnemies()
+  //      {
+			
+  //      }
+  //      private void OnCollisionEnter2D(Collision2D collision)
+  //      {
+            
+  //      }
+    }
 }

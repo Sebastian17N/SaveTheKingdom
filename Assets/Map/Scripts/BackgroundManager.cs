@@ -12,9 +12,8 @@ namespace Assets.Map.Scripts
 		void Start()
 		{
 			CreateFieldBoard();
-		}
-
-		private void CreateFieldBoard()
+		}        
+        private void CreateFieldBoard()
 		{
 			for (var x = 0; x < BoardWidth; x++)
 			{
@@ -29,6 +28,6 @@ namespace Assets.Map.Scripts
 		{
 			var field = Instantiate(FieldPrefab, transform);
 			field.transform.localPosition += new Vector3(x * FieldLocation.x, y * FieldLocation.y, 0);
-		}
+		}	
 	}
 }

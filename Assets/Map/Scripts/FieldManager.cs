@@ -63,12 +63,10 @@ namespace Assets.Map.Scripts
 			Spell = GameObject.FindGameObjectWithTag("Spell");
 
 			if (Spell == null) return;
-
+			
 			Spell.transform.SetParent(transform);
 			Spell.transform.localPosition = new Vector3(0.04f, 0.3f, -1);
 
-			var color = GetComponent<SpriteRenderer>().color;
-			color = new Color(1, 1, 1, 0.5f);
 		}
 	}
 }
