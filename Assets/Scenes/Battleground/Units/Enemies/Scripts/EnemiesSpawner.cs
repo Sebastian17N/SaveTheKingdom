@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
+using Assets.Common;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,10 +11,19 @@ namespace Assets.Units.Enemies.Scripts
 {
 	public class EnemiesSpawner : MonoBehaviour
 	{
-		public ScriptableEnemy[] EnemyScriptableObjects;
+		private List<ScriptableEnemy> _enemyScriptableObjects;
 		public GameObject EnemyPrefab;
 
 		public float SpawnInterval;
+
+		public void Start()
+		{
+			_enemyScriptableObjects = 
+				ScriptableObjectLoader
+					.LoadAllScriptableObjectsFromFolder("ScriptableEnemies")
+					.Select(obj => obj as ScriptableEnemy)
+					.ToList();
+		}
 
 		/// <summary>
 		/// Load next level enemies map.
@@ -38,13 +50,13 @@ namespace Assets.Units.Enemies.Scripts
 					switch (text[y][x])
 					{
 						case 'x':
-							CreateEnemyPrefab(EnemyScriptableObjects[0], transform.GetChild(y));
+							CreateEnemyPrefab(_enemyScriptableObjects[0], transform.GetChild(y));
 							break;
 						case 'y':
-							CreateEnemyPrefab(EnemyScriptableObjects[1], transform.GetChild(y));
+							CreateEnemyPrefab(_enemyScriptableObjects[1], transform.GetChild(y));
 							break;
 						case 'z':
-							CreateEnemyPrefab(EnemyScriptableObjects[2], transform.GetChild(y));
+							CreateEnemyPrefab(_enemyScriptableObjects[2], transform.GetChild(y));
 							break;
 						default:
 							continue;
