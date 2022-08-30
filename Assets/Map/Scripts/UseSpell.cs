@@ -80,5 +80,19 @@ namespace Assets.Map.Scripts
 				enemy.DecreaseDurability(SpellScriptableObject.Damage);
 			}
 		}
-    }
+
+        /// <summary>
+        /// Apply or remove the color from fields in a radius.
+        /// </summary>
+        /// <param name="x">Position X of field.</param>
+        /// <param name="y">Position Y of field.</param>
+        /// <param name="applyColor">True - apply the color, False - remove the color.</param>
+        /// <param name="radius">Radius of spell</param>
+        public void ChangeColorOfFieldForSpell(int x, int y, bool applyColor, int radius = 1)
+		{
+			// (0, 0), (0, 1), (0, 2)
+			// (1, 0), (1, 1), (1, 2)
+			// (2, 0), (2, 1), (2, 2)
+		}
+	}
 }
