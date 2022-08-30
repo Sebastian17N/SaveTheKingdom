@@ -1,3 +1,6 @@
+ï»¿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using Assets.Common;
 using Assets.Scenes.SpiritMountain.Scripts;
 using Assets.Units.Enemies.Scripts;
@@ -32,8 +35,11 @@ namespace Assets.Map.Scripts
 				IsOverCollider = false;
 
 				if (_lastCollider != null)
-					_lastCollider.Unit = null;	
-				
+				{
+					_lastCollider.Unit = null;
+					_lastCollider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+				}
+
 				_lastCollider = Collider;
 			}
 
@@ -50,34 +56,28 @@ namespace Assets.Map.Scripts
 				_spellDragged.transform.position = Collider.transform.position; // + new Vector3(0, 0.25f, 0);
 				Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);				
 			}
-
-            // if (Collider != null && _spellDragged.transform.position != Collider.transform.position)
-            //  {
-			//	Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0f);
-			//}
         }
         public void OnPointerUp(PointerEventData eventData)
-		{
+        {
+	        if (Collider == null)
+		        return;
+
 			Collider.IsSpellActivated = true;
+			Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+
 			Destroy(_spellDragged);
 
-			return;
-		}
+			var fieldCollider = Collider.gameObject.GetComponent<BoxCollider2D>();
+			var results = new List<Collider2D>();
 
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-			//czy collision wyszukuje wszystkie kolizje czy tylko jedn¹/pierwsz¹?
-			var enemy = collision.gameObject.GetComponent<EnemyBasic>();
-
-			if (Collider.IsSpellActivated == true)
-				return;
-
-			if (enemy != null)
+			fieldCollider.OverlapCollider(new ContactFilter2D().NoFilter(), results);
+			
+			foreach (var enemy in 
+			         results
+				         .Where(obj => obj.gameObject.GetComponent<EnemyBasic>() != null)
+				         .Select(obj => obj.gameObject.GetComponent<EnemyBasic>()))
 			{
-				enemy.Health -= SpellScriptableObject.Damage;
-				
-				//FindObjectOfType<GameManager>().NumberOfEnemiesLeft--;
-				//Destroy(enemy.gameObject);
+				enemy.DecreaseDurability(SpellScriptableObject.Damage);
 			}
 		}
     }
