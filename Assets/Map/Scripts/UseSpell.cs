@@ -1,5 +1,6 @@
-using Assets.Scenes.SpiritMountain;
+using Assets.Common;
 using Assets.Scenes.SpiritMountain.Scripts;
+using Assets.Units.Enemies.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -47,7 +48,7 @@ namespace Assets.Map.Scripts
 			{
 				// Unit should be snapped to the field.
 				_spellDragged.transform.position = Collider.transform.position; // + new Vector3(0, 0.25f, 0);
-				Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
+				Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);				
 			}
 
             // if (Collider != null && _spellDragged.transform.position != Collider.transform.position)
@@ -57,18 +58,27 @@ namespace Assets.Map.Scripts
         }
         public void OnPointerUp(PointerEventData eventData)
 		{
+			Collider.IsSpellActivated = true;
 			Destroy(_spellDragged);
-			return;
 
+			return;
 		}
 
-		//public void DamageEnemies()
-  //      {
-			
-  //      }
-  //      private void OnCollisionEnter2D(Collision2D collision)
-  //      {
-            
-  //      }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+			//czy collision wyszukuje wszystkie kolizje czy tylko jedn¹/pierwsz¹?
+			var enemy = collision.gameObject.GetComponent<EnemyBasic>();
+
+			if (Collider.IsSpellActivated == true)
+				return;
+
+			if (enemy != null)
+			{
+				enemy.Health -= SpellScriptableObject.Damage;
+				
+				//FindObjectOfType<GameManager>().NumberOfEnemiesLeft--;
+				//Destroy(enemy.gameObject);
+			}
+		}
     }
 }

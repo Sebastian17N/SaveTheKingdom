@@ -8,6 +8,7 @@ namespace Assets.Map.Scripts
 		public GameObject Unit;
 		public GameObject Spell;
 		public bool IsAssigned = false;
+		public bool IsSpellActivated = false;
 
 		public void OnMouseOver()
 		{

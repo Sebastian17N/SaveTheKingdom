@@ -69,7 +69,7 @@ public class UnitsPanels : MonoBehaviour
 
         _lastPanel = panel;
         panel.transform.localScale = new Vector3(NewWidth, 2f, 1f);
-        panel.transform.localPosition = new Vector3(0, -250, 0);
+        //panel.transform.localPosition = new Vector3(0, -250, 0);
         //panel.GetComponentInChildren<StoreButton>().ShowDetails();
     }
 }

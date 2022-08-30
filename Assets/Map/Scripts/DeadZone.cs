@@ -9,7 +9,6 @@ namespace Assets.Map.Scripts
 	public class DeadZone : MonoBehaviour
 	{
 		public string SceneName;
-		//GameObject Enemy;
 
 		private float _health;
 
@@ -24,7 +23,6 @@ namespace Assets.Map.Scripts
 		}
 
 		public float BasicHealth;
-		//public bool DidGamerWin = false;
 
 		private void Start()
 		{
