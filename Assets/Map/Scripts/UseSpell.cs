@@ -21,8 +21,9 @@ namespace Assets.Map.Scripts
 		public bool IsOverCollider = false;
 		public FieldManager Collider;
 		private FieldManager _lastCollider;
-
-		public void OnPointerDown(PointerEventData eventData)
+		[SerializeField] GameObject _explosion;
+        
+        public void OnPointerDown(PointerEventData eventData)
 		{
 			_spellDragged = Instantiate(SpellPrefab, transform.position, Quaternion.identity); 
 			_spellDragged.GetComponent<SpriteRenderer>().sprite = Sprite;       
@@ -62,9 +63,12 @@ namespace Assets.Map.Scripts
 	        if (Collider == null)
 		        return;
 
+			
 			Collider.IsSpellActivated = true;
 			Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
 
+			var explosion = Instantiate(_explosion, Collider.transform.position, Quaternion.identity);
+			Destroy(explosion, 1);
 			Destroy(_spellDragged);
 
 			var fieldCollider = Collider.gameObject.GetComponent<BoxCollider2D>();
@@ -78,7 +82,8 @@ namespace Assets.Map.Scripts
 				         .Select(obj => obj.gameObject.GetComponent<EnemyBasic>()))
 			{
 				enemy.DecreaseDurability(SpellScriptableObject.Damage);
-			}
+
+			}			
 		}
 
         /// <summary>

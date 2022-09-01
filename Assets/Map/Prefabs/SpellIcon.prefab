@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1324511161782891442}
   - component: {fileID: 1788896430308818140}
   - component: {fileID: -4570226608806113316}
+  - component: {fileID: -1325661747457990465}
   m_Layer: 5
   m_Name: SpellIcon
   m_TagString: Untagged
@@ -89,5 +90,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42796523a7050e40a854c525f382bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpellScriptableObject: {fileID: 0}
   Sprite: {fileID: 0}
   SpellPrefab: {fileID: 3392625140603339215, guid: caca3d1b62dee7b4daadf8780fda2762, type: 3}
+  IsOverCollider: 0
+  Collider: {fileID: 0}
+  _explosion: {fileID: 7329413619466816058, guid: c7432e5b9f7112744b9f3ab5e98f394d, type: 3}
+--- !u!95 &-1325661747457990465
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822532450273278285}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db0b8dd67908c30498dcf93a87e7700c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
