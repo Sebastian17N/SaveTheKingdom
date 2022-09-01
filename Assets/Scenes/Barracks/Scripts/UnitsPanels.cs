@@ -3,21 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitsPanels : MonoBehaviour
-{
-    //move panels
-    //public Transform targetNavPoint;
-    //public float speedFactor;
-
+{    
     //Expand center panel
     private GameObject _lastPanel;
-    public string FirstPanelToExpand;
+    //public string FirstPanelToExpand;
     public Transform AllPanels;
     public float NewWidth;
 
     void Start()
     {
-        ExpandPanel(AllPanels.Find("NavigationPoint3/LaganatPanel").gameObject);
-        //ExpandPanel(AllPanels.Find("NavigationPoint3/LaganatScrollView/Image/LaganatUnitSlot").gameObject);
+        ExpandPanel(AllPanels.Find("NavigationPoint3/LaganatPanel").gameObject);        
     }
 
     public void MovePanelsToLeft()
@@ -64,13 +59,11 @@ public class UnitsPanels : MonoBehaviour
         if (_lastPanel != null)
         {
             _lastPanel.transform.localScale = new Vector3(10, 15, -2);
-            panel.transform.localPosition = new Vector3(0, 0, 0);
-            //_lastPenel.GetComponent<StoreButton>().CloseDetails();
+            _lastPanel.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().enabled = true;
         }
 
         _lastPanel = panel;
         panel.transform.localScale = new Vector3(NewWidth, 15, 1);
-        //panel.transform.localPosition = new Vector3(0, -250, 0);
-        //panel.GetComponentInChildren<StoreButton>().ShowDetails();
+        panel.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().enabled = false;       
     }
 }

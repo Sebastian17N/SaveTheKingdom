@@ -12,6 +12,7 @@ namespace Assets.Scenes.Barracks.Scripts
 		public GameObject PrefabUnitCard;
 		public UnitScriptableObject[] ScriptableObjects;
 		public Transform LaganatUnitSlot;
+		public Transform[] UnitSlots;
 
 		//UpdatePanel
 		private readonly List<GameObject> _units = new();
@@ -29,7 +30,16 @@ namespace Assets.Scenes.Barracks.Scripts
 
 		private void CreateUnitFolder(UnitScriptableObject scriptableObject, int unitIndex)
 		{
-			var unit = Instantiate(PrefabUnitCard, LaganatUnitSlot);
+   //         switch (UnitSlots[])
+   //         {
+			//	case UntSlots[0]:
+				
+			//		break;
+			//	default UntSlots[0]:
+			//		break;
+			//}
+
+            var unit = Instantiate(PrefabUnitCard, LaganatUnitSlot);
 			unit.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
 			unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
 			unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;

@@ -527,6 +527,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f94635f426c2fc34e991ca66e721713d, type: 2}
   - {fileID: 11400000, guid: f47a77ad0835c3f4f836357147076a4f, type: 2}
   LaganatUnitSlot: {fileID: 1559160377}
+  UnitSlots:
+  - {fileID: 682799612}
+  - {fileID: 1285411260}
+  - {fileID: 215000008}
   UpdatePanelPrefab: {fileID: 4882444994131764132, guid: 4ecabc4dc694a8246a323a2dd1d61248, type: 3}
 --- !u!4 &309239530
 Transform:
@@ -1504,7 +1508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325c3402e87fd7347b5fd2c837d008c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstPanelToExpand: LaganatPanel
   AllPanels: {fileID: 1306595869}
   NewWidth: 15
 --- !u!4 &1306595869
