@@ -16,7 +16,8 @@ public class UnitsPanels : MonoBehaviour
 
     void Start()
     {
-        ExpandPanel(AllPanels.Find("NavigationPoint3/LaganatScrollView/Image/LaganatUnitSlot").gameObject);
+        ExpandPanel(AllPanels.Find("NavigationPoint3/LaganatPanel").gameObject);
+        //ExpandPanel(AllPanels.Find("NavigationPoint3/LaganatScrollView/Image/LaganatUnitSlot").gameObject);
     }
 
     public void MovePanelsToLeft()
@@ -38,7 +39,7 @@ public class UnitsPanels : MonoBehaviour
             transform.GetChild(i).GetChild(0).SetParent(transform.GetChild(i - 1), false);
            
             if (transform.GetChild(2).childCount > 0)
-                ExpandPanel(transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).gameObject);
+                ExpandPanel(transform.GetChild(2).GetChild(0).gameObject);
         }
     }
     public void MovePanelsToRight()
@@ -54,7 +55,7 @@ public class UnitsPanels : MonoBehaviour
             transform.GetChild(i).GetChild(0).SetParent(transform.GetChild(i + 1), false);
            
             if(transform.GetChild(2).childCount > 0 )
-                 ExpandPanel(transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).gameObject);
+                 ExpandPanel(transform.GetChild(2).GetChild(0).gameObject);
         }
     }
     public void ExpandPanel(GameObject panel)
@@ -62,13 +63,13 @@ public class UnitsPanels : MonoBehaviour
        
         if (_lastPanel != null)
         {
-            _lastPanel.transform.localScale = new Vector3(1, 1, -2);
+            _lastPanel.transform.localScale = new Vector3(10, 15, -2);
             panel.transform.localPosition = new Vector3(0, 0, 0);
             //_lastPenel.GetComponent<StoreButton>().CloseDetails();
         }
 
         _lastPanel = panel;
-        panel.transform.localScale = new Vector3(NewWidth, 2f, 1f);
+        panel.transform.localScale = new Vector3(NewWidth, 15, 1);
         //panel.transform.localPosition = new Vector3(0, -250, 0);
         //panel.GetComponentInChildren<StoreButton>().ShowDetails();
     }
