@@ -1,3 +1,4 @@
+using System.Xml.Linq;
 using UnityEngine;
 
 namespace Assets.Map.Scripts
@@ -31,31 +32,9 @@ namespace Assets.Map.Scripts
 		{
 			var field = Instantiate(FieldPrefab, transform);
 			field.transform.localPosition += new Vector3(x * FieldLocation.x, y * FieldLocation.y, 0);
-		}
 
-		public void Configurate(int x, int y)
-		{
-			X = x;
-			Y = y;
-
-			TargetPosition = GetFieldPosition(x, y);
-		}
-		public Vector2 GetFieldPosition(int x, int y)
-		{
-			var basePosition = new Vector2(
-				x - BoardWidth / 2 + 0.5f,
-				y - BoardHeight / 2 + 0.5f);
-
-			return basePosition;
-		}
-		public bool IsNeighbour(BackgroundManager field)
-		{
-			if (Mathf.Abs(X - field.X) > 1f)
-				return false;
-			if (Mathf.Abs(Y - field.Y) > 1f)
-				return false;
-
-			return true;
+			field.GetComponent<FieldManager>().X = x;
+			field.GetComponent<FieldManager>().Y = y;
 		}
 	}
 }

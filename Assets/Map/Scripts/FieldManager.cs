@@ -10,6 +10,9 @@ namespace Assets.Map.Scripts
 		public bool IsAssigned = false;
 		public bool IsSpellActivated = false;
 
+		public int X;
+		public int Y;
+
 		public void OnMouseOver()
 		{
 			if (IsAssigned)
