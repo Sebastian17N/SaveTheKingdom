@@ -91,19 +91,15 @@ namespace Assets.Map.Scripts
 			}			
 		}
 
-        /// <summary>
-        /// Apply or remove the color from fields in a radius.
-        /// </summary>
-        /// <param name="x">Position X of field.</param>
-        /// <param name="y">Position Y of field.</param>
-        /// <param name="applyColor">True - apply the color, False - remove the color.</param>
-        /// <param name="radius">Radius of spell</param>
-        public void ChangeColorOfFieldForSpell(int x, int y, float colorIntensivity, int radius = 1)
+		/// <summary>
+		/// Apply or remove the color from fields in a radius.
+		/// </summary>
+		/// <param name="x">Position X of field.</param>
+		/// <param name="y">Position Y of field.</param>
+		/// <param name="colorIntensity">Float value of color intensity</param>
+		/// <param name="radius">Radius of spell</param>
+		public void ChangeColorOfFieldForSpell(int x, int y, float colorIntensity, int radius = 1)
 		{
-			// (0, 0), (0, 1), (0, 2)
-			// (1, 0), (1, 1), (1, 2)
-			// (2, 0), (2, 1), (2, 2)
-
 			var fieldsWithEffect = new List<(int x, int y)>();
 
 			for (var i = -1; i < 2; i++)
@@ -117,7 +113,7 @@ namespace Assets.Map.Scripts
 				var field = background.transform.GetChild(childId);
 				var fieldManager = field.GetComponent<FieldManager>();
 				if (fieldsWithEffect.Contains((fieldManager.X, fieldManager.Y)))
-					field.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, colorIntensivity);
+					field.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, colorIntensity);
 			}
 		}
 	}
