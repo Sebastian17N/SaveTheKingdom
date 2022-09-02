@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
+using Assets.Scenes.Battleground.Units.Defenses.Scripts;
 using Assets.Units.Defenses.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows.WebCam;
 
 namespace Assets.Scenes.Barracks.Scripts
 {
@@ -10,8 +13,12 @@ namespace Assets.Scenes.Barracks.Scripts
 	{
 		//UnitCard
 		public GameObject PrefabUnitCard;
-		public UnitScriptableObject[] ScriptableObjects;
+		public List<UnitScriptableObject> ScriptableObjects;
+
+		public Transform GhagharUnitSlot;
 		public Transform LaganatUnitSlot;
+		public Transform HaikoUnitSlot;
+
 		public Transform[] UnitSlots;
 
 		//UpdatePanel
@@ -22,24 +29,24 @@ namespace Assets.Scenes.Barracks.Scripts
 
 		public void Start()
 		{
-			for (var i = 0; i < ScriptableObjects.Length; i++)
+			GenerateUnitFoldersPerOrigin(UnitOrigin.Ghagar, GhagharUnitSlot);
+			GenerateUnitFoldersPerOrigin(UnitOrigin.Laganat, LaganatUnitSlot);
+			GenerateUnitFoldersPerOrigin(UnitOrigin.Haiko, HaikoUnitSlot);
+		}
+
+		private void GenerateUnitFoldersPerOrigin(UnitOrigin origin, Transform unitSlot)
+		{
+			var unitsForOrigin = ScriptableObjects.Where(unit => unit.Origin == origin).ToList();
+			
+			for (var i = 0; i < unitsForOrigin.Count; i++)
 			{
-				CreateUnitFolder(ScriptableObjects[i], i);
+				CreateUnitFolder(unitsForOrigin[i], i, unitSlot);
 			}
 		}
 
-		private void CreateUnitFolder(UnitScriptableObject scriptableObject, int unitIndex)
+		private void CreateUnitFolder(UnitScriptableObject scriptableObject, int unitIndex, Transform unitSlot)
 		{
-   //         switch (UnitSlots[])
-   //         {
-			//	case UntSlots[0]:
-				
-			//		break;
-			//	default UntSlots[0]:
-			//		break;
-			//}
-
-            var unit = Instantiate(PrefabUnitCard, LaganatUnitSlot);
+			var unit = Instantiate(PrefabUnitCard, unitSlot);
 			unit.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
 			unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
 			unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
@@ -70,7 +77,7 @@ namespace Assets.Scenes.Barracks.Scripts
 		public void NextUnit()
 		{
 			_selectedUnit++;
-			if (_selectedUnit == ScriptableObjects.Length)
+			if (_selectedUnit == ScriptableObjects.Count)
 			{
 				_selectedUnit = 0;
 			}
@@ -86,7 +93,7 @@ namespace Assets.Scenes.Barracks.Scripts
 			_selectedUnit--;
 			if (_selectedUnit < 0)
 			{
-				_selectedUnit = ScriptableObjects.Length - 1;
+				_selectedUnit = ScriptableObjects.Count - 1;
 			}
 
 			LoadUpdatePanel(_updatePanel,

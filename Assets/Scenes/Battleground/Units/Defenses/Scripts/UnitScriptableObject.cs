@@ -1,3 +1,4 @@
+using Assets.Scenes.Battleground.Units.Defenses.Scripts;
 using Assets.Units.Weapons;
 using UnityEngine;
 
@@ -23,6 +24,6 @@ namespace Assets.Units.Defenses.Scripts
 		public float AttackDamage;
 		public float Cooldown;
 
-		public string[] Origin = new string[] {"L", "H", "G" };
+		public UnitOrigin Origin;
 	}
 }

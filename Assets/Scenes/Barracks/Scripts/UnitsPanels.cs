@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class UnitsPanels : MonoBehaviour
@@ -55,8 +58,7 @@ public class UnitsPanels : MonoBehaviour
     }
     public void ExpandPanel(GameObject panel)
     {
-       
-        if (_lastPanel != null)
+	    if (_lastPanel != null)
         {
             _lastPanel.transform.localScale = new Vector3(10, 15, -2);
             _lastPanel.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().enabled = true;
@@ -64,6 +66,25 @@ public class UnitsPanels : MonoBehaviour
 
         _lastPanel = panel;
         panel.transform.localScale = new Vector3(NewWidth, 15, 1);
-        panel.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().enabled = false;       
+        panel.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().enabled = false;    
+
+        ShowOnePanelOnly(panel.name);
+    }
+
+    private void ShowOnePanelOnly(string panelName)
+    {
+	    GameObject.Find("GhagarScrollView")?.SetActive(false);
+        GameObject.Find("LaganatScrollView")?.SetActive(false);
+        GameObject.Find("HaikoScrollView")?.SetActive(false);
+        
+        var originName =
+	        Regex.Replace(panelName, "([A-Z])", " $1", RegexOptions.Compiled)
+		        .Trim()
+		        .Split(' ')
+		        .First();
+
+        var canvas = GameObject.Find("Canvas");
+	    var scrollView = canvas.transform.Find($"{originName}ScrollView");
+        scrollView.gameObject.SetActive(true);
     }
 }

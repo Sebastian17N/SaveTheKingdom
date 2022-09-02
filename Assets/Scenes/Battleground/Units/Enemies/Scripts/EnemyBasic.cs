@@ -30,15 +30,14 @@ namespace Assets.Units.Enemies.Scripts
 			var lastUnitPosition = transform.position;
 			var stillExists = base.DecreaseDurability(amount);
 
-			if (!stillExists)
-			{ 
-				FindObjectOfType<GameManager>().NumberOfEnemiesLeft--;
-            
-				var point = Instantiate(MoonStonePrefab);
-				point.transform.position = lastUnitPosition;
-			}
+			if (stillExists) 
+				return true;
 
-			return stillExists;
+			FindObjectOfType<GameManager>().NumberOfEnemiesLeft--;
+            var point = Instantiate(MoonStonePrefab);
+			point.transform.position = lastUnitPosition;
+
+			return false;
 		}    
 	}
 }
