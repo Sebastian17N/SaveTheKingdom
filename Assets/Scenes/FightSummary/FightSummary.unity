@@ -736,14 +736,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Award: {fileID: 3135676334842184867, guid: 179819e2897fe7e48b1e9d0bf8acabf4, type: 3}
-  ChestButton: {fileID: 477871024}
-  ChestBrown:
-  - {fileID: -2104435912, guid: 660db72e36f6dbf48b1ea63f3640acd8, type: 3}
-  - {fileID: 415545239, guid: 660db72e36f6dbf48b1ea63f3640acd8, type: 3}
-  - {fileID: 1049212574, guid: 660db72e36f6dbf48b1ea63f3640acd8, type: 3}
-  - {fileID: 1862215471, guid: 660db72e36f6dbf48b1ea63f3640acd8, type: 3}
-  - {fileID: -1554131606, guid: 660db72e36f6dbf48b1ea63f3640acd8, type: 3}
-  - {fileID: -1292660498, guid: 660db72e36f6dbf48b1ea63f3640acd8, type: 3}
 --- !u!95 &477871020
 Animator:
   serializedVersion: 4
@@ -1303,7 +1295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonText: {fileID: 32038482}
-  SceneName: Game
+  FightSummaryGameManager: {fileID: 0}
+  SceneName: Battleground
   ChangingButton: {fileID: 1327669111}
 --- !u!114 &1327669111
 MonoBehaviour:

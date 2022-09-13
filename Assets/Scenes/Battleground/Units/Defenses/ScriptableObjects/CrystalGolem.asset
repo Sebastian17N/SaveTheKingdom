@@ -25,7 +25,4 @@ MonoBehaviour:
   AttackSpeed: 1
   AttackDamage: 2
   Cooldown: 5
-  Origin:
-  - L
-  - H
-  - G
+  Origin: 1
