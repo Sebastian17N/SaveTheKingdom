@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.IO;
 using Assets.Common.JsonModel;
 using UnityEngine;
@@ -20,19 +21,19 @@ namespace Assets.Scenes.CampaignMap.Scripts
 
 		private void Start()
 		{
-			LoadConfig();
+			_mapsConfigJsonModel = LoadConfig(LevelName);
 			StarRatingSystem();
 			ActivateBattleButton();
 		}
 
-		private void LoadConfig()
+		private MapsConfigJsonModel LoadConfig(string levelName)
 		{
-			if (!File.Exists($"Assets/Map/Configs/{LevelName}.json"))
-				return;
+			if (!File.Exists($"Assets/Map/Configs/{levelName}.json"))
+				return null;
 
-			var fileData = File.ReadAllText($"Assets/Map/Configs/{LevelName}.json");
+			var fileData = File.ReadAllText($"Assets/Map/Configs/{levelName}.json");
 
-			_mapsConfigJsonModel = JsonUtility.FromJson<MapsConfigJsonModel>(fileData);
+			return JsonUtility.FromJson<MapsConfigJsonModel>(fileData);
 		}
 
 		private void ActivateBattleButton()
@@ -110,6 +111,9 @@ namespace Assets.Scenes.CampaignMap.Scripts
 		{
 			PlayerPrefs.SetString("CurrentLevel_EnemiesMap", _mapsConfigJsonModel.EnemiesMapFileName);
 			PlayerPrefs.SetString("CurrentLevel_MapBackground", _mapsConfigJsonModel.SpriteBackgroundPath);
+
+			PlayerPrefs.SetString("CurrentLevel", LevelName);
+
 			SceneManager.LoadScene(SceneGoIn);
 		}
 	}

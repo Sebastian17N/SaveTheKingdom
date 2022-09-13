@@ -6,7 +6,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 	public class Award : MonoBehaviour
 	{
 		public Animator Animator;
-		public float Speed;
+		public float ShowingSpeed;
 		public float GettingAwardsSpeed;
 		public int Coins = 0;
 
@@ -38,7 +38,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 			}
 
 			var destination = awardsSlot.transform.position - transform.position;
-			GetComponent<Rigidbody2D>().velocity = destination.normalized * Speed;
+			GetComponent<Rigidbody2D>().velocity = destination.normalized * ShowingSpeed;
 		}
 
 		public void ShowCoinsAmount()

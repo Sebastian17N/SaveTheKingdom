@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 0}
-  Speed: 200
-  GettingAwardsSpeed: 0
+  ShowingSpeed: 200
+  GettingAwardsSpeed: 300
   Coins: 100
 --- !u!61 &-8496709526417225874
 BoxCollider2D:

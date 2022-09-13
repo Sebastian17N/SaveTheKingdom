@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Assets.Common;
@@ -6,6 +7,7 @@ using Assets.Scenes.SpiritMountain.Scripts;
 using Assets.Units.Enemies.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 namespace Assets.Map.Scripts
 {
@@ -38,7 +40,7 @@ namespace Assets.Map.Scripts
 				if (_lastCollider != null)
 				{
 					_lastCollider.Unit = null;
-					_lastCollider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+					ChangeColorOfFieldForSpell(_lastCollider.X, _lastCollider.Y, 0, 1);
 				}
 
 				_lastCollider = Collider;
@@ -55,17 +57,21 @@ namespace Assets.Map.Scripts
 			{
 				// Unit should be snapped to the field.
 				_spellDragged.transform.position = Collider.transform.position; // + new Vector3(0, 0.25f, 0);
-				Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);				
+				ChangeColorOfFieldForSpell(Collider.X, Collider.Y, 0.3f, 1);
 			}
         }
         public void OnPointerUp(PointerEventData eventData)
         {
-	        if (Collider == null)
-		        return;
+			//TODO: When spell is used outside fields it stay on cursor.
+			if (Collider == null)
+			{
+				Destroy(_spellDragged);
+				return;
+			}
 
-			
+
 			Collider.IsSpellActivated = true;
-			Collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+			ChangeColorOfFieldForSpell(Collider.X, Collider.Y, 0, 1);
 
 			var explosion = Instantiate(_explosion, Collider.transform.position, Quaternion.identity);
 			Destroy(explosion, 1);
@@ -82,25 +88,33 @@ namespace Assets.Map.Scripts
 				         .Select(obj => obj.gameObject.GetComponent<EnemyBasic>()))
 			{
 				enemy.DecreaseDurability(SpellScriptableObject.Damage);
-
 			}			
 		}
 
-        /// <summary>
-        /// Apply or remove the color from fields in a radius.
-        /// </summary>
-        /// <param name="x">Position X of field.</param>
-        /// <param name="y">Position Y of field.</param>
-        /// <param name="applyColor">True - apply the color, False - remove the color.</param>
-        /// <param name="radius">Radius of spell</param>
-        public void ChangeColorOfFieldForSpell(int x, int y, bool applyColor, int radius = 1)
+		/// <summary>
+		/// Apply or remove the color from fields in a radius.
+		/// </summary>
+		/// <param name="x">Position X of field.</param>
+		/// <param name="y">Position Y of field.</param>
+		/// <param name="colorIntensity">Float value of color intensity</param>
+		/// <param name="radius">Radius of spell</param>
+		public void ChangeColorOfFieldForSpell(int x, int y, float colorIntensity, int radius = 1)
 		{
-			// (0, 0), (0, 1), (0, 2)
-			// (1, 0), (1, 1), (1, 2)
-			// (2, 0), (2, 1), (2, 2)
+			var fieldsWithEffect = new List<(int x, int y)>();
 
+			for (var i = -1; i < 2; i++)
+				for (var j = -1; j < 2; j++)
+					fieldsWithEffect.Add((x + i, y + j));
+			
+			var background = GameObject.Find("Background");
 
+			for (var childId = 0; childId < background.transform.childCount; childId++)
+			{
+				var field = background.transform.GetChild(childId);
+				var fieldManager = field.GetComponent<FieldManager>();
+				if (fieldsWithEffect.Contains((fieldManager.X, fieldManager.Y)))
+					field.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, colorIntensity);
+			}
 		}
-		
 	}
 }

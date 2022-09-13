@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ChestEmerald
+  m_Controller: {fileID: 9100000, guid: 6c87d27fe2d3da64eac1d6b611d5d877, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 987c11a355d7aa84b94906f6206e2b9c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 19608124805ea5e459596ef2792baec1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 94de0ef34ba3f004cb8aecc7b414853d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 90dc483d2db55bd47b407e4935bec18f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5ea9a94b9bee9904e8927aff49b6e9b3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 532b2e1a80f0f8e4897b4f5599384e96, type: 2}
