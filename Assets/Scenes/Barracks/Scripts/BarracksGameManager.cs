@@ -23,7 +23,7 @@ namespace Assets.Scenes.Barracks.Scripts
 
 		//UpdatePanel
 		private readonly List<GameObject> _units = new();
-		private int _selectedUnit;
+		public int SelectedUnit;
 		private GameObject _updatePanel;
 		public GameObject UpdatePanelPrefab;
 
@@ -51,7 +51,7 @@ namespace Assets.Scenes.Barracks.Scripts
 			unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
 			unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
 			unit.GetComponent<UnitDataFolder>().UnitIndex = unitIndex;
-			_selectedUnit = unitIndex;
+			SelectedUnit = unitIndex;
 
 			var damageObject = unit.transform.Find("Damage");
 			damageObject.transform.Find("DamageNumber").GetComponent<TMP_Text>().text =
@@ -71,33 +71,33 @@ namespace Assets.Scenes.Barracks.Scripts
 			LoadUpdatePanel(_updatePanel, scriptableObject);
 		}
 
-		private GameObject GetUnitByIndex(int unitIndex)
+		public GameObject GetUnitByIndex(int unitIndex)
 			=> _units.Find(x => x.GetComponent<UnitDataFolder>().UnitIndex == unitIndex);
 
 		public void NextUnit()
 		{
-			_selectedUnit++;
-			if (_selectedUnit == ScriptableObjects.Count)
+			SelectedUnit++;
+			if (SelectedUnit == ScriptableObjects.Count)
 			{
-				_selectedUnit = 0;
+				SelectedUnit = 0;
 			}
 
 			LoadUpdatePanel(_updatePanel,
-				GetUnitByIndex(_selectedUnit)
+				GetUnitByIndex(SelectedUnit)
 					.GetComponent<UnitDataFolder>()
 					.UnitScriptableObject);
 		}
 
 		public void PreviousUnit()
 		{
-			_selectedUnit--;
-			if (_selectedUnit < 0)
+			SelectedUnit--;
+			if (SelectedUnit < 0)
 			{
-				_selectedUnit = ScriptableObjects.Count - 1;
+				SelectedUnit = ScriptableObjects.Count - 1;
 			}
 
 			LoadUpdatePanel(_updatePanel,
-				GetUnitByIndex(_selectedUnit)
+				GetUnitByIndex(SelectedUnit)
 					.GetComponent<UnitDataFolder>()
 					.UnitScriptableObject);
 		}

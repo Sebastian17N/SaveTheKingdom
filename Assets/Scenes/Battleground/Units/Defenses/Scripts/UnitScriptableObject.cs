@@ -9,6 +9,7 @@ namespace Assets.Units.Defenses.Scripts
 	{
 		public int UnitId;
 		[Header("Visuals")]
+		public string Name;
 		public Sprite Sprite;
 		public RuntimeAnimatorController Animator;
 		public Sprite Icon;
@@ -17,13 +18,21 @@ namespace Assets.Units.Defenses.Scripts
 		public float Cost;
 		public float Health;
 		public float Speed;
-		public bool IsRange => BulletType?.Sprite != null;
-		public BulletType BulletType;
-    
 		public float AttackSpeed;
 		public float AttackDamage;
 		public float Cooldown;
-
+		public bool IsRange => BulletType?.Sprite != null;
+		public BulletType BulletType;
 		public UnitOrigin Origin;
+
+		[Header("UpgradeStatistic")]
+		public float ShardsNumber;
+		public float UpgradeInictialCost;
+		public float UpgradeIncrementalCostFactor; //np 200*5
+		public float IncrementalCostFactor; 
+		public float IncrementalHealthFactor; 
+		public float IncrementalSpeedFactor; 
+		public float IncrementalAttackDamageFactor; 
+		public float IncrementalCooldownFactor; 
 	}
 }
