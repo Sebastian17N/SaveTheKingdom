@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.IO;
+using Assets.Common;
 using Assets.Common.JsonModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,20 +22,11 @@ namespace Assets.Scenes.CampaignMap.Scripts
 
 		private void Start()
 		{
-			_mapsConfigJsonModel = LoadConfig(LevelName);
+			_mapsConfigJsonModel = JsonLoader.LoadConfig(LevelName);
 			StarRatingSystem();
 			ActivateBattleButton();
 		}
-
-		private MapsConfigJsonModel LoadConfig(string levelName)
-		{
-			if (!File.Exists($"Assets/Map/Configs/{levelName}.json"))
-				return null;
-
-			var fileData = File.ReadAllText($"Assets/Map/Configs/{levelName}.json");
-
-			return JsonUtility.FromJson<MapsConfigJsonModel>(fileData);
-		}
+			
 
 		private void ActivateBattleButton()
 		{

@@ -1,3 +1,4 @@
+using Assets.Common;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 		[Header("Chest")]
 		public GameObject Chest;
 		public float TimeToActivateChest;
+		public int CoinsAward;
 
 		[Header("Activate Buttons")]   
 		public Button[] Buttons;
@@ -58,33 +60,37 @@ namespace Assets.Scenes.FightSummary.Scripts
 			Health = PlayerPrefs.GetFloat("Health");
 
 			var deadZoneHealthPercentage = Health / BasicHealth;
+			AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
+			AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
+			AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
 
+			var howManyStars = 0;
 			switch (deadZoneHealthPercentage)
 			{
-				case 0:
-					AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
-					AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
-					AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
-					break;
-
 				case > 0f and < 0.7f:
-					AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
-					AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
-					AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
+					howManyStars = 1;
 					break;
 
 				case >= 0.7f and < 1:
-					AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
-					AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
-					AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
+					howManyStars = 2;
 					break;
 
 				case 1:
-					AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
-					AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
-					AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
+					howManyStars = 3;
 					break;
 			}
+
+			for (var i = 0; i < howManyStars; i++)
+			{
+				AchievedStars[i].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
+			}
+
+			if (howManyStars > 0)
+            {
+				var level = PlayerPrefs.GetString("CurrentLevel");
+				var mapsConfigJsonModel = JsonLoader.LoadConfig(level);				
+				CoinsAward = mapsConfigJsonModel.AwardCoins[howManyStars - 1];
+			}	
 		}  
 		
 		public IEnumerator ActivateChest()

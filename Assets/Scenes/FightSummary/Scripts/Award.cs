@@ -14,6 +14,8 @@ namespace Assets.Scenes.FightSummary.Scripts
 		{
 			Animator = GetComponent<Animator>();
 			Animator.enabled = false;
+			Coins = GameObject.Find("FightSummaryGameManager").
+				GetComponent<FightSummaryGameManager>().CoinsAward;
 		}
 
 		void Update()

@@ -1,3 +1,5 @@
+using Assets.Common;
+using Assets.Common.JsonModel;
 using System.Collections;
 using UnityEngine;
 
@@ -12,7 +14,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 
 		void Start()
 		{
-			_animator = GetComponent<Animator>();
+			_animator = GetComponent<Animator>();			
 		}
 
 		public void PlayerClickOnChest()
