@@ -6,6 +6,9 @@ public class LevelUpSystem : MonoBehaviour
     public UpgradeButton UnitToUpgrade;
     public void LevelUpUnit()
     {
-        var scriptableObject = UnitToUpgrade.ChosenUnit.name;
+	    var scriptableObject = transform.parent.Find("UnitDataFolder")
+		    .GetComponent<UnitDataFolder>().UnitScriptableObject;
+
+	    scriptableObject.Health += 5;
     }
 }

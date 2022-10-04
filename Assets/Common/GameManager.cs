@@ -156,7 +156,7 @@ namespace Assets.Common
 				{
 					PlayerPrefs.SetInt(_levelName + "_finished", 1);
 					PlayerPrefs.SetInt("DidGamerWin", 1);
-					//PlayerPrefs.SetFloat("Health", Health);
+					//PlayerPrefs.SetFloat("BasicHealth", BasicHealth);
 					SceneManager.LoadScene("FightSummary");
 					break;
 				}

@@ -6,12 +6,12 @@ namespace Assets.Common.JsonModel
 	public class MapsConfigJsonModel
 	{
 		public int Id;
-		public int StarRatingNeededToStartLevel;
 		public string SpriteBackgroundPath;
-		//public string TerrainMapPath;
 		public string EnemiesMapFileName;
-		public int [] AwardCoins;
-		public int[] AwardGems;
-		public int[] AwardShards;
+		public int[] AvailableUnitsToPlayById;
+		public int[] AwardCoins;
+		public string AwardGemsType;
+		public int[] AwardGemsNumber;
+		public AwardShardJsonModel[] AwardShards;
 	}
 }

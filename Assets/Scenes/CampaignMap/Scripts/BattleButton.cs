@@ -67,7 +67,7 @@ namespace Assets.Scenes.CampaignMap.Scripts
 		private void StarRatingSystem()
 		{
 			BasicHealth = PlayerPrefs.GetFloat("BasicHealth");
-			Health = PlayerPrefs.GetFloat("Health");
+			Health = PlayerPrefs.GetFloat("BasicHealth");
 
 			var deadZoneHealthPercentage = Health / BasicHealth;
 

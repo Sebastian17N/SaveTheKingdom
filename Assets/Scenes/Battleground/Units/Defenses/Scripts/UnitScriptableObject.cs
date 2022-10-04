@@ -16,7 +16,11 @@ namespace Assets.Units.Defenses.Scripts
 
 		[Header("Statistics")]
 		public float Cost;
+
+		public float HealthBasic;
+		public float HealthUpgrade;
 		public float Health;
+
 		public float Speed;
 		public float AttackSpeed;
 		public float AttackDamage;
@@ -27,12 +31,12 @@ namespace Assets.Units.Defenses.Scripts
 
 		[Header("UpgradeStatistic")]
 		public float ShardsNumber;
-		public float UpgradeInictialCost;
+		public float UpgradeInitialCost;
 		public float UpgradeIncrementalCostFactor; //np 200*5
 		public float IncrementalCostFactor; 
 		public float IncrementalHealthFactor; 
 		public float IncrementalSpeedFactor; 
 		public float IncrementalAttackDamageFactor; 
-		public float IncrementalCooldownFactor; 
+		public float IncrementalCooldownFactor;
 	}
 }

@@ -105,6 +105,9 @@ namespace Assets.Scenes.Barracks.Scripts
 		private void LoadUpdatePanel(GameObject updatePanel, UnitScriptableObject scriptableObject)
 		{
 			updatePanel.transform.Find("UpDateUnitPanel/UnitDataFolder")
+				.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
+
+			updatePanel.transform.Find("UpDateUnitPanel/UnitDataFolder")
 				.GetComponent<Image>().sprite = scriptableObject.Sprite;
 
 			var damageObject = updatePanel.transform.Find("UpDateUnitPanel/UnitDataFolder/Damage");
