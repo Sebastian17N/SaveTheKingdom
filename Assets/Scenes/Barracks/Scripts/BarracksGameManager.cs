@@ -22,7 +22,7 @@ namespace Assets.Scenes.Barracks.Scripts
 		
 		[Header("UpdatePanel")]
 		private readonly List<GameObject> _units = new();
-		public int SelectedUnit;
+		public GameObject SelectedUnit;
 		private GameObject _updatePanel;
 		public GameObject UpdatePanelPrefab;
 		//public UnitUpgradePanel UnitUpgradePanel;
@@ -51,7 +51,6 @@ namespace Assets.Scenes.Barracks.Scripts
 			unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
 			unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
 			unit.GetComponent<UnitDataFolder>().UnitIndex = unitIndex;
-			SelectedUnit = unitIndex;
 
 			var damageObject = unit.transform.Find("Damage");
 			damageObject.transform.Find("DamageNumber").GetComponent<TMP_Text>().text =
@@ -66,6 +65,8 @@ namespace Assets.Scenes.Barracks.Scripts
 
 		public void CreateUpdatePanel(UnitScriptableObject scriptableObject)
 		{
+			SelectedUnit = GetUnitByIndex(scriptableObject.UnitId);
+
 			var canvas = FindObjectOfType<Canvas>();
 			_updatePanel = Instantiate(UpdatePanelPrefab, canvas.transform);
 			LoadUpdatePanel(_updatePanel, scriptableObject);
@@ -74,30 +75,44 @@ namespace Assets.Scenes.Barracks.Scripts
 		public GameObject GetUnitByIndex(int unitIndex)
 			=> _units.Find(x => x.GetComponent<UnitDataFolder>().UnitIndex == unitIndex);
 
+		public GameObject GetNextUnit(int currentUnitIndex, UnitOrigin groupOrigin)
+			=> _units
+				.Where(unit => unit.GetComponent<UnitDataFolder>().UnitScriptableObject.Origin == groupOrigin)
+				.FirstOrDefault(unit => unit.GetComponent<UnitDataFolder>().UnitIndex > currentUnitIndex)
+			??
+			_units
+				.Where(unit => unit.GetComponent<UnitDataFolder>().UnitScriptableObject.Origin == groupOrigin)
+				.OrderBy(unit => unit.GetComponent<UnitDataFolder>().UnitIndex)
+				.First();
+
+		public GameObject GetPreviousUnit(int currentUnitIndex, UnitOrigin groupOrigin)
+			=> _units
+				   .Where(unit => unit.GetComponent<UnitDataFolder>().UnitScriptableObject.Origin == groupOrigin)
+				   .LastOrDefault(unit => unit.GetComponent<UnitDataFolder>().UnitIndex < currentUnitIndex)
+			   ??
+			   _units
+				   .Where(unit => unit.GetComponent<UnitDataFolder>().UnitScriptableObject.Origin == groupOrigin)
+				   .OrderByDescending(unit => unit.GetComponent<UnitDataFolder>().UnitIndex)
+				   .First();
+
 		public void NextUnit()
 		{
-			SelectedUnit++;
-			if (SelectedUnit == ScriptableObjects.Count)
-			{
-				SelectedUnit = 0;
-			}
+			SelectedUnit = GetNextUnit(SelectedUnit.GetComponent<UnitDataFolder>().UnitIndex,
+				SelectedUnit.GetComponent<UnitDataFolder>().UnitScriptableObject.Origin);
 
 			LoadUpdatePanel(_updatePanel,
-				GetUnitByIndex(SelectedUnit)
+				SelectedUnit
 					.GetComponent<UnitDataFolder>()
 					.UnitScriptableObject);
 		}
 
 		public void PreviousUnit()
 		{
-			SelectedUnit--;
-			if (SelectedUnit < 0)
-			{
-				SelectedUnit = ScriptableObjects.Count - 1;
-			}
+			SelectedUnit = GetPreviousUnit(SelectedUnit.GetComponent<UnitDataFolder>().UnitIndex,
+				SelectedUnit.GetComponent<UnitDataFolder>().UnitScriptableObject.Origin);
 
 			LoadUpdatePanel(_updatePanel,
-				GetUnitByIndex(SelectedUnit)
+				SelectedUnit
 					.GetComponent<UnitDataFolder>()
 					.UnitScriptableObject);
 		}
