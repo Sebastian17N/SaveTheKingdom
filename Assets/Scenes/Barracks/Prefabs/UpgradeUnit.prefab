@@ -1645,7 +1645,6 @@ GameObject:
   - component: {fileID: 849361797800395675}
   - component: {fileID: 6906025207845318960}
   - component: {fileID: 8961342696904749951}
-  - component: {fileID: 91244676322232412}
   m_Layer: 5
   m_Name: LevelUpButton
   m_TagString: Untagged
@@ -1670,7 +1669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.70255643, y: 0.0398248}
   m_AnchorMax: {x: 0.968102, y: 0.21000001}
-  m_AnchoredPosition: {x: -3, y: 1}
+  m_AnchoredPosition: {x: -3, y: 0.9999695}
   m_SizeDelta: {x: 27.636597, y: 171.53592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &849361797800395675
@@ -1755,8 +1754,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 91244676322232412}
-        m_TargetAssemblyTypeName: LevelUpSystem, Assembly-CSharp
+      - m_Target: {fileID: 5386476350237350711}
+        m_TargetAssemblyTypeName: UnitUpgradePanel, Assembly-CSharp
         m_MethodName: LevelUpUnit
         m_Mode: 1
         m_Arguments:
@@ -1767,19 +1766,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &91244676322232412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4755244514871291675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0043649cb6e745b4a8a24f204196e4ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitToUpgrade: {fileID: 0}
 --- !u!1 &4882444994131764132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1778,7 @@ GameObject:
   - component: {fileID: 6625718272534661619}
   - component: {fileID: 7417802662752406118}
   - component: {fileID: 3909719528519609304}
-  - component: {fileID: -3106593896484194582}
+  - component: {fileID: 5386476350237350711}
   m_Layer: 5
   m_Name: UpgradeUnit
   m_TagString: Untagged
@@ -1917,7 +1903,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-3106593896484194582
+--- !u!114 &5386476350237350711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1926,10 +1912,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4882444994131764132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0043649cb6e745b4a8a24f204196e4ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 138fae237f6009a47839236198eabecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitToUpgrade: {fileID: 0}
+  BarracksGameManager: {fileID: 0}
+  damageText: {fileID: 1185079030879673102}
+  damageUpgradeText: {fileID: 7413886357370290776}
+  healthText: {fileID: 6688329854030125792}
+  healthUpgradeText: {fileID: 1443148341051852920}
+  shardsOwnedText: {fileID: 7096464194970063351}
+  shardsNeededText: {fileID: 5856004020858115920}
+  coinsNeededText: {fileID: 1239753129102035437}
+  coinsHavedText: {fileID: 6068020049409642880}
+  UnitIcon: {fileID: 9127755859909894090}
 --- !u!1 &5354002551606788381
 GameObject:
   m_ObjectHideFlags: 0

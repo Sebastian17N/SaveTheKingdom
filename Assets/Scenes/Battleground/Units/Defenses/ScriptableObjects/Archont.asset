@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: Archont
   m_EditorClassIdentifier: 
   UnitId: 2
-  Name: 
+  Name: Archont
   Sprite: {fileID: 21300000, guid: 5ba62983efaf64148ba85186abd7aeb7, type: 3}
   Animator: {fileID: 9100000, guid: fc097ff56d846eb4b906e3391a95961b, type: 2}
   Icon: {fileID: 21300000, guid: 5ba62983efaf64148ba85186abd7aeb7, type: 3}
   Cost: 100
-  HealthBasic: 30
+  HealthBasic: 20
   HealthUpgrade: 5
-  Health: 0
+  Health: 20
   Speed: 0
   AttackSpeed: 4
-  AttackDamage: 5
+  AttackDamage: 10
   Cooldown: 8
   BulletType:
     Sprite: {fileID: 21300000, guid: 83caaf4210b6f014f93e33a61a9d601c, type: 3}
     Speed: 4
   Origin: 1
   ShardsNumber: 0
-  UpgradeInictialCost: 0
+  UpgradeInitialCost: 1000
   UpgradeIncrementalCostFactor: 0
   IncrementalCostFactor: 0
   IncrementalHealthFactor: 0

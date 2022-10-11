@@ -18,17 +18,19 @@ MonoBehaviour:
   Animator: {fileID: 9100000, guid: a09c5e7a60b79a548b178ea67e39c888, type: 2}
   Icon: {fileID: 21300000, guid: a658c57a68f931942ba166eef4cd88e3, type: 3}
   Cost: 100
+  HealthBasic: 0
+  HealthUpgrade: 0
   Health: 20
   Speed: 1
   AttackSpeed: 1
-  AttackDamage: 5
+  AttackDamage: 10
   Cooldown: 4
   BulletType:
     Sprite: {fileID: 0}
     Speed: 0
   Origin: 1
   ShardsNumber: 0
-  UpgradeInictialCost: 200
+  UpgradeInitialCost: 0
   UpgradeIncrementalCostFactor: 5
   IncrementalCostFactor: 5
   IncrementalHealthFactor: 5

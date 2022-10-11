@@ -641,6 +641,7 @@ MonoBehaviour:
   - {fileID: 682799612}
   - {fileID: 1285411260}
   - {fileID: 215000008}
+  SelectedUnit: 0
   UpdatePanelPrefab: {fileID: 4882444994131764132, guid: 4ecabc4dc694a8246a323a2dd1d61248, type: 3}
 --- !u!4 &309239530
 Transform:
@@ -1649,7 +1650,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

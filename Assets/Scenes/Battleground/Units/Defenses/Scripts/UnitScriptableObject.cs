@@ -21,22 +21,25 @@ namespace Assets.Units.Defenses.Scripts
 		public float HealthUpgrade;
 		public float Health;
 
-		public float Speed;
-		public float AttackSpeed;
+		public float AttackDamageBasic;
+		public float AttackDamageUpgrade;
 		public float AttackDamage;
+		public float AttackSpeed;
+
+		public float Speed;
 		public float Cooldown;
 		public bool IsRange => BulletType?.Sprite != null;
 		public BulletType BulletType;
 		public UnitOrigin Origin;
 
-		[Header("UpgradeStatistic")]
+		//[Header("UpgradeStatistic")]
 		public float ShardsNumber;
 		public float UpgradeInitialCost;
-		public float UpgradeIncrementalCostFactor; //np 200*5
-		public float IncrementalCostFactor; 
-		public float IncrementalHealthFactor; 
-		public float IncrementalSpeedFactor; 
-		public float IncrementalAttackDamageFactor; 
-		public float IncrementalCooldownFactor;
+		//public float UpgradeIncrementalCostFactor; //np 200*5
+		//public float IncrementalCostFactor; 
+		//public float IncrementalHealthFactor; 
+		//public float IncrementalSpeedFactor; 
+		//public float IncrementalAttackDamageFactor; 
+		//public float IncrementalCooldownFactor;
 	}
 }

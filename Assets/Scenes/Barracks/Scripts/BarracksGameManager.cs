@@ -5,13 +5,12 @@ using Assets.Units.Defenses.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows.WebCam;
 
 namespace Assets.Scenes.Barracks.Scripts
 {
 	public class BarracksGameManager : MonoBehaviour
 	{
-		//UnitCard
+		[Header("UnitCard")]
 		public GameObject PrefabUnitCard;
 		public List<UnitScriptableObject> ScriptableObjects;
 
@@ -20,12 +19,13 @@ namespace Assets.Scenes.Barracks.Scripts
 		public Transform HaikoUnitSlot;
 
 		public Transform[] UnitSlots;
-
-		//UpdatePanel
+		
+		[Header("UpdatePanel")]
 		private readonly List<GameObject> _units = new();
 		public int SelectedUnit;
 		private GameObject _updatePanel;
 		public GameObject UpdatePanelPrefab;
+		//public UnitUpgradePanel UnitUpgradePanel;
 
 		public void Start()
 		{
@@ -104,23 +104,28 @@ namespace Assets.Scenes.Barracks.Scripts
 
 		private void LoadUpdatePanel(GameObject updatePanel, UnitScriptableObject scriptableObject)
 		{
+			var panelComponents = 
+				updatePanel.transform.GetComponentInChildren<UnitUpgradePanel>();
+
 			updatePanel.transform.Find("UpDateUnitPanel/UnitDataFolder")
 				.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
 
 			updatePanel.transform.Find("UpDateUnitPanel/UnitDataFolder")
 				.GetComponent<Image>().sprite = scriptableObject.Sprite;
-
-			var damageObject = updatePanel.transform.Find("UpDateUnitPanel/UnitDataFolder/Damage");
-			damageObject.transform.Find("DamageNumber").GetComponent<TMP_Text>().text =
-				scriptableObject.AttackDamage.ToString();
-
-			var healthObject = updatePanel.transform.Find("UpDateUnitPanel/UnitDataFolder/Health");
-			healthObject.transform.Find("HealthNumber").GetComponent<TMP_Text>().text =
-				scriptableObject.Health.ToString();
-
-			var coinObject = updatePanel.transform.Find("UpDateUnitPanel/CoinIcon/CoinsText");
-			coinObject.transform.Find("CoinsHavedText").GetComponent<TMP_Text>().text =
-				PlayerPrefs.GetInt("coins").ToString();
+			
+			panelComponents.damageText.text = scriptableObject.AttackDamage.ToString();
+			panelComponents.damageUpgradeText.text = 
+				(scriptableObject.AttackDamage + scriptableObject.AttackDamageUpgrade).ToString();			
+			
+			panelComponents.healthText.text = scriptableObject.Health.ToString();
+			panelComponents.healthUpgradeText.text = 
+				(scriptableObject.Health + scriptableObject.HealthUpgrade).ToString();
+			
+			panelComponents.UnitIcon.sprite = scriptableObject.Icon;
+			panelComponents.shardsOwnedText.text = scriptableObject.ShardsNumber.ToString();
+			panelComponents.shardsNeededText.text = scriptableObject.ShardsNumber.ToString();
+			panelComponents.coinsHavedText.text = PlayerPrefs.GetInt("coins").ToString();
+			panelComponents.coinsNeededText.text = scriptableObject.UpgradeInitialCost.ToString();
 		}
 	}
 }

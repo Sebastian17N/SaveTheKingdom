@@ -5,7 +5,7 @@ namespace Assets.Scenes.Barracks.Scripts
 {
 	public class UpgradeButton : MonoBehaviour
 	{
-		public UnitScriptableObject ChosenUnit;
+		//public UnitScriptableObject ChosenUnit;
 		public void CreateUpdatePanel()
 		{
 			var scriptableObject =
@@ -14,7 +14,7 @@ namespace Assets.Scenes.Barracks.Scripts
 					.GetComponent<UnitDataFolder>()
 					.UnitScriptableObject;
 
-			ChosenUnit = scriptableObject;
+			//ChosenUnit = scriptableObject;
 
 			var gameManager =
 				GameObject
