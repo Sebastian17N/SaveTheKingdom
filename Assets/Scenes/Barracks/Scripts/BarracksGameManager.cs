@@ -51,19 +51,18 @@ namespace Assets.Scenes.Barracks.Scripts
 			unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
 			unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
 			unit.GetComponent<UnitDataFolder>().UnitIndex = unitIndex;
+			unit.GetComponent<UnitDataFolder>().RefreshStatisticsTexts();
 			SelectedUnit = unitIndex;
-
-			var damageObject = unit.transform.Find("Damage");
-			damageObject.transform.Find("DamageNumber").GetComponent<TMP_Text>().text =
-				$"Damage: {scriptableObject.AttackDamage}";
-
-			var healthObject = unit.transform.Find("Health");
-			healthObject.transform.Find("HealthNumber").GetComponent<TMP_Text>().text =
-				$"Health: {scriptableObject.Health}";
 
 			_units.Add(unit);
 		}
-
+		public void RefreshAllUnitsTexts()
+        {
+            foreach (var unit in _units)
+            {
+				unit.GetComponent<UnitDataFolder>().RefreshStatisticsTexts();
+			}
+        }
 		public void CreateUpdatePanel(UnitScriptableObject scriptableObject)
 		{
 			var canvas = FindObjectOfType<Canvas>();

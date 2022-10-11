@@ -28,14 +28,13 @@ public class UnitUpgradePanel : MonoBehaviour
     }
     public void LevelUpUnit()
     {
-        var totalCoins = PlayerPrefs.GetInt("Coins");
+        var totalCoins = PlayerPrefs.GetInt("coins");
 
-        if (totalCoins >= scriptableObject.UpgradeInitialCost)
+        if (totalCoins < scriptableObject.UpgradeInitialCost)
             return;
 
         //if (!(scriptableObject.ShardsNumber >= 10))
         //    return;
-
 
         damageText.text = 
             (scriptableObject.AttackDamage += scriptableObject.AttackDamageUpgrade).ToString();
@@ -49,6 +48,8 @@ public class UnitUpgradePanel : MonoBehaviour
         //shardsOwnedText.text = scriptableObject.AttackDamage.ToString();
         //shardsNeededText.text = scriptableObject.AttackDamage.ToString();
         //totalCoins - scriptableObject.UpgradeInitialCost;
+
+        FindObjectOfType<BarracksGameManager>().RefreshAllUnitsTexts();
     }
     public void RefreshText()
     {
@@ -59,5 +60,6 @@ public class UnitUpgradePanel : MonoBehaviour
         //shardsOwnedText.text = scriptableObject.AttackDamage.ToString();
         //shardsNeededText.text = scriptableObject.AttackDamage.ToString();
         //coinsHavedText.text = PlayerPrefs.GetInt("Coins").ToString();
+
     }
 }
