@@ -20,9 +20,11 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public Sprite StarGrey;
 		public float BasicHealth;
 		public float Health;
-   
+
 		[Header("Chest")]
 		public GameObject Chest;
+		public GameObject[] Chests;
+		
 		public float TimeToActivateChest;
 		public int CoinsAward;
 
@@ -40,10 +42,6 @@ namespace Assets.Scenes.FightSummary.Scripts
 			StartCoroutine(ActivateChest());        
 		}
 
-		void Update()
-		{
-        
-		}
 		private void ShowWinLoseImage()
 		{
 			DidGamerWin = Convert.ToBoolean(PlayerPrefs.GetInt("DidGamerWin"));
@@ -57,7 +55,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 		private void StarRatingSystem()
 		{
 			BasicHealth = PlayerPrefs.GetFloat("BasicHealth");
-			Health = PlayerPrefs.GetFloat("BasicHealth");
+			Health = PlayerPrefs.GetFloat("Health");
 
 			var deadZoneHealthPercentage = Health / BasicHealth;
 			AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
@@ -67,11 +65,11 @@ namespace Assets.Scenes.FightSummary.Scripts
 			var howManyStars = 0;
 			switch (deadZoneHealthPercentage)
 			{
-				case > 0f and < 0.7f:
+				case > 0f and < 0.5f:
 					howManyStars = 1;
 					break;
 
-				case >= 0.7f and < 1:
+				case >= 0.5f and < 1:
 					howManyStars = 2;
 					break;
 
@@ -83,6 +81,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 			for (var i = 0; i < howManyStars; i++)
 			{
 				AchievedStars[i].gameObject.GetComponent<SpriteRenderer>().sprite = StarGold;
+				Chest = Chests[i];
 			}
 
 			if (howManyStars > 0)

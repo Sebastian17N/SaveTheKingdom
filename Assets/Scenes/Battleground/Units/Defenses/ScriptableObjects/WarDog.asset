@@ -13,16 +13,23 @@ MonoBehaviour:
   m_Name: WarDog
   m_EditorClassIdentifier: 
   UnitId: 10
+  Name: WarDog
   Sprite: {fileID: 21300000, guid: 9e19245421f854b4ca6362bf0b50145e, type: 3}
   Animator: {fileID: 9100000, guid: 63ac2a4a4266e614b89b224f1ffd0ce4, type: 2}
-  Icon: {fileID: 21300000, guid: 9e19245421f854b4ca6362bf0b50145e, type: 3}
+  Icon: {fileID: 21300000, guid: 298fd4146a444af46bb5fc3f1646837e, type: 3}
   Cost: 100
+  HealthBasic: 20
+  HealthUpgrade: 10
   Health: 20
-  Speed: 3
+  AttackDamageBasic: 15
+  AttackDamageUpgrade: 10
+  AttackDamage: 15
+  AttackSpeed: 3
+  Speed: 5
+  Cooldown: 5
   BulletType:
     Sprite: {fileID: 0}
     Speed: 0
-  AttackSpeed: 3
-  AttackDamage: 6
-  Cooldown: 5
   Origin: 2
+  ShardsNumber: 0
+  UpgradeInitialCost: 1000

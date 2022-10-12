@@ -8,23 +8,23 @@ public class UnitUpgradePanel : MonoBehaviour
 {
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI damageUpgradeText;
-    public TextMeshProUGUI healthText; 
+    public TextMeshProUGUI healthText;
     public TextMeshProUGUI healthUpgradeText;
     public TextMeshProUGUI shardsOwnedText;
     public TextMeshProUGUI shardsNeededText;
     public TextMeshProUGUI coinsNeededText;
     public TextMeshProUGUI coinsHavedText;
     public Image UnitIcon;
-    public UnitScriptableObject scriptableObject => 
+    public UnitScriptableObject scriptableObject =>
         transform.GetComponentInChildren<UnitDataFolder>().UnitScriptableObject;
 
     private void Start()
     {
-       
+
     }
     private void Update()
     {
-        RefreshText();
+        
     }
     public void LevelUpUnit()
     {
@@ -36,10 +36,10 @@ public class UnitUpgradePanel : MonoBehaviour
         //if (!(scriptableObject.ShardsNumber >= 10))
         //    return;
 
-        damageText.text = 
+        damageText.text =
             (scriptableObject.AttackDamage += scriptableObject.AttackDamageUpgrade).ToString();
         scriptableObject.AttackDamageUpgrade *= 2;
-        damageUpgradeText.text = 
+        damageUpgradeText.text =
             (scriptableObject.AttackDamage + scriptableObject.AttackDamageUpgrade).ToString();
 
         healthText.text = (scriptableObject.Health += scriptableObject.HealthUpgrade).ToString();
@@ -50,16 +50,5 @@ public class UnitUpgradePanel : MonoBehaviour
         //totalCoins - scriptableObject.UpgradeInitialCost;
 
         FindObjectOfType<BarracksGameManager>().RefreshAllUnitsTexts();
-    }
-    public void RefreshText()
-    {
-        //damageText.text = scriptableObject.AttackDamage.ToString();
-        //damageUpgradeText.text = (scriptableObject.AttackDamage *= 2).ToString();
-        //healthText.text = scriptableObject.Health.ToString();
-        //healthUpgradeText.text = scriptableObject.Health.ToString();
-        //shardsOwnedText.text = scriptableObject.AttackDamage.ToString();
-        //shardsNeededText.text = scriptableObject.AttackDamage.ToString();
-        //coinsHavedText.text = PlayerPrefs.GetInt("Coins").ToString();
-
     }
 }

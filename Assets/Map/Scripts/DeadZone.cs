@@ -18,7 +18,7 @@ namespace Assets.Map.Scripts
 			set
 			{
 				_health = value;
-				PlayerPrefs.SetFloat("BasicHealth", Health);
+				PlayerPrefs.SetFloat("Health", Health);
 			}
 		}
 

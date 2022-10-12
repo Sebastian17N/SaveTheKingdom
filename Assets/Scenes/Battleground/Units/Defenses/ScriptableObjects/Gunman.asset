@@ -13,16 +13,23 @@ MonoBehaviour:
   m_Name: Gunman
   m_EditorClassIdentifier: 
   UnitId: 6
+  Name: Gunman
   Sprite: {fileID: 21300000, guid: 448d081573d951440a9ac0d5ef386902, type: 3}
   Animator: {fileID: 9100000, guid: 238993cc79e095f44897371c59e12973, type: 2}
-  Icon: {fileID: 21300000, guid: 448d081573d951440a9ac0d5ef386902, type: 3}
+  Icon: {fileID: 21300000, guid: 5aa17b636a1454843aa97371c47e8479, type: 3}
   Cost: 100
+  HealthBasic: 10
+  HealthUpgrade: 5
   Health: 10
+  AttackDamageBasic: 25
+  AttackDamageUpgrade: 15
+  AttackDamage: 25
+  AttackSpeed: 2
   Speed: 0
+  Cooldown: 4
   BulletType:
     Sprite: {fileID: 21300000, guid: eff13b04babefe640978fb93720719c6, type: 3}
     Speed: 2
-  AttackSpeed: 2
-  AttackDamage: 8
-  Cooldown: 4
   Origin: 1
+  ShardsNumber: 0
+  UpgradeInitialCost: 1000

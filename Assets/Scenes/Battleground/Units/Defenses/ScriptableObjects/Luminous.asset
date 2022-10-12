@@ -13,16 +13,23 @@ MonoBehaviour:
   m_Name: Luminous
   m_EditorClassIdentifier: 
   UnitId: 8
+  Name: Luminous
   Sprite: {fileID: 21300000, guid: d85f4143ba4870447ab12f87bc753aab, type: 3}
   Animator: {fileID: 9100000, guid: c846d99de73739142bf929ce71722f85, type: 2}
-  Icon: {fileID: 21300000, guid: d85f4143ba4870447ab12f87bc753aab, type: 3}
+  Icon: {fileID: 21300000, guid: b8be9f6d14d31c14cb3cf527847d52e4, type: 3}
   Cost: 100
+  HealthBasic: 10
+  HealthUpgrade: 5
   Health: 10
+  AttackDamageBasic: 20
+  AttackDamageUpgrade: 10
+  AttackDamage: 20
+  AttackSpeed: 1
   Speed: 0
+  Cooldown: 6
   BulletType:
     Sprite: {fileID: 21300000, guid: 700b1a73e6be86440b6d79ce27cc40e3, type: 3}
-    Speed: 1
-  AttackSpeed: 1
-  AttackDamage: 5
-  Cooldown: 6
+    Speed: 3
   Origin: 1
+  ShardsNumber: 0
+  UpgradeInitialCost: 0

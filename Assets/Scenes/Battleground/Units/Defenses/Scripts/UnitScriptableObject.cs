@@ -32,14 +32,7 @@ namespace Assets.Units.Defenses.Scripts
 		public BulletType BulletType;
 		public UnitOrigin Origin;
 
-		//[Header("UpgradeStatistic")]
 		public float ShardsNumber;
 		public float UpgradeInitialCost;
-		//public float UpgradeIncrementalCostFactor; //np 200*5
-		//public float IncrementalCostFactor; 
-		//public float IncrementalHealthFactor; 
-		//public float IncrementalSpeedFactor; 
-		//public float IncrementalAttackDamageFactor; 
-		//public float IncrementalCooldownFactor;
 	}
 }
