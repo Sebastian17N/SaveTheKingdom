@@ -40,17 +40,17 @@ namespace Assets.Scenes.Barracks.Scripts
 			
 			for (var i = 0; i < unitsForOrigin.Count; i++)
 			{
-				CreateUnitFolder(unitsForOrigin[i], i, unitSlot);
+				CreateUnitFolder(unitsForOrigin[i], unitSlot);
 			}
 		}
 
-		private void CreateUnitFolder(UnitScriptableObject scriptableObject, int unitIndex, Transform unitSlot)
+		private void CreateUnitFolder(UnitScriptableObject scriptableObject, Transform unitSlot)
 		{
 			var unit = Instantiate(PrefabUnitCard, unitSlot);
 			unit.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
 			unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
 			unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
-			unit.GetComponent<UnitDataFolder>().UnitIndex = unitIndex;
+			unit.GetComponent<UnitDataFolder>().UnitIndex = scriptableObject.UnitId;
 			unit.GetComponent<UnitDataFolder>().RefreshStatisticsTexts();
 
 			_units.Add(unit);
