@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396f3027a0fd5b94db9bd2025ca673f9, type: 3}
   m_Name: SnowBlizzard
   m_EditorClassIdentifier: 
+  SpellId: 3
   Sprite: {fileID: 21300000, guid: 66c8419ed16fffc41abd9cbf485b94ac, type: 3}
   Cooldown: 0
   Damage: 300

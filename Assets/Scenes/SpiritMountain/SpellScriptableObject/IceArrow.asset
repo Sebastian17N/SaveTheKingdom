@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396f3027a0fd5b94db9bd2025ca673f9, type: 3}
   m_Name: IceArrow
   m_EditorClassIdentifier: 
+  SpellId: 1
   Sprite: {fileID: 21300000, guid: 2546c2dbf3ec33c4c8d1e109a96f1531, type: 3}
   Cooldown: 0
   Damage: 100

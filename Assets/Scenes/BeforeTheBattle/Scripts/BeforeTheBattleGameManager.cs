@@ -60,6 +60,7 @@ namespace Assets.Scenes.BeforeTheBattle.Scripts
 			var manager = spell.GetComponent<SpellAvailableToChoose>();
 			manager.Sprite = spellScriptableObject.Sprite;
 			manager.CanvasTransform = CanvasTransform;
+			manager.SpellId = spellScriptableObject.SpellId;
 
 			return spell;
 		}

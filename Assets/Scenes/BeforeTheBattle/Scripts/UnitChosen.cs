@@ -20,7 +20,7 @@ namespace Assets.Scenes.BeforeTheBattle.Scripts
 				transform.SetParent(Slot.transform);
 				GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
 				GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
-				GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 20, 0);
+				GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
 				GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
 				_isAssignedToSlotAlready = true;

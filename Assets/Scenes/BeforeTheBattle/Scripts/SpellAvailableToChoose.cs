@@ -8,6 +8,7 @@ namespace Assets.Scenes.BeforeTheBattle.Scripts
 	{
 		public bool IsAssignedToSlotAlready = false;
 
+		public int SpellId;
 		public Sprite Sprite;
 		public Transform CanvasTransform;
 		public GameObject SpellChosenPrefab;

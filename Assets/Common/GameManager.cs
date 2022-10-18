@@ -40,6 +40,7 @@ namespace Assets.Common
 		private void Start()
 		{
 			var listOfChosenUnits = PlayerPrefs.GetString("UnitChosenToBattle").Split(";");
+			var listOfChosenSpells = PlayerPrefs.GetString("SpellChosenToBattle").Split(";");
 
 			// Load all units.
 			UnitCards = new List<GameObject>();        
@@ -51,9 +52,13 @@ namespace Assets.Common
 				UnitCards.Add(CreateUnit(scriptableObject));
 			}
 
+			// Load all spells.
 			SpellCard = new List<GameObject>();
 			foreach (var scriptableObject in ScriptableSpellObject)
 			{
+				if (!listOfChosenSpells.Contains(scriptableObject.SpellId.ToString()))
+					continue;
+
 				SpellCard.Add(CreateSpell(scriptableObject));
 			}
 			// Load level
