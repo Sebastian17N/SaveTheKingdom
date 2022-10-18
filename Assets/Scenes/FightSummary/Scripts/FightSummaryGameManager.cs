@@ -1,6 +1,8 @@
 using Assets.Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +29,9 @@ namespace Assets.Scenes.FightSummary.Scripts
 		
 		public float TimeToActivateChest;
 		public int CoinsAward;
+		public (string type, int quantity) GemsAward;
+		public (int unitId, int quantity) ShardsAward;
+
 		public GameObject UnitShards;
 
 		[Header("Activate Buttons")]   
@@ -90,6 +95,11 @@ namespace Assets.Scenes.FightSummary.Scripts
 				var level = PlayerPrefs.GetString("CurrentLevel");
 				var mapsConfigJsonModel = JsonLoader.LoadConfig(level);				
 				CoinsAward = mapsConfigJsonModel.AwardCoins[howManyStars - 1];
+				GemsAward = 
+					(mapsConfigJsonModel.AwardGemsType, mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1]);
+
+				var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
+				ShardsAward = (shard.UnitId, shard.MinRange[0]);
 			}	
 		}  
 		

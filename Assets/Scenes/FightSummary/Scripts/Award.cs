@@ -5,15 +5,22 @@ namespace Assets.Scenes.FightSummary.Scripts
 {
 	public class Award : MonoBehaviour
 	{
-		public Animator Animator;
+		public Animator CoinsAnimator;
+		public Animator GemsAnimator;
+		public Animator ShardsAnimator;
 		public float ShowingSpeed;
 		public float GettingAwardsSpeed;
 		public int Coins = 0;
 
 		private void Start()
 		{
-			Animator = GetComponent<Animator>();
-			Animator.enabled = false;
+			CoinsAnimator = transform.Find("CoinsAward").GetComponent<Animator>();
+			GemsAnimator = transform.Find("GemsAward").GetComponent<Animator>();
+			ShardsAnimator = transform.Find("ShardsAward").GetComponent<Animator>();
+			CoinsAnimator.enabled = false;
+			GemsAnimator.enabled = false;
+			ShardsAnimator.enabled = false;
+
 			Coins = GameObject.Find("FightSummaryGameManager").
 				GetComponent<FightSummaryGameManager>().CoinsAward;
 		}
@@ -30,22 +37,22 @@ namespace Assets.Scenes.FightSummary.Scripts
 			if (transform.parent == awardsSlot.transform)
 				return;
 
-			if (Vector2.Distance(awardsSlot.transform.position, transform.position) < 10f)
+			if (Mathf.Abs(awardsSlot.transform.position.y - transform.Find("CoinsAward").position.y) < 10f)
 			{
-				GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-				transform.SetParent(awardsSlot.transform);
+				transform.Find("CoinsAward").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+				transform.Find("CoinsAward").SetParent(awardsSlot.transform);
 
 				ShowCoinsAmount();
 				return;
 			}
 
-			var destination = awardsSlot.transform.position - transform.position;
-			GetComponent<Rigidbody2D>().velocity = destination.normalized * ShowingSpeed;
+			var destination = awardsSlot.transform.position - transform.Find("CoinsAward").position;
+			transform.Find("CoinsAward").GetComponent<Rigidbody2D>().velocity = destination.normalized * Vector2.up * ShowingSpeed;
 		}
 
 		public void ShowCoinsAmount()
 		{
-			GetComponentInChildren<TMP_Text>().text = Coins.ToString();
+			transform.Find("CoinsAward").GetComponentInChildren<TMP_Text>().text = Coins.ToString();
 			FindObjectOfType<CoinCounterText>().IncrementCoins(Coins);
 		}
 
@@ -56,10 +63,13 @@ namespace Assets.Scenes.FightSummary.Scripts
 			if (transform.parent == coinCounter.transform)
 				return;
 
-			var destination = coinCounter.transform.position - transform.position;
-			GetComponent<Rigidbody2D>().velocity = destination.normalized * GettingAwardsSpeed;
+			var destination = coinCounter.transform.position - transform.Find("CoinsAward").position;
+			transform.Find("CoinsAward").GetComponent<Rigidbody2D>().velocity = destination.normalized * GettingAwardsSpeed;
 
-			Animator.enabled = true;
+			CoinsAnimator.enabled = true;
+			GemsAnimator.enabled = true;
+			ShardsAnimator.enabled = true;
+
 			Destroy(gameObject, 2);
 		}
 		

@@ -18,6 +18,12 @@ namespace Assets.Scenes.FightSummary.Scripts
 			PlayerPrefs.SetInt("coins", CoinsNumber);
 			GetComponent<TMP_Text>().text = CoinsNumber.ToString();        
 		}
-    
+		public void DecrementCoins(int coinsToRemove)
+		{
+			CoinsNumber = PlayerPrefs.GetInt("coins") - coinsToRemove;
+			PlayerPrefs.SetInt("coins", CoinsNumber);
+			GetComponent<TMP_Text>().text = CoinsNumber.ToString();
+		}
+
 	}
 }
