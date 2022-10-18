@@ -27,10 +27,11 @@ namespace Assets.Scenes.FightSummary.Scripts
 		
 		public float TimeToActivateChest;
 		public int CoinsAward;
+		public GameObject UnitShards;
 
 		[Header("Activate Buttons")]   
 		public Button[] Buttons;
-		public float TimeActivate;
+		//public float TimeActivate;
 
 		void Start()
 		{
