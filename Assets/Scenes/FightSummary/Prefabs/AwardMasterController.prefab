@@ -145,9 +145,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3220211652260166372}
   - component: {fileID: 4056777373831618865}
-  - component: {fileID: 5302784609561159251}
+  - component: {fileID: 4182272861836498490}
   m_Layer: 5
-  m_Name: Award
+  m_Name: AwardMasterController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3135676334842184867}
   m_CullTransparentMesh: 1
---- !u!114 &5302784609561159251
+--- !u!114 &4182272861836498490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,13 +193,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3135676334842184867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f7d8ef97a40f264cae916b46c4878c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 716eb7f1fef0c9949aa92fb9a9f57c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
-  ShowingSpeed: 200
-  GettingAwardsSpeed: 300
-  Coins: 100
+  CoinsAward: {fileID: 4757817020091451806}
+  GemsAward: {fileID: 8617661463252504781}
+  ShardsAward: {fileID: 7467906452166582271}
 --- !u!1 &4757817020091451806
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +214,7 @@ GameObject:
   - component: {fileID: 1907185035135488732}
   - component: {fileID: 5735511797901100157}
   - component: {fileID: 3589583146547642830}
+  - component: {fileID: 583385828282496663}
   m_Layer: 5
   m_Name: CoinsAward
   m_TagString: Untagged
@@ -372,8 +372,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Assets.Scenes.FightSummary.Scripts.Award, Assembly-CSharp
+      - m_Target: {fileID: 583385828282496663}
+        m_TargetAssemblyTypeName: Assets.Scenes.FightSummary.Scripts.AwardController,
+          Assembly-CSharp
         m_MethodName: GettingAwards
         m_Mode: 1
         m_Arguments:
@@ -384,8 +385,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Award, Assembly-CSharp
+      - m_Target: {fileID: 583385828282496663}
+        m_TargetAssemblyTypeName: Assets.Scenes.FightSummary.Scripts.AwardController,
+          Assembly-CSharp
         m_MethodName: ActivateButtons
         m_Mode: 1
         m_Arguments:
@@ -416,6 +418,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &583385828282496663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4757817020091451806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7d8ef97a40f264cae916b46c4878c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
+  ShowingSpeed: 100
+  GettingAwardsSpeed: 500
+  Type: 0
+  Quantity: 0
 --- !u!1 &5397775368085509405
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +585,7 @@ GameObject:
   - component: {fileID: 4789818468351194511}
   - component: {fileID: 8979417409189422331}
   - component: {fileID: 43331835208216130}
+  - component: {fileID: 4106655570417314152}
   m_Layer: 5
   m_Name: ShardsAward
   m_TagString: Untagged
@@ -767,6 +787,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4106655570417314152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467906452166582271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7d8ef97a40f264cae916b46c4878c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
+  ShowingSpeed: 100
+  GettingAwardsSpeed: 500
+  Type: 2
+  Quantity: 0
 --- !u!1 &8617661463252504781
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +819,7 @@ GameObject:
   - component: {fileID: 7155590390557540874}
   - component: {fileID: 4994868927574751712}
   - component: {fileID: 5937503770232551852}
+  - component: {fileID: 7976516916083499747}
   m_Layer: 5
   m_Name: GemsAward
   m_TagString: Untagged
@@ -983,6 +1021,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7976516916083499747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617661463252504781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7d8ef97a40f264cae916b46c4878c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
+  ShowingSpeed: 100
+  GettingAwardsSpeed: 500
+  Type: 1
+  Quantity: 0
 --- !u!1 &9163984073457481602
 GameObject:
   m_ObjectHideFlags: 0
