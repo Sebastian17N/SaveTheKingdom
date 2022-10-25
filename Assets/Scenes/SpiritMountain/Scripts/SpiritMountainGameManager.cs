@@ -29,6 +29,7 @@ namespace Assets.Scenes.SpiritMountain.Scripts
 
 			var manager = spell.GetComponent<SpellCardManager>();
 			manager.Sprite = spellScriptableObject.Sprite;
+			manager.DamageNumber = spellScriptableObject.Damage.ToString();
 			manager.CanvasTransform = CanvasTransform;
 
 			return spell;

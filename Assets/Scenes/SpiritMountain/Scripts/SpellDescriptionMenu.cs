@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,7 @@ namespace Assets.Scenes.SpiritMountain.Scripts
 
 			var manager = spell.GetComponent<SpellDescriptionCardManager>();
 			manager.Sprite = spellScriptableObject.Sprite;
+			manager.DamageNumber = spellScriptableObject.Damage.ToString();
 			manager.CanvasTransform = CanvasTransform;
 
 			return spell;

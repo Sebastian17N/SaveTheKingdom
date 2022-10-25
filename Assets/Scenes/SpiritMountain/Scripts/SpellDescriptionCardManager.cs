@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ namespace Assets.Scenes.SpiritMountain.Scripts
 	public class SpellDescriptionCardManager : MonoBehaviour, IPointerClickHandler
 	{
 		public Sprite Sprite;
+		public string DamageNumber;
 		public Transform CanvasTransform;
 		public GameObject SpellDescriptionPrefab;
 
@@ -18,6 +20,8 @@ namespace Assets.Scenes.SpiritMountain.Scripts
 			spellDescription.transform.SetParent(transform.parent.transform.parent.transform.parent);
 			spellDescription.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
 			spellDescription.transform.Find("Button/SpellDataDescriptionFolder").GetComponent<Image>().sprite = Sprite;
+			spellDescription.transform.Find("Button/SpellDataDescriptionFolder/Damage/DamageNumber").
+				GetComponent<TextMeshProUGUI>().text = DamageNumber;
 		}
 	}
 }

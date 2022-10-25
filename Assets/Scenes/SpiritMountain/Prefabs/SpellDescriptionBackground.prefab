@@ -86,7 +86,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3459234456825490703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -263,9 +263,41 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 9053695564398839912}
     m_Modifications:
+    - target: {fileID: 421569069161180746, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 353.2042
+      objectReference: {fileID: 0}
+    - target: {fileID: 421569069161180746, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 27.845
+      objectReference: {fileID: 0}
+    - target: {fileID: 421569069161180746, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 421569069161180746, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2227524938351112083, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
       propertyPath: m_Name
       value: SpellDataDescriptionFolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685506584807073502, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949583215630695510, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080697605609390847, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080697605609390847, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -51.8
       objectReference: {fileID: 0}
     - target: {fileID: 5991914065042156928, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
       propertyPath: m_Pivot.x
@@ -350,6 +382,38 @@ PrefabInstance:
     - target: {fileID: 5991914065042156928, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311787873914060256, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311787873914060256, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311787873914060256, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311787873914060256, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311787873914060256, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_characterSpacing
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311787873914060256, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588953775806096285, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588953775806096285, guid: 47f0e6bca56e7f9469037a54658a488d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
