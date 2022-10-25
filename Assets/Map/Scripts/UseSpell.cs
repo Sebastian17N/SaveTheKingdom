@@ -69,26 +69,10 @@ namespace Assets.Map.Scripts
 				return;
 			}
 
-
 			Collider.IsSpellActivated = true;
 			ChangeColorOfFieldForSpell(Collider.X, Collider.Y, 0, 1);
-
-			var explosion = Instantiate(_explosion, Collider.transform.position, Quaternion.identity);
-			Destroy(explosion, 1);
-			Destroy(_spellDragged);
-
-			var fieldCollider = Collider.gameObject.GetComponent<BoxCollider2D>();
-			var results = new List<Collider2D>();
-
-			fieldCollider.OverlapCollider(new ContactFilter2D().NoFilter(), results);
-			
-			foreach (var enemy in 
-			         results
-				         .Where(obj => obj.gameObject.GetComponent<EnemyBasic>() != null)
-				         .Select(obj => obj.gameObject.GetComponent<EnemyBasic>()))
-			{
-				enemy.DecreaseDurability(SpellScriptableObject.Damage);
-			}			
+			ActivateSpell(Collider.X, Collider.Y, 1);
+				
 		}
 
 		/// <summary>
@@ -105,7 +89,7 @@ namespace Assets.Map.Scripts
 			for (var i = -1; i < 2; i++)
 				for (var j = -1; j < 2; j++)
 					fieldsWithEffect.Add((x + i, y + j));
-			
+
 			var background = GameObject.Find("Background");
 
 			for (var childId = 0; childId < background.transform.childCount; childId++)
@@ -113,8 +97,48 @@ namespace Assets.Map.Scripts
 				var field = background.transform.GetChild(childId);
 				var fieldManager = field.GetComponent<FieldManager>();
 				if (fieldsWithEffect.Contains((fieldManager.X, fieldManager.Y)))
+                {
 					field.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, colorIntensity);
+				}
 			}
+		}
+		public void ActivateSpell(int x, int y, int radius = 1)
+        {
+			var fieldsWithEffect = new List<(int x, int y)>();
+
+			for (var i = -1; i < 2; i++)
+				for (var j = -1; j < 2; j++)
+					fieldsWithEffect.Add((x + i, y + j));
+
+			var background = GameObject.Find("Background");
+
+			for (var childId = 0; childId < background.transform.childCount; childId++)
+			{
+				var field = background.transform.GetChild(childId);
+				var fieldManager = field.GetComponent<FieldManager>();
+				if (fieldsWithEffect.Contains((fieldManager.X, fieldManager.Y)))
+				{
+                    var explosion = Instantiate(_explosion, Collider.transform.position, Quaternion.identity);
+                    Destroy(explosion, 1);
+                    Destroy(_spellDragged);
+
+                    var fieldCollider = Collider.gameObject.GetComponent<BoxCollider2D>();
+                    var results = new List<Collider2D>();
+
+                    fieldCollider.OverlapCollider(new ContactFilter2D().NoFilter(), results);
+
+                    foreach (var enemy in
+                             results
+                                 .Where(obj => obj.gameObject.GetComponent<EnemyBasic>() != null)
+                                 .Select(obj => obj.gameObject.GetComponent<EnemyBasic>()))
+                    {
+                        enemy.DecreaseDurability(SpellScriptableObject.Damage);
+                    }
+
+                }
+			}
+
+			
 		}
 	}
 }
