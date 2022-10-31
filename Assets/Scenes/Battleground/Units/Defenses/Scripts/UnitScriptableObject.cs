@@ -12,6 +12,7 @@ namespace Assets.Units.Defenses.Scripts
 		public string Name;
 		public Sprite Sprite;
 		public RuntimeAnimatorController Animator;
+		public RuntimeAnimatorController AnimatorCanvas;
 		public Sprite Icon;
 
 		[Header("Statistics")]

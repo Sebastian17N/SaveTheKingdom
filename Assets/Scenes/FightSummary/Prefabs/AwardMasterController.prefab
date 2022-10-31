@@ -743,8 +743,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Assets.Scenes.FightSummary.Scripts.Award, Assembly-CSharp
+      - m_Target: {fileID: 4106655570417314152}
+        m_TargetAssemblyTypeName: Assets.Scenes.FightSummary.Scripts.AwardController,
+          Assembly-CSharp
         m_MethodName: GettingAwards
         m_Mode: 1
         m_Arguments:
@@ -977,8 +978,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Assets.Scenes.FightSummary.Scripts.Award, Assembly-CSharp
+      - m_Target: {fileID: 7976516916083499747}
+        m_TargetAssemblyTypeName: Assets.Scenes.FightSummary.Scripts.AwardController,
+          Assembly-CSharp
         m_MethodName: GettingAwards
         m_Mode: 1
         m_Arguments:

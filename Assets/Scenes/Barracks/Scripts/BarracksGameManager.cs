@@ -25,7 +25,6 @@ namespace Assets.Scenes.Barracks.Scripts
 		public GameObject SelectedUnit;
 		private GameObject _updatePanel;
 		public GameObject UpdatePanelPrefab;
-		//public UnitUpgradePanel UnitUpgradePanel;
 
 		public void Start()
 		{
@@ -47,11 +46,15 @@ namespace Assets.Scenes.Barracks.Scripts
 		private void CreateUnitFolder(UnitScriptableObject scriptableObject, Transform unitSlot)
 		{
 			var unit = Instantiate(PrefabUnitCard, unitSlot);
-			unit.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
-			unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
-			unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
+			unit.GetComponent<Animator>().runtimeAnimatorController = scriptableObject.AnimatorCanvas;
+            //unit.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
+            unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
+            unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
 			unit.GetComponent<UnitDataFolder>().UnitIndex = scriptableObject.UnitId;
 			unit.GetComponent<UnitDataFolder>().RefreshStatisticsTexts();
+			
+			//animator.runtimeAnimatorController = scriptableObject.Animator;
+			//unit.GetComponent<UnitDataFolder>().animator = scriptableObject.Animator;
 
 			_units.Add(unit);
 		}
@@ -138,7 +141,7 @@ namespace Assets.Scenes.Barracks.Scripts
 			panelComponents.UnitIcon.sprite = scriptableObject.Icon;
 			panelComponents.shardsOwnedText.text = scriptableObject.ShardsNumber.ToString();
 			panelComponents.shardsNeededText.text = scriptableObject.ShardsNumber.ToString();
-			panelComponents.coinsHavedText.text = PlayerPrefs.GetInt("coins").ToString();
+			panelComponents.coinsHavedText.text = PlayerPrefs.GetInt("Coins").ToString();
 			panelComponents.coinsNeededText.text = scriptableObject.UpgradeInitialCost.ToString();
 		}
 	}

@@ -122,7 +122,7 @@ namespace Assets.Map.Scripts
                     Destroy(explosion, 1);
                     Destroy(_spellDragged);
 
-                    var fieldCollider = Collider.gameObject.GetComponent<BoxCollider2D>();
+                    var fieldCollider = field.gameObject.GetComponent<BoxCollider2D>();
                     var results = new List<Collider2D>();
 
                     fieldCollider.OverlapCollider(new ContactFilter2D().NoFilter(), results);
@@ -134,11 +134,8 @@ namespace Assets.Map.Scripts
                     {
                         enemy.DecreaseDurability(SpellScriptableObject.Damage);
                     }
-
                 }
 			}
-
-			
 		}
 	}
 }

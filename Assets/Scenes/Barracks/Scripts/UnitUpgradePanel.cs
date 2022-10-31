@@ -1,4 +1,5 @@
 using Assets.Scenes.Barracks.Scripts;
+using Assets.Scenes.FightSummary.Scripts;
 using Assets.Units.Defenses.Scripts;
 using TMPro;
 using UnityEngine;
@@ -15,20 +16,13 @@ public class UnitUpgradePanel : MonoBehaviour
     public TextMeshProUGUI coinsNeededText;
     public TextMeshProUGUI coinsHavedText;
     public Image UnitIcon;
+    
     public UnitScriptableObject scriptableObject =>
         transform.GetComponentInChildren<UnitDataFolder>().UnitScriptableObject;
 
-    private void Start()
-    {
-
-    }
-    private void Update()
-    {
-        
-    }
     public void LevelUpUnit()
     {
-        var totalCoins = PlayerPrefs.GetInt("coins");
+        var totalCoins = PlayerPrefs.GetInt("Coins");
 
         if (totalCoins < scriptableObject.UpgradeInitialCost)
             return;
@@ -36,19 +30,19 @@ public class UnitUpgradePanel : MonoBehaviour
         //if (!(scriptableObject.ShardsNumber >= 10))
         //    return;
 
-        damageText.text =
-            (scriptableObject.AttackDamage += scriptableObject.AttackDamageUpgrade).ToString();
+        damageText.text = (scriptableObject.AttackDamage += scriptableObject.AttackDamageUpgrade).ToString();
         scriptableObject.AttackDamageUpgrade *= 2;
-        damageUpgradeText.text =
-            (scriptableObject.AttackDamage + scriptableObject.AttackDamageUpgrade).ToString();
-
+        damageUpgradeText.text = (scriptableObject.AttackDamage + scriptableObject.AttackDamageUpgrade).ToString();
+       
         healthText.text = (scriptableObject.Health += scriptableObject.HealthUpgrade).ToString();
         scriptableObject.HealthUpgrade *= 2;
         healthUpgradeText.text = (scriptableObject.Health + scriptableObject.HealthUpgrade).ToString();
+        
         //shardsOwnedText.text = scriptableObject.AttackDamage.ToString();
         //shardsNeededText.text = scriptableObject.AttackDamage.ToString();
         //totalCoins - scriptableObject.UpgradeInitialCost;
-
+        FindObjectOfType<ResourcesController>().DecrementResoures((int)scriptableObject.UpgradeInitialCost, "Coins");
         FindObjectOfType<BarracksGameManager>().RefreshAllUnitsTexts();
+        coinsHavedText.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 }

@@ -8,11 +8,18 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public int CoinsNumber;
 		void Start()
 		{
+			ShowCoins();
+		}
+        private void Update()
+        {
+			ShowCoins();
+		}
+		private void ShowCoins()
+        {
 			CoinsNumber = PlayerPrefs.GetInt("coins");
 			GetComponent<TMP_Text>().text = CoinsNumber.ToString();
 		}
-    
-		public  void IncrementCoins(int coinsToAdd)
+        public  void IncrementCoins(int coinsToAdd)
 		{
 			CoinsNumber = PlayerPrefs.GetInt("coins") + coinsToAdd;
 			PlayerPrefs.SetInt("coins", CoinsNumber);
