@@ -47,7 +47,6 @@ namespace Assets.Scenes.Barracks.Scripts
 		{
 			var unit = Instantiate(PrefabUnitCard, unitSlot);
 			unit.GetComponent<Animator>().runtimeAnimatorController = scriptableObject.AnimatorCanvas;
-            //unit.GetComponentInChildren<Image>().sprite = scriptableObject.Sprite;
             unit.GetComponentInChildren<Image>().type = Image.Type.Filled;
             unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
 			unit.GetComponent<UnitDataFolder>().UnitIndex = scriptableObject.UnitId;
@@ -128,8 +127,8 @@ namespace Assets.Scenes.Barracks.Scripts
 				.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
 
 			updatePanel.transform.Find("UpDateUnitPanel/UnitDataFolder")
-				.GetComponent<Image>().sprite = scriptableObject.Sprite;
-			
+				.GetComponent<Animator>().runtimeAnimatorController = scriptableObject.AnimatorCanvas;
+
 			panelComponents.damageText.text = scriptableObject.AttackDamage.ToString();
 			panelComponents.damageUpgradeText.text = 
 				(scriptableObject.AttackDamage + scriptableObject.AttackDamageUpgrade).ToString();			

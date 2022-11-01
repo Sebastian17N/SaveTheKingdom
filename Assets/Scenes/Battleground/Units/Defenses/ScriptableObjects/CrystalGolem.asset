@@ -16,6 +16,7 @@ MonoBehaviour:
   Name: Crystal Golem
   Sprite: {fileID: 21300000, guid: 430345eca4d8bfc4a80c0d1d4eaa3094, type: 3}
   Animator: {fileID: 9100000, guid: aa9c389476339b54f8c044fdcd9959c6, type: 2}
+  AnimatorCanvas: {fileID: 9100000, guid: c1a20ab64b959c5429d30efb27883bdf, type: 2}
   Icon: {fileID: 21300000, guid: 052ec9e31d3df644789b6b8ee554bde3, type: 3}
   Cost: 100
   HealthBasic: 30

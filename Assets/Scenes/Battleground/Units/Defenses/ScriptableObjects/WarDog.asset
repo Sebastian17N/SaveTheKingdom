@@ -16,6 +16,7 @@ MonoBehaviour:
   Name: WarDog
   Sprite: {fileID: 21300000, guid: 9e19245421f854b4ca6362bf0b50145e, type: 3}
   Animator: {fileID: 9100000, guid: 63ac2a4a4266e614b89b224f1ffd0ce4, type: 2}
+  AnimatorCanvas: {fileID: 9100000, guid: 01000dc21b7a6ca42b0c90c5f1065255, type: 2}
   Icon: {fileID: 21300000, guid: 298fd4146a444af46bb5fc3f1646837e, type: 3}
   Cost: 100
   HealthBasic: 20
