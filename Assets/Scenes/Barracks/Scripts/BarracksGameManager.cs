@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scenes.Battleground.Units.Defenses.Scripts;
 using Assets.Units.Defenses.Scripts;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

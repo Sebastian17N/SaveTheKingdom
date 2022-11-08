@@ -1,4 +1,5 @@
 using System;
+using Assets.Common.Enums;
 
 namespace Assets.Common.JsonModel
 {
@@ -10,7 +11,7 @@ namespace Assets.Common.JsonModel
 		public string EnemiesMapFileName;
 		public int[] AvailableUnitsToPlayById;
 		public int[] AwardCoins;
-		public string AwardGemsType;
+		public Enums.ResourcesTypeEnum AwardResourcesesTypeEnum;
 		public int[] AwardGemsNumber;
 		public AwardShardJsonModel[] AwardShards;
 	}

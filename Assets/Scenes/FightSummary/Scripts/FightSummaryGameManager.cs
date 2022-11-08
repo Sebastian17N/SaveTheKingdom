@@ -1,8 +1,10 @@
 using Assets.Common;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using Assets.Common.Enums;
+using Assets.Common.JsonModel;
+using Assets.Common.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,8 +22,6 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public GameObject[] AchievedStars;
 		public Sprite StarGold;
 		public Sprite StarGrey;
-		public float BasicHealth;
-		public float Health;
 
 		[Header("Chest")]
 		public GameObject Chest;
@@ -29,14 +29,13 @@ namespace Assets.Scenes.FightSummary.Scripts
 		
 		public float TimeToActivateChest;
 		public int CoinsAward;
-		public (string type, int quantity) GemsAward;
+		public Gems GemsAward = new();
 		public (int unitId, int quantity) ShardsAward;
 
 		public GameObject UnitShards;
 
 		[Header("Activate Buttons")]   
 		public Button[] Buttons;
-		//public float TimeActivate;
 
 		void Start()
 		{
@@ -60,10 +59,10 @@ namespace Assets.Scenes.FightSummary.Scripts
 
 		private void StarRatingSystem()
 		{
-			BasicHealth = PlayerPrefs.GetFloat("BasicHealth");
-			Health = PlayerPrefs.GetFloat("Health");
+			var basicHealth = PlayerPrefs.GetFloat("BasicHealth");
+			var health = PlayerPrefs.GetFloat("Health");
 
-			var deadZoneHealthPercentage = Health / BasicHealth;
+			var deadZoneHealthPercentage = health / basicHealth;
 			AchievedStars[0].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
 			AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
 			AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
@@ -95,12 +94,16 @@ namespace Assets.Scenes.FightSummary.Scripts
 				var level = PlayerPrefs.GetString("CurrentLevel");
 				var mapsConfigJsonModel = JsonLoader.LoadConfig(level);				
 				CoinsAward = mapsConfigJsonModel.AwardCoins[howManyStars - 1];
-				GemsAward = 
-					(mapsConfigJsonModel.AwardGemsType, mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1]);
+				GemsAward.TypeEnum = mapsConfigJsonModel.AwardResourcesesTypeEnum;
+				GemsAward.Count = mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1];
 
 				var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
 				ShardsAward = (shard.UnitId, shard.MinRange[0]);
-			}	
+
+				var playerPreferences = PlayerPreferences.Load();
+				playerPreferences.Coins += CoinsAward;
+				playerPreferences.AddGems = GemsAward;
+            }	
 		}  
 		
 		public IEnumerator ActivateChest()

@@ -1,5 +1,3 @@
-using Assets.Common;
-using Assets.Common.JsonModel;
 using System.Collections;
 using UnityEngine;
 

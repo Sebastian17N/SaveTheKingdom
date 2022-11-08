@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scenes.BeforeTheBattle.Scripts
 {
-	public class ChangeSceneManager : Assets.Common.ChangeSceneManager
+	public class ChangeSceneManager : Common.Managers.ChangeSceneManager
 	{
 		public override void ChangeScene()
 		{

@@ -1,4 +1,3 @@
-using Assets.Units.Defenses.Scripts;
 using UnityEngine;
 
 namespace Assets.Scenes.Barracks.Scripts

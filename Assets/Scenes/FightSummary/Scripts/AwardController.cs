@@ -1,3 +1,4 @@
+using Assets.Common.Enums;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public float ShowingSpeed;
 		public float GettingAwardsSpeed;
 
-		public AwardTypeEnum Type;
+		public AwardType Type;
 		public int Quantity;
 
 		public AwardController(string type, int quantity)

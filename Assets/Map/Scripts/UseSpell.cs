@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using Assets.Common;
 using Assets.Scenes.SpiritMountain.Scripts;
 using Assets.Units.Enemies.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 namespace Assets.Map.Scripts
 {

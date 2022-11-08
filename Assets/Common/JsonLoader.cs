@@ -1,15 +1,10 @@
 ﻿using Assets.Common.JsonModel;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Common
 {
-    public class JsonLoader
+	public class JsonLoader
     {
 		public static MapsConfigJsonModel LoadConfig(string levelName)
 		{
@@ -20,6 +15,5 @@ namespace Assets.Common
 
 			return JsonUtility.FromJson<MapsConfigJsonModel>(fileData);
 		}
-
-	}
+    }
 }

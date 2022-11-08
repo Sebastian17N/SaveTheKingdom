@@ -1,5 +1,4 @@
 using Assets.Scenes.Barracks.Scripts;
-using Assets.Scenes.FightSummary.Scripts;
 using Assets.Units.Defenses.Scripts;
 using TMPro;
 using UnityEngine;

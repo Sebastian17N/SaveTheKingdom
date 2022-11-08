@@ -1,3 +1,4 @@
+using Assets.Common.JsonModel;
 using TMPro;
 using UnityEngine;
 
@@ -10,27 +11,28 @@ namespace Assets.Scenes.FightSummary.Scripts
 		{
 			ShowCoins();
 		}
-        private void Update()
+        
+		private void Update()
         {
 			ShowCoins();
 		}
-		private void ShowCoins()
-        {
-			CoinsNumber = PlayerPrefs.GetInt("coins");
+		
+        private void ShowCoins()
+		{
+			CoinsNumber = PlayerPreferences.Load().Coins;
 			GetComponent<TMP_Text>().text = CoinsNumber.ToString();
 		}
-        public  void IncrementCoins(int coinsToAdd)
-		{
-			CoinsNumber = PlayerPrefs.GetInt("coins") + coinsToAdd;
-			PlayerPrefs.SetInt("coins", CoinsNumber);
+        
+		public  void IncrementCoins(int coinsToAdd)
+        {
+			CoinsNumber = PlayerPreferences.Load().Coins += coinsToAdd;
+			
 			GetComponent<TMP_Text>().text = CoinsNumber.ToString();        
 		}
-		public void DecrementCoins(int coinsToRemove)
+		
+        public void DecrementCoins(int coinsToRemove)
 		{
-			CoinsNumber = PlayerPrefs.GetInt("coins") - coinsToRemove;
-			PlayerPrefs.SetInt("coins", CoinsNumber);
-			GetComponent<TMP_Text>().text = CoinsNumber.ToString();
+			IncrementCoins(-coinsToRemove);
 		}
-
 	}
 }

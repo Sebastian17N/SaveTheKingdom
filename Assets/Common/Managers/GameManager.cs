@@ -14,7 +14,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Common
+namespace Assets.Common.Managers
 {
 	public class GameManager : MonoBehaviour
 	{

@@ -1,4 +1,4 @@
-using Assets.Common;
+using Assets.Common.Managers;
 using Assets.Units.Enemies.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;

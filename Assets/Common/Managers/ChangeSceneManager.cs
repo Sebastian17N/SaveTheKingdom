@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Common
+namespace Assets.Common.Managers
 {
 	public class ChangeSceneManager : MonoBehaviour
 	{
