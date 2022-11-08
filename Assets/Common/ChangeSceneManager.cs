@@ -11,5 +11,9 @@ namespace Assets.Common
 		{
 			SceneManager.LoadScene(SceneName);
 		}
-	}
+        private void OnMouseDown()
+        {
+			SceneManager.LoadScene(SceneName);
+		}
+    }
 }

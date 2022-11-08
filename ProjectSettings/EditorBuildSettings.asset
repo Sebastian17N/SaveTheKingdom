@@ -23,9 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battleground/Battleground.unity
     guid: f8cc89d8260dc5645a372ea886d387f0
-  - enabled: 1
-    path: Assets/Scenes/POF/UnitAttackPOF.unity
-    guid: 098e75bf00baef746ac7bbb61019986f
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SpiritMountain/SpiritMountain.unity
     guid: f4d224c7d56bcd44b8cecfbeb29456ad

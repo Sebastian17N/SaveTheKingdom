@@ -42,6 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: CityBuildings
     uniqueID: 1253904615
     locked: 0

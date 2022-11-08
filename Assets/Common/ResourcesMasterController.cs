@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResourcesMasterController : MonoBehaviour
 {
 	public GameObject CoinsNumber;
-	private ResourcesController _coinsController => CoinsNumber.transform.GetComponent<ResourcesController>();
+	public ResourcesController _coinsController => CoinsNumber.transform.GetComponent<ResourcesController>();
 	public GameObject SapphireNumber;
 	private ResourcesController _sapphireController => SapphireNumber.transform.GetComponent<ResourcesController>();
 	public GameObject TopazNumber;
