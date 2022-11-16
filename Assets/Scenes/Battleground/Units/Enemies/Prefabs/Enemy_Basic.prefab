@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6312148531307705489}
   - component: {fileID: 5280448937020634613}
   - component: {fileID: -7184491356147076674}
-  m_Layer: 7
+  - component: {fileID: 2655760650216630837}
+  m_Layer: 8
   m_Name: Enemy_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,11 +147,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ecf69db80b52841b7e3d2e7cb0a313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScriptableEnemies: {fileID: 0}
-  Target: {fileID: 0}
-  MoonStonePrefab: {fileID: 6882767312494226814, guid: 1be60f44d971809459691cd2bbe80fd6, type: 3}
+  BulletPrefab: {fileID: 0}
+  BulletType:
+    Sprite: {fileID: 0}
+    Speed: 0
   Speed: 2
-  Durability: 10
-  SpawnTime: 1
+  Health: 0
+  AttackSpeed: 0
   AttackDamage: 5
-  attackInterval: 5
+  Direction: {x: 0, y: 0}
+  Bullet: {fileID: 0}
+  enemiesLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  MoonStonePrefab: {fileID: 6882767312494226814, guid: 1be60f44d971809459691cd2bbe80fd6, type: 3}
+--- !u!95 &2655760650216630837
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312148531307705495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c617bf5c0fc8c446b3b881eb03b82f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -106,7 +106,7 @@ namespace Assets.Units.Defenses.Scripts
 			unitManager.Speed = UnitScriptableObject.Speed;
 			unitManager.AttackSpeed = UnitScriptableObject.AttackSpeed;
 			unitManager.AttackDamage = UnitScriptableObject.AttackDamage;
-			
+
 			if (!UnitScriptableObject.IsRange)
 			{
 				unitManager.BulletPrefab = null;			
@@ -114,7 +114,7 @@ namespace Assets.Units.Defenses.Scripts
 
 			var animator = _unitDragged.GetComponent<Animator>();
 			animator.runtimeAnimatorController = UnitScriptableObject.Animator;
-			animator.SetFloat("AttackSpeed", UnitScriptableObject.AttackSpeed);
+			//animator.SetFloat("AttackSpeed", UnitScriptableObject.AttackSpeed);
 		
 			_nextCooldownTime = Time.time + CooldownTime;
 
