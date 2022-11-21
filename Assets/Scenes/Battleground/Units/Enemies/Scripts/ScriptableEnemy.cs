@@ -10,7 +10,7 @@ namespace Assets.Units.Enemies.Scripts
 		public RuntimeAnimatorController Animator;
 		public string Index;
 		public float Speed = 2f;
-		public float EnemyHealth = 10;
+		public float EnemyHealth = 1000;
 		public int SpawnTime;
 		public float AtackDamage;
 		public float AttackInterval;

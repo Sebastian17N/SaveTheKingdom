@@ -15,7 +15,7 @@ MonoBehaviour:
   UnitId: 2
   Name: Archont
   Sprite: {fileID: 21300000, guid: 5ba62983efaf64148ba85186abd7aeb7, type: 3}
-  Animator: {fileID: 9100000, guid: fc097ff56d846eb4b906e3391a95961b, type: 2}
+  Animator: {fileID: 9100000, guid: 0a5d8925e2f294b479dc7c5af08ce306, type: 2}
   AnimatorCanvas: {fileID: 9100000, guid: 651973a5201c01a4fa963da2e00dffe1, type: 2}
   Icon: {fileID: 21300000, guid: c63fc7adfa4af9544a9bdf848bc61538, type: 3}
   Cost: 100

@@ -34,7 +34,6 @@ namespace Assets.Scenes.BeforeTheBattle.Scripts
 				SpellDataFolders.Add(CreateSpellFolder(scriptableObject));
 			}
 		}
-
 		private GameObject CreateUnitFolder(UnitScriptableObject unitScriptableObject)
 		{
 			var unit = Instantiate(UnitAvailableToChosePrefab, UnitCardUnitTransform);

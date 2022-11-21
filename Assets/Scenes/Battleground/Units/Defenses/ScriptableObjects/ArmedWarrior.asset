@@ -15,7 +15,7 @@ MonoBehaviour:
   UnitId: 3
   Name: Armed Warrior
   Sprite: {fileID: 21300000, guid: a658c57a68f931942ba166eef4cd88e3, type: 3}
-  Animator: {fileID: 9100000, guid: a09c5e7a60b79a548b178ea67e39c888, type: 2}
+  Animator: {fileID: 22100000, guid: 2ab8f54876037dd45b82fc6ca15b85fe, type: 2}
   AnimatorCanvas: {fileID: 9100000, guid: bde86d004a2fa0244960a53502ed01ef, type: 2}
   Icon: {fileID: 21300000, guid: 56046835650518b428c78957e44d2e11, type: 3}
   Cost: 100

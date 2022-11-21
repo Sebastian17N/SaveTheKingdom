@@ -103,15 +103,15 @@ namespace Assets.Units.Scripts
 		{
 			var anim = GetComponent<Animator>();
 			IsWalking = false;
-			anim.SetTrigger("NoEnemies");
 			GetComponent<Rigidbody2D>().velocity = Direction * Speed;
+			anim.SetTrigger("NoEnemies");
 		}
 
 		private void StopWalking()
 		{
 			var anim = GetComponent<Animator>();
-			anim.SetTrigger("Attack");
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+			anim.SetTrigger("Attack");
 		}
 
 		private void Attack()

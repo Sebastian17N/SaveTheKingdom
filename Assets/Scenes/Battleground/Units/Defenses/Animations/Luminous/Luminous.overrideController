@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Luminous
+  m_Controller: {fileID: 9100000, guid: 0a5d8925e2f294b479dc7c5af08ce306, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8b191f6ac4fc8f24daa6db67603a4cc3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dcf2552abc205ce4a8cd7777a6c6f79a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 64d5f802e5f4075499441e53168813ed, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 58fd0d7e2d4f01142a84ce27767e724a, type: 2}

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PsionicBlade
+  m_Controller: {fileID: 9100000, guid: 0a5d8925e2f294b479dc7c5af08ce306, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8b191f6ac4fc8f24daa6db67603a4cc3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 05092aaf70f56ca4bbd881e163306f54, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 64d5f802e5f4075499441e53168813ed, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: acd86ffc3f624bc44b25951e4bf85225, type: 2}
