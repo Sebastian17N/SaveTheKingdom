@@ -37,10 +37,11 @@ namespace Assets.Units.Scripts
 
 		private IDecreaseDurabilityOwner _enemy;
 		public GameObject Bullet;
+		public LayerMask enemiesLayer;
 
 		#endregion Enviroment attributes
-
-		protected void Routine()
+       
+        protected void Routine()
 		{
 			if (IsDragged)
 				return;
@@ -100,31 +101,51 @@ namespace Assets.Units.Scripts
 
 		private void Walk()
 		{
+			var anim = GetComponent<Animator>();
 			IsWalking = false;
 			GetComponent<Rigidbody2D>().velocity = Direction * Speed;
+			anim.SetTrigger("NoEnemies");
 		}
 
 		private void StopWalking()
 		{
+			var anim = GetComponent<Animator>();
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+			anim.SetTrigger("Attack");
 		}
 
 		private void Attack()
 		{
-			_lastShootTime = Time.timeSinceLevelLoad;
+			var anim = GetComponent<Animator>();
 
+			_lastShootTime = Time.timeSinceLevelLoad;
+			
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 100f, enemiesLayer);
+
+			// Unit atak only if eniemies is in front of her
 			// Range attack.
-			if (BulletPrefab != null)
-			{
+			if (hit && BulletPrefab != null)
+            {
+				anim.SetTrigger("Attack");
 				ShootBullet();
-				return;
+			}
+            else if(!hit && BulletPrefab != null)
+            {
+				anim.SetTrigger("NoEnemies");
 			}
 
 			// Mele attack. Remove reference if he was defeated.
 			if (!_enemy?.DecreaseDurability(AttackDamage) ?? false)
+            {
+				//_anim.SetTrigger("Attack");
 				_enemy = null;
-			else
+			}
+            else
+            {
+				//_anim.SetTrigger("NoEnemies");
 				IsWalking = false;
+			}
+				
 		}
 
 		private void ShootBullet()

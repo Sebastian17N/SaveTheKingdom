@@ -66,6 +66,20 @@ namespace Assets.Common.JsonModel
 			}
 		}
 
+		/// <summary>
+		/// DO NOT USE IT DIRECTLY
+		/// </summary>
+		public Gems MoonStoneJson = new();
+		public Gems MoonStones
+		{
+			get => MoonStoneJson = Load().MoonStoneJson;
+			set
+			{
+				MoonStoneJson = value;
+				Save(this);
+			}
+		}
+
 		public Gems AddGems
 		{
 			set
@@ -82,6 +96,10 @@ namespace Assets.Common.JsonModel
 
 					case Enums.ResourcesTypeEnum.Topazes:
 						Topazes.Amount += value.Amount;
+						break;
+
+					case Enums.ResourcesTypeEnum.MoonStones:
+						MoonStones.Count += value.Count;
 						break;
 				}
 			}
@@ -123,6 +141,8 @@ namespace Assets.Common.JsonModel
 					return Load().Sapphires.Amount;
 				case ResourcesTypeEnum.Topazes:
 					return Load().Topazes.Amount;
+				case ResourcesTypeEnum.MoonStones:
+					return Load().MoonStones.Amount;
 			}
 
 			return 0;
@@ -151,6 +171,9 @@ namespace Assets.Common.JsonModel
 					break;
 				case ResourcesTypeEnum.Topazes:
 					resource.Topazes.Amount += quantity;
+					break;
+				case ResourcesTypeEnum.MoonStones:
+					resource.MoonStones.Amount += quantity;
 					break;
 			}
 		}

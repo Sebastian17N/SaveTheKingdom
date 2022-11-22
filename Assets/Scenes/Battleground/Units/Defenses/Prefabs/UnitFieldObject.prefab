@@ -109,7 +109,10 @@ MonoBehaviour:
   AttackSpeed: 1
   AttackDamage: 0
   Direction: {x: 0, y: 0}
-  _bullet: {fileID: 0}
+  Bullet: {fileID: 0}
+  enemiesLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!61 &1577313800631929517
 BoxCollider2D:
   m_ObjectHideFlags: 0

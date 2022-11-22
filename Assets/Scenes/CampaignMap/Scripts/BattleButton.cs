@@ -10,7 +10,8 @@ namespace Assets.Scenes.CampaignMap.Scripts
 		public string SceneGoIn;
 		public string LevelName;
 
-		[Header("Star Rating System")] public GameObject[] AchievedStars;
+		[Header("Star Rating System")] 
+		public GameObject[] AchievedStars;
 		public Sprite StarGold;
 		public Sprite StarGrey;
 		public float BasicHealth;

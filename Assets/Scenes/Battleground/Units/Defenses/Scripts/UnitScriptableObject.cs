@@ -11,7 +11,7 @@ namespace Assets.Units.Defenses.Scripts
 		[Header("Visuals")]
 		public string Name;
 		public Sprite Sprite;
-		public RuntimeAnimatorController Animator;
+		public RuntimeAnimatorController Animator; 
 		public RuntimeAnimatorController AnimatorCanvas;
 		public Sprite Icon;
 

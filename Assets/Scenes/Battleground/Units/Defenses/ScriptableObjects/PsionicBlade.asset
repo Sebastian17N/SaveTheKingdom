@@ -15,7 +15,7 @@ MonoBehaviour:
   UnitId: 9
   Name: Psionic Blade
   Sprite: {fileID: 21300000, guid: d1e5fc0e3af9a49448f2d112bf3e10fc, type: 3}
-  Animator: {fileID: 9100000, guid: 02c562cf977a8bc459a3e7aa7f762a0e, type: 2}
+  Animator: {fileID: 22100000, guid: ae259a32080f3f044a2cfb8cca1ce0c5, type: 2}
   AnimatorCanvas: {fileID: 9100000, guid: c5d6c6465cebfab43bb9f403ae4a4cc9, type: 2}
   Icon: {fileID: 21300000, guid: 497beb260275b2c41a31412f6a2030ce, type: 3}
   Cost: 100
