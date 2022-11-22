@@ -1036,8 +1036,9 @@ GameObject:
   - component: {fileID: 1261308310}
   - component: {fileID: 1261308312}
   - component: {fileID: 1261308311}
+  - component: {fileID: 1261308313}
   m_Layer: 5
-  m_Name: SeasonEndClock
+  m_Name: KingdomPassCountdownTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1104,6 +1105,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261308309}
   m_CullTransparentMesh: 1
+--- !u!114 &1261308313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261308309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce278430b08e97149974c24c3981615b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CountdownTimerText: {fileID: 1502025738}
+  isEventEnd: 0
 --- !u!224 &1319453636 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2718525533571249444, guid: 8327ce6803faa374eb903cdacedd30c3, type: 3}
@@ -1239,12 +1254,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4879755578fd24942818af11579351f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KingdomPassAwardsButtons: {fileID: 0}
   KingdomPassAwardsButtonsPrefab: {fileID: 920055768559477783, guid: 28820478c1f4aa747a91bed37d3a7775, type: 3}
   KingdomPassAwardsButtonsList: []
   KingdomPassAwardsButtonsPrefabSpawnPoint: {fileID: 1410361635}
   isKingdomPassActivated: 0
-  passPoints: 110
+  passPoints: 0
 --- !u!4 &1447192186
 Transform:
   m_ObjectHideFlags: 0
@@ -1272,7 +1286,7 @@ GameObject:
   - component: {fileID: 1502025739}
   - component: {fileID: 1502025738}
   m_Layer: 5
-  m_Name: SeasonEndClockText
+  m_Name: KingdomPassCountdownTimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1296,7 +1310,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -32, y: -15}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502025738
 MonoBehaviour:
@@ -1318,7 +1332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20d 8h
+  m_text: 00d 00h
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

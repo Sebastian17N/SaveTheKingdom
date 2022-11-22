@@ -37,7 +37,7 @@ public class KingdomPassManager : MonoBehaviour
    
     public void SpawnKingdomPassAwardsButtons()
     {
-        for (int i = 1; i < 10; i++)
+        for (int i = 1; i < 30; i++)
         {
             var kingdomPassAwardsButton = Instantiate(KingdomPassAwardsButtonsPrefab, KingdomPassAwardsButtonsPrefabSpawnPoint);
             KingdomPassAwardsButtonsList.Add(kingdomPassAwardsButton);
