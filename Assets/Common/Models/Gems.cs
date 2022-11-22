@@ -5,8 +5,8 @@ namespace Assets.Common.Models
 	[System.Serializable]
 	public class Gems
 	{
-		public int Count;
+		public int Amount;
 		[System.NonSerialized]
-		public Enums.ResourcesTypeEnum TypeEnum;
+		public ResourcesTypeEnum TypeEnum;
 	}
 }

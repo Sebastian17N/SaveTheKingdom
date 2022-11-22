@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Assets.Common.Enums;
 using Assets.Common.Models;
@@ -72,19 +73,21 @@ namespace Assets.Common.JsonModel
 				switch (value.TypeEnum)
 				{
 					case Enums.ResourcesTypeEnum.Emeralds:
-						Emeralds.Count += value.Count;
+						Emeralds.Amount += value.Amount;
 						break;
 
 					case Enums.ResourcesTypeEnum.Sapphires:
-						Sapphires.Count += value.Count;
+						Sapphires.Amount += value.Amount;
 						break;
 
 					case Enums.ResourcesTypeEnum.Topazes:
-						Topazes.Count += value.Count;
+						Topazes.Amount += value.Amount;
 						break;
 				}
 			}
 		}
+
+		public List<Shards> Shards = new();
 
 		private static readonly string fileName = "Assets/Configuration/PlayerPreferences.json";
 
@@ -115,11 +118,11 @@ namespace Assets.Common.JsonModel
 				case ResourcesTypeEnum.Coins:
 					return Load().Coins;
 				case ResourcesTypeEnum.Emeralds:
-					return Load().Emeralds.Count;
+					return Load().Emeralds.Amount;
 				case ResourcesTypeEnum.Sapphires:
-					return Load().Sapphires.Count;
+					return Load().Sapphires.Amount;
 				case ResourcesTypeEnum.Topazes:
-					return Load().Topazes.Count;
+					return Load().Topazes.Amount;
 			}
 
 			return 0;
@@ -141,13 +144,13 @@ namespace Assets.Common.JsonModel
 					resource.Coins += quantity;
 					break;
 				case ResourcesTypeEnum.Emeralds:
-					resource.Emeralds.Count += quantity;
+					resource.Emeralds.Amount += quantity;
 					break;
 				case ResourcesTypeEnum.Sapphires:
-					resource.Sapphires.Count += quantity;
+					resource.Sapphires.Amount += quantity;
 					break;
 				case ResourcesTypeEnum.Topazes:
-					resource.Topazes.Count += quantity;
+					resource.Topazes.Amount += quantity;
 					break;
 			}
 		}

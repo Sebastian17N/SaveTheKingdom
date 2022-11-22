@@ -94,7 +94,7 @@ namespace Assets.Common.Managers
 		}
 
 		/// <summary>
-		/// Count number of enemies on the level, based on text file map.
+		/// Amount number of enemies on the level, based on text file map.
 		/// </summary>
 		/// <param name="levelName">Filename level map.</param>
 		/// <returns>Number of enemies on a template map.</returns>
