@@ -1119,6 +1119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CountdownTimerText: {fileID: 1502025738}
   isEventEnd: 0
+  days: 10
+  hours: 10
 --- !u!224 &1319453636 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2718525533571249444, guid: 8327ce6803faa374eb903cdacedd30c3, type: 3}
@@ -1136,6 +1138,7 @@ GameObject:
   - component: {fileID: 1410361637}
   - component: {fileID: 1410361636}
   - component: {fileID: 1410361638}
+  - component: {fileID: 1410361639}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1161,7 +1164,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5000, y: 900}
+  m_SizeDelta: {x: 0, y: 900}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1410361636
 MonoBehaviour:
@@ -1214,8 +1217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 215
-    m_Right: 0
+    m_Left: 200
+    m_Right: 150
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
@@ -1223,8 +1226,22 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 300, y: 300}
   m_Spacing: {x: 110, y: 0}
-  m_Constraint: 0
+  m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &1410361639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410361634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 0
 --- !u!1 &1447192184
 GameObject:
   m_ObjectHideFlags: 0

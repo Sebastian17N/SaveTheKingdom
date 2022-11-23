@@ -10,8 +10,8 @@ public class KingdomPassCountdownTimer : MonoBehaviour
     public TextMeshProUGUI CountdownTimerText;
     public bool isEventEnd = false;
     public DateTime endEventDate = new DateTime(2022, 12, 01, 17, 00, 00);
-    int days = 10;
-    int hours = 10;
+    public int days = 10;
+    public int hours = 10;
 
     void Update()
     {

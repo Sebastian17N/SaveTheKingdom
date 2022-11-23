@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FightSummary/FightSummary.unity
     guid: d3f49c6973d075b46809c516e3a383cb
+  - enabled: 1
+    path: Assets/Scenes/CallendarRawards/CallendarRawards.unity
+    guid: aa556318456ff47449717bdfab532049
   m_configObjects: {}

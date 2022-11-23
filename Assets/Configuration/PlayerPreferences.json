@@ -1,7 +1,1 @@
-{
-  "CoinsJson": 100000,
-  "EmeraldsJson": { "Count": 20000 },
-  "SapphiresJson": { "Count": 15000 },
-  "TopazesJson": { "Count": 10000 },
-  "MoonStoneJson": { "Count": 25000 }
-}
+{"CoinsJson":105003,"EmeraldsJson":{"Count":20000},"SapphiresJson":{"Count":15000},"TopazesJson":{"Count":10000},"MoonStoneJson":{"Count":25000}}
