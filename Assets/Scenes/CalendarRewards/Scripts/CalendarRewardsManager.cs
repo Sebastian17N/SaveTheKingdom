@@ -9,6 +9,13 @@ public class CalendarRewardsManager : MonoBehaviour
     public GameObject CalendarRewardPrefab;
     public Transform CalendarRewardPrefabSpawnPoint;
     public List<GameObject> CalendarRewardList = new List<GameObject>();
+    
+    #region Events Parameters
+    private DateTime _startEventDate = new DateTime(2022, 11, 26);
+    private int _eventDaysNumber = 10;
+    private Transform _eventRewardPrefabSpawnPoint;
+    private List<GameObject> _eventRewardList = new List<GameObject>();
+    #endregion
     void Start()
     {
         SpawnCalendarReward();
@@ -22,6 +29,9 @@ public class CalendarRewardsManager : MonoBehaviour
     public void WorkOnCalendarReward()
     {
         var day = (int)DateTime.Now.Day;
+
+        if (CalendarRewardList == null)
+            return;
 
         foreach (var calendarReward in CalendarRewardList)
         {
@@ -62,18 +72,6 @@ public class CalendarRewardsManager : MonoBehaviour
             singleSpawnCalendarReward.dayNumberText.text = $"Day {i.ToString()}";
         }
     }
-    public void ActivateAward(int dayNumber, bool isAwardActivated)
-    {
-
-        if ((int)DateTime.Now.Day == dayNumber)
-        {
-            isAwardActivated = true;
-        }
-        else
-        {
-            isAwardActivated = false;
-        }
-    }
     public void TakeAward()
     {
         foreach (var calendarReward in CalendarRewardList)
@@ -86,4 +84,35 @@ public class CalendarRewardsManager : MonoBehaviour
             }
         }
     }
+
+    public void SpawnEventReward()
+    {
+        foreach (var calendarReward in CalendarRewardList)
+        {
+           Destroy(calendarReward);
+        }
+        //CalendarRewardList.Clear();
+
+        for (int i = 1; i < _eventDaysNumber; i++)
+        {
+            var spawnEventReward = Instantiate(CalendarRewardPrefab, CalendarRewardPrefabSpawnPoint);
+            _eventRewardList.Add(spawnEventReward);
+            var singleSpawnEventReward = spawnEventReward.GetComponent<CalendarReward>();
+            singleSpawnEventReward.Id = i;
+            singleSpawnEventReward.dayNumberText.text = $"Day {i.ToString()}";
+        }
+    }
+
+    //public void ActivateAward(int dayNumber, bool isAwardActivated)
+    //{
+
+    //    if ((int)DateTime.Now.Day == dayNumber)
+    //    {
+    //        isAwardActivated = true;
+    //    }
+    //    else
+    //    {
+    //        isAwardActivated = false;
+    //    }
+    //}
 }
