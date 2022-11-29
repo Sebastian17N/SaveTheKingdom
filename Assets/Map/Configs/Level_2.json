@@ -1,42 +1,33 @@
-//{
-//  "Id": 1,
-//  "StarRatingNeededToStartLevel": 0,
-//  "SpriteBackgroundPath": "Level1MapBackground.jpg",
-//  "EnemiesMapFileName": "Level_2",
-//  "AwardCoins": [ 100, 200, 300 ],
-//  "AwardGems": [ 0, 1, 2 ],
-//  "AwardShards": [ 0, 0, 1 ]
-//}
-
 {
   "Id": 2,
   "StarRatingNeededToStartLevelPreviousMap": 1,
   "SpriteBackgroundPath": "Level2MapBackground.jpg",
   "EnemiesMapFileName": "Level_2",
-  "AvailableUnitsToPlayByID": [ 3, 6, 10 ],
-  "AwardCoins": [ 100, 200, 400 ],
-  "AwardGemsType": "blue", //blue, green, yellow, moon
-  "AwardGemsNumber": [ 1, 2, 4 ],
+  "AvailableUnitsToPlayByID": [3, 6, 10],
+  "AwardCoins": [100, 200, 400],
+  "AwardGemsType": "blue",
+  "AwardGemsNumber": [1, 2, 4],
   "AwardShards": [
     {
       "ID": 3,
-      "MinRange": [ 1, 1, 2 ],
-      "MaxRange": [ 1, 2, 4 ]
+      "MinRange": [1, 1, 2],
+      "MaxRange": [1, 2, 4]
     },
     {
       "ID": 6,
-      "MinRange": [ 1, 1, 2 ],
-      "MaxRange": [ 1, 2, 4 ]
+      "MinRange": [1, 1, 2],
+      "MaxRange": [1, 2, 4]
     },
     {
       "ID": 10,
-      "MinRange": [ 1, 1, 2 ],
-      "MaxRange": [ 1, 2, 4 ]
+      "MinRange": [1, 1, 2],
+      "MaxRange": [1, 2, 4]
     }
-  ], //only one from 3 available
+  ],
   "AdditionalAwardShardsForFirstWin": [
     {
       "ID": 8,
       "ShardsNumber": 1
     }
   ]
+}

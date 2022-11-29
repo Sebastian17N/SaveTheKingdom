@@ -94,7 +94,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 				var level = PlayerPrefs.GetString("CurrentLevel");
 				var mapsConfigJsonModel = JsonLoader.LoadConfig(level);				
 				CoinsAward = mapsConfigJsonModel.AwardCoins[howManyStars - 1];
-				GemsAward.TypeEnum = mapsConfigJsonModel.AwardResourcesesTypeEnum;
+				GemsAward.TypeEnum = mapsConfigJsonModel.AwardGemsType;
 				GemsAward.Amount = mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1];
 
 				var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);

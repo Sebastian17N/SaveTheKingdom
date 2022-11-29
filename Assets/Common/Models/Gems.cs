@@ -1,12 +1,12 @@
-﻿using Assets.Common.Enums;
+﻿using System;
+using Assets.Common.Enums;
 
 namespace Assets.Common.Models
 {
-	[System.Serializable]
+	[Serializable]
 	public class Gems
 	{
 		public int Amount;
-		[System.NonSerialized]
 		public ResourcesTypeEnum TypeEnum;
 	}
 }

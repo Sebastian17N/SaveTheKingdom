@@ -4,7 +4,7 @@
   "EnemiesMapFileName": "Level_1",
   "AvailableUnitsToPlayById": [ 3, 6, 10 ],
   "AwardCoins": [ 100, 200, 400 ],
-  "AwardGemsType": "blue",
+  "AwardGemsType": 2,
   "AwardGemsNumber": [ 1, 2, 4 ],
   "AwardShards": [
     {

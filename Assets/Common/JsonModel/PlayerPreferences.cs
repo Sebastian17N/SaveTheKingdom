@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Common.JsonModel
 {
-	[System.Serializable]
+	[Serializable]
 	public class PlayerPreferences
 	{
 		/// <summary>
@@ -89,25 +89,33 @@ namespace Assets.Common.JsonModel
 				{
 					case Enums.ResourcesTypeEnum.Emeralds:
 						Emeralds.Amount += value.Amount;
+						Emeralds.TypeEnum = ResourcesTypeEnum.Emeralds;
 						break;
 
 					case Enums.ResourcesTypeEnum.Sapphires:
 						Sapphires.Amount += value.Amount;
+						Sapphires.TypeEnum = ResourcesTypeEnum.Sapphires;
 						break;
 
 					case Enums.ResourcesTypeEnum.Topazes:
 						Topazes.Amount += value.Amount;
+						Topazes.TypeEnum = ResourcesTypeEnum.Topazes;
 						break;
 
 					case Enums.ResourcesTypeEnum.MoonStones:
 						MoonStones.Amount += value.Amount;
+						MoonStoneJson.TypeEnum = ResourcesTypeEnum.MoonStones;
 						break;
 				}
+
+				Save(this);
 			}
 		}
 
+		/// <summary>
+		/// DO NOT USE IT DIRECTLY
+		/// </summary>
 		public List<Shards> ShardsJson = new();
-
 		public List<Shards> Shards
 		{
 			get => ShardsJson = Load().ShardsJson;
@@ -122,10 +130,14 @@ namespace Assets.Common.JsonModel
 		{
 			set
 			{
-				if (ShardsJson.Any(shard => shard.ShardId == value.ShardId))
-					ShardsJson.Single(shard => shard.ShardId == value.ShardId).Amount += value.Amount;
+				if (Shards.Any(shard => shard.ShardId == value.ShardId))
+					Shards.Single(shard => shard.ShardId == value.ShardId).Amount += value.Amount;
 				else
-					ShardsJson.Add(new Shards (value.ShardId, value.Amount));
+				{
+					var shardsCopy = Shards.ToList();
+					shardsCopy.Add(new Shards (value.ShardId, value.Amount));
+					Shards = shardsCopy.ToList();
+				}
 
 				Save(this);
 			}

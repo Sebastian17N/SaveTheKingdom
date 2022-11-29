@@ -1,5 +1,8 @@
-﻿namespace Assets.Common.Models
+﻿using System;
+
+namespace Assets.Common.Models
 {
+	[Serializable]
 	public class Shards
 	{
 		public int ShardId;
