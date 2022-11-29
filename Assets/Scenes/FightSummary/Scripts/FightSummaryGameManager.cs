@@ -30,7 +30,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public float TimeToActivateChest;
 		public int CoinsAward;
 		public Gems GemsAward = new();
-		public (int unitId, int quantity) ShardsAward;
+		public Shards ShardsAward;
 
 		public GameObject UnitShards;
 
@@ -95,14 +95,15 @@ namespace Assets.Scenes.FightSummary.Scripts
 				var mapsConfigJsonModel = JsonLoader.LoadConfig(level);				
 				CoinsAward = mapsConfigJsonModel.AwardCoins[howManyStars - 1];
 				GemsAward.TypeEnum = mapsConfigJsonModel.AwardResourcesesTypeEnum;
-				GemsAward.Count = mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1];
+				GemsAward.Amount = mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1];
 
 				var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
-				ShardsAward = (shard.UnitId, shard.MinRange[0]);
+				ShardsAward = new Shards(shard.UnitId, shard.MinRange[0]);
 
 				var playerPreferences = PlayerPreferences.Load();
 				playerPreferences.Coins += CoinsAward;
 				playerPreferences.AddGems = GemsAward;
+				playerPreferences.AddShards = ShardsAward;
             }	
 		}  
 		

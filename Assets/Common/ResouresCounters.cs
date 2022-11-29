@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ResouresCounters : MonoBehaviour
+public class ResourcesCounters : MonoBehaviour
 {
     public int CoinsNumber;
     public int SapphireNumber;
@@ -18,15 +18,15 @@ public class ResouresCounters : MonoBehaviour
         //EmeraldNumber = 30000;
         //MoonStoneNumber = 40000;
 
-        AssignmentResoures();
-        ShowResoures();
+        AssignmentResources();
+        ShowResources();
     }
 
     void Update()
     {
         
     }
-    private void AssignmentResoures()
+    private void AssignmentResources()
     {
         //PlayerPrefs.SetInt("coins", CoinsNumber);
         //PlayerPrefs.SetInt("sapphire", SapphireNumber);
@@ -41,7 +41,7 @@ public class ResouresCounters : MonoBehaviour
         MoonStoneNumber = PlayerPrefs.GetInt("moonStone");
 
     }
-    private void ShowResoures()
+    private void ShowResources()
     {
         transform.Find("CoinCounter/CoinsNumberText").GetComponent<TMP_Text>().text = CoinsNumber.ToString();
         transform.Find("SapphireCounter/SapphireNumberText").GetComponent<TMP_Text>().text = SapphireNumber.ToString();
@@ -49,32 +49,32 @@ public class ResouresCounters : MonoBehaviour
         transform.Find("EmeraldCounter/EmeraldNumberText").GetComponent<TMP_Text>().text = EmeraldNumber.ToString();
         transform.Find("MoonStoneCounter/MoonStoneNumberText").GetComponent<TMP_Text>().text = MoonStoneNumber.ToString();
     }
-    public void IncrementResoures(int resouresToAdd, string resouresType)
+    public void IncrementResources(int resourcesToAdd, string resourcesType)
     {
-        switch (resouresType)
+        switch (resourcesType)
         {
             case "coins":
-                CoinsNumber = PlayerPrefs.GetInt("coins") + resouresToAdd;
+                CoinsNumber = PlayerPrefs.GetInt("coins") + resourcesToAdd;
                 PlayerPrefs.SetInt("coins", CoinsNumber);
                 transform.Find("CoinCounter/CoinsNumberText").GetComponent<TMP_Text>().text = CoinsNumber.ToString();
                 break;
             case "sapphire":
-                SapphireNumber = PlayerPrefs.GetInt("sapphire") + resouresToAdd;
+                SapphireNumber = PlayerPrefs.GetInt("sapphire") + resourcesToAdd;
                 PlayerPrefs.SetInt("sapphire", SapphireNumber);
                 transform.Find("SapphireCounter/SapphireNumberText").GetComponent<TMP_Text>().text = SapphireNumber.ToString();
                 break;
             case "topaz":
-                TopazNumber = PlayerPrefs.GetInt("topaz") + resouresToAdd;
+                TopazNumber = PlayerPrefs.GetInt("topaz") + resourcesToAdd;
                 PlayerPrefs.SetInt("topaz", TopazNumber);
                 transform.Find("TopazCounter/TopazNumberText").GetComponent<TMP_Text>().text = TopazNumber.ToString();
                 break;
             case "emerald":
-                EmeraldNumber = PlayerPrefs.GetInt("emerald") + resouresToAdd;
+                EmeraldNumber = PlayerPrefs.GetInt("emerald") + resourcesToAdd;
                 PlayerPrefs.SetInt("emerald", EmeraldNumber);
                 transform.Find("EmeraldCounter/EmeraldNumberText").GetComponent<TMP_Text>().text = EmeraldNumber.ToString();
                 break;
             case "moonStone":
-                MoonStoneNumber = PlayerPrefs.GetInt("moonStone") + resouresToAdd;
+                MoonStoneNumber = PlayerPrefs.GetInt("moonStone") + resourcesToAdd;
                 PlayerPrefs.SetInt("moonStone", MoonStoneNumber);
                 transform.Find("MoonStoneCounter/MoonStoneNumberText").GetComponent<TMP_Text>().text = MoonStoneNumber.ToString();
                 break;
@@ -83,9 +83,9 @@ public class ResouresCounters : MonoBehaviour
                 break;
         }
     }
-    public void DecrementResoures(int resouresToRemove, string resouresType)
+    public void DecrementResources(int resourcesToRemove, string resourcesType)
     {
-        CoinsNumber = PlayerPrefs.GetInt("coins") - resouresToRemove;
+        CoinsNumber = PlayerPrefs.GetInt("coins") - resourcesToRemove;
         PlayerPrefs.SetInt("coins", CoinsNumber);
         GetComponent<TMP_Text>().text = CoinsNumber.ToString();
     }

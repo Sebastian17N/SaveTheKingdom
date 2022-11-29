@@ -8,7 +8,7 @@ public class ResourcesController : MonoBehaviour
     public int Quantity;
     public ResourcesTypeEnum Type;
     
-    public ResourcesController(string resouresType, int quantity)
+    public ResourcesController(string resourcesType, int quantity)
     {
         Quantity = quantity;
     }
@@ -21,31 +21,31 @@ public class ResourcesController : MonoBehaviour
         //PlayerPrefs.SetInt("Emeralds", 40000);
         //PlayerPrefs.SetInt("MoonStones", 50000);
 
-        AssignmentResoures();
-        ShowResoures($"{Type}");
+        AssignmentResources();
+        ShowResources($"{Type}");
     }
     
-    public void AssignmentResoures()
+    public void AssignmentResources()
     {
         Quantity = PlayerPreferences.LoadResourceByType(Type);
     }
     
-    public void ShowResoures(string resouresName)
+    public void ShowResources(string resourcesName)
     {
-        AssignmentResoures();
+        AssignmentResources();
         transform.Find("NumberText").GetComponent<TMP_Text>().text = Quantity.ToString();
     }
     
-    public void IncrementResoures(int resouresToAdd, string resouresType)
+    public void IncrementResources(int resourcesToAdd, string resourcesType)
     {
-        Quantity = PlayerPreferences.LoadResourceByType(resouresType) + resouresToAdd;
-        PlayerPreferences.SaveResourceByType(resouresType, Quantity);
+        Quantity = PlayerPreferences.LoadResourceByType(resourcesType) + resourcesToAdd;
+        PlayerPreferences.SaveResourceByType(resourcesType, Quantity);
 
-        ShowResoures(resouresType);
+        ShowResources(resourcesType);
     }
     
-    public void DecrementResoures(int resouresToRemove, string resouresType)
+    public void DecrementResources(int resourcesToRemove, string resourcesType)
     {
-        IncrementResoures(-resouresToRemove, resouresType);
+        IncrementResources(-resourcesToRemove, resourcesType);
     }
 }

@@ -57,7 +57,7 @@ namespace Assets.Units.Scripts
 				return;
 
 			// Check if there is enemy next to it. If not, go for a walk.
-			if (((MonoBehaviour)_enemy) == null && Speed > 0)
+			if ((MonoBehaviour)_enemy == null && Speed > 0)
 			{
 				Walk();
 				return;

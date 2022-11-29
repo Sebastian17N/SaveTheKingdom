@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Assets.Common.Enums;
 using Assets.Common.Models;
 using UnityEngine;
@@ -99,13 +100,36 @@ namespace Assets.Common.JsonModel
 						break;
 
 					case Enums.ResourcesTypeEnum.MoonStones:
-						MoonStones.Count += value.Count;
+						MoonStones.Amount += value.Amount;
 						break;
 				}
 			}
 		}
 
-		public List<Shards> Shards = new();
+		public List<Shards> ShardsJson = new();
+
+		public List<Shards> Shards
+		{
+			get => ShardsJson = Load().ShardsJson;
+			set
+			{
+				ShardsJson = value;
+				Save(this);
+			}
+		}
+
+		public Shards AddShards
+		{
+			set
+			{
+				if (ShardsJson.Any(shard => shard.ShardId == value.ShardId))
+					ShardsJson.Single(shard => shard.ShardId == value.ShardId).Amount += value.Amount;
+				else
+					ShardsJson.Add(new Shards (value.ShardId, value.Amount));
+
+				Save(this);
+			}
+		}
 
 		private static readonly string fileName = "Assets/Configuration/PlayerPreferences.json";
 
@@ -123,6 +147,7 @@ namespace Assets.Common.JsonModel
 		{
 			File.WriteAllText(fileName, JsonUtility.ToJson(playerPreferences));
 		}
+
 		public static int LoadResourceByType(string type)
 		{
 			Enum.TryParse(type, out ResourcesTypeEnum converted);
