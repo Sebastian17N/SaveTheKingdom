@@ -105,13 +105,15 @@ namespace Assets.Units.Scripts
 			IsWalking = false;
 			GetComponent<Rigidbody2D>().velocity = Direction * Speed;
 			anim.SetTrigger("NoEnemies");
+			
 		}
 
 		private void StopWalking()
 		{
 			var anim = GetComponent<Animator>();
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-			anim.SetTrigger("Attack");
+			//anim.SetTrigger("Attack");
+			
 		}
 
 		private void Attack()
@@ -137,12 +139,12 @@ namespace Assets.Units.Scripts
 			// Mele attack. Remove reference if he was defeated.
 			if (!_enemy?.DecreaseDurability(AttackDamage) ?? false)
             {
-				//_anim.SetTrigger("Attack");
+				anim.SetTrigger("NoEnemies");
 				_enemy = null;
 			}
             else
             {
-				//_anim.SetTrigger("NoEnemies");
+				anim.SetTrigger("Attack");
 				IsWalking = false;
 			}
 				

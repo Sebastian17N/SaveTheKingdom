@@ -75,7 +75,7 @@ namespace Assets.Units.Enemies.Scripts
 			// TODO: Move it to scriptable object.
 			{
 				var enemyBasic = enemy.GetComponent<EnemyBasic>();
-				enemyBasic.Health = 100;
+				enemyBasic.Health = 40;
 				enemyBasic.AttackSpeed = 1;
 			}
 		
