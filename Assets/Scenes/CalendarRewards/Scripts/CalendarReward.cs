@@ -19,7 +19,7 @@ public class CalendarReward : MonoBehaviour
     public TextMeshProUGUI awardAmountText;
     public int Id;
     #endregion
-    void Start()
+    private void Awake()
     {
         greenBackground = GetComponent<Image>();
         anim = GetComponent<Animator>();
