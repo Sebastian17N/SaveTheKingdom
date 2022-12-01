@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scenes.SpiritMountain.Scripts
 {
-	[CreateAssetMenu(menuName ="Spell Card", fileName ="New Spell Card")]
+	[CreateAssetMenu(fileName = "SpellCard_", menuName = "Scriptable Objects/Spell Card")]
 	public class SpellScriptableObject : ScriptableObject
 	{
 		public int SpellId;

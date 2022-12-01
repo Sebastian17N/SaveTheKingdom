@@ -8,7 +8,7 @@ public class CalendarRewardsManager : MonoBehaviour
 {
     public GameObject CalendarRewardPrefab;
     public Transform CalendarRewardPrefabSpawnPoint;
-    public List<GameObject> CalendarRewardList = new List<GameObject>();
+    private List<GameObject> _calendarRewardList = new List<GameObject>();
     
     #region Events Parameters
     private DateTime _startEventDate = new DateTime(2022, 11, 26);
@@ -24,32 +24,34 @@ public class CalendarRewardsManager : MonoBehaviour
     void Update()
     {
         WorkOnCalendarReward();
+        WorkOnEventReward();
     }
 
     public void WorkOnCalendarReward()
     {
-        var day = (int)DateTime.Now.Day;
+        var presentDay = (int)DateTime.Now.Day;
 
-        if (CalendarRewardList == null)
+        if (_calendarRewardList.Count == 0)
             return;
 
-        foreach (var calendarReward in CalendarRewardList)
+        foreach (var calendarReward in _calendarRewardList)
         {
             var singleCalendarReward = calendarReward.GetComponent<CalendarReward>();
             
-            if ((day == singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
+            if ((presentDay == singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
             {
                 singleCalendarReward.isAwardActivated = true;
                 singleCalendarReward.AwardActivated();
             }
-            else if ((day != singleCalendarReward.Id) && (day < singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
+            else if ((presentDay != singleCalendarReward.Id) && (presentDay < singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
             {
                 singleCalendarReward.isAwardActivated = false;
                 singleCalendarReward.AwardActivated();
             }
-            else if((day != singleCalendarReward.Id) && (day > singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
+            else if((presentDay != singleCalendarReward.Id) && (presentDay > singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
             {
                 singleCalendarReward.isAwardActivated = false;
+                singleCalendarReward.isAwardLoosed = true;
                 singleCalendarReward.AwardLoosed();
             }
             else
@@ -59,14 +61,28 @@ public class CalendarRewardsManager : MonoBehaviour
         }
     }
 
+    public void WorkOnEventReward()
+    {
+        if (_eventRewardList.Count == 0)
+            return;
+    }
     public void SpawnCalendarReward()
     {
+        if (_calendarRewardList.Count != 0)
+            return;
+
+        foreach (var eventReward in _eventRewardList)
+        {
+            Destroy(eventReward);
+        }
+        _eventRewardList.Clear();
+
         var monthDaysTotalNumber = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
         
         for (int i = 1; i < monthDaysTotalNumber +1; i++)
         {
             var spawnCalendarReward = Instantiate(CalendarRewardPrefab, CalendarRewardPrefabSpawnPoint);
-            CalendarRewardList.Add(spawnCalendarReward);
+            _calendarRewardList.Add(spawnCalendarReward);
             var singleSpawnCalendarReward = spawnCalendarReward.GetComponent<CalendarReward>();
             singleSpawnCalendarReward.Id = i;
             singleSpawnCalendarReward.dayNumberText.text = $"Day {i.ToString()}";
@@ -74,7 +90,7 @@ public class CalendarRewardsManager : MonoBehaviour
     }
     public void TakeAward()
     {
-        foreach (var calendarReward in CalendarRewardList)
+        foreach (var calendarReward in _calendarRewardList)
         {
             var singleCalendarReward = calendarReward.GetComponent<CalendarReward>();
 
@@ -87,11 +103,15 @@ public class CalendarRewardsManager : MonoBehaviour
 
     public void SpawnEventReward()
     {
-        foreach (var calendarReward in CalendarRewardList)
+        if (_eventRewardList.Count != 0)
+            return;
+
+        foreach (var calendarReward in _calendarRewardList)
         {
            Destroy(calendarReward);
         }
-        //CalendarRewardList.Clear();
+
+        _calendarRewardList.Clear();
 
         for (int i = 1; i < _eventDaysNumber; i++)
         {

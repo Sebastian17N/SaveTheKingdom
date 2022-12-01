@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Quests/Quests.unity
     guid: 88c2c46cb53bb8d45a25af9134b066e0
+  - enabled: 1
+    path: Assets/Scenes/Shop/Shop.unity
+    guid: 5533cb0cf64f768419aef11ab3e55ea6
   m_configObjects: {}

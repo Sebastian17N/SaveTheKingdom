@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Units.Enemies.Scripts
 {
-	[CreateAssetMenu(menuName = "Enemy", fileName = "New Enemy")]
+	[CreateAssetMenu(fileName = "Enemy_", menuName = "Scriptable Objects/Enemy")]
 	public class ScriptableEnemy : ScriptableObject
 	{
 		public GameObject EnemiesDefault;

@@ -6,6 +6,7 @@ public class CalendarReward : MonoBehaviour
 {
     public bool isAwardActivated = false;
     public bool isAwardTaked = false;
+    public bool isAwardLoosed = false;
 
     #region Prefab Elements
     [HideInInspector]public Image greenBackground;
@@ -44,7 +45,7 @@ public class CalendarReward : MonoBehaviour
     }
     public void AwardLoosed()
     {
-        if (!isAwardTaked && !isAwardTaked)
+        if (isAwardLoosed)
         {
             greenBackground.enabled = false;
             grayCover.enabled = true;
