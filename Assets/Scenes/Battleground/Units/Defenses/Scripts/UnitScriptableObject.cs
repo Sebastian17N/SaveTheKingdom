@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Units.Defenses.Scripts
 {
-	[CreateAssetMenu(menuName = "Units/Unit Card", fileName = "New Unit Card")]
+	[CreateAssetMenu(fileName = "UnitCard_", menuName = "Scriptable Objects/Unit Card")]
 	public class UnitScriptableObject : ScriptableObject
 	{
 		public int UnitId;

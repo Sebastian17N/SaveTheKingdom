@@ -6,6 +6,7 @@ public class CalendarReward : MonoBehaviour
 {
     public bool isAwardActivated = false;
     public bool isAwardTaked = false;
+    public bool isAwardLoosed = false;
 
     #region Prefab Elements
     [HideInInspector]public Image greenBackground;
@@ -18,7 +19,7 @@ public class CalendarReward : MonoBehaviour
     public TextMeshProUGUI awardAmountText;
     public int Id;
     #endregion
-    void Start()
+    private void Awake()
     {
         greenBackground = GetComponent<Image>();
         anim = GetComponent<Animator>();
@@ -44,7 +45,7 @@ public class CalendarReward : MonoBehaviour
     }
     public void AwardLoosed()
     {
-        if (!isAwardTaked && !isAwardTaked)
+        if (isAwardLoosed)
         {
             greenBackground.enabled = false;
             grayCover.enabled = true;
