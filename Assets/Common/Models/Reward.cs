@@ -4,9 +4,9 @@ using Assets.Common.Enums;
 namespace Assets.Common.Models
 {
 	[Serializable]
-	public class Gems
+	public class Reward
 	{
 		public int Amount;
-		public ResourcesTypeEnum TypeEnum;
+		public RewardType Type;
 	}
 }

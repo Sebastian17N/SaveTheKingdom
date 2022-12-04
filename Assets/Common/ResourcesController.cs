@@ -6,7 +6,7 @@ using UnityEngine;
 public class ResourcesController : MonoBehaviour
 {
     public int Quantity;
-    public ResourcesTypeEnum Type;
+    public RewardType Type;
     
     public ResourcesController(string resourcesType, int quantity)
     {

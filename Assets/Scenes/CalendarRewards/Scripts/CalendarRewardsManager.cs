@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Common.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,6 +62,7 @@ public class CalendarRewardsManager : MonoBehaviour
 
     public void SpawnCalendarReward()
     {
+        var rewards = RewardEventManager.Load().Rewards;
         var monthDaysTotalNumber = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
         
         for (int i = 1; i < monthDaysTotalNumber +1; i++)

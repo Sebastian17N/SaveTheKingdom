@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using Assets.Common.Enums;
 using Assets.Common.JsonModel;
+using Assets.Common.Managers;
 using Assets.Common.Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,7 +30,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 		
 		public float TimeToActivateChest;
 		public int CoinsAward;
-		public Gems GemsAward = new();
+		public Reward RewardAward = new();
 		public Shards ShardsAward;
 
 		public GameObject UnitShards;
@@ -94,17 +95,17 @@ namespace Assets.Scenes.FightSummary.Scripts
 				var level = PlayerPrefs.GetString("CurrentLevel");
 				var mapsConfigJsonModel = JsonLoader.LoadConfig(level);				
 				CoinsAward = mapsConfigJsonModel.AwardCoins[howManyStars - 1];
-				GemsAward.TypeEnum = mapsConfigJsonModel.AwardGemsType;
-				GemsAward.Amount = mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1];
+				RewardAward.Type = mapsConfigJsonModel.AwardGemsType;
+				RewardAward.Amount = mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1];
 
 				var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
 				ShardsAward = new Shards(shard.UnitId, shard.MinRange[0]);
 
 				var playerPreferences = PlayerPreferences.Load();
 				playerPreferences.Coins += CoinsAward;
-				playerPreferences.AddGems = GemsAward;
+				playerPreferences.AddReward = RewardAward;
 				playerPreferences.AddShards = ShardsAward;
-            }	
+            }
 		}  
 		
 		public IEnumerator ActivateChest()

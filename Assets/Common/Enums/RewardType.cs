@@ -1,6 +1,6 @@
 namespace Assets.Common.Enums
 {
-	public enum ResourcesTypeEnum
+	public enum RewardType
 	{
 		Coins,
 		Sapphires,

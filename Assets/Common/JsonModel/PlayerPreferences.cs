@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Assets.Common.Enums;
 using Assets.Common.Models;
+using Assets.Scenes.Quests.Scripts;
 using UnityEngine;
 
 namespace Assets.Common.JsonModel
@@ -28,8 +29,8 @@ namespace Assets.Common.JsonModel
 		/// <summary>
 		/// DO NOT USE IT DIRECTLY
 		/// </summary>
-		public Gems EmeraldsJson = new();
-		public Gems Emeralds
+		public Reward EmeraldsJson = new();
+		public Reward Emeralds
 		{
 			get => EmeraldsJson = Load().EmeraldsJson;
 			set
@@ -42,8 +43,8 @@ namespace Assets.Common.JsonModel
 		/// <summary>
 		/// DO NOT USE IT DIRECTLY
 		/// </summary>
-		public Gems SapphiresJson = new();
-		public Gems Sapphires
+		public Reward SapphiresJson = new();
+		public Reward Sapphires
 		{
 			get => SapphiresJson = Load().SapphiresJson;
 			set
@@ -56,8 +57,8 @@ namespace Assets.Common.JsonModel
 		/// <summary>
 		/// DO NOT USE IT DIRECTLY
 		/// </summary>
-		public Gems TopazesJson = new();
-		public Gems Topazes
+		public Reward TopazesJson = new();
+		public Reward Topazes
 		{
 			get => TopazesJson = Load().TopazesJson;
 			set
@@ -70,8 +71,8 @@ namespace Assets.Common.JsonModel
 		/// <summary>
 		/// DO NOT USE IT DIRECTLY
 		/// </summary>
-		public Gems MoonStoneJson = new();
-		public Gems MoonStones
+		public Reward MoonStoneJson = new();
+		public Reward MoonStones
 		{
 			get => MoonStoneJson = Load().MoonStoneJson;
 			set
@@ -81,30 +82,30 @@ namespace Assets.Common.JsonModel
 			}
 		}
 
-		public Gems AddGems
+		public Reward AddReward
 		{
 			set
 			{
-				switch (value.TypeEnum)
+				switch (value.Type)
 				{
-					case Enums.ResourcesTypeEnum.Emeralds:
+					case Enums.RewardType.Emeralds:
 						Emeralds.Amount += value.Amount;
-						Emeralds.TypeEnum = ResourcesTypeEnum.Emeralds;
+						Emeralds.Type = RewardType.Emeralds;
 						break;
 
-					case Enums.ResourcesTypeEnum.Sapphires:
+					case Enums.RewardType.Sapphires:
 						Sapphires.Amount += value.Amount;
-						Sapphires.TypeEnum = ResourcesTypeEnum.Sapphires;
+						Sapphires.Type = RewardType.Sapphires;
 						break;
 
-					case Enums.ResourcesTypeEnum.Topazes:
+					case Enums.RewardType.Topazes:
 						Topazes.Amount += value.Amount;
-						Topazes.TypeEnum = ResourcesTypeEnum.Topazes;
+						Topazes.Type = RewardType.Topazes;
 						break;
 
-					case Enums.ResourcesTypeEnum.MoonStones:
+					case Enums.RewardType.MoonStones:
 						MoonStones.Amount += value.Amount;
-						MoonStoneJson.TypeEnum = ResourcesTypeEnum.MoonStones;
+						MoonStoneJson.Type = RewardType.MoonStones;
 						break;
 				}
 
@@ -143,6 +144,22 @@ namespace Assets.Common.JsonModel
 			}
 		}
 
+		private DateTime _oneDateQuest;
+		public DateTime OneDayQuest
+		{
+			get
+			{
+				if (!_oneDateQuest.Date.Equals(DateTime.Today))
+					_oneDateQuest = DateTime.Today;
+
+				return _oneDateQuest;
+			}
+		}
+
+		// Typ questa, ile zebrane danego typu, czy jednodniowy
+		private List<(QuestType, int, bool)> ZebraneAchivmentyUGracza { get; set; }
+		
+
 		private static readonly string fileName = "Assets/Configuration/PlayerPreferences.json";
 
 		public static PlayerPreferences Load()
@@ -162,23 +179,23 @@ namespace Assets.Common.JsonModel
 
 		public static int LoadResourceByType(string type)
 		{
-			Enum.TryParse(type, out ResourcesTypeEnum converted);
+			Enum.TryParse(type, out RewardType converted);
 			return LoadResourceByType(converted);
 		}
 
-		public static int LoadResourceByType(ResourcesTypeEnum returnType)
+		public static int LoadResourceByType(RewardType returnType)
 		{
 			switch (returnType)
 			{
-				case ResourcesTypeEnum.Coins:
+				case RewardType.Coins:
 					return Load().Coins;
-				case ResourcesTypeEnum.Emeralds:
+				case RewardType.Emeralds:
 					return Load().Emeralds.Amount;
-				case ResourcesTypeEnum.Sapphires:
+				case RewardType.Sapphires:
 					return Load().Sapphires.Amount;
-				case ResourcesTypeEnum.Topazes:
+				case RewardType.Topazes:
 					return Load().Topazes.Amount;
-				case ResourcesTypeEnum.MoonStones:
+				case RewardType.MoonStones:
 					return Load().MoonStones.Amount;
 			}
 
@@ -187,29 +204,29 @@ namespace Assets.Common.JsonModel
 
 		public static void SaveResourceByType(string type, int quantity)
 		{
-			Enum.TryParse(type, out ResourcesTypeEnum converted);
+			Enum.TryParse(type, out RewardType converted);
 			SaveResourceByType(converted, quantity);
 		}
 
-		public static void SaveResourceByType(ResourcesTypeEnum type, int quantity)
+		public static void SaveResourceByType(RewardType type, int quantity)
 		{
 			var resource = Load();
 
 			switch (type)
 			{
-				case ResourcesTypeEnum.Coins:
+				case RewardType.Coins:
 					resource.Coins += quantity;
 					break;
-				case ResourcesTypeEnum.Emeralds:
+				case RewardType.Emeralds:
 					resource.Emeralds.Amount += quantity;
 					break;
-				case ResourcesTypeEnum.Sapphires:
+				case RewardType.Sapphires:
 					resource.Sapphires.Amount += quantity;
 					break;
-				case ResourcesTypeEnum.Topazes:
+				case RewardType.Topazes:
 					resource.Topazes.Amount += quantity;
 					break;
-				case ResourcesTypeEnum.MoonStones:
+				case RewardType.MoonStones:
 					resource.MoonStones.Amount += quantity;
 					break;
 			}

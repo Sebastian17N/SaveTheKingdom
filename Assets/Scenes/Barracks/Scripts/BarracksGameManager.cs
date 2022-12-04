@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Common.JsonModel;
 using Assets.Scenes.Battleground.Units.Defenses.Scripts;
 using Assets.Units.Defenses.Scripts;
 using UnityEngine;
@@ -137,9 +139,16 @@ namespace Assets.Scenes.Barracks.Scripts
 				(scriptableObject.Health + scriptableObject.HealthUpgrade).ToString();
 			
 			panelComponents.UnitIcon.sprite = scriptableObject.Icon;
-			panelComponents.shardsOwnedText.text = scriptableObject.ShardsNumber.ToString();
+			// TODO: Read value needed for an upgrade.
+			panelComponents.shardsOwnedText.text =
+				PlayerPreferences
+					.Load()
+					.Shards
+					.FirstOrDefault(shard => shard.ShardId == scriptableObject.UnitId)?
+					.Amount.ToString();
+			// scriptableObject.Level * 10 + 10;
 			panelComponents.shardsNeededText.text = scriptableObject.ShardsNumber.ToString();
-			panelComponents.coinsHavedText.text = PlayerPrefs.GetInt("Coins").ToString();
+			panelComponents.coinsHavedText.text = PlayerPreferences.Load().Coins.ToString();
 			panelComponents.coinsNeededText.text = scriptableObject.UpgradeInitialCost.ToString();
 		}
 	}

@@ -13,7 +13,7 @@ namespace Assets.Common.JsonModel
 		public string EnemiesMapFileName;
 		public int[] AvailableUnitsToPlayById;
 		public int[] AwardCoins;
-		public ResourcesTypeEnum AwardGemsType;
+		public RewardType AwardGemsType;
 		public int[] AwardGemsNumber;
 		public AwardShardJsonModel[] AwardShards;
 	}
