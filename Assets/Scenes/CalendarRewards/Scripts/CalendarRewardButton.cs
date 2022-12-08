@@ -1,12 +1,13 @@
+using Assets.Common.Enums;
+using Assets.Common.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CalendarReward : MonoBehaviour
+public class CalendarRewardButton : MonoBehaviour
 {
-    public bool isAwardActivated = false;
-    public bool isAwardTaked = false;
-    public bool isAwardLoosed = false;
+    public Reward RewardType;
+    public RewardState RewardState;
 
     #region Prefab Elements
     [HideInInspector]public Image greenBackground;
@@ -26,7 +27,7 @@ public class CalendarReward : MonoBehaviour
     }
     public void AwardActivated()
     {
-        if (isAwardActivated && !isAwardTaked)
+        if (RewardState == RewardState.Active)
         {
             greenBackground.enabled = true;
             grayCover.enabled = false;
@@ -34,7 +35,7 @@ public class CalendarReward : MonoBehaviour
             tickImage.enabled = false;
             awardGrayBackground.GetComponent<Image>().color = Color.white;
         }
-        else if (!isAwardActivated && !isAwardTaked)
+        else if (RewardState == RewardState.Inactive)
         {
             greenBackground.enabled = false;
             grayCover.enabled = false;
@@ -43,20 +44,9 @@ public class CalendarReward : MonoBehaviour
             awardGrayBackground.GetComponent<Image>().color = Color.white;
         }
     }
-    public void AwardLoosed()
-    {
-        if (isAwardLoosed)
-        {
-            greenBackground.enabled = false;
-            grayCover.enabled = true;
-            awardGrayBackground.GetComponent<Image>().color = new Color(0.65f, 0.65f, 0.65f, 0.50f);
-            anim.enabled = false;
-            tickImage.enabled = false;
-        }
-    }
     public void AwardTaked()
     {
-        if (isAwardTaked)
+        if (RewardState == RewardState.Taken)
         {
             greenBackground.enabled = false;
             grayCover.enabled = true;
@@ -65,5 +55,15 @@ public class CalendarReward : MonoBehaviour
             tickImage.enabled = true;
         }
     }
-   
+    public void AwardLoosed()
+    {
+        if (RewardState == RewardState.Loosed)
+        {
+            greenBackground.enabled = false;
+            grayCover.enabled = true;
+            awardGrayBackground.GetComponent<Image>().color = new Color(0.65f, 0.65f, 0.65f, 0.50f);
+            anim.enabled = false;
+            tickImage.enabled = false;
+        }
+    }
 }

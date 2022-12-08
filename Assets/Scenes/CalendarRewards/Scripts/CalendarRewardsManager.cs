@@ -1,7 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Assets.Common.Enums;
+using Assets.Common.JsonModel;
 using Assets.Common.Managers;
+using Assets.Common.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +14,8 @@ public class CalendarRewardsManager : MonoBehaviour
     public GameObject CalendarRewardPrefab;
     public Transform CalendarRewardPrefabSpawnPoint;
     private List<GameObject> _calendarRewardList = new List<GameObject>();
-    
+    public RewardsIconsSO RewardsIconSO;
+
     #region Events Parameters
     private DateTime _startEventDate = new DateTime(2022, 11, 26);
     private int _eventDaysNumber = 10;
@@ -37,22 +42,24 @@ public class CalendarRewardsManager : MonoBehaviour
 
         foreach (var calendarReward in _calendarRewardList)
         {
-            var singleCalendarReward = calendarReward.GetComponent<CalendarReward>();
+            var singleCalendarReward = calendarReward.GetComponent<CalendarRewardButton>();
             
-            if ((presentDay == singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
+            if ((presentDay == singleCalendarReward.Id) && (singleCalendarReward.RewardState != RewardState.Taken))
             {
-                singleCalendarReward.isAwardActivated = true;
+                singleCalendarReward.RewardState = RewardState.Active;
                 singleCalendarReward.AwardActivated();
             }
-            else if ((presentDay != singleCalendarReward.Id) && (presentDay < singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
+            else if ((presentDay != singleCalendarReward.Id) && (presentDay < singleCalendarReward.Id) && 
+                (singleCalendarReward.RewardState != RewardState.Taken))
             {
-                singleCalendarReward.isAwardActivated = false;
+                singleCalendarReward.RewardState = RewardState.Inactive;
                 singleCalendarReward.AwardActivated();
             }
-            else if((presentDay != singleCalendarReward.Id) && (presentDay > singleCalendarReward.Id) && (!singleCalendarReward.isAwardTaked))
+            else if((presentDay != singleCalendarReward.Id) && (presentDay > singleCalendarReward.Id) && 
+                (singleCalendarReward.RewardState != RewardState.Taken))
             {
-                singleCalendarReward.isAwardActivated = false;
-                singleCalendarReward.isAwardLoosed = true;
+                singleCalendarReward.RewardState = RewardState.Inactive;
+                singleCalendarReward.RewardState = RewardState.Loosed;
                 singleCalendarReward.AwardLoosed();
             }
             else
@@ -69,6 +76,8 @@ public class CalendarRewardsManager : MonoBehaviour
     }
     public void SpawnCalendarReward()
     {
+        var fileName = "Assets/Configuration/CallendarAwardPP.json";
+
         if (_calendarRewardList.Count != 0)
             return;
 
@@ -78,27 +87,38 @@ public class CalendarRewardsManager : MonoBehaviour
         }
         _eventRewardList.Clear();
 
-        var rewards = RewardEventManager.Load().Rewards;
-        var monthDaysTotalNumber = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-        
-        for (int i = 1; i < monthDaysTotalNumber +1; i++)
+        var rewards = RewardEventManager.LoadCalendarRewards(fileName);
+        //var monthDaysTotalNumber = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+
+        foreach (var reward in rewards.OrderBy(reward => reward.Day))
         {
             var spawnCalendarReward = Instantiate(CalendarRewardPrefab, CalendarRewardPrefabSpawnPoint);
             _calendarRewardList.Add(spawnCalendarReward);
-            var singleSpawnCalendarReward = spawnCalendarReward.GetComponent<CalendarReward>();
-            singleSpawnCalendarReward.Id = i;
-            singleSpawnCalendarReward.dayNumberText.text = $"Day {i.ToString()}";
+            
+            var singleSpawnCalendarReward = spawnCalendarReward.GetComponent<CalendarRewardButton>();
+            singleSpawnCalendarReward.Id = reward.Day;
+            singleSpawnCalendarReward.dayNumberText.text = $"Day {reward.Day}";
+            singleSpawnCalendarReward.awardAmountText.text = reward.Amount.ToString();
+            singleSpawnCalendarReward.awardImage.sprite = RewardsIconSO.GetIcon(reward.Type);
+            singleSpawnCalendarReward.RewardType.Type = reward.Type;
+            singleSpawnCalendarReward.RewardType.Amount = reward.Amount;
+            singleSpawnCalendarReward.RewardState = reward.State;
         }
     }
+    
     public void TakeAward()
     {
+
         foreach (var calendarReward in _calendarRewardList)
         {
-            var singleCalendarReward = calendarReward.GetComponent<CalendarReward>();
+            var singleCalendarReward = calendarReward.GetComponent<CalendarRewardButton>();
 
-            if (singleCalendarReward.isAwardActivated)
+            if (singleCalendarReward.RewardState == RewardState.Active)
             {
-                singleCalendarReward.isAwardTaked = true;
+                PlayerPreferences.SaveResourceByType(singleCalendarReward.RewardType.Type.ToString(), 
+                    singleCalendarReward.RewardType.Amount);
+                
+                singleCalendarReward.RewardState = RewardState.Taken;
             }
         }
     }
@@ -119,22 +139,9 @@ public class CalendarRewardsManager : MonoBehaviour
         {
             var spawnEventReward = Instantiate(CalendarRewardPrefab, CalendarRewardPrefabSpawnPoint);
             _eventRewardList.Add(spawnEventReward);
-            var singleSpawnEventReward = spawnEventReward.GetComponent<CalendarReward>();
+            var singleSpawnEventReward = spawnEventReward.GetComponent<CalendarRewardButton>();
             singleSpawnEventReward.Id = i;
-            singleSpawnEventReward.dayNumberText.text = $"Day {i.ToString()}";
+            singleSpawnEventReward.dayNumberText.text = $"Day {i}";
         }
     }
-
-    //public void ActivateAward(int dayNumber, bool isAwardActivated)
-    //{
-
-    //    if ((int)DateTime.Now.Day == dayNumber)
-    //    {
-    //        isAwardActivated = true;
-    //    }
-    //    else
-    //    {
-    //        isAwardActivated = false;
-    //    }
-    //}
 }

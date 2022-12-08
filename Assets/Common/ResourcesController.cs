@@ -15,12 +15,6 @@ public class ResourcesController : MonoBehaviour
     
     private void Start()
     {
-        //PlayerPrefs.SetInt("Coins", 100000);
-        //PlayerPrefs.SetInt("Sapphires", 20000);
-        //PlayerPrefs.SetInt("Topazes", 30000);
-        //PlayerPrefs.SetInt("Emeralds", 40000);
-        //PlayerPrefs.SetInt("MoonStones", 50000);
-
         AssignmentResources();
         ShowResources($"{Type}");
     }
