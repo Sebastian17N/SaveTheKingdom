@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CalendarRewardButton : MonoBehaviour
 {
     public Reward RewardType;
-    public RewardState RewardState;
+    //public RewardState RewardState;
 
     #region Prefab Elements
     [HideInInspector]public Image greenBackground;
@@ -27,7 +27,7 @@ public class CalendarRewardButton : MonoBehaviour
     }
     public void AwardActivated()
     {
-        if (RewardState == RewardState.Active)
+        if (RewardType.State == RewardState.Active)
         {
             greenBackground.enabled = true;
             grayCover.enabled = false;
@@ -35,7 +35,7 @@ public class CalendarRewardButton : MonoBehaviour
             tickImage.enabled = false;
             awardGrayBackground.GetComponent<Image>().color = Color.white;
         }
-        else if (RewardState == RewardState.Inactive)
+        else if (RewardType.State == RewardState.Inactive)
         {
             greenBackground.enabled = false;
             grayCover.enabled = false;
@@ -46,7 +46,7 @@ public class CalendarRewardButton : MonoBehaviour
     }
     public void AwardTaked()
     {
-        if (RewardState == RewardState.Taken)
+        if (RewardType.State == RewardState.Taken)
         {
             greenBackground.enabled = false;
             grayCover.enabled = true;
@@ -57,7 +57,7 @@ public class CalendarRewardButton : MonoBehaviour
     }
     public void AwardLoosed()
     {
-        if (RewardState == RewardState.Loosed)
+        if (RewardType.State == RewardState.Loosed)
         {
             greenBackground.enabled = false;
             grayCover.enabled = true;
