@@ -565,14 +565,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.39048922, g: 0.9339623, b: 0.3207191, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 574515310, guid: 1fa28fb773810084aa89ba3b452b72d3, type: 3}
+  m_Sprite: {fileID: 511824837, guid: fc5fdb3125d7560498c73595f63a61fe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -594,8 +594,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e96aaa48674344e9ac94727fe4138c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAwardActivated: 0
-  isAwardTaked: 0
+  RewardType:
+    Amount: 0
+    Type: 0
+    State: 0
   greenBackground: {fileID: 0}
   awardGrayBackground: {fileID: 4487950658634000317}
   awardImage: {fileID: 8598708469708750741}

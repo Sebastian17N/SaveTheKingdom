@@ -1,9 +1,11 @@
 namespace Assets.Common.Enums
 {
-	public enum RewardState
-	{
-		Active,
-		Taken,
-		Loosed
-	}
+    public enum RewardState
+    {
+        Active,
+        Inactive,
+        Taken,
+        PremiumAwardTaken,
+        Loosed
+    }
 }

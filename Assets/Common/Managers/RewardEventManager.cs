@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Common.Enums;
 using Assets.Common.Models;
 using UnityEngine;
 
@@ -9,17 +10,18 @@ namespace Assets.Common.Managers
 	[Serializable]
 	public class RewardEventManager
 	{
-		public List<Reward> Rewards;
-		
-		private static readonly string fileName = "Assets/Configuration/RewardEventManager_2022_12.json";
-		public static RewardEventManager Load()
+		public List<CalendarReward> Rewards;
+		//public RewardState RewardState;
+
+		public static List<CalendarReward> LoadCalendarRewards(string filePath)
 		{
-			if (!File.Exists(fileName))
+			if (!File.Exists(filePath))
 				return null;
 
-			var fileData = File.ReadAllText(fileName);
-			var prefs = JsonUtility.FromJson<RewardEventManager>(fileData) ?? new RewardEventManager();
-			return prefs;
+			var fileData = File.ReadAllText(filePath);
+			var prefs = JsonUtility.FromJson<RewardEventManager>(fileData);
+			
+			return prefs?.Rewards;
 		}
 	}
 }
