@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Common.Models;
+using Assets.Common.Enums;
 
 public class KingdomPassAwardsButtons : MonoBehaviour
 {
-    public bool isAwardActivated = false;
-    public bool isFreeAwardTaked = false;
-    public bool isPremiumAwardTaked = false;
+    public Reward RewardType;
     public KingdomPassManager kingdomPassManager;
     public int passPointsRequiredToActivateAward;
 
@@ -40,7 +40,7 @@ public class KingdomPassAwardsButtons : MonoBehaviour
 
     public void AwardActivated()
     {
-        if (isAwardActivated && !isFreeAwardTaked)
+        if (RewardType.State == RewardState.Active )
         {
             freeGrayCover.enabled = false;
             premiumGrayCover.enabled = false;
@@ -49,7 +49,7 @@ public class KingdomPassAwardsButtons : MonoBehaviour
             premiumAwardTakeButton.SetActive(true);
             freeAwardTakeButton.SetActive(true);
         }
-        else if(!isAwardActivated && !isFreeAwardTaked)
+        else if(RewardType.State == RewardState.Inactive)
         {
             freeGrayCover.enabled = true;
             premiumGrayCover.enabled = true;
@@ -61,17 +61,17 @@ public class KingdomPassAwardsButtons : MonoBehaviour
     }
     public void ActivateAward()
     {
-        isAwardActivated = true;
+        RewardType.State = RewardState.Active;
     }
     public void TakeFreeAward()
     {
-        isFreeAwardTaked = true;
+        RewardType.State = RewardState.Taken;
     }
     public void TakePremiumAward()
     {
         if (kingdomPassManager.isKingdomPassActivated)
         {
-            isPremiumAwardTaked = true;
+            RewardType.State = RewardState.PremiumAwardTaken;
         }
     }
     public void KingdomPassActivated()
@@ -85,7 +85,7 @@ public class KingdomPassAwardsButtons : MonoBehaviour
     }
     public void FreeAwardTaked()
     {
-        if (isFreeAwardTaked && isAwardActivated)
+        if (RewardType.State == RewardState.Taken)
         {
             freeTickImage.enabled = true;
             freeGrayCover.enabled = false;
@@ -96,7 +96,7 @@ public class KingdomPassAwardsButtons : MonoBehaviour
     }
     public void PremiumAwardTaked()
     {
-        if (isPremiumAwardTaked && isAwardActivated && kingdomPassManager.isKingdomPassActivated)
+        if (RewardType.State == RewardState.PremiumAwardTaken && kingdomPassManager.isKingdomPassActivated)
         {
             premiumTickImage.enabled = true;
             premiumGrayCover.enabled = false;

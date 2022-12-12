@@ -5,6 +5,7 @@ namespace Assets.Common.Enums
         Active,
         Inactive,
         Taken,
+        PremiumAwardTaken,
         Loosed
     }
 }

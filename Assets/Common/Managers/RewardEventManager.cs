@@ -11,7 +11,7 @@ namespace Assets.Common.Managers
 	public class RewardEventManager
 	{
 		public List<CalendarReward> Rewards;
-		public RewardState RewardState;
+		//public RewardState RewardState;
 
 		public static List<CalendarReward> LoadCalendarRewards(string filePath)
 		{
