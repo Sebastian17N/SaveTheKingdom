@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Assets.Common.JsonModel;
+using Assets.Scenes.Quests.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,20 +48,36 @@ public class QuestsManager : MonoBehaviour
     private void SpawnQuest(QuestOrigin questOrigin)
     {
         var questForOrigin = questScriptableObjectList.Where(quest => quest.origin == questOrigin).ToList();
-        for(int i = 0; i < questForOrigin.Count; i++)
-        {
-            CreateQuests(questForOrigin[i]);
-        }
+        //for(int i = 0; i < questForOrigin.Count; i++)
+        //{
+        //    CreateQuests(questForOrigin[i]);
+        //}
+        CreateQuests1();
     }
+
     private void CreateQuests(QuestScriptableObject questScriptableObject)
     {
         var quest = Instantiate(questsPrefab, questsPrefabSpawnPoint);
         quest.transform.Find("QuestDescriptionsText").GetComponent<TextMeshProUGUI>().text =
-            questScriptableObject.questDescriptions.ToString();
+            questScriptableObject.questDescriptions;
         quest.transform.Find("QuestPointsRequireToEndText").GetComponent<TextMeshProUGUI>().text =
-            $"{questScriptableObject.currentPointsRequireToEndQuest.ToString()} / " +
-            $"{questScriptableObject.totalPointsRequireToEndQuest.ToString()}";
+            $"{questScriptableObject.currentPointsRequireToEndQuest} / " +
+            $"{questScriptableObject.totalPointsRequireToEndQuest}";
 
         questsList.Add(quest);
+    }
+
+    private void CreateQuests1()
+    {
+	    var fileData = File.ReadAllText("Assets/Scenes/Quests/Samples/DamageDealt_1.json");
+	    var quest = JsonUtility.FromJson<Quest>(fileData);
+
+        var questObject = Instantiate(questsPrefab, questsPrefabSpawnPoint);
+        questObject.transform.Find("QuestDescriptionsText").GetComponent<TextMeshProUGUI>().text =
+	        quest.Name;
+        questObject.transform.Find("QuestPointsRequireToEndText").GetComponent<TextMeshProUGUI>().text =
+		    quest.Description;
+
+	    questsList.Add(questObject);
     }
 }
