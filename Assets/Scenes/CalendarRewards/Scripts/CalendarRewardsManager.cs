@@ -124,9 +124,7 @@ public class CalendarRewardsManager : MonoBehaviour
             singleSpawnCalendarReward.dayNumberText.text = $"Day {reward.Day}";
             singleSpawnCalendarReward.awardAmountText.text = reward.Amount.ToString();
             singleSpawnCalendarReward.awardImage.sprite = RewardsIconSO.GetIcon(reward.Type);
-            singleSpawnCalendarReward.RewardType.Type = reward.Type;
-            singleSpawnCalendarReward.RewardType.Amount = reward.Amount;
-            singleSpawnCalendarReward.RewardType.State = reward.State;
+            singleSpawnCalendarReward.RewardType = reward;
         }
     }
 
@@ -156,18 +154,19 @@ public class CalendarRewardsManager : MonoBehaviour
             singleSpawnEventReward.awardImage.sprite = RewardsIconSO.GetIcon(reward.Type);
             singleSpawnEventReward.RewardType.Type = reward.Type;
             singleSpawnEventReward.RewardType.Amount = reward.Amount;
-            singleSpawnEventReward.RewardType.State = reward.State;
+            singleSpawnEventReward.RewardType = reward;
         }
     }
 
     public void TakeAward()
     {
 	    string fileName = string.Empty;
+	    CalendarReward rewardTaken = null;
 
         if (_calendarRewardList.Count > 0)
         {
 	        foreach (var eventReward in
-	                 _eventRewardList
+	                 _calendarRewardList
 		                 .Select(reward =>
 			                 reward.GetComponent<CalendarRewardButton>().RewardType)
 		                 .Where(reward => reward.State == RewardState.Active))
@@ -175,7 +174,7 @@ public class CalendarRewardsManager : MonoBehaviour
 
                 PlayerPreferences.Load().AddReward = eventReward;
                 eventReward.State = RewardState.Taken;
-
+                rewardTaken=eventReward;
                 fileName = "Assets/Configuration/CallendarAwardPP.json";
                 break;
             }
@@ -191,7 +190,7 @@ public class CalendarRewardsManager : MonoBehaviour
             {
 	            PlayerPreferences.Load().AddReward = eventReward;
                 eventReward.State = RewardState.Taken;
-
+                rewardTaken = eventReward;
                 fileName = "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json";
                 break;
             }
@@ -201,6 +200,8 @@ public class CalendarRewardsManager : MonoBehaviour
 	        return;
 
         var manager = RewardEventManager.LoadCalendarRewardsManager(fileName);
+        var eventRewardFromFile = manager.Rewards.SingleOrDefault(reward => reward.Day == rewardTaken.Day);
+        eventRewardFromFile.State = RewardState.Taken;
         RewardEventManager.Save(fileName, manager);
     }
 }

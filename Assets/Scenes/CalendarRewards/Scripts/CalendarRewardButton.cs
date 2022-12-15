@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CalendarRewardButton : MonoBehaviour
 {
-    public Reward RewardType;
+    public CalendarReward RewardType;
 
     #region Prefab Elements
     [HideInInspector]public Image greenBackground;
