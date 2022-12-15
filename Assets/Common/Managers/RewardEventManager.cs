@@ -11,6 +11,7 @@ namespace Assets.Common.Managers
 	public class RewardEventManager
 	{
 		public List<CalendarReward> Rewards;
+		public List<KingdomPassReward> KingdomPassRewards;
 
 		public static RewardEventManager LoadCalendarRewardsManager(string filePath)
 		{
@@ -32,6 +33,17 @@ namespace Assets.Common.Managers
 			var prefs = JsonUtility.FromJson<RewardEventManager>(fileData);
 			
 			return prefs?.Rewards;
+		}
+
+		public static List<KingdomPassReward> LoadKingdomPassRewards(string filePath)
+		{
+			if (!File.Exists(filePath))
+				return null;
+
+			var fileData = File.ReadAllText(filePath);
+			var prefs = JsonUtility.FromJson<RewardEventManager>(fileData);
+
+			return prefs?.KingdomPassRewards;
 		}
 
 		public static void Save(string filePath, RewardEventManager playerPreferences)
