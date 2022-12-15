@@ -101,61 +101,44 @@ public class CalendarRewardsManager : MonoBehaviour
     }
     public void SpawnCalendarReward()
     {
-        var fileName = "Assets/Configuration/CallendarAwardPP.json";
-
-        if (_calendarRewardList.Count != 0)
-            return;
-
-        foreach (var eventReward in _eventRewardList)
-        {
-            Destroy(eventReward);
-        }
-        _eventRewardList.Clear();
-
-        var rewards = RewardEventManager.LoadCalendarRewards(fileName);
-
-        foreach (var reward in rewards.OrderBy(reward => reward.Day))
-        {
-            var spawnCalendarReward = Instantiate(RewardPrefab, RewardPrefabSpawnPoint);
-            _calendarRewardList.Add(spawnCalendarReward);
-            
-            var singleSpawnCalendarReward = spawnCalendarReward.GetComponent<CalendarRewardButton>();
-            singleSpawnCalendarReward.Id = reward.Day;
-            singleSpawnCalendarReward.dayNumberText.text = $"Day {reward.Day}";
-            singleSpawnCalendarReward.awardAmountText.text = reward.Amount.ToString();
-            singleSpawnCalendarReward.awardImage.sprite = RewardsIconSO.GetIcon(reward.Type);
-            singleSpawnCalendarReward.RewardType = reward;
-        }
+	    SpawnReward(_calendarRewardList, _eventRewardList,
+		    "Assets/Configuration/CallendarAwardPP.json");
+	    ;
     }
 
     public void SpawnEventReward()
     {
-        if (_eventRewardList.Count != 0)
-            return;
+	    SpawnReward(_eventRewardList, _calendarRewardList,
+		    "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json");
+    }
 
-        foreach (var calendarReward in _calendarRewardList)
-        {
-           Destroy(calendarReward);
-        }
-        _calendarRewardList.Clear();
-        
-        var fileName = "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json";
-        var rewards = RewardEventManager.LoadCalendarRewards(fileName);
+    private void SpawnReward(ICollection<GameObject> listToFill, ICollection<GameObject> listToEmpty, string fileName)
+    {
+	    if (listToFill.Count != 0)
+		    return;
 
-        foreach (var reward in rewards)
-        {
-            var spawnEventReward = Instantiate(RewardPrefab, RewardPrefabSpawnPoint);
-            _eventRewardList.Add(spawnEventReward);
+	    foreach (var calendarReward in listToEmpty)
+	    {
+		    Destroy(calendarReward);
+	    }
+	    listToEmpty.Clear();
 
-            var singleSpawnEventReward = spawnEventReward.GetComponent<CalendarRewardButton>();
-            singleSpawnEventReward.Id = reward.Day;
-            singleSpawnEventReward.dayNumberText.text = $"Day {reward.Day}";
-            singleSpawnEventReward.awardAmountText.text = reward.Amount.ToString();
-            singleSpawnEventReward.awardImage.sprite = RewardsIconSO.GetIcon(reward.Type);
-            singleSpawnEventReward.RewardType.Type = reward.Type;
-            singleSpawnEventReward.RewardType.Amount = reward.Amount;
-            singleSpawnEventReward.RewardType = reward;
-        }
+	    var rewards = RewardEventManager.LoadCalendarRewards(fileName);
+
+	    foreach (var reward in rewards)
+	    {
+		    var spawnEventReward = Instantiate(RewardPrefab, RewardPrefabSpawnPoint);
+		    listToFill.Add(spawnEventReward);
+
+		    var singleSpawnEventReward = spawnEventReward.GetComponent<CalendarRewardButton>();
+		    singleSpawnEventReward.Id = reward.Day;
+		    singleSpawnEventReward.dayNumberText.text = $"Day {reward.Day}";
+		    singleSpawnEventReward.awardAmountText.text = reward.Amount.ToString();
+		    singleSpawnEventReward.awardImage.sprite = RewardsIconSO.GetIcon(reward.Type);
+		    singleSpawnEventReward.RewardType.Type = reward.Type;
+		    singleSpawnEventReward.RewardType.Amount = reward.Amount;
+		    singleSpawnEventReward.RewardType = reward;
+	    }
     }
 
     public void TakeAward()
