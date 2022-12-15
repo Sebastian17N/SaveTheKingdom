@@ -88,22 +88,25 @@ namespace Assets.Common.JsonModel
 			{
 				switch (value.Type)
 				{
-					case Enums.RewardType.Emeralds:
+					case RewardType.Coins:
+						Coins += value.Amount;
+						break;
+					case RewardType.Emeralds:
 						Emeralds.Amount += value.Amount;
 						Emeralds.Type = RewardType.Emeralds;
 						break;
 
-					case Enums.RewardType.Sapphires:
+					case RewardType.Sapphires:
 						Sapphires.Amount += value.Amount;
 						Sapphires.Type = RewardType.Sapphires;
 						break;
 
-					case Enums.RewardType.Topazes:
+					case RewardType.Topazes:
 						Topazes.Amount += value.Amount;
 						Topazes.Type = RewardType.Topazes;
 						break;
 
-					case Enums.RewardType.MoonStones:
+					case RewardType.MoonStones:
 						MoonStones.Amount += value.Amount;
 						MoonStoneJson.Type = RewardType.MoonStones;
 						break;
@@ -202,34 +205,34 @@ namespace Assets.Common.JsonModel
 			return 0;
 		}
 
-		public static void SaveResourceByType(string type, int quantity)
-		{
-			Enum.TryParse(type, out RewardType converted);
-			SaveResourceByType(converted, quantity);
-		}
+		//public static void SaveResourceByType(string type, int quantity)
+		//{
+		//	Enum.TryParse(type, out RewardType converted);
+		//	SaveResourceByType(converted, quantity);
+		//}
 
-		public static void SaveResourceByType(RewardType type, int quantity)
-		{
-			var resource = Load();
+		//public static void SaveResourceByType(RewardType type, int quantity)
+		//{
+		//	var resource = Load();
 
-			switch (type)
-			{
-				case RewardType.Coins:
-					resource.Coins += quantity;
-					break;
-				case RewardType.Emeralds:
-					resource.Emeralds.Amount += quantity;
-					break;
-				case RewardType.Sapphires:
-					resource.Sapphires.Amount += quantity;
-					break;
-				case RewardType.Topazes:
-					resource.Topazes.Amount += quantity;
-					break;
-				case RewardType.MoonStones:
-					resource.MoonStones.Amount += quantity;
-					break;
-			}
-		}
+		//	switch (type)
+		//	{
+		//		case RewardType.Coins:
+		//			resource.Coins += quantity;
+		//			break;
+		//		case RewardType.Emeralds:
+		//			resource.Emeralds.Amount += quantity;
+		//			break;
+		//		case RewardType.Sapphires:
+		//			resource.Sapphires.Amount += quantity;
+		//			break;
+		//		case RewardType.Topazes:
+		//			resource.Topazes.Amount += quantity;
+		//			break;
+		//		case RewardType.MoonStones:
+		//			resource.MoonStones.Amount += quantity;
+		//			break;
+		//	}
+		//}
 	}
 }

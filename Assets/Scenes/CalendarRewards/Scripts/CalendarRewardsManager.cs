@@ -157,42 +157,50 @@ public class CalendarRewardsManager : MonoBehaviour
             singleSpawnEventReward.RewardType.Type = reward.Type;
             singleSpawnEventReward.RewardType.Amount = reward.Amount;
             singleSpawnEventReward.RewardType.State = reward.State;
-
         }
     }
 
     public void TakeAward()
     {
+	    string fileName = string.Empty;
+
         if (_calendarRewardList.Count > 0)
         {
-            foreach (var eventReward in _calendarRewardList)
-            {
-                var singleCalendarReward = eventReward.GetComponent<CalendarRewardButton>();
+	        foreach (var eventReward in
+	                 _eventRewardList
+		                 .Select(reward =>
+			                 reward.GetComponent<CalendarRewardButton>().RewardType)
+		                 .Where(reward => reward.State == RewardState.Active))
+	        {
 
-                if (singleCalendarReward.RewardType.State == RewardState.Active)
-                {
-                    PlayerPreferences.SaveResourceByType(singleCalendarReward.RewardType.Type.ToString(),
-                        singleCalendarReward.RewardType.Amount);
+                PlayerPreferences.Load().AddReward = eventReward;
+                eventReward.State = RewardState.Taken;
 
-                    singleCalendarReward.RewardType.State = RewardState.Taken;
-                }
+                fileName = "Assets/Configuration/CallendarAwardPP.json";
+                break;
             }
         }
         else if(_eventRewardList.Count > 0)
         {
-            foreach (var eventReward in _eventRewardList)
+            foreach (var eventReward in 
+                     _eventRewardList
+	                     .Select(reward => 
+		                     reward.GetComponent<CalendarRewardButton>().RewardType)
+	                     .Where(reward => reward.State == RewardState.Active))
+	            
             {
-                var singleEventReward = eventReward.GetComponent<CalendarRewardButton>();
+	            PlayerPreferences.Load().AddReward = eventReward;
+                eventReward.State = RewardState.Taken;
 
-                if (singleEventReward.RewardType.State == RewardState.Active)
-                {
-                    PlayerPreferences.SaveResourceByType(singleEventReward.RewardType.Type.ToString(),
-                        singleEventReward.RewardType.Amount);
-
-                    singleEventReward.RewardType.State = RewardState.Taken;
-                }
+                fileName = "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json";
+                break;
             }
         }
-        
+
+        if (string.IsNullOrEmpty(fileName)) 
+	        return;
+
+        var manager = RewardEventManager.LoadCalendarRewardsManager(fileName);
+        RewardEventManager.Save(fileName, manager);
     }
 }
