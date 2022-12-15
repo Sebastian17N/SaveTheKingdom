@@ -92,23 +92,27 @@ namespace Assets.Common.JsonModel
 						Coins += value.Amount;
 						break;
 					case RewardType.Emeralds:
-						Emeralds.Amount += value.Amount;
-						Emeralds.Type = RewardType.Emeralds;
+						var emeralds = Emeralds;
+						emeralds.Amount += value.Amount;
+						emeralds.Type = RewardType.Emeralds;
 						break;
 
 					case RewardType.Sapphires:
-						Sapphires.Amount += value.Amount;
-						Sapphires.Type = RewardType.Sapphires;
+						var sapphires = Sapphires;
+						sapphires.Amount += value.Amount;
+						sapphires.Type = RewardType.Sapphires;
 						break;
 
 					case RewardType.Topazes:
-						Topazes.Amount += value.Amount;
-						Topazes.Type = RewardType.Topazes;
+						var topazes = Topazes;
+						topazes.Amount += value.Amount;
+						topazes.Type = RewardType.Topazes;
 						break;
 
 					case RewardType.MoonStones:
-						MoonStones.Amount += value.Amount;
-						MoonStoneJson.Type = RewardType.MoonStones;
+						var moonStones = MoonStones;
+						moonStones.Amount += value.Amount;
+						moonStones.Type = RewardType.MoonStones;
 						break;
 				}
 
