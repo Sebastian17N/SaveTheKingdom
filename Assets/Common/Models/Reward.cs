@@ -9,5 +9,6 @@ namespace Assets.Common.Models
 		public int Amount;
 		public RewardType Type;
 		public RewardState State;
+		public string ReceivingDate;
 	}
 }

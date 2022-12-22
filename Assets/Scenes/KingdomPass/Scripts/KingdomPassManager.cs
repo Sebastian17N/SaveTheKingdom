@@ -63,16 +63,11 @@ public class KingdomPassManager : MonoBehaviour
            
             singleKingdomPassAwardsButton.freeAwardAmountText.text = reward.RegularReward.Amount.ToString();
             singleKingdomPassAwardsButton.freeAwardImage.sprite = RewardsIconSO.GetIcon(reward.RegularReward.Type);
-            singleKingdomPassAwardsButton.RegularRewardType.Type = reward.RegularReward.Type;
-            singleKingdomPassAwardsButton.RegularRewardType.Amount = reward.RegularReward.Amount;
-            singleKingdomPassAwardsButton.RegularRewardType.State = reward.RegularReward.State;
+            singleKingdomPassAwardsButton.RegularRewardType = reward.RegularReward;
             
             singleKingdomPassAwardsButton.premiumAwardAmountText.text = reward.PremiumReward.Amount.ToString();
             singleKingdomPassAwardsButton.premiumAwardImage.sprite = RewardsIconSO.GetIcon(reward.PremiumReward.Type);
-            singleKingdomPassAwardsButton.PremiumRewardType.Type = reward.PremiumReward.Type;
-            singleKingdomPassAwardsButton.PremiumRewardType.Amount = reward.PremiumReward.Amount;
-            singleKingdomPassAwardsButton.PremiumRewardType.State = reward.PremiumReward.State;
-
+            singleKingdomPassAwardsButton.PremiumRewardType = reward.PremiumReward;
         }
     }
     public void ActivateKingdomPass()

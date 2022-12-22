@@ -72,7 +72,6 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			if (_eventRewardList.Count == 0)
 				return;
 
-			var presentDay = (int)DateTime.Now.Day;
 			var firstDayOfEvent = _startEventDate;
         
 			for (int i = 0; i < _eventRewardList.Count; i++)
@@ -87,7 +86,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 				}
 				else if (singleEventReward.RewardType.State == RewardState.Inactive)
 				{
-					// singleEventReward.RewardType.State = RewardState.Inactive;
+					singleEventReward.RewardType.State = RewardState.Inactive;
 					singleEventReward.AwardActivated();
 				}
 				else if (singleEventReward.RewardType.State == RewardState.Taken)
@@ -140,6 +139,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 				singleSpawnEventReward.RewardType.Type = reward.Type;
 				singleSpawnEventReward.RewardType.Amount = reward.Amount;
 				singleSpawnEventReward.RewardType = reward;
+				singleSpawnEventReward.RewardType.ReceivingDate = reward.ReceivingDate;
 			}
 		}
 
@@ -159,7 +159,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 
 					PlayerPreferences.Load().AddReward = eventReward;
 					eventReward.State = RewardState.Taken;
-					rewardTaken=eventReward;
+					rewardTaken = eventReward;
 					fileName = "Assets/Configuration/CallendarAwardPP.json";
 					break;
 				}
@@ -171,15 +171,22 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 					         .Select(reward => 
 						         reward.GetComponent<CalendarRewardButton>().RewardType)
 					         .Where(reward => reward.State == RewardState.Active))
-	            
-				{
-					PlayerPreferences.Load().AddReward = eventReward;
-					eventReward.State = RewardState.Taken;
-					rewardTaken = eventReward;
-					fileName = "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json";
-					break;
-				}
-			}
+
+                {
+                    CalendarReward lastTakenReward = LastTakenReward();
+
+                    if (lastTakenReward.ReceivingDate.Equals(DateTime.Today.ToString("dd-MM-yyyy")))
+                        break;
+
+                    eventReward.State = RewardState.Taken;
+                    eventReward.ReceivingDate = DateTime.Today.ToString("dd-MM-yyyy");
+
+                    PlayerPreferences.Load().AddReward = eventReward;
+                    rewardTaken = eventReward;
+                    fileName = "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json";
+                    break;
+                }
+            }
 
 			if (string.IsNullOrEmpty(fileName)) 
 				return;
@@ -187,7 +194,15 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			var manager = RewardEventManager.LoadCalendarRewardsManager(fileName);
 			var eventRewardFromFile = manager.Rewards.SingleOrDefault(reward => reward.Day == rewardTaken.Day);
 			eventRewardFromFile.State = RewardState.Taken;
+			eventRewardFromFile.ReceivingDate = rewardTaken.ReceivingDate;
 			RewardEventManager.Save(fileName, manager);
 		}
-	}
+
+        private CalendarReward LastTakenReward()
+        {
+            return _eventRewardList.Select(reward => reward.GetComponent<CalendarRewardButton>().RewardType)
+                                    .Where(reward => reward.State == RewardState.Taken)
+                                    .OrderBy(reward => reward.Day).Last();
+        }
+    }
 }
