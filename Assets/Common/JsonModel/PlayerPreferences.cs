@@ -152,21 +152,20 @@ namespace Assets.Common.JsonModel
 		}
 
 		private DateTime _oneDateQuest;
-		public DateTime OneDayQuest
+		private void RefreshOneDateQuest()
 		{
-			get
+			if (_oneDateQuest.Date.Equals(DateTime.Today)) 
+					return;
+
+			foreach (var achievement in PlayersAchievements.Where(achievement => achievement.OneDayQuest))
 			{
-				if (!_oneDateQuest.Date.Equals(DateTime.Today))
-					_oneDateQuest = DateTime.Today;
-
-				return _oneDateQuest;
+				achievement.AmountGathered = 0;
 			}
+			_oneDateQuest = DateTime.Today;
 		}
-
-		// Typ questa, ile zebrane danego typu, czy jednodniowy
-		private List<(QuestType, int, bool)> ZebraneAchivmentyUGracza { get; set; }
 		
-
+		public List<PlayerAchievement> PlayersAchievements = new();
+		
 		private static readonly string fileName = "Assets/Configuration/PlayerPreferences.json";
 
 		public static PlayerPreferences Load()
@@ -209,34 +208,47 @@ namespace Assets.Common.JsonModel
 			return 0;
 		}
 
-		//public static void SaveResourceByType(string type, int quantity)
-		//{
-		//	Enum.TryParse(type, out RewardType converted);
-		//	SaveResourceByType(converted, quantity);
-		//}
+		/// <summary>
+		/// Method logs damage dealt (for example during one battle) for achievement's system.
+		/// </summary>
+		/// <param name="damageDealt">Damage dealt.</param>
+		public static void LogHowMuchDamageWasDealtForTheAchievements(float damageDealt)
+		{
+			var playerPreferences = Load();
+			var achievements =
+				playerPreferences.PlayersAchievements
+					.Where(achievement =>
+						achievement.QuestType == QuestType.DamageDealt);
 
-		//public static void SaveResourceByType(RewardType type, int quantity)
-		//{
-		//	var resource = Load();
+			playerPreferences.RefreshOneDateQuest();
 
-		//	switch (type)
-		//	{
-		//		case RewardType.Coins:
-		//			resource.Coins += quantity;
-		//			break;
-		//		case RewardType.Emeralds:
-		//			resource.Emeralds.Amount += quantity;
-		//			break;
-		//		case RewardType.Sapphires:
-		//			resource.Sapphires.Amount += quantity;
-		//			break;
-		//		case RewardType.Topazes:
-		//			resource.Topazes.Amount += quantity;
-		//			break;
-		//		case RewardType.MoonStones:
-		//			resource.MoonStones.Amount += quantity;
-		//			break;
-		//	}
-		//}
+			var oneDayAchievement = achievements.SingleOrDefault(achievement => achievement.OneDayQuest);
+			var permanentAchievement = achievements.SingleOrDefault(achievement => !achievement.OneDayQuest);
+
+			if (oneDayAchievement != null)
+				oneDayAchievement.AmountGathered += damageDealt;
+			else
+				playerPreferences
+					.PlayersAchievements
+					.Add(new PlayerAchievement
+					{
+						AmountGathered = damageDealt,
+						OneDayQuest = true,
+						QuestType = QuestType.DamageDealt
+					});
+
+			if (permanentAchievement != null)
+				permanentAchievement.AmountGathered += damageDealt;
+			else
+				playerPreferences
+					.PlayersAchievements
+					.Add(new PlayerAchievement
+					{
+						AmountGathered = damageDealt,
+						OneDayQuest = false,
+						QuestType = QuestType.DamageDealt
+					});
+			Save(playerPreferences);
+		}
 	}
 }
