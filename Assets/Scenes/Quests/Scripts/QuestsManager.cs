@@ -72,11 +72,13 @@ public class QuestsManager : MonoBehaviour
 	    var fileData = File.ReadAllText("Assets/Scenes/Quests/Samples/DamageDealt_1.json");
 	    var quest = JsonUtility.FromJson<Quest>(fileData);
 
+	    var playerPreferences = PlayerPreferences.Load();
+
         var questObject = Instantiate(questsPrefab, questsPrefabSpawnPoint);
         questObject.transform.Find("QuestDescriptionsText").GetComponent<TextMeshProUGUI>().text =
 	        quest.Name;
         questObject.transform.Find("QuestPointsRequireToEndText").GetComponent<TextMeshProUGUI>().text =
-		    quest.Description;
+	        $"{(playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.OneDayQuest && achievement.QuestType == QuestType.DamageDealt)?.AmountGathered ?? 0).ToString()} / {quest.RequiredAmountToEndQuest}";
 
 	    questsList.Add(questObject);
     }

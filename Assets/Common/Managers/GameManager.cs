@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Assets.Common.JsonModel;
 using Assets.Map.Scripts;
 using Assets.Scenes.SpiritMountain.Scripts;
 using Assets.Units.Defenses.Scripts;
@@ -36,6 +37,8 @@ namespace Assets.Common.Managers
 		public int NumberOfEnemiesLeft;
 		string _levelName;
 		public float Health;
+
+		public float DamageDealtOnCurrentLevel = 0;
     
 		private void Start()
 		{
@@ -163,6 +166,8 @@ namespace Assets.Common.Managers
 					PlayerPrefs.SetInt("DidGamerWin", 1);
 					//PlayerPrefs.SetFloat("BasicHealth", BasicHealth);
 					SceneManager.LoadScene("FightSummary");
+
+					PlayerPreferences.LogHowMuchDamageWasDealtForTheAchievements(DamageDealtOnCurrentLevel);
 					break;
 				}
 

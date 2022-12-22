@@ -1,3 +1,4 @@
+using Assets.Common.Managers;
 using Assets.Units.Scripts;
 using Assets.Units.Scripts.Enums;
 using UnityEngine;
@@ -18,6 +19,14 @@ namespace Assets.Units.Defenses.Scripts
 		public void Update()
 		{
 			Routine();
+		}
+
+		public override bool DecreaseDurability(float amount)
+		{
+			var gameManager = FindObjectOfType<GameManager>();
+			gameManager.DamageDealtOnCurrentLevel += amount;
+
+			return base.DecreaseDurability(amount);
 		}
 	}
 }

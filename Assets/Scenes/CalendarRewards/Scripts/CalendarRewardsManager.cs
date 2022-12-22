@@ -171,7 +171,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 					         .Select(reward => 
 						         reward.GetComponent<CalendarRewardButton>().RewardType)
 					         .Where(reward => reward.State == RewardState.Active))
-	            
+
 				{
 					PlayerPreferences.Load().AddReward = eventReward;
 					eventReward.State = RewardState.Taken;

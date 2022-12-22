@@ -1,1 +1,41 @@
-{"CoinsJson":11160,"EmeraldsJson":{"Amount":140,"Type":3,"State":0},"SapphiresJson":{"Amount":210,"Type":1,"State":0},"TopazesJson":{"Amount":320,"Type":2,"State":0},"MoonStoneJson":{"Amount":480,"Type":4,"State":0},"ShardsJson":[{"ShardId":8,"Amount":6}]}
+{
+  "CoinsJson": 14361,
+  "EmeraldsJson": {
+    "Amount": 140,
+    "Type": 3,
+    "State": 0
+  },
+  "SapphiresJson": {
+    "Amount": 210,
+    "Type": 1,
+    "State": 0
+  },
+  "TopazesJson": {
+    "Amount": 348,
+    "Type": 2,
+    "State": 0
+  },
+  "MoonStoneJson": {
+    "Amount": 480,
+    "Type": 4,
+    "State": 0
+  },
+  "ShardsJson": [
+    {
+      "ShardId": 8,
+      "Amount": 13
+    }
+  ],
+  "PlayersAchievements": [
+    {
+      "QuestType": 0,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true
+    },
+    {
+      "QuestType": 0,
+      "AmountGathered": 10.0,
+      "OneDayQuest": false
+    }
+  ]
+}
