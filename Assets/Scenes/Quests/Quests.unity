@@ -926,7 +926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a3cc306d9c555ff4db548fb9d6fa5c54, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1493,8 +1493,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac48f6e483d152044ba439ec98e5761a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestsPrefab: {fileID: 7383304324989464721, guid: 7aa6941af7860664a88d2b981039608f, type: 3}
-  QuestsPrefabSpawnPoint: {fileID: 670459910}
+  questsPrefab: {fileID: 7383304324989464721, guid: 7aa6941af7860664a88d2b981039608f, type: 3}
+  questsPrefabSpawnPoint: {fileID: 670459910}
+  rewardIcon: {fileID: 868157181}
+  questScriptableObjectList:
+  - {fileID: 11400000, guid: 5417048b526855f4097d865e77b420f6, type: 2}
+  - {fileID: 11400000, guid: 86dca7988c030be4bbdb3c406bb1f684, type: 2}
+  - {fileID: 11400000, guid: 7217aae946b26d04faa4adf90515b5ef, type: 2}
+  - {fileID: 11400000, guid: 0653096da9ac4e14f9df21c9e2baa091, type: 2}
+  - {fileID: 11400000, guid: 04e65db666f87d740b005d32cc3e8810, type: 2}
+  - {fileID: 11400000, guid: 3a60c1f0e24770d46a2d261d1100a8a8, type: 2}
+  - {fileID: 11400000, guid: 9f2d3cc18c8b25b48a92ec89af11febf, type: 2}
+  - {fileID: 11400000, guid: c6d467ae25a595b4d86936cc6c516106, type: 2}
+  - {fileID: 11400000, guid: a3a28ec4cdc120d4b8970d6e645c0824, type: 2}
+  - {fileID: 11400000, guid: 5adaedd9b7e2a7f4caad4b2f1c0f20d7, type: 2}
+  - {fileID: 11400000, guid: 6f4c8656ae722d240b92c9c3a991f189, type: 2}
+  - {fileID: 11400000, guid: e1bd9b26dc7c5684fb23507a211fb665, type: 2}
+  - {fileID: 11400000, guid: 497a2732426bcba4e95e821141565ead, type: 2}
+  - {fileID: 11400000, guid: 063d56da2d3ad51439012987c206a78a, type: 2}
 --- !u!4 &1579368345
 Transform:
   m_ObjectHideFlags: 0

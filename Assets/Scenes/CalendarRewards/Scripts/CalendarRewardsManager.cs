@@ -195,6 +195,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			var manager = RewardEventManager.LoadCalendarRewardsManager(fileName);
 			var eventRewardFromFile = manager.Rewards.SingleOrDefault(reward => reward.Day == rewardTaken.Day);
 			eventRewardFromFile.State = RewardState.Taken;
+			eventRewardFromFile.ReceivingDate = rewardTaken.ReceivingDate;
 			RewardEventManager.Save(fileName, manager);
 		}
 		private CalendarReward LastTakenReward()
