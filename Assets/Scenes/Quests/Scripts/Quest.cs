@@ -9,7 +9,7 @@ namespace Assets.Scenes.Quests.Scripts
 		public string Name;
 		public string Description;
 		public int RequiredAmountToEndQuest;
-		public QuestType Type;
+		public QuestType QuestType;
 		public RewardType RewardType;
 		public int RewardAmount;
 	}

@@ -80,6 +80,8 @@ public class QuestsManager : MonoBehaviour
         questObject.transform.Find("QuestPointsRequireToEndText").GetComponent<TextMeshProUGUI>().text =
 	        $"{(playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.OneDayQuest && achievement.QuestType == QuestType.DamageDealt)?.AmountGathered ?? 0).ToString()} / {quest.RequiredAmountToEndQuest}";
 
-	    questsList.Add(questObject);
+        //rewardIcon.GetComponent<Image>().sprite = quest.RewardType
+
+        questsList.Add(questObject);
     }
 }
