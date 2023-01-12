@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,82 +5,54 @@ using Assets.Common.JsonModel;
 using Assets.Scenes.Quests.Scripts;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class QuestsManager : MonoBehaviour
 {
-    public GameObject questsPrefab;
-    public Transform questsPrefabSpawnPoint;
-    public GameObject rewardIcon;
-    private List<GameObject> questsList = new List<GameObject>();
-    public List<QuestScriptableObject> questScriptableObjectList = new List<QuestScriptableObject>();
+    public GameObject QuestsPrefab;
+    public Transform QuestsPrefabSpawnPoint;
+    private readonly List<GameObject> _questsList = new();
+    
     void Start()
     {
-        SpawnQuest(QuestOrigin.Daily);
-    }
-
-    void Update()
-    {
-        
+	    SpawnGeneralQuest();
     }
 
     public void SpawnDailyQuest()
     {
-        foreach (var quest in questsList)
-        {
-            Destroy(quest);
-        }
-
-        SpawnQuest(QuestOrigin.Daily);
+        SpawnQuests(QuestOrigin.Daily);
     }
 
     public void SpawnGeneralQuest()
     {
-        foreach (var quest in questsList)
-        {
-            Destroy(quest);
-        }
-
-        SpawnQuest(QuestOrigin.General);
+	    SpawnQuests(QuestOrigin.General);
     }
 
-    private void SpawnQuest(QuestOrigin questOrigin)
+    public void SpawnQuests(QuestOrigin questType)
     {
-        var questForOrigin = questScriptableObjectList.Where(quest => quest.origin == questOrigin).ToList();
-        //for(int i = 0; i < questForOrigin.Count; i++)
-        //{
-        //    CreateQuests(questForOrigin[i]);
-        //}
-        CreateQuests1();
-    }
+	    foreach (var quest in _questsList)
+	    {
+		    Destroy(quest);
+	    }
 
-    private void CreateQuests(QuestScriptableObject questScriptableObject)
-    {
-        var quest = Instantiate(questsPrefab, questsPrefabSpawnPoint);
-        quest.transform.Find("QuestDescriptionsText").GetComponent<TextMeshProUGUI>().text =
-            questScriptableObject.questDescriptions;
-        quest.transform.Find("QuestPointsRequireToEndText").GetComponent<TextMeshProUGUI>().text =
-            $"{questScriptableObject.currentPointsRequireToEndQuest} / " +
-            $"{questScriptableObject.totalPointsRequireToEndQuest}";
+        var directoryInfo = new DirectoryInfo($"Assets/Scenes/Quests/Data/{(questType == QuestOrigin.General ? "General" : "Daily")}");
+	    var files = directoryInfo.GetFiles("*.json");
 
-        questsList.Add(quest);
-    }
+	    foreach (var file in files)
+	    {
+		    var fileData = File.ReadAllText(file.FullName);
+            
+		    var quest = JsonUtility.FromJson<Quest>(fileData);
+		    var playerPreferences = PlayerPreferences.Load();
 
-    private void CreateQuests1()
-    {
-	    var fileData = File.ReadAllText("Assets/Scenes/Quests/Samples/DamageDealt_1.json");
-	    var quest = JsonUtility.FromJson<Quest>(fileData);
+		    var questObject = Instantiate(QuestsPrefab, QuestsPrefabSpawnPoint);
+		    questObject.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+			    quest.Name;
+		    questObject.transform.Find("Description").GetComponent<TextMeshProUGUI>().text =
+			    quest.Description;
+		    questObject.transform.Find("PointsRequireToEnd").GetComponent<TextMeshProUGUI>().text =
+			    $"{(playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.OneDayQuest && achievement.QuestType == QuestType.DamageDealt)?.AmountGathered ?? 0).ToString()} / {quest.RequiredAmountToEndQuest}";
 
-	    var playerPreferences = PlayerPreferences.Load();
-
-        var questObject = Instantiate(questsPrefab, questsPrefabSpawnPoint);
-        questObject.transform.Find("QuestDescriptionsText").GetComponent<TextMeshProUGUI>().text =
-	        quest.Name;
-        questObject.transform.Find("QuestPointsRequireToEndText").GetComponent<TextMeshProUGUI>().text =
-	        $"{(playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.OneDayQuest && achievement.QuestType == QuestType.DamageDealt)?.AmountGathered ?? 0).ToString()} / {quest.RequiredAmountToEndQuest}";
-
-        //rewardIcon.GetComponent<Image>().sprite = quest.RewardType
-
-        questsList.Add(questObject);
+		    _questsList.Add(questObject);
+	    }
     }
 }
