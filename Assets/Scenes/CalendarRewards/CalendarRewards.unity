@@ -1293,6 +1293,7 @@ MonoBehaviour:
   RewardPrefab: {fileID: 7828613821011379884, guid: dc7cbdaf2cc56a04fa774d539471bae4, type: 3}
   RewardPrefabSpawnPoint: {fileID: 296035131}
   RewardsIconSO: {fileID: 11400000, guid: 8e42d3bf791908b49a22060e44cb8154, type: 2}
+  EventTitle: {fileID: 1241460353}
 --- !u!4 &1222664477
 Transform:
   m_ObjectHideFlags: 0
@@ -1458,7 +1459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NOVEMBER REWARDS
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
