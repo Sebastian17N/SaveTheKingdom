@@ -2,6 +2,7 @@ using Assets.Common.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 [CreateAssetMenu(fileName = "RewardsIcon", menuName = "Scriptable Objects/Rewards Icon")]
 public class RewardsIconsSO : ScriptableObject
@@ -11,8 +12,7 @@ public class RewardsIconsSO : ScriptableObject
     public Sprite TopazIcon;
     public Sprite EmeraldIcon;
     public Sprite MoonStoneIcon;
-
-
+        
     public Sprite GetIcon(RewardType type)
     {
         switch (type)

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public static class AllIcons 
+public class AllIcons 
 {
-    public static Image CoinImage { get; set; }
+    public static Sprite CoinSprite => Resources.Load<Sprite>($"Assets/Common/Icons/Coin.png");
+    public static string SapphireIcon => $"Assets/Common/Icons/Gems_6.asset";  
+
 }

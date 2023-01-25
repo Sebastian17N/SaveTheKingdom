@@ -88,7 +88,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 					singleEventReward.AwardActivated();
 				}
 				else if(i > 0 && _eventRewardList[i - 1].GetComponent<CalendarRewardButton>().RewardType.State == RewardState.Taken &&
-					_eventRewardList[i - 1].GetComponent<CalendarRewardButton>().RewardType.ReceivingDate != DateTime.Today.ToString() &&
+					_eventRewardList[i - 1].GetComponent<CalendarRewardButton>().RewardType.ReceivingDate != DateTime.Today.ToString("dd-MM-yyyy") &&
 					singleEventReward.RewardType.State == RewardState.Inactive)
 				{
 					singleEventReward.RewardType.State = RewardState.Active;
@@ -96,7 +96,6 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 				}
 				else if (singleEventReward.RewardType.State == RewardState.Inactive)
 				{
-					// singleEventReward.RewardType.State = RewardState.Inactive;
 					singleEventReward.AwardActivated();
 				}
 				else if (singleEventReward.RewardType.State == RewardState.Taken)
@@ -105,8 +104,6 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 					singleEventReward.AwardTaked();
 				}
 			}
-
-			//foreach(var eventReward in _eventRewardList.Skip(0)) {}
 		}
 
 		public void SpawnCalendarReward()
@@ -167,11 +164,9 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			{
 				foreach (var eventReward in
 				         _calendarRewardList
-					         .Select(reward =>
-						         reward.GetComponent<CalendarRewardButton>().RewardType)
+					         .Select(reward => reward.GetComponent<CalendarRewardButton>().RewardType)
 					         .Where(reward => reward.State == RewardState.Active))
 				{
-
 					PlayerPreferences.Load().AddReward = eventReward;
 					eventReward.State = RewardState.Taken;
 					rewardTaken = eventReward;
@@ -183,16 +178,13 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			{
 				foreach (var eventReward in 
 				         _eventRewardList
-					         .Select(reward => 
-						         reward.GetComponent<CalendarRewardButton>().RewardType)
+					         .Select(reward => reward.GetComponent<CalendarRewardButton>().RewardType)
 					         .Where(reward => reward.State == RewardState.Active))
 
 				{
-					if ((lastTakenReward = LastTakenReward()) != null)
-						continue;
-
-					if (lastTakenReward.ReceivingDate.Equals(DateTime.Today.ToString("dd-MM-yyyy")))
-						break;
+					if ((lastTakenReward = LastTakenReward()) != null &&
+						lastTakenReward.ReceivingDate.Equals(DateTime.Today.ToString("dd-MM-yyyy")))
+							break;
 
 					eventReward.State = RewardState.Taken;
 					eventReward.ReceivingDate = DateTime.Today.ToString("dd-MM-yyyy");
@@ -217,7 +209,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 		{
 			var lastreward = _eventRewardList.Select(reward => reward.GetComponent<CalendarRewardButton>().RewardType)
 									.Where(reward => reward.State == RewardState.Taken)
-									.OrderBy(reward => reward.Day).Last();
+									.OrderBy(reward => reward.Day).LastOrDefault();
 
 			return lastreward;
 		}
