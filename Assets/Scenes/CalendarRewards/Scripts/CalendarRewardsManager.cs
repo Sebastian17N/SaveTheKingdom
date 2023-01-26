@@ -167,8 +167,9 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 					         .Select(reward => reward.GetComponent<CalendarRewardButton>().RewardType)
 					         .Where(reward => reward.State == RewardState.Active))
 				{
-					PlayerPreferences.Load().AddReward = eventReward;
-					eventReward.State = RewardState.Taken;
+					ResourcesMasterController.AddAndUpdateResources(eventReward.Type, eventReward.Amount);
+
+                    eventReward.State = RewardState.Taken;
 					rewardTaken = eventReward;
 					fileName = "Assets/Configuration/CallendarAwardPP.json";
 					break;
@@ -189,8 +190,8 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 					eventReward.State = RewardState.Taken;
 					eventReward.ReceivingDate = DateTime.Today.ToString("dd-MM-yyyy");
 
-					PlayerPreferences.Load().AddReward = eventReward;
-					rewardTaken = eventReward;
+                    ResourcesMasterController.AddAndUpdateResources(eventReward.Type, eventReward.Amount);
+                    rewardTaken = eventReward;
 					fileName = "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json";
 					break;
 				}
@@ -213,5 +214,5 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 
 			return lastreward;
 		}
-	}
+    }
 }
