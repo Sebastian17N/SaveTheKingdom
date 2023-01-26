@@ -29,7 +29,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public GameObject[] Chests;
 		
 		public float TimeToActivateChest;
-		public int CoinsAward;
+		public int CoinsAwardAmount;
 		public Reward RewardAward = new();
 		public Shards ShardsAward;
 
@@ -90,22 +90,33 @@ namespace Assets.Scenes.FightSummary.Scripts
 				Chest = Chests[i];
 			}
 
-			if (howManyStars > 0)
-            {
-				var level = PlayerPrefs.GetString("CurrentLevel");
-				var mapsConfigJsonModel = JsonLoader.LoadConfig(level);				
-				CoinsAward = mapsConfigJsonModel.AwardCoins[howManyStars - 1];
-				RewardAward.Type = mapsConfigJsonModel.AwardGemsType;
-				RewardAward.Amount = mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1];
+			if (howManyStars <= 0) 
+				return;
 
-				var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
-				ShardsAward = new Shards(shard.UnitId, shard.MinRange[0]);
+			var level = PlayerPrefs.GetString("CurrentLevel");
+			var mapsConfigJsonModel = JsonLoader.LoadConfig(level);
 
-				var playerPreferences = PlayerPreferences.Load();
-				playerPreferences.Coins += CoinsAward;
-				playerPreferences.AddReward = RewardAward;
-				playerPreferences.AddShards = ShardsAward;
-            }
+			foreach (var award in mapsConfigJsonModel.Awards)
+			{
+				if (award.Type == RewardType.Coins)
+					CoinsAwardAmount = award.Amount[howManyStars - 1];
+				else
+				{
+					RewardAward.Type = award.Type;
+					RewardAward.Amount = award.Amount[howManyStars - 1];
+
+					break;
+				}
+			}
+
+			var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
+			ShardsAward = new Shards(shard.UnitId, shard.MinRange[0]);
+
+			var playerPreferences = PlayerPreferences.Load();
+			//TODO: Fix that, to save coins properly.
+			playerPreferences.Coins.Amount = CoinsAwardAmount;
+			playerPreferences.AddReward = RewardAward;
+			playerPreferences.AddShards = ShardsAward;
 		}  
 		
 		public IEnumerator ActivateChest()

@@ -3,25 +3,32 @@
   "StarRatingNeededToStartLevelPreviousMap": 1,
   "SpriteBackgroundPath": "Level2MapBackground.jpg",
   "EnemiesMapFileName": "Level_2",
-  "AvailableUnitsToPlayByID": [3, 6, 10],
-  "AwardCoins": [100, 200, 400],
-  "AwardGemsType": "blue",
-  "AwardGemsNumber": [1, 2, 4],
+  "AvailableUnitsToPlayByID": [ 3, 6, 10 ],
+  "Awards": [
+    {
+      "Type": 0,
+      "Amount": [ 100, 200, 400 ]
+    },
+    {
+      "Type": 1,
+      "Amount": [ 1, 2, 4 ]
+    }
+  ],
   "AwardShards": [
     {
       "ID": 3,
-      "MinRange": [1, 1, 2],
-      "MaxRange": [1, 2, 4]
+      "MinRange": [ 1, 1, 2 ],
+      "MaxRange": [ 1, 2, 4 ]
     },
     {
       "ID": 6,
-      "MinRange": [1, 1, 2],
-      "MaxRange": [1, 2, 4]
+      "MinRange": [ 1, 1, 2 ],
+      "MaxRange": [ 1, 2, 4 ]
     },
     {
       "ID": 10,
-      "MinRange": [1, 1, 2],
-      "MaxRange": [1, 2, 4]
+      "MinRange": [ 1, 1, 2 ],
+      "MaxRange": [ 1, 2, 4 ]
     }
   ],
   "AdditionalAwardShardsForFirstWin": [

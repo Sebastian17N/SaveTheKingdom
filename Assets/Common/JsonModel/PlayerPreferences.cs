@@ -15,8 +15,8 @@ namespace Assets.Common.JsonModel
 		/// <summary>
 		/// DO NOT USE IT DIRECTLY
 		/// </summary>
-		public int CoinsJson;
-		public int Coins
+		public Reward CoinsJson;
+		public Reward Coins
 		{
 			get => CoinsJson = Load().CoinsJson;
 			set
@@ -86,35 +86,21 @@ namespace Assets.Common.JsonModel
 		{
 			set
 			{
-				switch (value.Type)
+				var reward = value.Type switch
 				{
-					case RewardType.Coins:
-						Coins += value.Amount;
-						break;
-					case RewardType.Emeralds:
-						var emeralds = Emeralds;
-						emeralds.Amount += value.Amount;
-						emeralds.Type = RewardType.Emeralds;
-						break;
+					RewardType.Coins => Coins,
+					RewardType.Emeralds => Emeralds,
+					RewardType.Sapphires => Sapphires,
+					RewardType.Topazes => Topazes,
+					RewardType.MoonStones => MoonStones,
+					_ => null
+				};
 
-					case RewardType.Sapphires:
-						var sapphires = Sapphires;
-						sapphires.Amount += value.Amount;
-						sapphires.Type = RewardType.Sapphires;
-						break;
+				if (reward == null)
+					return;
 
-					case RewardType.Topazes:
-						var topazes = Topazes;
-						topazes.Amount += value.Amount;
-						topazes.Type = RewardType.Topazes;
-						break;
-
-					case RewardType.MoonStones:
-						var moonStones = MoonStones;
-						moonStones.Amount += value.Amount;
-						moonStones.Type = RewardType.MoonStones;
-						break;
-				}
+				reward.Amount = value.Amount;
+				reward.Type = value.Type;
 
 				Save(this);
 			}
@@ -194,7 +180,7 @@ namespace Assets.Common.JsonModel
 			switch (returnType)
 			{
 				case RewardType.Coins:
-					return Load().Coins;
+					return Load().Coins.Amount;
 				case RewardType.Emeralds:
 					return Load().Emeralds.Amount;
 				case RewardType.Sapphires:

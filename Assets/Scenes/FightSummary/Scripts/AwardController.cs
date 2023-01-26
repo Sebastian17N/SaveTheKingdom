@@ -10,8 +10,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 
 		public float ShowingSpeed;
 		public float GettingAwardsSpeed;
-
-		public AwardType Type;
+		
 		public int Quantity;
 
 		public AwardController(string type, int quantity)

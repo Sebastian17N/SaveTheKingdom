@@ -18,7 +18,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 			var fightSummaryManager =
 				GameObject.Find("FightSummaryGameManager").GetComponent<FightSummaryGameManager>();
 
-			_coinsAwardController.Quantity = fightSummaryManager.CoinsAward;
+			_coinsAwardController.Quantity = fightSummaryManager.CoinsAwardAmount;
 			_gemsAwardController.Quantity = fightSummaryManager.RewardAward.Amount;
 			_shardsAwardController.Quantity = fightSummaryManager.ShardsAward.Amount;
 		}
