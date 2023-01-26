@@ -6,7 +6,7 @@ using TMPro;
 using Assets.Common.Models;
 using Assets.Common.Enums;
 
-public class KingdomPassAwardsButtons : MonoBehaviour
+public class KingdomPassRewardsButtons : MonoBehaviour
 {
     public Reward RegularRewardType;
     public Reward PremiumRewardType;
@@ -68,12 +68,14 @@ public class KingdomPassAwardsButtons : MonoBehaviour
     public void TakeFreeAward()
     {
         RegularRewardType.State = RewardState.Taken;
+        ResourcesMasterController.AddAndUpdateResources(RegularRewardType.Type, RegularRewardType.Amount);
     }
     public void TakePremiumAward()
     {
         if (kingdomPassManager.isKingdomPassActivated)
         {
             PremiumRewardType.State = RewardState.Taken;
+            ResourcesMasterController.AddAndUpdateResources(PremiumRewardType.Type, PremiumRewardType.Amount);
         }
     }
     public void KingdomPassActivated()

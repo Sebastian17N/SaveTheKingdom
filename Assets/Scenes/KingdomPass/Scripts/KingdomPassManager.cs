@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class KingdomPassManager : MonoBehaviour
 {
-    public GameObject KingdomPassAwardsButtonsPrefab;
+    public GameObject KingdomPassRewarsButtonsPrefab;
     public List<GameObject> KingdomPassAwardsButtonsList = new List<GameObject>();
     public Transform KingdomPassAwardsButtonsPrefabSpawnPoint;
     public bool isKingdomPassActivated = false;
@@ -24,7 +24,7 @@ public class KingdomPassManager : MonoBehaviour
     {
         foreach (var kingdomPassAwards in KingdomPassAwardsButtonsList)
         {
-            var singlePassObject = kingdomPassAwards.GetComponent<KingdomPassAwardsButtons>();
+            var singlePassObject = kingdomPassAwards.GetComponent<KingdomPassRewardsButtons>();
             singlePassObject.AwardActive();
             singlePassObject.KingdomPassActivated();
 
@@ -54,19 +54,19 @@ public class KingdomPassManager : MonoBehaviour
 
         foreach (var reward in rewards)
         {
-            var kingdomPassAwardsButton = Instantiate(KingdomPassAwardsButtonsPrefab, KingdomPassAwardsButtonsPrefabSpawnPoint);
-            KingdomPassAwardsButtonsList.Add(kingdomPassAwardsButton);
-            var singleKingdomPassAwardsButton = kingdomPassAwardsButton.GetComponent<KingdomPassAwardsButtons>();
-            singleKingdomPassAwardsButton.ordinalNumberText.text = reward.Level.ToString();
-            singleKingdomPassAwardsButton.passPointsRequiredToActivateAward = (reward.Level * 100);
+            var kingdomPassRewardsButton = Instantiate(KingdomPassRewarsButtonsPrefab, KingdomPassAwardsButtonsPrefabSpawnPoint);
+            KingdomPassAwardsButtonsList.Add(kingdomPassRewardsButton);
+            var singleKingdomPassRewardsButton = kingdomPassRewardsButton.GetComponent<KingdomPassRewardsButtons>();
+            singleKingdomPassRewardsButton.ordinalNumberText.text = reward.Level.ToString();
+            singleKingdomPassRewardsButton.passPointsRequiredToActivateAward = (reward.Level * 100);
            
-            singleKingdomPassAwardsButton.freeAwardAmountText.text = reward.RegularReward.Amount.ToString();
-            singleKingdomPassAwardsButton.freeAwardImage.sprite = AllIcons.GetIcon(reward.RegularReward.Type);
-            singleKingdomPassAwardsButton.RegularRewardType = reward.RegularReward;
+            singleKingdomPassRewardsButton.freeAwardAmountText.text = reward.RegularReward.Amount.ToString();
+            singleKingdomPassRewardsButton.freeAwardImage.sprite = AllIcons.GetIcon(reward.RegularReward.Type);
+            singleKingdomPassRewardsButton.RegularRewardType = reward.RegularReward;
             
-            singleKingdomPassAwardsButton.premiumAwardAmountText.text = reward.PremiumReward.Amount.ToString();
-            singleKingdomPassAwardsButton.premiumAwardImage.sprite = AllIcons.GetIcon(reward.RegularReward.Type);
-            singleKingdomPassAwardsButton.PremiumRewardType = reward.PremiumReward;
+            singleKingdomPassRewardsButton.premiumAwardAmountText.text = reward.PremiumReward.Amount.ToString();
+            singleKingdomPassRewardsButton.premiumAwardImage.sprite = AllIcons.GetIcon(reward.PremiumReward.Type);
+            singleKingdomPassRewardsButton.PremiumRewardType = reward.PremiumReward;
         }
     }
     public void ActivateKingdomPass()
