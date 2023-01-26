@@ -9,7 +9,6 @@ public class KingdomPassManager : MonoBehaviour
     public GameObject KingdomPassAwardsButtonsPrefab;
     public List<GameObject> KingdomPassAwardsButtonsList = new List<GameObject>();
     public Transform KingdomPassAwardsButtonsPrefabSpawnPoint;
-    public RewardsIconsSO RewardsIconSO;
     public bool isKingdomPassActivated = false;
     public int passPoints = 0;
     private void Awake()
@@ -62,11 +61,11 @@ public class KingdomPassManager : MonoBehaviour
             singleKingdomPassAwardsButton.passPointsRequiredToActivateAward = (reward.Level * 100);
            
             singleKingdomPassAwardsButton.freeAwardAmountText.text = reward.RegularReward.Amount.ToString();
-            singleKingdomPassAwardsButton.freeAwardImage.sprite = RewardsIconSO.GetIcon(reward.RegularReward.Type);
+            singleKingdomPassAwardsButton.freeAwardImage.sprite = AllIcons.GetIcon(reward.RegularReward.Type);
             singleKingdomPassAwardsButton.RegularRewardType = reward.RegularReward;
             
             singleKingdomPassAwardsButton.premiumAwardAmountText.text = reward.PremiumReward.Amount.ToString();
-            singleKingdomPassAwardsButton.premiumAwardImage.sprite = RewardsIconSO.GetIcon(reward.PremiumReward.Type);
+            singleKingdomPassAwardsButton.premiumAwardImage.sprite = AllIcons.GetIcon(reward.RegularReward.Type);
             singleKingdomPassAwardsButton.PremiumRewardType = reward.PremiumReward;
         }
     }

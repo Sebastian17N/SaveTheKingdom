@@ -18,7 +18,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 		public Transform RewardPrefabSpawnPoint;
 
 		private readonly List<GameObject> _calendarRewardList = new();
-		public RewardsIconsSO RewardsIconSO;
+		//public RewardsIconsSO RewardsIconSO;
 		public TextMeshProUGUI EventTitle;
 		#region Events Parameters
 		private readonly DateTime _startEventDate = new(2022, 12, 07);
@@ -146,8 +146,8 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 				singleSpawnEventReward.Id = reward.Day;
 				singleSpawnEventReward.dayNumberText.text = $"Day {reward.Day}";
 				singleSpawnEventReward.awardAmountText.text = reward.Amount.ToString();
-				singleSpawnEventReward.awardImage.sprite = RewardsIconSO.GetIcon(reward.Type);
-				singleSpawnEventReward.RewardType.Type = reward.Type;
+				singleSpawnEventReward.awardImage.sprite = AllIcons.GetIcon(reward.Type); 
+                singleSpawnEventReward.RewardType.Type = reward.Type;
 				singleSpawnEventReward.RewardType.Amount = reward.Amount;
 				singleSpawnEventReward.RewardType = reward;
 				singleSpawnEventReward.RewardType.ReceivingDate = reward.ReceivingDate;

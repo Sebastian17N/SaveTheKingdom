@@ -51,6 +51,84 @@
         "Type": 2,
         "State": 1
       }
+    },
+    {
+      "Level": 5,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1
+      }
+    },
+    {
+      "Level": 6,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1
+      }
+    },
+    {
+      "Level": 7,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1
+      }
+    },
+    {
+      "Level": 8,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1
+      }
+    },
+    {
+      "Level": 9,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1
+      }
+    },
+    {
+      "Level": 10,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1
+      }
     }
 
   ]

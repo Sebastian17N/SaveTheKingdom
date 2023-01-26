@@ -1,11 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Common.Enums;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class AllIcons 
 {
-    public static Sprite CoinSprite => Resources.Load<Sprite>($"Assets/Common/Icons/Coin.png");
-    public static string SapphireIcon => $"Assets/Common/Icons/Gems_6.asset";  
+    public static Sprite CoinIcon => Resources.Load<Sprite>("Icons/Coin");
+    public static Sprite SapphireIcon => Resources.Load<Sprite>("Icons/Gems_6");
+    public static Sprite TopazIcon => Resources.Load<Sprite>("Icons/Gems_12");
+    public static Sprite EmeraldIcon => Resources.Load<Sprite>("Icons/Gems_9");
+    public static Sprite MoonStoneIcon => Resources.Load<Sprite>("Icons/Gems_13");
 
+    public static Sprite GetIcon(RewardType type)
+    {
+        switch (type)
+        {
+            case RewardType.Coins:
+                return CoinIcon;
+            case RewardType.Sapphires:
+                return SapphireIcon;
+            case RewardType.Topazes:
+                return TopazIcon;
+            case RewardType.Emeralds:
+                return EmeraldIcon;
+            case RewardType.MoonStones:
+                return MoonStoneIcon;
+            default:
+                return null;
+        }
+    }
 }

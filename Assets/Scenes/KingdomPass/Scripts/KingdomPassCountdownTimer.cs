@@ -9,7 +9,7 @@ public class KingdomPassCountdownTimer : MonoBehaviour
 {
     public TextMeshProUGUI CountdownTimerText;
     public bool isEventEnd = false;
-    public DateTime endEventDate = new DateTime(2022, 12, 24, 17, 00, 00);
+    public DateTime endEventDate = new DateTime(2023, 02, 10, 17, 00, 00);
     public int days = 10;
     public int hours = 10;
 
