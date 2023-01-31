@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -128,7 +128,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 491049949}
     m_Modifications:
     - target: {fileID: 205013389416359392, guid: c7c32a17b5b7779499beb85c034955dc, type: 3}
@@ -232,7 +232,9 @@ PrefabInstance:
       value: PointsCounter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c32a17b5b7779499beb85c034955dc, type: 3}
 --- !u!4 &90391345 stripped
 Transform:
@@ -269,6 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -356,6 +359,7 @@ MonoBehaviour:
   SpellCardHolderTransform: {fileID: 2131881177}
   NumberOfEnemiesLeft: 0
   Health: 10
+  DamageDealtOnCurrentLevel: 0
 --- !u!4 &297398708
 Transform:
   m_ObjectHideFlags: 0
@@ -516,9 +520,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -590,9 +602,19 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!4 &579703298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6364866887557713105, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
@@ -608,20 +630,20 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 491049949}
     m_Modifications:
     - target: {fileID: 3331181749848378475, guid: 77d8bd6f78f2dce41bd224740ffc247e, type: 3}
       propertyPath: m_Spacing.y
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3331181749848378475, guid: 77d8bd6f78f2dce41bd224740ffc247e, type: 3}
       propertyPath: m_CellSize.x
-      value: 80
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3331181749848378475, guid: 77d8bd6f78f2dce41bd224740ffc247e, type: 3}
       propertyPath: m_CellSize.y
-      value: 80
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3331181749848378475, guid: 77d8bd6f78f2dce41bd224740ffc247e, type: 3}
       propertyPath: m_ChildAlignment
@@ -732,7 +754,9 @@ PrefabInstance:
       value: CardsHolder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d8bd6f78f2dce41bd224740ffc247e, type: 3}
 --- !u!224 &834964138 stripped
 RectTransform:
@@ -749,7 +773,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1609317023864023314, guid: e2cf9afea40e24242a883eed66a91bc4, type: 3}
@@ -821,7 +845,9 @@ PrefabInstance:
       value: DeadZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2cf9afea40e24242a883eed66a91bc4, type: 3}
 --- !u!4 &1632543240 stripped
 Transform:
@@ -965,7 +991,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2502466004493687437, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
@@ -1105,14 +1131,16 @@ PrefabInstance:
       value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4f9a69fc4c0d5548b72129802992818, type: 3}
 --- !u!1001 &9162212756756167986
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 238948791377741080, guid: 1f13bbbba96011442861ac2d917ad066, type: 3}
@@ -1372,5 +1400,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9162212756256000067, guid: 1f13bbbba96011442861ac2d917ad066, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2053482726}
   m_SourcePrefab: {fileID: 100100000, guid: 1f13bbbba96011442861ac2d917ad066, type: 3}

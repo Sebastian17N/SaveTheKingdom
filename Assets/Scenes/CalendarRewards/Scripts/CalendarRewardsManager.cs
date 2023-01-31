@@ -18,7 +18,6 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 		public Transform RewardPrefabSpawnPoint;
 
 		private readonly List<GameObject> _calendarRewardList = new();
-		//public RewardsIconsSO RewardsIconSO;
 		public TextMeshProUGUI EventTitle;
 		#region Events Parameters
 		private readonly DateTime _startEventDate = new(2022, 12, 07);
@@ -109,7 +108,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 		public void SpawnCalendarReward()
 		{
 			SpawnReward(_calendarRewardList, _eventRewardList,
-				"Assets/Configuration/CallendarAwardPP.json");
+                "Assets/Configuration/CallendarReward/CallendarReward.json");
 
 			EventTitle.text = $"{DateTime.Now.ToString("MMMM", CultureInfo.InvariantCulture).ToUpper()} AWARD";
 		}
@@ -137,7 +136,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 
 			var rewards = RewardEventManager.LoadCalendarRewards(fileName);
 
-			foreach (var reward in rewards)
+			foreach (var reward in rewards.CalendarRewards)
 			{
 				var spawnEventReward = Instantiate(RewardPrefab, RewardPrefabSpawnPoint);
 				listToFill.Add(spawnEventReward);
@@ -171,7 +170,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 
                     eventReward.State = RewardState.Taken;
 					rewardTaken = eventReward;
-					fileName = "Assets/Configuration/CallendarAwardPP.json";
+					fileName = "Assets/Configuration/CallendarReward/CallendarReward.json";
 					break;
 				}
 			}
@@ -200,11 +199,11 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			if (string.IsNullOrEmpty(fileName)) 
 				return;
 
-			var manager = RewardEventManager.LoadCalendarRewardsManager(fileName);
-			var eventRewardFromFile = manager.Rewards.SingleOrDefault(reward => reward.Day == rewardTaken.Day);
+			var manager = RewardEventManager.LoadCalendarRewards(fileName);
+			var eventRewardFromFile = manager.CalendarRewards.SingleOrDefault(reward => reward.Day == rewardTaken.Day);
 			eventRewardFromFile.State = RewardState.Taken;
 			eventRewardFromFile.ReceivingDate = rewardTaken.ReceivingDate;
-			RewardEventManager.Save(fileName, manager);
+			RewardEventManager.SaveCalendarRewards(fileName, manager);
 		}
 		private CalendarReward LastTakenReward()
 		{

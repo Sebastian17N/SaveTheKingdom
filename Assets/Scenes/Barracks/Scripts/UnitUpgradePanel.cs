@@ -46,7 +46,7 @@ public class UnitUpgradePanel : MonoBehaviour
         //shardsNeededText.text = scriptableObject.AttackDamage.ToString();
         //totalCoins - scriptableObject.UpgradeInitialCost;
 
-        ResourcesMasterController.RemoveAndUpdateResources(RewardType.Coins, (int)scriptableObject.UpgradeInitialCost);
+        ResourcesMasterController.AddAndUpdateResources(RewardType.Coins, -(int)scriptableObject.UpgradeInitialCost);
 
         FindObjectOfType<BarracksGameManager>().RefreshAllUnitsTexts();
         coinsHavedText.text = totalCoins.ToString();

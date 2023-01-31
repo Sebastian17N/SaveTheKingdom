@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Assets.Common.Enums;
+using Assets.Common.JsonModel;
 using Assets.Common.Models;
 using UnityEngine;
 
@@ -10,8 +11,8 @@ namespace Assets.Common.Managers
 	[Serializable]
 	public class RewardEventManager
 	{
-		public List<CalendarReward> Rewards;
-		public List<KingdomPassReward> KingdomPassRewards;
+		public List<CalendarRewardJsonModel> Rewards;
+		public KingdomPassJsonModel KingdomPassRewards;
 
 		public static RewardEventManager LoadCalendarRewardsManager(string filePath)
 		{
@@ -24,31 +25,40 @@ namespace Assets.Common.Managers
 			return prefs;
 		}
 
-		public static List<CalendarReward> LoadCalendarRewards(string filePath)
+		public static CalendarRewardJsonModel LoadCalendarRewards(string filePath)
 		{
 			if (!File.Exists(filePath))
 				return null;
 
 			var fileData = File.ReadAllText(filePath);
-			var prefs = JsonUtility.FromJson<RewardEventManager>(fileData);
+			var prefs = JsonUtility.FromJson<CalendarRewardJsonModel>(fileData);
 			
-			return prefs?.Rewards;
+			return prefs;
 		}
 
-		public static List<KingdomPassReward> LoadKingdomPassRewards(string filePath)
+		public static KingdomPassJsonModel LoadKingdomPassRewards(string filePath)
 		{
 			if (!File.Exists(filePath))
 				return null;
 
 			var fileData = File.ReadAllText(filePath);
-			var prefs = JsonUtility.FromJson<RewardEventManager>(fileData);
+			var prefs = JsonUtility.FromJson<KingdomPassJsonModel>(fileData);
 
-			return prefs?.KingdomPassRewards;
+			return prefs;
 		}
 
 		public static void Save(string filePath, RewardEventManager playerPreferences)
 		{
 			File.WriteAllText(filePath, JsonUtility.ToJson(playerPreferences));
 		}
-	}
+        public static void SaveCalendarRewards(string filePath, CalendarRewardJsonModel calendarRewardJsonModel)
+        {
+            File.WriteAllText(filePath, JsonUtility.ToJson(calendarRewardJsonModel));
+        }
+
+        public static void SaveKingdomPassReward(string filePath, KingdomPassJsonModel kingdomPassJsonModel)
+        {
+            File.WriteAllText(filePath, JsonUtility.ToJson(kingdomPassJsonModel));
+        }
+    }
 }

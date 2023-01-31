@@ -1,7 +1,9 @@
 using Assets.Common.Enums;
 using Assets.Common.Managers;
+using Assets.Common.Models;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class KingdomPassManager : MonoBehaviour
@@ -52,7 +54,7 @@ public class KingdomPassManager : MonoBehaviour
         var fileName = "Assets/Configuration/KingdomPass/KingdomPassReward.json";
         var rewards = RewardEventManager.LoadKingdomPassRewards(fileName);
 
-        foreach (var reward in rewards)
+        foreach (var reward in rewards.KingdomPassRewards)
         {
             var kingdomPassRewardsButton = Instantiate(KingdomPassRewarsButtonsPrefab, KingdomPassAwardsButtonsPrefabSpawnPoint);
             KingdomPassAwardsButtonsList.Add(kingdomPassRewardsButton);
@@ -67,6 +69,26 @@ public class KingdomPassManager : MonoBehaviour
             singleKingdomPassRewardsButton.premiumAwardAmountText.text = reward.PremiumReward.Amount.ToString();
             singleKingdomPassRewardsButton.premiumAwardImage.sprite = AllIcons.GetIcon(reward.PremiumReward.Type);
             singleKingdomPassRewardsButton.PremiumRewardType = reward.PremiumReward;
+        }
+    }
+    //public void TakeFreeReward()
+    //{
+    //    //var fileName = "Assets/Configuration/KingdomPass/KingdomPassReward.json";
+
+    //    //foreach (var reward in KingdomPassAwardsButtonsList)
+    //    //{
+    //    //    var singleReward = reward.GetComponent<KingdomPassRewardsButtons>();
+    //    //    singleReward.TakeFreeAward();
+    //    //}
+    //    //var manager = RewardEventManager.LoadKingdomPassRewards(fileName);
+    // RewardEventManager.Save(fileName, manager);
+    //}
+    public void TakePremiumReward()
+    {
+        foreach (var reward in KingdomPassAwardsButtonsList)
+        {
+            var singleReward = reward.GetComponent<KingdomPassRewardsButtons>();
+            singleReward.TakePremiumAward();
         }
     }
     public void ActivateKingdomPass()
