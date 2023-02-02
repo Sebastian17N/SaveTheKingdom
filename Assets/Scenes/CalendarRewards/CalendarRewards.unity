@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &209530422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9218162072779654542, guid: c0073d93d7f259c45a052263699b3bb5, type: 3}
+  m_PrefabInstance: {fileID: 1667232508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &213991854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,8 +1007,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardPrefab: {fileID: 7828613821011379884, guid: dc7cbdaf2cc56a04fa774d539471bae4, type: 3}
   RewardPrefabSpawnPoint: {fileID: 296035131}
-  RewardsIconSO: {fileID: 11400000, guid: 8e42d3bf791908b49a22060e44cb8154, type: 2}
-  EventTitle: {fileID: 1241460353}
+  EventName: {fileID: 1241460353}
+  EventButton1: {fileID: 1825220033}
+  EventButton2: {fileID: 209530422}
+  EventButton3: {fileID: 1444975883}
 --- !u!4 &1222664477
 Transform:
   m_ObjectHideFlags: 0
@@ -1262,6 +1269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1444975883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9218162072779654542, guid: c0073d93d7f259c45a052263699b3bb5, type: 3}
+  m_PrefabInstance: {fileID: 1844035609}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1667232508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1272,7 +1284,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8812164030368653735, guid: c0073d93d7f259c45a052263699b3bb5, type: 3}
       propertyPath: m_text
-      value: ARCHONT
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9218162072779654530, guid: c0073d93d7f259c45a052263699b3bb5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1533,6 +1545,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757666096}
   m_CullTransparentMesh: 1
+--- !u!1 &1825220033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9218162072779654542, guid: c0073d93d7f259c45a052263699b3bb5, type: 3}
+  m_PrefabInstance: {fileID: 9218162073966838010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1844035609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1859,6 +1876,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 951975862}
     m_Modifications:
+    - target: {fileID: 8812164030368653735, guid: c0073d93d7f259c45a052263699b3bb5, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9218162072779654530, guid: c0073d93d7f259c45a052263699b3bb5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

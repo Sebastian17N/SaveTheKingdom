@@ -9,6 +9,7 @@ using Assets.Common.Managers;
 using Assets.Common.Models;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Assets.Scenes.CalendarRewards.Scripts
 {
@@ -16,18 +17,22 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 	{
 		public GameObject RewardPrefab;
 		public Transform RewardPrefabSpawnPoint;
-
-		private readonly List<GameObject> _calendarRewardList = new();
-		public TextMeshProUGUI EventTitle;
+		public TextMeshProUGUI EventName;
+		public GameObject EventButton1;
+		public GameObject EventButton2;
+		public GameObject EventButton3;
 		#region Events Parameters
-		private readonly DateTime _startEventDate = new(2022, 12, 07);
+		private readonly DateTime _startEventDate;
+		private readonly DateTime _endEventDate;
+		private readonly List<GameObject> _calendarRewardList = new();
 		private readonly List<GameObject> _eventRewardList = new();
 		#endregion
 
 		void Start()
 		{
 			SpawnCalendarReward();
-		}
+			FillButtonsNames();
+        }
 
 		void Update()
 		{
@@ -74,9 +79,6 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			if (_eventRewardList.Count == 0)
 				return;
 
-			var presentDay = (int)DateTime.Now.Day;
-			var firstDayOfEvent = _startEventDate;
-
 			for (int i = 0; i < _eventRewardList.Count; i++)
 			{
 				var singleEventReward = _eventRewardList[i].GetComponent<CalendarRewardButton>();
@@ -107,20 +109,16 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 
 		public void SpawnCalendarReward()
 		{
-			SpawnReward(_calendarRewardList, _eventRewardList,
-                "Assets/Configuration/CallendarReward/CallendarReward.json");
-
-			EventTitle.text = $"{DateTime.Now.ToString("MMMM", CultureInfo.InvariantCulture).ToUpper()} AWARD";
+			var filePath = "Assets/Configuration/CallendarReward/CallendarReward.json";
+            
+			SpawnReward(_calendarRewardList, _eventRewardList, filePath);
 		}
 
 		public void SpawnEventReward()
 		{
 			var filePath = "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json";
-			var eventTitle = Path.GetFileName(filePath);
-
-			SpawnReward(_eventRewardList, _calendarRewardList, filePath);
 			
-			EventTitle.text = $"{eventTitle} AWARD";
+			SpawnReward(_eventRewardList, _calendarRewardList, filePath);
 		}
 
 		private void SpawnReward(ICollection<GameObject> listToFill, ICollection<GameObject> listToEmpty, string fileName)
@@ -135,6 +133,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			listToEmpty.Clear();
 
 			var rewards = RewardEventManager.LoadCalendarRewards(fileName);
+			
 
 			foreach (var reward in rewards.CalendarRewards)
 			{
@@ -151,7 +150,9 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 				singleSpawnEventReward.RewardType = reward;
 				singleSpawnEventReward.RewardType.ReceivingDate = reward.ReceivingDate;
 			}
-		}
+
+            EventName.text = rewards.EventName;
+        }
 
 		public void TakeAward()
 		{
@@ -207,11 +208,22 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 		}
 		private CalendarReward LastTakenReward()
 		{
-			var lastreward = _eventRewardList.Select(reward => reward.GetComponent<CalendarRewardButton>().RewardType)
+			var lastReward = _eventRewardList.Select(reward => reward.GetComponent<CalendarRewardButton>().RewardType)
 									.Where(reward => reward.State == RewardState.Taken)
 									.OrderBy(reward => reward.Day).LastOrDefault();
 
-			return lastreward;
+			return lastReward;
 		}
+
+		private void FillButtonsNames()
+		{
+			var event1 = RewardEventManager.LoadCalendarRewards("Assets/Configuration/CallendarReward/CallendarReward.json");
+			var event2 = RewardEventManager.LoadCalendarRewards("Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json");
+			//var event3 = RewardEventManager.LoadCalendarRewards("Assets/Configuration/CallendarReward/CallendarReward.json");
+
+			EventButton1.GetComponentInChildren<TextMeshProUGUI>().text = event1.EventName;
+			EventButton2.GetComponentInChildren<TextMeshProUGUI>().text = event2.EventName;
+
+        }
     }
 }
