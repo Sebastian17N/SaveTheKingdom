@@ -1,3 +1,5 @@
+using Assets.Common.Enums;
+using Assets.Scenes.Quests.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +8,8 @@ public class QuestButton : MonoBehaviour
 {
     public bool isQuestReadyToTake = false;
     public bool isQuestTaked = false;
+    public Quest chosenQuest;
+    public QuestsManager questsManager;
 
     #region Prefab Elements
     [HideInInspector] public Image background;
@@ -15,6 +19,7 @@ public class QuestButton : MonoBehaviour
     void Start()
     {
         background = GetComponent<Image>();
+        questsManager = FindObjectOfType<QuestsManager>();
     }
     private void Update()
     {
@@ -45,4 +50,22 @@ public class QuestButton : MonoBehaviour
             questPointsRequireToEndText.color = Color.white;
         }
     }
+
+    public void ShowQuestReward()
+    {
+        questsManager.chosenQuest = chosenQuest;
+        questsManager.RewardImage.sprite = AllIcons.GetIcon(chosenQuest.RewardType);
+        questsManager.RewardImage.GetComponentInChildren<TextMeshProUGUI>().text = chosenQuest.RewardAmount.ToString();
+
+
+        if (isQuestReadyToTake)
+        {
+            questsManager.ClaimButton.GetComponent<Image>().color = new Color(0.32f, 1f, 0f, 1f);
+        }
+        else
+        {
+            questsManager.ClaimButton.GetComponent<Image>().color = new Color(1, 1, 1, 0.60f);
+        }
+    }
+
 }

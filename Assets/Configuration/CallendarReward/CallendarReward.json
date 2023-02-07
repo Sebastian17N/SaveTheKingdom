@@ -1,8 +1,7 @@
 {
   "EventName": "February Reward",
-  "EventStartDateTime": "",
-  "EventEndDateTime": "",
-
+  "EventStartDateTime": "01-02-2023",
+  "EventEndDateTime": "28-02-2023",
   "CalendarRewards": [
     {
       "Amount": 10,
@@ -21,7 +20,7 @@
     {
       "Amount": 20,
       "Type": 2,
-      "State": 1,
+      "State": 2,
       "ReceivingDate": "",
       "Day": 3
     },

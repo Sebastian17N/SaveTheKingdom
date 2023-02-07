@@ -7,6 +7,7 @@ using Assets.Common.Enums;
 using Assets.Common.JsonModel;
 using Assets.Common.Managers;
 using Assets.Common.Models;
+using Assets.Scenes.Quests.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -109,21 +110,41 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 
 		public void SpawnCalendarReward()
 		{
-			var filePath = "Assets/Configuration/CallendarReward/CallendarReward.json";
+			var filePath = "Assets/Configuration/CallendarReward";
             
 			SpawnReward(_calendarRewardList, _eventRewardList, filePath);
 		}
 
 		public void SpawnEventReward()
 		{
-			var filePath = "Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json";
+			var filePath = "Assets/Configuration/CalendarRewardsEvents";
 			
 			SpawnReward(_eventRewardList, _calendarRewardList, filePath);
 		}
 
-		private void SpawnReward(ICollection<GameObject> listToFill, ICollection<GameObject> listToEmpty, string fileName)
+		private void SpawnReward(ICollection<GameObject> listToFill, ICollection<GameObject> listToEmpty, string folderName)
 		{
-			if (listToFill.Count != 0)
+            var directoryInfo = new DirectoryInfo(folderName); //pobiera wszystkie pliki z folderu o konkretnej œcie¿ce
+            var files = directoryInfo.GetFiles("*.json"); //pobiera pliki o rozszerzeniu json
+
+			CalendarRewardJsonModel rewards = null ;
+
+			foreach (var file in files)
+			{
+                var rewardsFile = RewardEventManager.LoadCalendarRewards(file.FullName);
+
+				if (DateTime.Today >= DateTime.Parse(rewardsFile.EventStartDateTime) && DateTime.Today <= DateTime.Parse(rewardsFile.EventEndDateTime))
+				{
+					rewards = rewardsFile;
+					break;
+                }
+            }
+
+			if (rewards == null)
+				return;
+
+
+            if (listToFill.Count != 0)
 				return;
 
 			foreach (var calendarReward in listToEmpty)
@@ -131,9 +152,6 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 				Destroy(calendarReward);
 			}
 			listToEmpty.Clear();
-
-			var rewards = RewardEventManager.LoadCalendarRewards(fileName);
-			
 
 			foreach (var reward in rewards.CalendarRewards)
 			{
