@@ -1,4 +1,3 @@
-using Assets.Common.Enums;
 using TMPro;
 using UnityEngine;
 

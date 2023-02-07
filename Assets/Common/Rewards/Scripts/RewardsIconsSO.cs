@@ -1,6 +1,4 @@
 using Assets.Common.Enums;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RewardsIcon", menuName = "Scriptable Objects/Rewards Icon")]

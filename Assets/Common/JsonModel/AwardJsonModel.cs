@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using Assets.Common.Enums;
 
 namespace Assets.Common.JsonModel

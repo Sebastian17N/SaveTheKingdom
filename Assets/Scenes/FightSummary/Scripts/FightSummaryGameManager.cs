@@ -1,10 +1,10 @@
 using Assets.Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Common.Enums;
 using Assets.Common.JsonModel;
-using Assets.Common.Managers;
 using Assets.Common.Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,9 +29,9 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public GameObject[] Chests;
 		
 		public float TimeToActivateChest;
-		public int CoinsAwardAmount;
-		public Reward RewardAward = new();
 		public Shards ShardsAward;
+
+		public List<Reward> Awards;
 
 		public GameObject UnitShards;
 
@@ -68,21 +68,13 @@ namespace Assets.Scenes.FightSummary.Scripts
 			AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
 			AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
 
-			var howManyStars = 0;
-			switch (deadZoneHealthPercentage)
+			var howManyStars = deadZoneHealthPercentage switch
 			{
-				case > 0f and < 0.5f:
-					howManyStars = 1;
-					break;
-
-				case >= 0.5f and < 1:
-					howManyStars = 2;
-					break;
-
-				case 1:
-					howManyStars = 3;
-					break;
-			}
+				> 0f and < 0.5f => 1,
+				>= 0.5f and < 1 => 2,
+				1 => 3,
+				_ => 0
+			};
 
 			for (var i = 0; i < howManyStars; i++)
 			{
@@ -96,26 +88,26 @@ namespace Assets.Scenes.FightSummary.Scripts
 			var level = PlayerPrefs.GetString("CurrentLevel");
 			var mapsConfigJsonModel = JsonLoader.LoadConfig(level);
 
+			Awards ??= new List<Reward>();
+			Awards.Clear();
+
+			var playerPreferences = PlayerPreferences.Load();
+
 			foreach (var award in mapsConfigJsonModel.Awards)
 			{
-				if (award.Type == RewardType.Coins)
-					CoinsAwardAmount = award.Amount[howManyStars - 1];
-				else
+				var reward = new Reward
 				{
-					RewardAward.Type = award.Type;
-					RewardAward.Amount = award.Amount[howManyStars - 1];
+					Amount = award.Amount[howManyStars - 1],
+					Type = award.Type
+				};
+				Awards.Add(reward);
+				
+				playerPreferences.AddReward = reward;
 
-					break;
-				}
 			}
 
 			var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
 			ShardsAward = new Shards(shard.UnitId, shard.MinRange[0]);
-
-			var playerPreferences = PlayerPreferences.Load();
-			//TODO: Fix that, to save coins properly.
-			playerPreferences.Coins.Amount = CoinsAwardAmount;
-			playerPreferences.AddReward = RewardAward;
 			playerPreferences.AddShards = ShardsAward;
 		}  
 		
