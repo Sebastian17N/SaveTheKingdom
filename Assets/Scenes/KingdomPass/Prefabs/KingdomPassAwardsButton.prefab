@@ -340,10 +340,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee271e559568e44ab73c1d0f9908602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAwardActivated: 0
-  isKingdomPassActivated: 0
-  isFreeAwardTaked: 0
-  isPremiumAwardTaked: 0
+  RegularRewardType:
+    Amount: 0
+    Type: 0
+    State: 0
+    ReceivingDate: 
+  PremiumRewardType:
+    Amount: 0
+    Type: 0
+    State: 0
+    ReceivingDate: 
+  kingdomPassManager: {fileID: 0}
+  passPointsRequiredToActivateAward: 0
   ordinalNumberText: {fileID: 7113060977559591341}
   freeAwardBackground: {fileID: 8039807455468912522}
   freeAwardImage: {fileID: 8039807456192000525}
@@ -1040,7 +1048,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7778012663321210191}
-        m_TargetAssemblyTypeName: KingdomPassAwardsButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: KingdomPassRewardsButtons, Assembly-CSharp
         m_MethodName: TakePremiumAward
         m_Mode: 1
         m_Arguments:
@@ -1326,7 +1334,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7778012663321210191}
-        m_TargetAssemblyTypeName: KingdomPassAwardsButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: KingdomPassRewardsButtons, Assembly-CSharp
         m_MethodName: TakeFreeAward
         m_Mode: 1
         m_Arguments:

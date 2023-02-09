@@ -126,13 +126,13 @@ namespace Assets.Common.Managers
 			unit.GetComponentInChildren<TMP_Text>().text = $"{unitScriptableObject.Cost}";
 
 			var iconImage = unit.transform.Find("Icon").GetComponent<Image>();
-			iconImage.sprite = unitScriptableObject.Sprite;
+			iconImage.sprite = unitScriptableObject.Icon;
 
 			var iconShadowImage = unit.transform.Find("IconShadow").GetComponent<Image>();
-			iconShadowImage.sprite = unitScriptableObject.Sprite;
+			iconShadowImage.sprite = unitScriptableObject.Icon;
 
 			var iconGoldImage = unit.transform.Find("IconGold").GetComponent<Image>();
-			iconGoldImage.sprite = unitScriptableObject.Sprite;
+			iconGoldImage.sprite = unitScriptableObject.Icon;
 
 			var manager = unit.GetComponent<UnitCardManager>();
 			manager.UnitScriptableObject = unitScriptableObject;

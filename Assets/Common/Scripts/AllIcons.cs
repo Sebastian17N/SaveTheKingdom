@@ -1,17 +1,14 @@
 using Assets.Common.Enums;
 using UnityEngine;
-
-[CreateAssetMenu(fileName = "RewardsIcon", menuName = "Scriptable Objects/Rewards Icon")]
-public class RewardsIconsSO : ScriptableObject
+public class AllIcons 
 {
-    public Sprite CoinIcon;
-    public Sprite SapphireIcon;
-    public Sprite TopazIcon;
-    public Sprite EmeraldIcon;
-    public Sprite MoonStoneIcon;
+    public static Sprite CoinIcon => Resources.Load<Sprite>("Icons/Coin");
+    public static Sprite SapphireIcon => Resources.Load<Sprite>("Icons/Gems_6");
+    public static Sprite TopazIcon => Resources.Load<Sprite>("Icons/Gems_12");
+    public static Sprite EmeraldIcon => Resources.Load<Sprite>("Icons/Gems_9");
+    public static Sprite MoonStoneIcon => Resources.Load<Sprite>("Icons/Gems_13");
 
-
-    public Sprite GetIcon(RewardType type)
+    public static Sprite GetIcon(RewardType type)
     {
         switch (type)
         {

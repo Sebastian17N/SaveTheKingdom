@@ -1,0 +1,224 @@
+{
+  "EventName": "February Reward",
+  "EventStartDateTime": "01-02-2023",
+  "EventEndDateTime": "28-02-2023",
+  "CalendarRewards": [
+    {
+      "Amount": 10,
+      "Type": 0,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 1
+    },
+    {
+      "Amount": 20,
+      "Type": 1,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 2
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 2,
+      "ReceivingDate": "",
+      "Day": 3
+    },
+    {
+      "Amount": 20,
+      "Type": 3,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 4
+    },
+    {
+      "Amount": 20,
+      "Type": 4,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 5
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 6
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 7
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 8
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 9
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 10
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 11
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 12
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 13
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 14
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 15
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 16
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 17
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 18
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 19
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 20
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 21
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 22
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 23
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 24
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 25
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 2,
+      "ReceivingDate": "",
+      "Day": 26
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 27
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 28
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 2,
+      "ReceivingDate": "",
+      "Day": 29
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 30
+    },
+    {
+      "Amount": 20,
+      "Type": 2,
+      "State": 1,
+      "ReceivingDate": "",
+      "Day": 31
+    }
+  ]
+}

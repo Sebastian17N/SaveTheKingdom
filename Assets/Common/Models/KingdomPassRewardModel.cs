@@ -3,7 +3,7 @@
 namespace Assets.Common.Models
 {
 	[Serializable]
-	public class KingdomPassReward
+	public class KingdomPassRewardModel
 	{
 		public int Level;
 		public Reward RegularReward;

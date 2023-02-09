@@ -13,6 +13,9 @@ scopes = {
 	"last_search.8C24D059" = ""
 	"OpenInspectorPreview.8C24D059" = "0"
 	"currentGroup.8C24D059" = "all"
+	"last_search.310DEAF1" = "SDK"
+	"OpenInspectorPreview.310DEAF1" = "0"
+	"currentGroup.310DEAF1" = "all"
 }
 providers = {
 	adb = {
@@ -64,12 +67,15 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"SDK"
+	"Android SDK "
 	"debug authorization"
 ]
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
 showSavedSearchPanel = false
+hideTabs = false
 expandedQueries = [
 ]
 queryBuilder = false

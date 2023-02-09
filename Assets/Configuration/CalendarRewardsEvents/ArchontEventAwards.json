@@ -1,24 +1,28 @@
 {
-  "Rewards": [
+  "EventName": "Archon Event Reward",
+  "EventStartDateTime": "01-02-2023",
+  "EventEndDateTime": "28-02-2023",
+
+  "CalendarRewards": [
     {
       "Amount": 10,
       "Type": 1,
-      "State": 1,
-      "ReceivingDate": "",
+      "State": 2,
+      "ReceivingDate": "25-01-2023",
       "Day": 1
     },
     {
       "Amount": 20,
-      "Type": 2,
-      "State": 1,
-      "ReceivingDate": "",
+      "Type": 1,
+      "State": 2,
+      "ReceivingDate": "26-01-2023",
       "Day": 2
     },
     {
       "Amount": 20,
       "Type": 3,
-      "State": 1,
-      "ReceivingDate": "",
+      "State": 2,
+      "ReceivingDate": "29-01-2023",
       "Day": 3
     },
     {
@@ -84,7 +88,5 @@
       "ReceivingDate": "",
       "Day": 12
     }
-  ],
-  "KingdomPassRewards": [
   ]
 }

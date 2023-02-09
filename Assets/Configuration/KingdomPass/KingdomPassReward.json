@@ -1,16 +1,21 @@
 {
+  "EventName": "February Kingdom Pass",
+  "EventStartDateTime": "20-01-2023",
+  "EventEndDateTime": "10-02-2023",
   "KingdomPassRewards": [
     {
       "Level": 1,
       "RegularReward": {
         "Amount": 10,
         "Type": 1,
-        "State": 1
+        "State": 1,
+        "ReceivingDate": ""
       },
       "PremiumReward": {
         "Amount": 20,
         "Type": 2,
-        "State": 1
+        "State": 1,
+        "ReceivingDate": ""
       }
     },
     {
@@ -18,12 +23,14 @@
       "RegularReward": {
         "Amount": 10,
         "Type": 1,
-        "State": 1
+        "State": 1,
+        "ReceivingDate": ""
       },
       "PremiumReward": {
         "Amount": 20,
         "Type": 2,
-        "State": 1
+        "State": 1,
+        "ReceivingDate": ""
       }
     },
     {
@@ -31,12 +38,14 @@
       "RegularReward": {
         "Amount": 10,
         "Type": 1,
-        "State": 1
+        "State": 1,
+        "ReceivingDate": ""
       },
       "PremiumReward": {
         "Amount": 20,
         "Type": 2,
-        "State": 1
+        "State": 1,
+        "ReceivingDate": ""
       }
     },
     {
@@ -44,14 +53,105 @@
       "RegularReward": {
         "Amount": 10,
         "Type": 1,
-        "State": 1
+        "State": 1,
+        "ReceivingDate": ""
       },
       "PremiumReward": {
         "Amount": 20,
         "Type": 2,
-        "State": 1
+        "State": 1,
+        "ReceivingDate": ""
+      }
+    },
+    {
+      "Level": 5,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1,
+        "ReceivingDate": ""
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1,
+        "ReceivingDate": ""
+      }
+    },
+    {
+      "Level": 6,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1,
+        "ReceivingDate": ""
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1,
+        "ReceivingDate": ""
+      }
+    },
+    {
+      "Level": 7,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1,
+        "ReceivingDate": ""
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1,
+        "ReceivingDate": ""
+      }
+    },
+    {
+      "Level": 8,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1,
+        "ReceivingDate": ""
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1,
+        "ReceivingDate": ""
+      }
+    },
+    {
+      "Level": 9,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1,
+        "ReceivingDate": ""
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1,
+        "ReceivingDate": ""
+      }
+    },
+    {
+      "Level": 10,
+      "RegularReward": {
+        "Amount": 10,
+        "Type": 1,
+        "State": 1,
+        "ReceivingDate": ""
+      },
+      "PremiumReward": {
+        "Amount": 20,
+        "Type": 2,
+        "State": 1,
+        "ReceivingDate": ""
       }
     }
-
   ]
 }

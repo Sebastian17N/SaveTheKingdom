@@ -1,5 +1,8 @@
+using Assets.Common.Enums;
+using Assets.Common.JsonModel;
 using Assets.Scenes.Barracks.Scripts;
 using Assets.Units.Defenses.Scripts;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,13 +18,15 @@ public class UnitUpgradePanel : MonoBehaviour
     public TextMeshProUGUI coinsNeededText;
     public TextMeshProUGUI coinsHavedText;
     public Image UnitIcon;
-    
+
+    public RewardType Type;
+
     public UnitScriptableObject scriptableObject =>
         transform.GetComponentInChildren<UnitDataFolder>().UnitScriptableObject;
 
     public void LevelUpUnit()
     {
-        var totalCoins = PlayerPrefs.GetInt("Coins");
+        var totalCoins = PlayerPreferences.LoadResourceByType("Coins");
 
         if (totalCoins < scriptableObject.UpgradeInitialCost)
             return;
@@ -40,8 +45,10 @@ public class UnitUpgradePanel : MonoBehaviour
         //shardsOwnedText.text = scriptableObject.AttackDamage.ToString();
         //shardsNeededText.text = scriptableObject.AttackDamage.ToString();
         //totalCoins - scriptableObject.UpgradeInitialCost;
-        FindObjectOfType<ResourcesMasterController>()._coinsController.DecrementResources((int)scriptableObject.UpgradeInitialCost, "Coins");
+
+        ResourcesMasterController.AddAndUpdateResources(RewardType.Coins, -(int)scriptableObject.UpgradeInitialCost);
+
         FindObjectOfType<BarracksGameManager>().RefreshAllUnitsTexts();
-        coinsHavedText.text = PlayerPrefs.GetInt("Coins").ToString();
+        coinsHavedText.text = totalCoins.ToString();
     }
 }
