@@ -1,10 +1,10 @@
 using Assets.Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Common.Enums;
 using Assets.Common.JsonModel;
-using Assets.Common.Managers;
 using Assets.Common.Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,9 +29,9 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public GameObject[] Chests;
 		
 		public float TimeToActivateChest;
-		public int CoinsAward;
-		public Reward RewardAward = new();
 		public Shards ShardsAward;
+
+		public List<Reward> Awards;
 
 		public GameObject UnitShards;
 
@@ -68,21 +68,13 @@ namespace Assets.Scenes.FightSummary.Scripts
 			AchievedStars[1].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
 			AchievedStars[2].gameObject.GetComponent<SpriteRenderer>().sprite = StarGrey;
 
-			var howManyStars = 0;
-			switch (deadZoneHealthPercentage)
+			var howManyStars = deadZoneHealthPercentage switch
 			{
-				case > 0f and < 0.5f:
-					howManyStars = 1;
-					break;
-
-				case >= 0.5f and < 1:
-					howManyStars = 2;
-					break;
-
-				case 1:
-					howManyStars = 3;
-					break;
-			}
+				> 0f and < 0.5f => 1,
+				>= 0.5f and < 1 => 2,
+				1 => 3,
+				_ => 0
+			};
 
 			for (var i = 0; i < howManyStars; i++)
 			{
@@ -90,22 +82,33 @@ namespace Assets.Scenes.FightSummary.Scripts
 				Chest = Chests[i];
 			}
 
-			if (howManyStars > 0)
-            {
-				var level = PlayerPrefs.GetString("CurrentLevel");
-				var mapsConfigJsonModel = JsonLoader.LoadConfig(level);				
-				CoinsAward = mapsConfigJsonModel.AwardCoins[howManyStars - 1];
-				RewardAward.Type = mapsConfigJsonModel.AwardGemsType;
-				RewardAward.Amount = mapsConfigJsonModel.AwardGemsNumber[howManyStars - 1];
+			if (howManyStars <= 0) 
+				return;
 
-				var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
-				ShardsAward = new Shards(shard.UnitId, shard.MinRange[0]);
+			var level = PlayerPrefs.GetString("CurrentLevel");
+			var mapsConfigJsonModel = JsonLoader.LoadConfig(level);
 
-				var playerPreferences = PlayerPreferences.Load();
-				playerPreferences.Coins += CoinsAward;
-				playerPreferences.AddReward = RewardAward;
-				playerPreferences.AddShards = ShardsAward;
-            }
+			Awards ??= new List<Reward>();
+			Awards.Clear();
+
+			var playerPreferences = PlayerPreferences.Load();
+
+			foreach (var award in mapsConfigJsonModel.Awards)
+			{
+				var reward = new Reward
+				{
+					Amount = award.Amount[howManyStars - 1],
+					Type = award.Type
+				};
+				Awards.Add(reward);
+				
+				playerPreferences.AddReward = reward;
+
+			}
+
+			var shard = mapsConfigJsonModel.AwardShards.ToList().Single(shard => shard.FirstWin);
+			ShardsAward = new Shards(shard.UnitId, shard.MinRange[0]);
+			playerPreferences.AddShards = ShardsAward;
 		}  
 		
 		public IEnumerator ActivateChest()

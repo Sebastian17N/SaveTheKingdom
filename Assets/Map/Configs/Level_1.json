@@ -3,29 +3,36 @@
   "SpriteBackgroundPath": "Level1MapBackground.jpg",
   "EnemiesMapFileName": "Level_1",
   "AvailableUnitsToPlayById": [ 3, 6, 10 ],
-  "AwardCoins": [ 100, 200, 400 ],
-  "AwardGemsType": 2,
-  "AwardGemsNumber": [ 1, 2, 4 ],
-  "AwardShards": [
+  "Awards": [
     {
-      "UnitId": 8,
-      "FirstWin": true,
-      "MinRange": [ 1 ]
+      "Type": 0,
+      "Amount": [ 100, 200, 400 ]
     },
     {
-      "UnitId": 3,
-      "MinRange": [ 1, 1, 2 ],
-      "MaxRange": [ 1, 2, 4 ]
-    },
-    {
-      "UnitId": 6,
-      "MinRange": [ 1, 1, 2 ],
-      "MaxRange": [ 1, 2, 4 ]
-    },
-    {
-      "UnitId": 10,
-      "MinRange": [ 1, 1, 2 ],
-      "MaxRange": [ 1, 2, 4 ]
+      "Type": 2,
+      "Amount": [ 1, 2, 4 ]
     }
-  ]
+  ],
+  "AwardShards": [
+      {
+        "UnitId": 8,
+        "FirstWin": true,
+        "MinRange": [ 1 ]
+      },
+      {
+        "UnitId": 3,
+        "MinRange": [ 1, 1, 2 ],
+        "MaxRange": [ 1, 2, 4 ]
+      },
+      {
+        "UnitId": 6,
+        "MinRange": [ 1, 1, 2 ],
+        "MaxRange": [ 1, 2, 4 ]
+      },
+      {
+        "UnitId": 10,
+        "MinRange": [ 1, 1, 2 ],
+        "MaxRange": [ 1, 2, 4 ]
+      }
+    ]
 }

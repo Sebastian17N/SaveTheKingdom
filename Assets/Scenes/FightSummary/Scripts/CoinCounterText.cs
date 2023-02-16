@@ -1,4 +1,6 @@
+using Assets.Common.Enums;
 using Assets.Common.JsonModel;
+using Assets.Common.Models;
 using TMPro;
 using UnityEngine;
 
@@ -19,14 +21,19 @@ namespace Assets.Scenes.FightSummary.Scripts
 		
         private void ShowCoins()
 		{
-			CoinsNumber = PlayerPreferences.Load().Coins;
+			CoinsNumber = PlayerPreferences.Load().Coins.Amount;
 			GetComponent<TMP_Text>().text = CoinsNumber.ToString();
 		}
         
 		public  void IncrementCoins(int coinsToAdd)
         {
-			CoinsNumber = PlayerPreferences.Load().Coins += coinsToAdd;
-			
+			var coins = new Reward()
+			{
+				Type = RewardType.Coins,
+				Amount = coinsToAdd
+			};
+			PlayerPreferences.Load().AddReward = coins;
+			CoinsNumber = PlayerPreferences.Load().Coins.Amount; 
 			GetComponent<TMP_Text>().text = CoinsNumber.ToString();        
 		}
 		

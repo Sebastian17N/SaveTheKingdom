@@ -1,4 +1,3 @@
-using Assets.Common.Enums;
 using TMPro;
 using UnityEngine;
 
@@ -10,8 +9,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 
 		public float ShowingSpeed;
 		public float GettingAwardsSpeed;
-
-		public AwardType Type;
+		
 		public int Quantity;
 
 		public AwardController(string type, int quantity)
@@ -52,6 +50,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 
 		public void ShowAward()
 		{
+			GetComponentInChildren<TMP_Text>().enabled = true;
 			GetComponentInChildren<TMP_Text>().text = Quantity.ToString();
 			FindObjectOfType<CoinCounterText>().IncrementCoins(Quantity);
 		}
