@@ -215,10 +215,7 @@ namespace Assets.Common.JsonModel
 		public static void LogHowMuchDamageWasDealtForTheAchievements(float damageDealt)
 		{
 			var playerPreferences = Load();
-			var achievements =
-				playerPreferences.PlayersAchievements
-					.Where(achievement =>
-						achievement.QuestType == QuestType.DamageDealt);
+			var achievements = playerPreferences.PlayersAchievements.Where(achievement => achievement.QuestType == QuestType.DamageDealt);
 
 			playerPreferences.RefreshOneDateQuest();
 

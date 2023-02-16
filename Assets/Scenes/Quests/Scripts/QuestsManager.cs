@@ -69,11 +69,9 @@ public class QuestsManager : MonoBehaviour
 
     public void TakeQuestReward()
     {
-        
-
         foreach (var quest in _questsList)
         {
-            var singleQuest = quest.GetComponent<Quest>();
+            var singleQuest = quest.GetComponent<QuestButton>().chosenQuest;
             
             if (singleQuest == chosenQuest)
             {

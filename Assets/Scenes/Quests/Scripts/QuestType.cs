@@ -7,6 +7,13 @@ namespace Assets.Scenes.Quests.Scripts
 	{
 		DamageDealt,
 		QuestFinished,
-		ChestOpened
-	}
+		ChestOpened,
+        CampaignMissionsCompleted,
+        StoreShopping,
+		UnitTrained,
+		UnitLevelReached,
+		UnitsUnloced,
+		MapUncloced,
+		EnemiesKilled
+    }
 }
