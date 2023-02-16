@@ -99,7 +99,7 @@ namespace Assets.Common.JsonModel
 				if (reward == null)
 					return;
 
-				reward.Amount = value.Amount;
+				reward.Amount += value.Amount;
 				reward.Type = value.Type;
 
 				Save(this);

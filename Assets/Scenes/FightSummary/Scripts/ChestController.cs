@@ -6,7 +6,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 	public class ChestController : MonoBehaviour
 	{
 		Animator _animator;
-		public GameObject Award;
+		public GameObject AwardMasterController;
 
 		private bool _isChestClicked;
 
@@ -28,7 +28,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 		public IEnumerator ActivateAwards()
 		{
 			yield return new WaitForSeconds(2);
-			var award = Instantiate(Award, transform.position, Quaternion.identity);
+			var award = Instantiate(AwardMasterController, transform.position, Quaternion.identity);
 			award.transform.SetParent(transform);
 		}
 	}

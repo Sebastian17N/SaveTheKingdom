@@ -19,9 +19,9 @@ namespace Assets.Scenes.FightSummary.Scripts
 			
 			foreach (var award in fightSummaryManager.Awards)
 			{
-				var awardInstance = Instantiate(AwardPrefab, transform.parent);
-				awardInstance.GetComponentInChildren<TextMeshProUGUI>().text = award.Amount.ToString();
-				awardInstance.GetComponent<Image>().sprite = null;
+				var awardInstance = Instantiate(AwardPrefab, transform);
+				awardInstance.GetComponent<AwardController>().Quantity = award.Amount;
+				awardInstance.GetComponent<Image>().sprite = AllIcons.GetIcon(award.Type);
 			}
 
 			_shardsAwardController.Quantity = fightSummaryManager.ShardsAward.Amount;

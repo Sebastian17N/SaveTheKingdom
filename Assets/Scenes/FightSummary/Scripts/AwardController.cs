@@ -50,6 +50,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 
 		public void ShowAward()
 		{
+			GetComponentInChildren<TMP_Text>().enabled = true;
 			GetComponentInChildren<TMP_Text>().text = Quantity.ToString();
 			FindObjectOfType<CoinCounterText>().IncrementCoins(Quantity);
 		}
