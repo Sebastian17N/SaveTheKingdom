@@ -54,7 +54,7 @@ public class QuestsManager : MonoBehaviour
 		    questObject.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = quest.Name;
 		    questObject.transform.Find("Description").GetComponent<TextMeshProUGUI>().text = quest.Description;
 		    questObject.transform.Find("PointsRequireToEnd").GetComponent<TextMeshProUGUI>().text =
-			    $"{(playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.OneDayQuest && achievement.QuestType == QuestType.DamageDealt)?.AmountGathered ?? 0).ToString()} / {quest.RequiredAmountToEndQuest}";
+			    $"{(playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.OneDayQuest)?.AmountGathered ?? 0).ToString()} / {quest.RequiredAmountToEndQuest}"; // && achievement.QuestType == QuestType.DamageDealt
             questObject.GetComponent<QuestButton>().chosenQuest.RewardType = quest.RewardType;
             questObject.GetComponent<QuestButton>().chosenQuest.RewardAmount = quest.RewardAmount;
 

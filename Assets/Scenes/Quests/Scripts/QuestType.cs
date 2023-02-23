@@ -14,6 +14,7 @@ namespace Assets.Scenes.Quests.Scripts
 		UnitLevelReached,
 		UnitsUnloced,
 		MapUncloced,
-		EnemiesKilled
+		EnemiesKilled,
+		LogInEveryDay
     }
 }

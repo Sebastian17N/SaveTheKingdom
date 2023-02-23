@@ -1,0 +1,8 @@
+{
+  "Name": "Perfect Achiever",
+  "Description": "End all Daily Quest",
+  "RequiredAmountToEndQuest": 10,
+  "QuestType": 1,
+  "RewardType": 4,
+  "RewardAmount": 10
+}

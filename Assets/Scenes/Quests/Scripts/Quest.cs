@@ -11,6 +11,7 @@ namespace Assets.Scenes.Quests.Scripts
 		public int RequiredAmountToEndQuest;
 		public QuestType QuestType;
 		public RewardType RewardType;
-		public int RewardAmount;
+        public RewardState RewardState;
+        public int RewardAmount;
 	}
 }

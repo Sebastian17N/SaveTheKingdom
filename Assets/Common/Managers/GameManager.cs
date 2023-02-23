@@ -77,7 +77,8 @@ namespace Assets.Common.Managers
 
 			var backgroundSpriteName = PlayerPrefs.GetString("CurrentLevel_MapBackground");
 			var backgroundSpriteTexture = LoadTexture($"Assets/Map/Images/{backgroundSpriteName}");
-			var backgroundSprite = Sprite.Create(backgroundSpriteTexture, new Rect(0, 0, backgroundSpriteTexture.width, backgroundSpriteTexture.height), new Vector2(0.5f, 0.5f), 100, 0, SpriteMeshType.Tight);
+			var backgroundSprite = Sprite.Create(backgroundSpriteTexture, 
+				new Rect(0, 0, backgroundSpriteTexture.width, backgroundSpriteTexture.height), new Vector2(0.5f, 0.5f), 100, 0, SpriteMeshType.Tight);
 
 			GameObject.Find("Background").GetComponent<SpriteRenderer>().sprite = backgroundSprite;
 		}
@@ -167,7 +168,7 @@ namespace Assets.Common.Managers
 					//PlayerPrefs.SetFloat("BasicHealth", BasicHealth);
 					SceneManager.LoadScene("FightSummary");
 
-					PlayerPreferences.LogHowMuchDamageWasDealtForTheAchievements(DamageDealtOnCurrentLevel);
+					PlayerPreferences.LogGatherAchievements(DamageDealtOnCurrentLevel, Scenes.Quests.Scripts.QuestType.DamageDealt);
 					break;
 				}
 

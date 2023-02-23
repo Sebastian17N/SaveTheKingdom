@@ -143,7 +143,6 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 			if (rewards == null)
 				return;
 
-
             if (listToFill.Count != 0)
 				return;
 
@@ -237,7 +236,7 @@ namespace Assets.Scenes.CalendarRewards.Scripts
 		{
 			var event1 = RewardEventManager.LoadCalendarRewards("Assets/Configuration/CallendarReward/CallendarReward.json");
 			var event2 = RewardEventManager.LoadCalendarRewards("Assets/Configuration/CalendarRewardsEvents/ArchontEventAwards.json");
-			//var event3 = RewardEventManager.LoadCalendarRewards("Assets/Configuration/CallendarReward/CallendarReward.json");
+			//var event3 = RewardEventManager.LoadCalendarRewards("Assets/Configuration/CallendarReward/CallendarReward.json"); kolejny event
 
 			EventButton1.GetComponentInChildren<TextMeshProUGUI>().text = event1.EventName;
 			EventButton2.GetComponentInChildren<TextMeshProUGUI>().text = event2.EventName;

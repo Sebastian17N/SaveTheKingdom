@@ -194,14 +194,14 @@ namespace Assets.Common.JsonModel
 			return 0;
 		}
 
-		/// <summary>
-		/// Method logs damage dealt (for example during one battle) for achievement's system.
-		/// </summary>
-		/// <param name="damageDealt">Damage dealt.</param>
-		public static void LogHowMuchDamageWasDealtForTheAchievements(float damageDealt)
-		{
+        /// <summary>
+        /// Method log gather amount of achievement (for example damage dealt during one battle)
+        /// </summary>
+        /// <param name="amountGather">Damage dealt.</param>
+        public static void LogGatherAchievements(float amountGather, QuestType questType) // 
+        {
 			var playerPreferences = Load();
-			var achievements = playerPreferences.PlayersAchievements.Where(achievement => achievement.QuestType == QuestType.DamageDealt);
+			var achievements = playerPreferences.PlayersAchievements.Where(achievement => achievement.QuestType == questType);
 
 			playerPreferences.RefreshOneDateQuest();
 
@@ -209,29 +209,94 @@ namespace Assets.Common.JsonModel
 			var permanentAchievement = achievements.SingleOrDefault(achievement => !achievement.OneDayQuest);
 
 			if (oneDayAchievement != null)
-				oneDayAchievement.AmountGathered += damageDealt;
+				oneDayAchievement.AmountGathered += amountGather;
 			else
 				playerPreferences
 					.PlayersAchievements
 					.Add(new PlayerAchievement
 					{
-						AmountGathered = damageDealt,
+						AmountGathered = amountGather,
 						OneDayQuest = true,
-						QuestType = QuestType.DamageDealt
-					});
+						QuestType = questType
+                    });
 
 			if (permanentAchievement != null)
-				permanentAchievement.AmountGathered += damageDealt;
+				permanentAchievement.AmountGathered += amountGather;
 			else
 				playerPreferences
 					.PlayersAchievements
 					.Add(new PlayerAchievement
 					{
-						AmountGathered = damageDealt,
+						AmountGathered = amountGather,
 						OneDayQuest = false,
-						QuestType = QuestType.DamageDealt
+						QuestType = questType
 					});
 			Save(playerPreferences);
 		}
+
+		public static void CheckIfAllDailyQuestHaveBenTaked(float finishedQuest)
+		{
+			var playerPreferences = Load();
+			var achievements = playerPreferences.PlayersAchievements.Where(achievement => achievement.OneDayQuest);
+
+			playerPreferences.RefreshOneDateQuest();
+			var dailyQuestList = LoadDailyQuestList();
+
+			bool allQuestPassed = true; //jeśli true to wszyskie questy są ready
+
+			foreach(var quest in dailyQuestList)
+			{
+				var achievement = achievements.SingleOrDefault(achi => achi.QuestType == quest.QuestType && achi.OneDayQuest);
+				if (quest.RequiredAmountToEndQuest < achievement.AmountGathered)
+				{
+					allQuestPassed = false;
+					break;
+				}
+			}
+
+
+			//if (oneDayAchievement != null)
+			//	oneDayAchievement.AmountGathered += finishedQuest;
+			//else
+			//	playerPreferences
+			//		.PlayersAchievements
+			//		.Add(new PlayerAchievement
+			//		{
+			//			AmountGathered = damageDealt,
+			//			OneDayQuest = true,
+			//			QuestType = QuestType.DamageDealt
+			//		});
+
+			//if (permanentAchievement != null)
+			//	permanentAchievement.AmountGathered += damageDealt;
+			//else
+			//	playerPreferences
+			//		.PlayersAchievements
+			//		.Add(new PlayerAchievement
+			//		{
+			//			AmountGathered = damageDealt,
+			//			OneDayQuest = false,
+			//			QuestType = QuestType.DamageDealt
+			//		});
+			Save(playerPreferences);
+		}
+
+		protected static List<Quest> LoadDailyQuestList()
+		{
+			var directoryInfo = new DirectoryInfo($"Assets/Scenes/Quests/Data/Daily");
+			var files = directoryInfo.GetFiles("*.json");
+
+			var questList = new List<Quest>();
+
+			foreach (var file in files)
+			{
+				var fileData = File.ReadAllText(file.FullName);
+
+                questList.Add(JsonUtility.FromJson<Quest>(fileData));
+			}
+
+			return questList;
+
+        }
 	}
 }

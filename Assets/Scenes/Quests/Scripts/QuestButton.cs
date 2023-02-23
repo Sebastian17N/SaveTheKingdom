@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class QuestButton : MonoBehaviour
 {
-    public bool isQuestReadyToTake = false;
-    public bool isQuestTaked = false;
+    //public bool isQuestReadyToTake = false;
+    //public bool isQuestTaked = false;
+    //public RevardState
     public Quest chosenQuest;
     public QuestsManager questsManager;
 
@@ -28,7 +29,7 @@ public class QuestButton : MonoBehaviour
     }
     private void QuestReadyToTake()
     {
-        if (isQuestReadyToTake)
+        if (chosenQuest.RewardState == RewardState.Active)
         {
             background.color = Color.white;
         }
@@ -39,7 +40,7 @@ public class QuestButton : MonoBehaviour
     }
     private void QuestTaked()
     {
-        if (isQuestTaked)
+        if (chosenQuest.RewardState == RewardState.Taken)
         {
             questDescriptionsText.color = Color.black;
             questPointsRequireToEndText.color = Color.black;
@@ -58,7 +59,7 @@ public class QuestButton : MonoBehaviour
         questsManager.RewardImage.GetComponentInChildren<TextMeshProUGUI>().text = chosenQuest.RewardAmount.ToString();
 
 
-        if (isQuestReadyToTake)
+        if (chosenQuest.RewardState == RewardState.Active)
         {
             questsManager.ClaimButton.GetComponent<Image>().color = new Color(0.32f, 1f, 0f, 1f);
         }
