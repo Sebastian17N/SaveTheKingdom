@@ -4,5 +4,6 @@
   "RequiredAmountToEndQuest": 1000,
   "QuestType": 0,
   "RewardType": 1,
+  "RewardState": 1,
   "RewardAmount": 100
 }

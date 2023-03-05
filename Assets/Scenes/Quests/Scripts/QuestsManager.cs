@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.Common.Enums;
 using Assets.Common.JsonModel;
 using Assets.Common.Models;
 using Assets.Scenes.Quests.Scripts;
@@ -16,11 +17,14 @@ public class QuestsManager : MonoBehaviour
     public Quest chosenQuest;
 	public Image RewardImage;
     private readonly List<GameObject> _questsList = new();
-    
+    public PlayerPreferences PlayerPreferences;
+
     void Start()
     {
         SpawnDailyQuest();
         FillRewardIcon();
+        PlayerPreferences.RefreshOneDateQuest();
+        //PlayerPreferences.CheckIfAllDailyQuestHaveBenTaked();
     }
 
     public void SpawnDailyQuest()
@@ -54,9 +58,10 @@ public class QuestsManager : MonoBehaviour
 		    questObject.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = quest.Name;
 		    questObject.transform.Find("Description").GetComponent<TextMeshProUGUI>().text = quest.Description;
 		    questObject.transform.Find("PointsRequireToEnd").GetComponent<TextMeshProUGUI>().text =
-			    $"{(playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.OneDayQuest)?.AmountGathered ?? 0).ToString()} / {quest.RequiredAmountToEndQuest}"; // && achievement.QuestType == QuestType.DamageDealt
+			    $"{(playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.OneDayQuest)?.AmountGathered ?? 0).ToString()} / {quest.RequiredAmountToEndQuest}";
             questObject.GetComponent<QuestButton>().chosenQuest.RewardType = quest.RewardType;
             questObject.GetComponent<QuestButton>().chosenQuest.RewardAmount = quest.RewardAmount;
+            questObject.GetComponent<QuestButton>().chosenQuest.RewardState = quest.RewardState;
 
 		    _questsList.Add(questObject);
 	    }
@@ -73,12 +78,16 @@ public class QuestsManager : MonoBehaviour
         {
             var singleQuest = quest.GetComponent<QuestButton>().chosenQuest;
             
-            if (singleQuest == chosenQuest)
+            if (singleQuest == chosenQuest && chosenQuest.RewardState == RewardState.Active)
             {
                 
+                ResourcesMasterController.AddAndUpdateResources(singleQuest.RewardType, singleQuest.RewardAmount);
 
+                singleQuest.RewardState = RewardState.Taken;
+                
+                ClaimButton.GetComponent<Image>().color = new Color(1, 1, 1, 0.60f);
 
-
+                break;
             }
         }
     }

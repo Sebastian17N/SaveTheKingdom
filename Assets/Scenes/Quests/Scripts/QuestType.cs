@@ -6,7 +6,6 @@ namespace Assets.Scenes.Quests.Scripts
 	public enum QuestType
 	{
 		DamageDealt,
-		QuestFinished,
 		ChestOpened,
         CampaignMissionsCompleted,
         StoreShopping,
@@ -15,6 +14,7 @@ namespace Assets.Scenes.Quests.Scripts
 		UnitsUnloced,
 		MapUncloced,
 		EnemiesKilled,
-		LogInEveryDay
+		LogInEveryDay,
+        QuestFinished
     }
 }

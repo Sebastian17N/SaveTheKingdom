@@ -499,18 +499,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c476606f39692418624916d0e19933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isQuestReadyToTake: 0
-  isQuestTaked: 0
   chosenQuest:
     Name: 
     Description: 
     RequiredAmountToEndQuest: 0
     QuestType: 0
     RewardType: 0
+    RewardState: 0
     RewardAmount: 0
   questsManager: {fileID: 0}
   background: {fileID: 0}
-  questDescriptionsText: {fileID: 7383304324608180794}
+  questDescriptionsText: {fileID: 329005837066276769}
+  questNameText: {fileID: 7383304324608180794}
   questPointsRequireToEndText: {fileID: 7383304323970964953}
 --- !u!114 &8059306251754174530
 MonoBehaviour:

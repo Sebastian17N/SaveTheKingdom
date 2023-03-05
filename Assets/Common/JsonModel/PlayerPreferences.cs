@@ -138,7 +138,7 @@ namespace Assets.Common.JsonModel
 		}
 
 		private DateTime _oneDateQuest;
-		private void RefreshOneDateQuest()
+		public void RefreshOneDateQuest()
 		{
 			if (_oneDateQuest.Date.Equals(DateTime.Today)) 
 					return;
@@ -234,50 +234,50 @@ namespace Assets.Common.JsonModel
 			Save(playerPreferences);
 		}
 
-		public static void CheckIfAllDailyQuestHaveBenTaked(float finishedQuest)
-		{
+		public static void CheckIfAllDailyQuestHaveBenTaked() //float finishedQuest
+        {
 			var playerPreferences = Load();
 			var achievements = playerPreferences.PlayersAchievements.Where(achievement => achievement.OneDayQuest);
 
 			playerPreferences.RefreshOneDateQuest();
 			var dailyQuestList = LoadDailyQuestList();
 
-			bool allQuestPassed = true; //jeśli true to wszyskie questy są ready
+			bool allQuestPassed = false; //jeśli true to wszyskie questy są ready
 
 			foreach(var quest in dailyQuestList)
 			{
-				var achievement = achievements.SingleOrDefault(achi => achi.QuestType == quest.QuestType && achi.OneDayQuest);
+               
+                var achievement = achievements.SingleOrDefault(achi => achi.QuestType == quest.QuestType && achi.OneDayQuest);
 				if (quest.RequiredAmountToEndQuest < achievement.AmountGathered)
 				{
 					allQuestPassed = false;
-					break;
+
+					//playerPreferences
+					// .PlayersAchievements
+					//   .Add(new PlayerAchievement
+					//   {
+					//	   AmountGathered = 1,
+					//	   OneDayQuest = true,
+					//	   QuestType = QuestType.QuestFinished
+					//   });
+
+                    break;
+				}
+				else
+				{
+                    //playerPreferences
+                    // .PlayersAchievements
+                    //   .Add(new PlayerAchievement
+                    //   {
+                    //       AmountGathered = 1,
+                    //       OneDayQuest = true,
+                    //       QuestType = QuestType.QuestFinished
+                    //   });
+
+                    allQuestPassed = true;
 				}
 			}
 
-
-			//if (oneDayAchievement != null)
-			//	oneDayAchievement.AmountGathered += finishedQuest;
-			//else
-			//	playerPreferences
-			//		.PlayersAchievements
-			//		.Add(new PlayerAchievement
-			//		{
-			//			AmountGathered = damageDealt,
-			//			OneDayQuest = true,
-			//			QuestType = QuestType.DamageDealt
-			//		});
-
-			//if (permanentAchievement != null)
-			//	permanentAchievement.AmountGathered += damageDealt;
-			//else
-			//	playerPreferences
-			//		.PlayersAchievements
-			//		.Add(new PlayerAchievement
-			//		{
-			//			AmountGathered = damageDealt,
-			//			OneDayQuest = false,
-			//			QuestType = QuestType.DamageDealt
-			//		});
 			Save(playerPreferences);
 		}
 
@@ -296,7 +296,6 @@ namespace Assets.Common.JsonModel
 			}
 
 			return questList;
-
         }
 	}
 }

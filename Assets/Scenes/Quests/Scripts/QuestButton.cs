@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class QuestButton : MonoBehaviour
 {
-    //public bool isQuestReadyToTake = false;
-    //public bool isQuestTaked = false;
     //public RevardState
     public Quest chosenQuest;
     public QuestsManager questsManager;
@@ -15,6 +13,7 @@ public class QuestButton : MonoBehaviour
     #region Prefab Elements
     [HideInInspector] public Image background;
     public TextMeshProUGUI questDescriptionsText;
+    public TextMeshProUGUI questNameText;
     public TextMeshProUGUI questPointsRequireToEndText;
     #endregion
     void Start()
@@ -24,31 +23,32 @@ public class QuestButton : MonoBehaviour
     }
     private void Update()
     {
-        QuestReadyToTake();
-        QuestTaked();
+        WorkOnQuestButton();
     }
-    private void QuestReadyToTake()
+
+    private void WorkOnQuestButton()
     {
-        if (chosenQuest.RewardState == RewardState.Active)
+        if(chosenQuest.RewardState == RewardState.Active)
         {
             background.color = Color.white;
+            questPointsRequireToEndText.color = Color.black;
+            questDescriptionsText.color = Color.black;
+            questNameText.color = Color.black;
+            
         }
-        else
+        else if(chosenQuest.RewardState == RewardState.Inactive)
         {
             background.color = new Color(0.65f, 0.65f, 0.65f, 0.60f);
-        }
-    }
-    private void QuestTaked()
-    {
-        if (chosenQuest.RewardState == RewardState.Taken)
-        {
-            questDescriptionsText.color = Color.black;
-            questPointsRequireToEndText.color = Color.black;
-        }
-        else
-        {
-            questDescriptionsText.color = Color.white;
             questPointsRequireToEndText.color = Color.white;
+            questDescriptionsText.color = Color.white;
+            questNameText.color = Color.white;
+        }
+        else if(chosenQuest.RewardState == RewardState.Taken)
+        {
+            background.color = new Color(0.65f, 0.65f, 0.65f, 0.60f);
+            questPointsRequireToEndText.color = Color.black;
+            questDescriptionsText.color = Color.black;
+            questNameText.color = Color.black;
         }
     }
 
