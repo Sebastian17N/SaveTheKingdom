@@ -3,7 +3,7 @@ using UnityEngine;
 public class AllIcons 
 {
     public static Sprite CoinIcon => Resources.Load<Sprite>("Icons/Coin");
-    public static Sprite SapphireIcon => Resources.Load<Sprite>("Icons/Gems_6");
+    public static Sprite SapphireIcon => Resources.Load<Sprite>("Icons/Gems_2");
     public static Sprite TopazIcon => Resources.Load<Sprite>("Icons/Gems_12");
     public static Sprite EmeraldIcon => Resources.Load<Sprite>("Icons/Gems_9");
     public static Sprite MoonStoneIcon => Resources.Load<Sprite>("Icons/Gems_13");

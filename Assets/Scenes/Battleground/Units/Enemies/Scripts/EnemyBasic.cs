@@ -13,9 +13,7 @@ namespace Assets.Units.Enemies.Scripts
 
 		private void Start()
 		{
-			IsWalking = true;
 			Direction = Vector2.left;
-
 			Team = TeamEnum.Team2;
 		}
 

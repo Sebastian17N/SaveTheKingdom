@@ -19,7 +19,7 @@ public class ResourcesMasterController : MonoBehaviour
     
     public GameObject MoonStoneNumber;
     public ResourcesController _moonStoneController => MoonStoneNumber.transform.GetComponent<ResourcesController>();
-
+    
     /// <summary>
     /// funkja s³u¿¹ca do dowawania i odejmowania zasobów 
     /// </summary>

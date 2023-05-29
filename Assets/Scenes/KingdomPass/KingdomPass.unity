@@ -1491,9 +1491,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountdownTimerText: {fileID: 1502025738}
-  isEventEnd: 0
-  days: 10
-  hours: 10
+  KingdomPassJsonModel:
+    EventName: 
+    EventStartDateTime: 
+    EventEndDateTime: 
+    KingdomPassRewards: []
 --- !u!224 &1319453636 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2718525533571249444, guid: 8327ce6803faa374eb903cdacedd30c3, type: 3}

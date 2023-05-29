@@ -60,5 +60,9 @@ namespace Assets.Common.Managers
         {
             File.WriteAllText(filePath, JsonUtility.ToJson(kingdomPassJsonModel));
         }
+        public static void SaveQuestReward(string filePath, KingdomPassJsonModel kingdomPassJsonModel)
+        {
+            File.WriteAllText(filePath, JsonUtility.ToJson(kingdomPassJsonModel));
+        }
     }
 }

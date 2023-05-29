@@ -1,0 +1,10 @@
+{
+  "FileName": "C:\\Users\\sebas\\Desktop\\Unity\\Save The Kingdom\\SaveTheKingdom\\Assets\\Scenes\\Quests\\Data\\Daily\\CampaignMissionsCompleted.json",
+  "Name": "Persistent Conqueror",
+  "Description": "Finish campaign missions",
+  "RequiredAmountToEndQuest": 10,
+  "QuestType": 2,
+  "RewardType": 4,
+  "RewardState": 1,
+  "RewardAmount": 100
+}

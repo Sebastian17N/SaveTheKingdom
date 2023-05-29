@@ -1,3 +1,5 @@
+using Assets.Common.JsonModel;
+using Assets.Scenes.Quests.Scripts;
 using System.Collections;
 using UnityEngine;
 
@@ -23,7 +25,9 @@ namespace Assets.Scenes.FightSummary.Scripts
 			_animator.SetTrigger("PlayerClick");
 			StartCoroutine(ActivateAwards());
 			_isChestClicked = true;
-		}
+
+            PlayerPreferences.LogGatherAchievements(1, QuestType.ChestOpened1);
+        }
 
 		public IEnumerator ActivateAwards()
 		{

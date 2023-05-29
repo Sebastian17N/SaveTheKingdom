@@ -1,12 +1,14 @@
 using Assets.Common.Enums;
+using Assets.Common.JsonModel;
 using Assets.Scenes.Quests.Scripts;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class QuestButton : MonoBehaviour
 {
-    //public RevardState
     public Quest chosenQuest;
     public QuestsManager questsManager;
 
@@ -20,6 +22,7 @@ public class QuestButton : MonoBehaviour
     {
         background = GetComponent<Image>();
         questsManager = FindObjectOfType<QuestsManager>();
+        WorkOnQuestButton();
     }
     private void Update()
     {
@@ -28,7 +31,15 @@ public class QuestButton : MonoBehaviour
 
     private void WorkOnQuestButton()
     {
-        if(chosenQuest.RewardState == RewardState.Active)
+        var playerPreferences = PlayerPreferences.Load();
+
+
+        if (playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.QuestType == chosenQuest.QuestType && achievement.OneDayQuest && chosenQuest.RewardState != RewardState.Taken)?.AmountGathered >= chosenQuest.RequiredAmountToEndQuest)
+        {
+            chosenQuest.RewardState = RewardState.Active;
+        }
+
+        if (chosenQuest.RewardState == RewardState.Active)
         {
             background.color = Color.white;
             questPointsRequireToEndText.color = Color.black;
@@ -50,11 +61,16 @@ public class QuestButton : MonoBehaviour
             questDescriptionsText.color = Color.black;
             questNameText.color = Color.black;
         }
+
+        if (playerPreferences.PlayersAchievements.SingleOrDefault(achievement => achievement.QuestType == chosenQuest.QuestType && achievement.OneDayQuest && chosenQuest.RewardState == RewardState.Taken)?.AmountGathered < chosenQuest.RequiredAmountToEndQuest)
+        {
+            chosenQuest.RewardState = RewardState.Inactive;
+        }
     }
 
     public void ShowQuestReward()
     {
-        questsManager.chosenQuest = chosenQuest;
+        questsManager.ChosenQuest = chosenQuest;
         questsManager.RewardImage.sprite = AllIcons.GetIcon(chosenQuest.RewardType);
         questsManager.RewardImage.GetComponentInChildren<TextMeshProUGUI>().text = chosenQuest.RewardAmount.ToString();
 

@@ -6,8 +6,8 @@
     {
       "Amount": 10,
       "Type": 1,
-      "State": 1,
-      "ReceivingDate": "",
+      "State": 2,
+      "ReceivingDate": "15-03-2023",
       "Day": 1
     },
     {

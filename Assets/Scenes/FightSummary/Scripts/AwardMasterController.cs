@@ -24,6 +24,7 @@ namespace Assets.Scenes.FightSummary.Scripts
 				awardInstance.GetComponent<Image>().sprite = AllIcons.GetIcon(award.Type);
 			}
 
+			// TODO: add type of shard.
 			_shardsAwardController.Quantity = fightSummaryManager.ShardsAward.Amount;
 		}
 	}

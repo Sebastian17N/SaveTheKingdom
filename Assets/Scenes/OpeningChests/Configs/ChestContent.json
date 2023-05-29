@@ -1,0 +1,20 @@
+{
+  "Level": 1,
+  "AwardShards": [
+    {
+      "UnitId": 3,
+      "MinRange": [ 1 ],
+      "MaxRange": [ 3 ]
+    },
+    {
+      "UnitId": 6,
+      "MinRange": [ 1 ],
+      "MaxRange": [ 3 ]
+    },
+    {
+      "UnitId": 10,
+      "MinRange": [ 1 ],
+      "MaxRange": [ 3 ]
+    }
+  ]
+}

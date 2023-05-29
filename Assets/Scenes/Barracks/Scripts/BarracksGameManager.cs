@@ -13,7 +13,7 @@ namespace Assets.Scenes.Barracks.Scripts
 		[Header("UnitCard")]
 		public GameObject PrefabUnitCard;
 		public List<UnitScriptableObject> ScriptableObjects;
-
+		public List<Sprite> UnitFrame;
 		public Transform GhagharUnitSlot;
 		public Transform LaganatUnitSlot;
 		public Transform HaikoUnitSlot;
@@ -51,11 +51,27 @@ namespace Assets.Scenes.Barracks.Scripts
             unit.GetComponent<UnitDataFolder>().UnitScriptableObject = scriptableObject;
 			unit.GetComponent<UnitDataFolder>().UnitIndex = scriptableObject.UnitId;
 			unit.GetComponent<UnitDataFolder>().RefreshStatisticsTexts();
-			
-			//animator.runtimeAnimatorController = scriptableObject.Animator;
-			//unit.GetComponent<UnitDataFolder>().animator = scriptableObject.Animator;
 
-			_units.Add(unit);
+			Sprite unitFrame = null;
+
+
+            if (scriptableObject.Classification == UnitClassification.Common)
+			{
+                unitFrame = UnitFrame[0];
+            }
+			else if(scriptableObject.Classification == UnitClassification.Epic)
+			{
+                unitFrame = UnitFrame[1];
+
+            }
+			else if(scriptableObject.Classification == UnitClassification.Legandary)
+			{
+                unitFrame = UnitFrame[2];
+            }
+
+            unit.transform.Find("UnitFrame").GetComponent<Image>().sprite = unitFrame;
+
+            _units.Add(unit);
 		}
 		public void RefreshAllUnitsTexts()
         {
@@ -130,25 +146,42 @@ namespace Assets.Scenes.Barracks.Scripts
 				.GetComponent<Animator>().runtimeAnimatorController = scriptableObject.AnimatorCanvas;
 
 			panelComponents.damageText.text = scriptableObject.AttackDamage.ToString();
-			panelComponents.damageUpgradeText.text = 
-				(scriptableObject.AttackDamage + scriptableObject.AttackDamageUpgrade).ToString();			
+			panelComponents.damageUpgradeText.text = (scriptableObject.AttackDamage + scriptableObject.AttackDamageUpgrade).ToString();			
 			
 			panelComponents.healthText.text = scriptableObject.Health.ToString();
-			panelComponents.healthUpgradeText.text = 
-				(scriptableObject.Health + scriptableObject.HealthUpgrade).ToString();
+			panelComponents.healthUpgradeText.text = (scriptableObject.Health + scriptableObject.HealthUpgrade).ToString();
+
+            panelComponents.levelText.text = ($"Level {scriptableObject.Level.ToString()}");
+
+            panelComponents.UnitIcon.sprite = scriptableObject.Icon;
 			
-			panelComponents.UnitIcon.sprite = scriptableObject.Icon;
-			// TODO: Read value needed for an upgrade.
-			panelComponents.shardsOwnedText.text =
+			panelComponents.shardsHavedText.text =
 				PlayerPreferences
 					.Load()
 					.Shards
 					.FirstOrDefault(shard => shard.ShardId == scriptableObject.UnitId)?
 					.Amount.ToString();
 			// scriptableObject.Level * 10 + 10;
-			panelComponents.shardsNeededText.text = scriptableObject.ShardsNumber.ToString();
-			panelComponents.coinsHavedText.text = PlayerPreferences.Load().Coins.ToString();
-			panelComponents.coinsNeededText.text = scriptableObject.UpgradeInitialCost.ToString();
-		}
+			panelComponents.shardsNeededText.text = scriptableObject.ShardCostOfUpgradeBasedOnClassification().ToString();
+			panelComponents.coinsHavedText.text = PlayerPreferences.LoadResourceByType("Coins").ToString();
+            panelComponents.coinsNeededText.text = scriptableObject.UpgradeCoinCost.ToString();
+            panelComponents.gemsNeededText.text = scriptableObject.UpgradeGemsCost.ToString();
+
+			if (scriptableObject.Origin == UnitOrigin.Laganat)
+			{
+                panelComponents.gemsHavedText.text = PlayerPreferences.LoadResourceByType("Sapphires").ToString();
+				panelComponents.GemIcon.sprite = AllIcons.GetIcon(Common.Enums.RewardType.Sapphires);
+            }
+			else if (scriptableObject.Origin == UnitOrigin.Haiko)
+			{
+                panelComponents.gemsHavedText.text = PlayerPreferences.LoadResourceByType("Emeralds").ToString();
+                panelComponents.GemIcon.sprite = AllIcons.GetIcon(Common.Enums.RewardType.Emeralds);
+            }
+            else if (scriptableObject.Origin == UnitOrigin.Ghagar)
+            {
+                panelComponents.gemsHavedText.text = PlayerPreferences.LoadResourceByType("Topazes").ToString();
+                panelComponents.GemIcon.sprite = AllIcons.GetIcon(Common.Enums.RewardType.Topazes);
+            }
+        }
 	}
 }

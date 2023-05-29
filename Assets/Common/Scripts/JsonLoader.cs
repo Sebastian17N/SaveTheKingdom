@@ -15,5 +15,14 @@ namespace Assets.Common
 
 			return JsonUtility.FromJson<MapsConfigJsonModel>(fileData);
 		}
+        public static ChestContentJsonModel LoadChestContentConfig()
+        {
+            if (!File.Exists("Assets/Scenes/OpeningChests/Configs/ChestContent.json"))
+                return null;
+
+            var fileData = File.ReadAllText("Assets/Scenes/OpeningChests/Configs/ChestContent.json");
+
+            return JsonUtility.FromJson<ChestContentJsonModel>(fileData);
+        }
     }
 }

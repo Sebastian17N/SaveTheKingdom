@@ -124,7 +124,7 @@ namespace Assets.Common.Managers
 		private GameObject CreateUnit(UnitScriptableObject unitScriptableObject)
 		{
 			var unit = Instantiate(UnitPrefab, UnitCardHolderTransform);
-			unit.GetComponentInChildren<TMP_Text>().text = $"{unitScriptableObject.Cost}";
+			unit.GetComponentInChildren<TMP_Text>().text = $"{unitScriptableObject.BatlegroundCost}";
 
 			var iconImage = unit.transform.Find("Icon").GetComponent<Image>();
 			iconImage.sprite = unitScriptableObject.Icon;
@@ -168,7 +168,11 @@ namespace Assets.Common.Managers
 					//PlayerPrefs.SetFloat("BasicHealth", BasicHealth);
 					SceneManager.LoadScene("FightSummary");
 
-					PlayerPreferences.LogGatherAchievements(DamageDealtOnCurrentLevel, Scenes.Quests.Scripts.QuestType.DamageDealt);
+					PlayerPreferences.LogGatherAchievements(DamageDealtOnCurrentLevel, Scenes.Quests.Scripts.QuestType.DamageDealt0);
+					PlayerPreferences.LogGatherAchievements(DamageDealtOnCurrentLevel, Scenes.Quests.Scripts.QuestType.DamageDealtGeneral11);
+					PlayerPreferences.LogGatherAchievements(NumberOfEnemiesLeft, Scenes.Quests.Scripts.QuestType.EnemiesKilledGeneral10);
+					PlayerPreferences.LogGatherAchievements(1, Scenes.Quests.Scripts.QuestType.CampaignMissionsCompleted2);
+
 					break;
 				}
 

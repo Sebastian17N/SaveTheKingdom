@@ -8,5 +8,6 @@ namespace Assets.Scenes.Quests.Scripts
 		public QuestType QuestType;
 		public float AmountGathered;
 		public bool OneDayQuest;
+		public string ActivityDate;
 	}
 }

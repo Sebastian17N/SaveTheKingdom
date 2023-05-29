@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop/Shop.unity
     guid: 5533cb0cf64f768419aef11ab3e55ea6
+  - enabled: 1
+    path: Assets/Scenes/OpeningChests/OpeningChests.unity
+    guid: f1a409b96f56f28478553edb981a57f5
   m_configObjects: {}

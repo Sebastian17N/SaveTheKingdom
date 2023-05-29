@@ -1,0 +1,136 @@
+{
+  "CoinsJson": {
+    "Amount": 38668,
+    "Type": 0,
+    "State": 0,
+    "ReceivingDate": ""
+  },
+  "EmeraldsJson": {
+    "Amount": 1050,
+    "Type": 3,
+    "State": 0,
+    "ReceivingDate": ""
+  },
+  "SapphiresJson": {
+    "Amount": 950,
+    "Type": 1,
+    "State": 0,
+    "ReceivingDate": ""
+  },
+  "TopazesJson": {
+    "Amount": 23118,
+    "Type": 2,
+    "State": 0,
+    "ReceivingDate": ""
+  },
+  "MoonStoneJson": {
+    "Amount": 10650,
+    "Type": 4,
+    "State": 0,
+    "ReceivingDate": ""
+  },
+  "ShardsJson": [
+    {
+      "ShardId": 2,
+      "Amount": 0
+    },
+    {
+      "ShardId": 3,
+      "Amount": 0
+    },
+    {
+      "ShardId": 4,
+      "Amount": 0
+    },
+    {
+      "ShardId": 6,
+      "Amount": 0
+    },
+    {
+      "ShardId": 8,
+      "Amount": 10
+    },
+    {
+      "ShardId": 9,
+      "Amount": 10
+    },
+    {
+      "ShardId": 10,
+      "Amount": 0
+    }
+  ],
+  "PlayersAchievements": [
+    {
+      "QuestType": 0,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 1,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 2,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 3,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 4,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 5,
+      "AmountGathered": 27.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 6,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 7,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 8,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 9,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 10,
+      "AmountGathered": 0.0,
+      "OneDayQuest": true,
+      "ActivityDate": "27-05-2023"
+    },
+    {
+      "QuestType": 11,
+      "AmountGathered": 245.0,
+      "OneDayQuest": false,
+      "ActivityDate": "20-04-2023"
+    }
+  ]
+}

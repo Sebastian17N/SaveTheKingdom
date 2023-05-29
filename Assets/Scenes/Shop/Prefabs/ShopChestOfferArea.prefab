@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 6318190319068619736}
   - component: {fileID: 1975543270818266481}
   m_Layer: 5
-  m_Name: AdImage
+  m_Name: MoonStoneImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a3cc306d9c555ff4db548fb9d6fa5c54, type: 3}
+  m_Sprite: {fileID: 693303759, guid: d24c32255c0cd7641b1032893b8bab16, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 9023289136018395001}
   - component: {fileID: 3604821876635109814}
   - component: {fileID: 9197622652185195224}
+  - component: {fileID: 7608080144853151356}
   m_Layer: 5
   m_Name: ShopOfferChestButton (2)
   m_TagString: Untagged
@@ -432,6 +433,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7608080144853151356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236570574324038241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ca450c4d04dc64b9e3e6ebaaf61d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChestClassification: 0
+  OpenChestManager: {fileID: 0}
+  WatchAdd: 0
 --- !u!1 &1344719913239108142
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -654,6 +670,7 @@ GameObject:
   - component: {fileID: 1567618751102645412}
   - component: {fileID: 1567618751102645414}
   - component: {fileID: 1567618751102645413}
+  - component: {fileID: 767806153558885901}
   m_Layer: 5
   m_Name: ShopChestOfferArea
   m_TagString: Untagged
@@ -721,6 +738,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &767806153558885901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567618751102645411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061c82f39d5d91146b31c55c77084382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chests:
+  - {fileID: 6712951371996005216}
+  - {fileID: 8508626066487950283}
+  - {fileID: 7608080144853151356}
+  ChosenChest: 0
+  AmounOfPurchasedChest1: {fileID: 4568188828831596072}
+  AmounOfPurchasedChest2: {fileID: 2551471986374839482}
+  AmounOfPurchasedChest3: {fileID: 9064482301633990376}
 --- !u!1 &1646763666112973675
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +957,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 268429411072300294}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1567618751102645411}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3074093894998540953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1868,7 @@ GameObject:
   - component: {fileID: 7887183208000667287}
   - component: {fileID: 5771382323211349153}
   - component: {fileID: 8365771528781198871}
+  - component: {fileID: 9064803495306672577}
   m_Layer: 5
   m_Name: ShopOfferChestButton
   m_TagString: Untagged
@@ -1889,6 +1939,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9064803495306672577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712951371996005216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ca450c4d04dc64b9e3e6ebaaf61d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChestClassification: 0
+  OpenChestManager: {fileID: 0}
+  WatchAdd: 0
 --- !u!1 &6925249358950890704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,7 +2089,7 @@ GameObject:
   - component: {fileID: 5800645648705880629}
   - component: {fileID: 2968698409236053010}
   m_Layer: 5
-  m_Name: AdImage
+  m_Name: MoonStoneImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2078,7 +2143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a3cc306d9c555ff4db548fb9d6fa5c54, type: 3}
+  m_Sprite: {fileID: 693303759, guid: d24c32255c0cd7641b1032893b8bab16, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2154,7 +2219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5000
+  m_text: 300
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2839,6 +2904,7 @@ GameObject:
   - component: {fileID: 7114279196653250118}
   - component: {fileID: 3315319568829181309}
   - component: {fileID: 1549437561905554528}
+  - component: {fileID: 3939968654536342843}
   m_Layer: 5
   m_Name: ShopOfferChestButton (1)
   m_TagString: Untagged
@@ -2909,6 +2975,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3939968654536342843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8508626066487950283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ca450c4d04dc64b9e3e6ebaaf61d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChestClassification: 0
+  OpenChestManager: {fileID: 0}
+  WatchAdd: 0
 --- !u!1 &8630781058744000732
 GameObject:
   m_ObjectHideFlags: 0

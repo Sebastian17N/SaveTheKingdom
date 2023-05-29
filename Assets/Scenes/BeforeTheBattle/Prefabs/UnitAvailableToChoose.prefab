@@ -95,6 +95,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -112,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAssignedToSlotAlready: 0
+  UnitId: 0
   Sprite: {fileID: 0}
   CanvasTransform: {fileID: 0}
   UnitChosenPrefab: {fileID: 6836477498226288691, guid: 842386fe7f492be42ac6ee2583911483, type: 3}

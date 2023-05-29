@@ -1,0 +1,10 @@
+{
+  "FileName": "C:\\Users\\sebas\\Desktop\\Unity\\Save The Kingdom\\SaveTheKingdom\\Assets\\Scenes\\Quests\\Data\\General\\UnitsUnlocked2.json",
+  "Name": "Excellent Commander",
+  "Description": "Unlock at least 15 Units",
+  "RequiredAmountToEndQuest": 15,
+  "QuestType": 8,
+  "RewardType": 0,
+  "RewardState": 1,
+  "RewardAmount": 1000
+}

@@ -1,0 +1,29 @@
+{
+  "OfferDate": "27-05-2023",
+  "MoonStoneOfferList": [
+    {
+      "OrdinalNumber": 10,
+      "isOfferSold": true
+    },
+    {
+      "OrdinalNumber": 50,
+      "isOfferSold": false
+    },
+    {
+      "OrdinalNumber": 100,
+      "isOfferSold": false
+    },
+    {
+      "OrdinalNumber": 500,
+      "isOfferSold": false
+    },
+    {
+      "OrdinalNumber": 1000,
+      "isOfferSold": false
+    },
+    {
+      "OrdinalNumber": 5000,
+      "isOfferSold": false
+    }
+  ]
+}

@@ -22,19 +22,27 @@ namespace Assets.Scenes.BeforeTheBattle.Scripts
 
 		void Start()
 		{
-			UnitDataFolders = new List<GameObject>();
-			foreach (var scriptableObject in UnitScriptableObjects)
-			{
-				UnitDataFolders.Add(CreateUnitFolder(scriptableObject));
-			}
+			CreateAvailableUnits();
 
-			SpellDataFolders = new List<GameObject>();
+            SpellDataFolders = new List<GameObject>();
 			foreach (var scriptableObject in SpellScriptableObjects)
 			{
 				SpellDataFolders.Add(CreateSpellFolder(scriptableObject));
 			}
 		}
-		private GameObject CreateUnitFolder(UnitScriptableObject unitScriptableObject)
+		private void CreateAvailableUnits()
+		{
+            UnitDataFolders = new List<GameObject>();
+            foreach (var scriptableObject in UnitScriptableObjects)
+            {
+				if (scriptableObject.Unlocked)
+				{
+					UnitDataFolders.Add(CreateUnitFolder(scriptableObject));
+				}
+            }
+        }
+
+        private GameObject CreateUnitFolder(UnitScriptableObject unitScriptableObject)
 		{
 			var unit = Instantiate(UnitAvailableToChosePrefab, UnitCardUnitTransform);
 			unit.GetComponentInChildren<Image>().sprite = unitScriptableObject.Icon;

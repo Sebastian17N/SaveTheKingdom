@@ -19,6 +19,9 @@ namespace Assets.Scenes.Barracks.Scripts
             var healthObject = unit.transform.Find("Health");
             healthObject.transform.Find("HealthNumber").GetComponent<TMP_Text>().text =
                     $"Health: {UnitScriptableObject.Health}";
+
+            var levelObject = unit.transform.Find("Level").GetComponent<TMP_Text>().text =
+                    $"Level: {UnitScriptableObject.Level}";
         }
 
     }

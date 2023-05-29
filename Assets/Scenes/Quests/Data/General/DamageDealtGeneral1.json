@@ -1,0 +1,10 @@
+{
+  "FileName": "C:\\Users\\sebas\\Desktop\\Unity\\Save The Kingdom\\SaveTheKingdom\\Assets\\Scenes\\Quests\\Data\\General\\DamageDealtGeneral1.json",
+  "Name": "Total firepower!",
+  "Description": "Deal 10 000 damage",
+  "RequiredAmountToEndQuest": 10000,
+  "QuestType": 11,
+  "RewardType": 0,
+  "RewardState": 1,
+  "RewardAmount": 1000
+}

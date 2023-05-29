@@ -1,9 +1,0 @@
-{
-  "Name": "Maximum firepower!",
-  "Description": "Deal 100 damage and get 10 coins.",
-  "RequiredAmountToEndQuest": 100,
-  "QuestType": 0,
-  "RewardType": 0,
-  "RewardState": 1,
-  "RewardAmount": 10
-}

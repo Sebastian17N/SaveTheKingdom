@@ -14,9 +14,10 @@ namespace Assets.Units.Defenses.Scripts
 		public RuntimeAnimatorController Animator; 
 		public RuntimeAnimatorController AnimatorCanvas;
 		public Sprite Icon;
+		public bool Unlocked = false;
 
 		[Header("Statistics")]
-		public float Cost;
+		public float BatlegroundCost;
 
 		public float HealthBasic;
 		public float HealthUpgrade;
@@ -32,8 +33,28 @@ namespace Assets.Units.Defenses.Scripts
 		public bool IsRange => BulletType?.Sprite != null;
 		public BulletType BulletType;
 		public UnitOrigin Origin;
+		public UnitClassification Classification;
+		public float Level;
+		public float ShardsNeededToUpgrade;
+        public float UpgradeCoinCost;
+		public float UpgradeGemsCost;
 
-		public float ShardsNumber;
-		public float UpgradeInitialCost;
-	}
+		public float ShardCostOfUpgradeBasedOnClassification()
+		{
+			if (Classification == UnitClassification.Common)
+			{
+				ShardsNeededToUpgrade = 10;
+            }
+			else if (Classification == UnitClassification.Epic)
+			{
+                ShardsNeededToUpgrade = 30;
+            }
+            else if (Classification == UnitClassification.Legandary)
+            {
+                ShardsNeededToUpgrade = 50;
+            }
+
+			return ShardsNeededToUpgrade;
+        }
+    }
 }

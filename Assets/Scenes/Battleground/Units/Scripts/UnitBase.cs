@@ -8,10 +8,6 @@ namespace Assets.Units.Scripts
 {
 	public abstract class UnitBase : MonoBehaviour, IDecreaseDurabilityOwner
 	{
-		// Default statuses
-		protected bool IsWalking;
-		protected bool IsAttacking;
-
 		// Prefabs
 		public GameObject BulletPrefab;
 		public BulletType BulletType;
@@ -22,6 +18,9 @@ namespace Assets.Units.Scripts
     
 		public float AttackSpeed;
 		public float AttackDamage;
+
+		private bool spawned = false;
+		private Animator _animator;
 
 		#region Enviroment attributes
 		protected TeamEnum Team;
@@ -40,11 +39,22 @@ namespace Assets.Units.Scripts
 		public LayerMask enemiesLayer;
 
 		#endregion Enviroment attributes
-       
+
+		public void Awake()
+		{
+			_animator = GetComponent<Animator>();
+		}
+		
         protected void Routine()
 		{
 			if (IsDragged)
 				return;
+
+			if (!spawned)
+			{
+				Walk();
+				spawned = true;
+			}
 
 			// Got hit.
 			if (Bullet != null && Bullet.GetComponent<Bullet>() != null)
@@ -55,18 +65,7 @@ namespace Assets.Units.Scripts
 
 			if (Time.timeSinceLevelLoad - _lastShootTime < AttackSpeed)
 				return;
-
-			// Check if there is enemy next to it. If not, go for a walk.
-			if ((MonoBehaviour)_enemy == null && Speed > 0)
-			{
-				Walk();
-				return;
-			}
-			else
-			{
-				StopWalking();
-			}
-
+			
 			Attack();
 		}
 
@@ -87,8 +86,12 @@ namespace Assets.Units.Scripts
 						collidedObject.GetComponent<EnemyBasic>() :
 						collidedObject.GetComponent<UnitBasic>();
 
-				if (enemy != null && (enemy as UnitBase).Team != Team)
+				if (enemy != null && ((UnitBase)enemy).Team != Team)
+				{
 					_enemy = enemy;
+
+					StopWalking();
+				}
 			}
 
 			if (Bullet == null 
@@ -101,25 +104,18 @@ namespace Assets.Units.Scripts
 
 		private void Walk()
 		{
-			var anim = GetComponent<Animator>();
-			IsWalking = false;
-			GetComponent<Rigidbody2D>().velocity = Direction * Speed;
-			anim.SetTrigger("NoEnemies");
-			
+			transform.GetComponent<Rigidbody2D>().velocity = Direction * Speed;
+			_animator.SetTrigger("NoEnemies");
 		}
 
 		private void StopWalking()
 		{
-			var anim = GetComponent<Animator>();
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-			//anim.SetTrigger("Attack");
-			
+			_animator.SetTrigger("Attack");
 		}
 
 		private void Attack()
 		{
-			var anim = GetComponent<Animator>();
-
 			_lastShootTime = Time.timeSinceLevelLoad;
 			
 			RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 100f, enemiesLayer);
@@ -128,26 +124,14 @@ namespace Assets.Units.Scripts
 			// Range attack.
 			if (hit && BulletPrefab != null)
             {
-				anim.SetTrigger("Attack");
 				ShootBullet();
 			}
-            else if(!hit && BulletPrefab != null)
-            {
-				anim.SetTrigger("NoEnemies");
-			}
 
-			// Mele attack. Remove reference if he was defeated.
 			if (!_enemy?.DecreaseDurability(AttackDamage) ?? false)
             {
-				anim.SetTrigger("NoEnemies");
 				_enemy = null;
-			}
-            else
-            {
-				anim.SetTrigger("Attack");
-				IsWalking = false;
-			}
-				
+				Walk();
+            }
 		}
 
 		private void ShootBullet()

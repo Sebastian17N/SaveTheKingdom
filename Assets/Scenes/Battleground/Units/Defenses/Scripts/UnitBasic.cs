@@ -10,7 +10,6 @@ namespace Assets.Units.Defenses.Scripts
 		private void Start()
 		{
 			IsDragged = true;
-			IsWalking = false;
 			Direction = Vector2.right;
 
 			Team = TeamEnum.Team1;

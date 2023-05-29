@@ -79,13 +79,13 @@ public class KingdomPassRewardsButtons : MonoBehaviour
     {
         if (kingdomPassManager.isKingdomPassActivated)
         {
-            PremiumRewardType.State = RewardState.Taken;
-            ResourcesMasterController.AddAndUpdateResources(PremiumRewardType.Type, PremiumRewardType.Amount);
-            
             var fileName = "Assets/Configuration/KingdomPass/KingdomPassReward.json";
             var manager = RewardEventManager.LoadKingdomPassRewards(fileName);
             manager.KingdomPassRewards.Where(reward => reward.Level.ToString() == ordinalNumberText.text).First().PremiumReward.State = RewardState.Taken;
             RewardEventManager.SaveKingdomPassReward(fileName, manager);
+
+            PremiumRewardType.State = RewardState.Taken;
+            ResourcesMasterController.AddAndUpdateResources(PremiumRewardType.Type, PremiumRewardType.Amount);
         }
     }
     public void KingdomPassActivated()
@@ -95,7 +95,6 @@ public class KingdomPassRewardsButtons : MonoBehaviour
             premiumAwardTakeButton.GetComponent<Image>().color = Color.white;
             premiumAwardTakeButton.GetComponentInChildren<TextMeshProUGUI>().text = "CLAIM";
             padlockImage.enabled = false;
-            kingdomPassManager.TakePremiumReward();
         }
     }
     public void FreeAwardTaked()

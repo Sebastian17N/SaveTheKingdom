@@ -1,0 +1,26 @@
+{
+  "Id": 1,
+  "BackgroundPath": "Pack (6)",
+  "Name": "Laganat Pack",
+  "Cost": 20,
+  "IsPackSold" : "false",
+
+  "AwardShards": [
+    {
+      "UnitId": 8,
+      "MinRange": [ 10 ]
+    },
+    {
+      "UnitId": 3,
+      "MinRange": [ 20 ]
+    },
+    {
+      "UnitId": 6,
+      "MinRange": [ 30 ]
+    },
+    {
+      "UnitId": 10,
+      "MinRange": [ 40 ]
+    }
+  ]
+}

@@ -1,7 +1,9 @@
 using Assets.Common.Enums;
 using Assets.Common.JsonModel;
 using Assets.Scenes.Barracks.Scripts;
+using Assets.Scenes.Quests.Scripts;
 using Assets.Units.Defenses.Scripts;
+using System;
 using System.Drawing;
 using TMPro;
 using UnityEngine;
@@ -13,26 +15,31 @@ public class UnitUpgradePanel : MonoBehaviour
     public TextMeshProUGUI damageUpgradeText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI healthUpgradeText;
-    public TextMeshProUGUI shardsOwnedText;
+    public TextMeshProUGUI shardsHavedText;
     public TextMeshProUGUI shardsNeededText;
-    public TextMeshProUGUI coinsNeededText;
     public TextMeshProUGUI coinsHavedText;
+    public TextMeshProUGUI coinsNeededText;
+    public TextMeshProUGUI gemsHavedText;
+    public TextMeshProUGUI gemsNeededText;
+    public TextMeshProUGUI levelText;
     public Image UnitIcon;
+    public Image GemIcon;
 
-    public RewardType Type;
-
-    public UnitScriptableObject scriptableObject =>
-        transform.GetComponentInChildren<UnitDataFolder>().UnitScriptableObject;
+    public UnitScriptableObject scriptableObject => transform.GetComponentInChildren<UnitDataFolder>().UnitScriptableObject;
 
     public void LevelUpUnit()
     {
         var totalCoins = PlayerPreferences.LoadResourceByType("Coins");
+        var totalGems = PlayerPreferences.LoadResourceByType("Coins");
 
-        if (totalCoins < scriptableObject.UpgradeInitialCost)
+        if (totalCoins < scriptableObject.UpgradeCoinCost)
             return;
 
-        //if (!(scriptableObject.ShardsNumber >= 10))
-        //    return;
+        if ((Int32.Parse(shardsHavedText.text) < Int32.Parse(shardsNeededText.text)))
+            return;
+
+        if ((Int32.Parse(gemsHavedText.text) < Int32.Parse(gemsNeededText.text)))
+            return;
 
         damageText.text = (scriptableObject.AttackDamage += scriptableObject.AttackDamageUpgrade).ToString();
         scriptableObject.AttackDamageUpgrade *= 2;
@@ -41,14 +48,18 @@ public class UnitUpgradePanel : MonoBehaviour
         healthText.text = (scriptableObject.Health += scriptableObject.HealthUpgrade).ToString();
         scriptableObject.HealthUpgrade *= 2;
         healthUpgradeText.text = (scriptableObject.Health + scriptableObject.HealthUpgrade).ToString();
-        
+
+        shardsNeededText.text = scriptableObject.ShardCostOfUpgradeBasedOnClassification().ToString();
+
         //shardsOwnedText.text = scriptableObject.AttackDamage.ToString();
         //shardsNeededText.text = scriptableObject.AttackDamage.ToString();
         //totalCoins - scriptableObject.UpgradeInitialCost;
 
-        ResourcesMasterController.AddAndUpdateResources(RewardType.Coins, -(int)scriptableObject.UpgradeInitialCost);
+        ResourcesMasterController.AddAndUpdateResources(RewardType.Coins, -(int)scriptableObject.UpgradeCoinCost);
 
         FindObjectOfType<BarracksGameManager>().RefreshAllUnitsTexts();
         coinsHavedText.text = totalCoins.ToString();
+
+        PlayerPreferences.LogGatherAchievements(1, QuestType.UnitTrained4);
     }
 }
